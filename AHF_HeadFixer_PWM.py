@@ -85,7 +85,8 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
                     self.setPWM(self.servoReleasedPosition)
                 self.hasMouseLog(hasContact, self.task.isFixTrial, thisTag, resultsDict)
         else: # noFix trial, wait for contact and return
-            if self.task.contact and not AHF_HeadFixer.isChecking:
+            self.hasMouseLog(hasContact, self.task.isFixTrial, thisTag, resultsDict)
+            if self.waitForMouse(thisTag) and not AHF_HeadFixer.isChecking:
                 start_new_thread(self.isFixedCheck,())
                 return True
             return False

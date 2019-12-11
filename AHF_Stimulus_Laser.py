@@ -9,7 +9,10 @@ stimulation/inhibition.
 from AHF_Stimulus import AHF_Stimulus
 
 # Laser-stimulator modules
-from pynput import keyboard
+try:
+    from pynput import keyboard
+except ImportError:
+    keyboard = None
 import numpy as np
 from os import path
 import matplotlib.pyplot as plt
@@ -220,6 +223,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def stimulate(self):
         self.pulse(self.laser_on_time, self.duty_cycle)
+
+    def length(self):
+        return self.laser_on_time
+
+    def period(self):
+        #tbd, currently frequency is hardcoded at 1kHz
+        return 0.001
 
     def trialEnd(self):
         #Move laser back to zero position at the end of the trial
@@ -472,7 +482,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def matcher(self):
         #GUI to select three points using the matching aid tool.
-
+        if keyboard is None:
+            return
         print('\nINSTRUCTION\n')
         print('Move:\tLaser\t\tcross hairs')
         print('---------------------------------------')

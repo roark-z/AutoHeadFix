@@ -194,10 +194,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def withholdWait(self, endTime):
-        lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
-        lickWithholdEnd = time() + lickWithholdRandom
+        self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+        lickWithholdEnd = time() + self.lickWithholdRandom
+        self.task.LickDetector.startLickCount()
+        anyLicks = 0
         while time() < lickWithholdEnd and time() < endTime:
-            anyLicks = self.task.LickDetector.waitForLick(0.05)
+            sleep(0.05)
+            for x in self.task.LickDetector.getLickCount():
+                anyLicks += x[1]
             if anyLicks == 0:
                 if self.speakerIsOn == True:
                     print("turn off")
@@ -208,8 +212,10 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                     print("Speaker on Now")
                     self.speaker.start_train()
                     self.speakerIsOn = True
-                lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
-                lickWithholdEnd = time() + lickWithholdRandom
+                self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+                lickWithholdEnd = time() + self.lickWithholdRandom
+                self.task.LickDetector.startLickCount()
+                anyLicks = 0
         return anyLicks
 
     def goTask(self):
@@ -219,20 +225,32 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.Stimulus.stimulate()
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "GO"}, time())
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
+        self.task.LickDetector.startLickCount()
+        anyLicks = 0
         while time() < delayEnd:
-            anyLicks = self.task.LickDetector.waitForLick(0.05)
+            sleep(0.01)
+            for x in self.task.LickDetector.getLickCount():
+                anyLicks += x[1]
             if anyLicks:
-                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4}, time())
-
+                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
                 return
-        anyLicks = self.task.LickDetector.waitForLick(self.mouse.get("Stimulator").get("responseTime"))
+        responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
+        self.task.LickDetector.startLickCount()
+        anyLicks = 0
+        while time() < responseEnd:
+            sleep(0.01)
+            for x in self.task.LickDetector.getLickCount():
+                anyLicks += x[1]
+            if anyLicks:
+                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': 2, 'withholdTime': self.lickWithholdRandom}, time())
+                sleep(max(0, responseEnd - time()))
+
         if anyLicks is not 0:
             self.rewardTimes.append(time())
             self.rewarder.giveReward('task')
-            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': 2}, time())
         else:
             #Wrong, mouse gets a timeout :(
-            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -2}, time())
+            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -2, 'withholdTime': self.lickWithholdRandom}, time())
             sleep(self.lickWrongTimeout)
 
 
@@ -243,21 +261,32 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.Stimulus.stimulate()
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
+        self.task.LickDetector.startLickCount()
+        anyLicks = 0
         while time() < delayEnd:
-            anyLicks = self.task.LickDetector.waitForLick(0.05)
+            sleep(0.01)
+            for x in self.task.LickDetector.getLickCount():
+                anyLicks += x[1]
             if anyLicks:
-                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3}, time())
+                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3, 'withholdTime': self.lickWithholdRandom}, time())
                 return
-        anyLicks = self.task.LickDetector.waitForLick(self.mouse.get("Stimulator").get("responseTime"))
+        responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
+        self.task.LickDetector.startLickCount()
+        anyLicks = 0 
+        while time() < responseEnd:
+            sleep(0.01)
+            for x in self.task.LickDetector.getLickCount():
+                anyLicks += x[1]
+            if anyLicks:
+                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1, 'withholdTime': self.lickWithholdRandom}, time())
+                sleep(max(0, responseEnd - time()))
         if anyLicks == 0:
             if self.mouse.get("Stimulator").get("rewardNoGo"):
                 self.rewardTimes.append(time())
                 self.rewarder.giveReward('task')
-            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': 1}, time())
-
+            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': 1, 'withholdTime': self.lickWithholdRandom}, time())
         else:
             #Wrong, mouse gets a timeout :(
-            self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1}, time())
             sleep(self.lickWrongTimeout)
         pass
 
@@ -288,71 +317,72 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.rewardTimes = []
         self.laserTimes = []
         n = self.mouse.get('Stimulator', {}).get('nRewards', 5)
-        if self.task.isFixTrial:
-            if not self.task.Stimulus.trialPrep(self.tag):
-                self.task.Stimulus.trialEnd()
-                return
-
-            #every time lickWithholdtime passes with no licks, make a buzz then give a reward after buzz_lead time.
-            self.lickWithholdTimes = []
-            self.rewardTimes = []
-            self.laserTimes = []
-            endTime = time() + self.mouse.get("HeadFixer", {}).get('headFixTime')
-            self.speakerIsOn = False
-            self.OffForRewardEnd = 0.0
-            while time() < endTime:
-                if not self.running:
-                    break
-                # setup to start a trial, withholding licking for lickWithholdRandom secs till buzzer
-                # inner loop keeps resetting lickWithholdEnd time until  a succsful withhold
-                if(level > 0):
-
-                    anyLicks = self.withholdWait(endTime)
-                    # inner while loop only exits if trial time is up or lick withholding time passed with no licking
-                    if anyLicks > 0:
-                        break
-                    # at this point, mouse has just witheld licking for lickWithholdTime
-                levels = {
-                    0: self.rewardTask,
-                    1: self.rewardTask,
-                    2: self.goTask,
-                    3: self.discrimTask
-                }
-                levels[level]()
-                if level ==0:
-                    sleep(self.mouse.get("Stimulator").get("rewardInterval"))
-                    n = n -1
-                    if n == 0:
-                        newRewards = resultsDict.get('rewards', 0) + len(self.rewardTimes)
-                        resultsDict.update({'rewards': newRewards})
-                        self.task.Stimulus.trialEnd()
-                        super().stopVideo()
-                        return
-                #print('{:013}\t{:s}\treward'.format(self.mouse.tag, datetime.fromtimestamp(int(time())).isoformat(' ')))
-                self.OffForRewardEnd = time() + self.speakerOffForReward
-            # make sure to turn off buzzer at end of loop when we exit
-            if self.speakerIsOn == True:
-                self.speaker.stop_train()
-            newRewards = resultsDict.get('rewards', 0) + len(self.rewardTimes)
-            resultsDict.update({'rewards': newRewards})
+        if not self.task.Stimulus.trialPrep(self.tag):
             self.task.Stimulus.trialEnd()
-            #self.camera.stop_preview()
-            super().stopVideo()
-        else:
-            timeInterval = self.mouse.get("Stimulator").get("rewardInterval") #- self.rewarder.rewardDict.get('task')
-            self.rewardTimes = []
-            self.camera.start_preview()
-            for reward in range(self.mouse.get("Stimulator").get("nRewards")):
-                if not self.running or self.task.tag == 0:
-                    print("break")
-                    break
-                self.rewardTimes.append(time())
-                self.rewarder.giveReward('task')
-                sleep(timeInterval)
-            newRewards = resultsDict.get('rewards', 0) + self.mouse.get("Stimulator").get("nRewards")
-            resultsDict.update({'rewards': newRewards})
-            #self.camera.stop_preview()
-            super().stopVideo()
+            return
+
+        #every time lickWithholdtime passes with no licks, make a buzz then give a reward after buzz_lead time.
+        self.lickWithholdTimes = []
+        self.rewardTimes = []
+        self.laserTimes = []
+        endTime = time() + self.mouse.get("HeadFixer", {}).get('headFixTime')
+        self.speakerIsOn = False
+        self.OffForRewardEnd = 0.0
+        while time() < endTime:
+            if not self.running:
+                break
+            # setup to start a trial, withholding licking for lickWithholdRandom secs till buzzer
+            # inner loop keeps resetting lickWithholdEnd time until  a succsful withhold
+            if(level > 0):
+
+                anyLicks = self.withholdWait(endTime)
+                # inner while loop only exits if trial time is up or lick withholding time passed with no licking
+                if anyLicks > 0:
+                    continue
+                # at this point, mouse has just witheld licking for lickWithholdTime
+            levels = {
+                0: self.rewardTask,
+                1: self.rewardTask,
+                2: self.goTask,
+                3: self.discrimTask
+            } 
+            if time()  >= endTime:
+                break
+            levels[level]()
+            if level ==0:
+                sleep(self.mouse.get("Stimulator").get("rewardInterval"))
+                n = n -1
+                if n == 0:
+                    newRewards = resultsDict.get('rewards', 0) + len(self.rewardTimes)
+                    resultsDict.update({'rewards': newRewards})
+                    self.task.Stimulus.trialEnd()
+                    super().stopVideo()
+                    return
+            #print('{:013}\t{:s}\treward'.format(self.mouse.tag, datetime.fromtimestamp(int(time())).isoformat(' ')))
+            self.OffForRewardEnd = time() + self.speakerOffForReward
+        # make sure to turn off buzzer at end of loop when we exit
+        if self.speakerIsOn == True:
+            self.speaker.stop_train()
+        newRewards = resultsDict.get('rewards', 0) + len(self.rewardTimes)
+        resultsDict.update({'rewards': newRewards})
+        self.task.Stimulus.trialEnd()
+        #self.camera.stop_preview()
+        super().stopVideo()
+        #else:
+        #    timeInterval = self.mouse.get("Stimulator").get("rewardInterval") #- self.rewarder.rewardDict.get('task')
+        #    self.rewardTimes = []
+        #    self.camera.start_preview()
+        #    for reward in range(self.mouse.get("Stimulator").get("nRewards")):
+        #        if not self.running or self.task.tag == 0:
+        #            print("break")
+        #            break
+        #        self.rewardTimes.append(time())
+        #        self.rewarder.giveReward('task')
+        #        sleep(timeInterval)
+        #    newRewards = resultsDict.get('rewards', 0) + self.mouse.get("Stimulator").get("nRewards")
+        #    resultsDict.update({'rewards': newRewards})
+        #    #self.camera.stop_preview()
+        #    super().stopVideo()
 
     def setdown(self):
         print('Withhold stimulator set down')
