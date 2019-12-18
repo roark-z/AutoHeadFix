@@ -235,17 +235,22 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        justLicked = True
         while time() < delayEnd:
             sleep(0.01)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-            if anyLicks:
+                justLicked = True
+            if justLicked:
                 self.speaker.start_train()
                 self.speakerIsOn = True
+                justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
-                sleep(0.05)
+            elif self.speakerIsOn:
                 self.speaker.stop_train()
-                return
+                self.speakerIsOn = False
+        if anyLicks > 0:
+            return
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
@@ -275,31 +280,39 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        justLicked = True
         while time() < delayEnd:
             sleep(0.01)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-            if anyLicks:
+                justLicked = True
+            if justLicked:
                 self.speaker.start_train()
                 self.speakerIsOn = True
+                justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3, 'withholdTime': self.lickWithholdRandom}, time())
-                sleep(0.05)
+            elif self.speakerIsOn:
                 self.speaker.stop_train()
-                return
+                self.speakerIsOn = False
+        if anyLicks > 0:
+            return
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        justLicked = False
         while time() < responseEnd:
             sleep(0.01)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-            if anyLicks:
+                justLicked = True
+            if justLicked:
                 self.speaker.start_train()
                 self.speakerIsOn = True
+                justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1, 'withholdTime': self.lickWithholdRandom}, time())
-                sleep(0.05)
+            elif self.speakerIsOn:
                 self.speaker.stop_train()
-                sleep(max(0, responseEnd - time()))
+                self.speakerIsOn = False
         if anyLicks == 0:
             if self.mouse.get("Stimulator").get("rewardNoGo"):
                 self.rewardTimes.append(time())
