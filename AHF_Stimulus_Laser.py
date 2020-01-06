@@ -288,13 +288,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return self.laser_step,0,0,0
-        elif key == keyboard.Key.left:
-            return -self.laser_step,0,0,0
-        elif key == keyboard.Key.down:
             return 0,self.laser_step,0,0
-        elif key == keyboard.Key.up:
+        elif key == keyboard.Key.left:
             return 0,-self.laser_step,0,0
+        elif key == keyboard.Key.down:
+            return self.laser_step,0,0,0
+        elif key == keyboard.Key.up:
+            return -self.laser_step,0,0,0
         elif key == keyboard.Key.delete:
             return 0,0,0,-self.cross_step
         elif key == keyboard.Key.page_down:
@@ -740,7 +740,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, v = vib. motor, p= laser tester, c= motor check, a= camera/LED, s= speaker, q= quit: ')
+            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, v = vib. motor, p= laser tester, c= motor check, l= preview/LED, s= speaker, q= quit: ')
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
@@ -756,7 +756,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 input('adjust Laser: Press any key to quit ')
                 self.camera.stop_preview()
                 self.pulse(0)
-            elif inputStr == 'a':
+            elif inputStr == 'l':
                 #Display preview and turn on LED
                 self.camera.start_preview()
                 self.task.BrainLight.onForStim()
