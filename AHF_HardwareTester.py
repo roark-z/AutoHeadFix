@@ -61,13 +61,13 @@ def htloop(task):
             itemValue.hardwareTest()
             tempDict = itemValue.settingsDict
             #tempDict =  getattr(itemValue, "settingsDict")
-            save_response = input('These are your setting: {} \n Do you want to save them as new hardware settings for {} in the database?'.format(tempDict,itemValue))
+            save_response = input('These are your setting: {} \n Do you want to save them as new hardware settings for {} in the database? y/n'.format(tempDict,itemValue))
             if save_response[0] == 'Y' or save_response[0] == 'y':
                 task.DataLogger.storeConfig("changed_hardware", tempDict, str(itemValue))
-                default_response = input('Do you also want to mark these settings as default for {}?'.format(itemValue))
+                default_response = input('Do you also want to mark these settings as default for {}? y/n'.format(itemValue))
                 if default_response[0] == 'Y' or default_response[0] == 'y':
                     task.DataLogger.storeConfig("default_hardware",tempDict,str(itemValue))
-    response = input('Save changes in settings to a json file, too?(recommended if they should be used as default at system restart)')
+    response = input('Save changes in settings to a json file, too?(recommended if they should be used as default at system restart) y/n')
     if response [0] == 'Y' or response [0] == 'y':
         task.saveSettings()
 

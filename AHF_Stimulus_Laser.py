@@ -72,13 +72,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         starterDict.update({'PWM_channel' : PWM_channel})
         #duty cycle
         duty_cycle = starterDict.get('duty_cycle', defaultDutyCycle)
-        tempInput = input('Set duty cycle(currently {0}): '.format(duty_cycle))
+        tempInput = input('Set duty cycle(currently {0}) out of 100: '.format(duty_cycle))
         if tempInput != '':
             duty_cycle = int(tempInput)
         starterDict.update({'duty_cycle' : duty_cycle})
         #laser on time
         laser_on_time = starterDict.get('laser_on_time', defaultLaserTime)
-        tempInput = input('Set how long the laser is on for(currently {0}): '.format(laser_on_time))
+        tempInput = input('Set how long the laser is on for(currently {0}) in ms: '.format(laser_on_time))
         if tempInput != '':
             laser_on_time = int(tempInput)
         starterDict.update({'laser_on_time' : laser_on_time})
@@ -433,8 +433,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 next_phase_y =(phase_y + self.get_dir(y)) % len(states)
                 byte = states[next_phase_x]+states[next_phase_y]
                 #Send and execute new byte
-                self.feed_byte(byte)
                 #Update phase
+                self.feed_byte(byte)
                 phase_x = next_phase_x
                 phase_y = next_phase_y
                 sleep(delay)
