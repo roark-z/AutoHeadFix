@@ -49,7 +49,7 @@ class AHF_BrainLight(AHF_Base, metaclass = ABCMeta):
         print('Turning brain illumination OFF.')
         self.offForStim()
         self.ledDelay = saveDelay
-        result = input('Do you wish to edit brain light settings?')
+        result = input('Do you wish to edit brain light settings? y/n  ')
         if result [0] == 'y' or result [0] == 'Y':
             self.setdown()
             self.settingsDict.update(self.config_user_get(self.settingsDict))
