@@ -157,7 +157,7 @@ def main():
                     while True:
                         event = input(inputStr)
                         if event == 'r' or event == "R":
-                            GPIO.setmode(GPIO.BCM)
+                            GPIO.setmode(GPIO.BOARD)
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.startLogging()
                             break
