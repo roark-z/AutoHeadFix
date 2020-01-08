@@ -13,7 +13,7 @@ import pymysql
 from ast import literal_eval
 from time import sleep, time
 import os
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 cageID = ""
 user = ""
 pwd = ""

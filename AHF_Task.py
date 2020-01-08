@@ -205,7 +205,7 @@ class Task(object):
         """
         Sets up hardware and other objects that need setting up, each object is made by initing a class with a dictionary
         """
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
         fields = sorted(inspect.getmembers(self))
         for item in fields:

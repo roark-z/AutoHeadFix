@@ -14,7 +14,7 @@ if __name__ == '__main__':
         and sets up GPIO. After setting up, valveControl runs in a loop with options 1 to open, 0 to close, q to quit the program
         """
         cageSet = AHF_CageSet()
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(cageSet.rewardPin, GPIO.OUT, initial=GPIO.LOW)
         runLoop(cageSet)
 else:
