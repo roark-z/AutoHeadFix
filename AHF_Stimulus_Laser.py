@@ -131,9 +131,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.PWM_mode = int(self.settingsDict.get('PWM_mode', 0))
         self.PWM_channel = int(self.settingsDict.get('PWM_channel', 2))
         self.array = array('i',(0 for i in range(1000)))
-        self.PWM = PTPWM(1,1000,1000,0,(int(1E6/1000)),1000,2) #PWM object
-        self.PWM.add_channel(self.PWM_channel,0,self.PWM_mode,0,0,self.array)
-        self.PWM.set_PWM_enable(1,self.PWM_channel,0)
+        # self.PWM = PTPWM(1,1000,1000,0,(int(1E6/1000)),1000,2) #PWM object
+        GPIO.setup(19, GPIO.OUT)
+        GPIO.output(19, GPIO.LOW)
+        self.PWM = GPIO.PWM(1000)
+        self.PWM.start(0)
+        # self.PWM.add_channel(self.PWM_channel,0,self.PWM_mode,0,0,self.array)
+        # self.PWM.set_PWM_enable(1,self.PWM_channel,0)
         self.duty_cycle = int(self.settingsDict.get('duty_cycle', 0))
         self.laser_on_time = int(self.settingsDict.get('laser_on_time', 0))
         '''
@@ -468,12 +472,17 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.pos += steps
 
     def pulse(self,duration,duty_cycle=0):
-        if duration<=1000:
-            for i in range(len(self.array)):
-                self.array[i] = 0
-            for i in range(1,duration):
-                self.array[i]=duty_cycle
-            self.PWM.start_train()
+        if duration < 1000:
+            # for i in range(len(self.array)):
+            #     self.array[i] = 0
+            # for i in range(1,duration):
+            #     self.array[i]=duty_cycle
+            # self.PWM.start_train()
+            self.PWM.start(duty_cycle)
+            sleep(duration)
+            self.PWM.start(0)
+        elif duration == 1000:
+            self.PWM.start(duty_cycle)
         else:
             print('Duration must be below 1000 ms.')
 
