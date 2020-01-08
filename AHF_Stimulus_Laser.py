@@ -134,7 +134,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         # self.PWM = PTPWM(1,1000,1000,0,(int(1E6/1000)),1000,2) #PWM object
         GPIO.setup(19, GPIO.OUT)
         GPIO.output(19, GPIO.LOW)
-        self.PWM = GPIO.PWM(1000)
+        self.PWM = GPIO.PWM(self.PWM_channel, 1000)
         self.PWM.start(0)
         # self.PWM.add_channel(self.PWM_channel,0,self.PWM_mode,0,0,self.array)
         # self.PWM.set_PWM_enable(1,self.PWM_channel,0)
@@ -292,13 +292,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return self.laser_step,0,0,0
+            return 0, self.laser_step,0,0
         elif key == keyboard.Key.left:
-            return -self.laser_step,0,0,0
+            return 0, -self.laser_step,0,0
         elif key == keyboard.Key.down:
-            return 0,self.laser_step,0,0
+            return self.laser_step,0,0,0
         elif key == keyboard.Key.up:
-            return 0,-self.laser_step,0,0
+            return -self.laser_step,0,0,0
         elif key == keyboard.Key.delete:
             return 0,0,0,-self.cross_step
         elif key == keyboard.Key.page_down:
