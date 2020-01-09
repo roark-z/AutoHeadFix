@@ -77,7 +77,7 @@
 "duty_cycle"=50
 "hdf_path"="mice_images.h5"
 "laser_on_time"=800
-"motor_delay"=0.03}
+"motor_delay"=0.001}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
 "jsonName"="subjects"

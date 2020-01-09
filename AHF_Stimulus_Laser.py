@@ -113,7 +113,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #End Shift Register Settings
         print('--->Other Settings:')
         motor_delay = starterDict.get('motor_delay', defaultDelay)
-        tempInput = input('Set motor delay(currently {0}): '.format(motor_delay))
+        tempInput = input('Set motor delay in ms(currently {0}): '.format(motor_delay))
         if tempInput != '':
             motor_delay = float(tempInput)
         starterDict.update({'motor_delay' : motor_delay})
@@ -139,14 +139,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.PWM.start(0)
         # self.PWM.add_channel(self.PWM_channel,0,self.PWM_mode,0,0,self.array)
         # self.PWM.set_PWM_enable(1,self.PWM_channel,0)
-        self.duty_cycle = int(self.settingsDict.get('duty_cycle', 0))
-        self.laser_on_time = int(self.settingsDict.get('laser_on_time', 0))
+        self.duty_cycle = int(self.settingsDict.get('duty_cycle', 50))
+        self.laser_on_time = int(self.settingsDict.get('laser_on_time', 500))
         '''
         Info: The laser is controlled using the PTPWM class, which employs a hardsware
         pulse-width modulator to change the laser intensity. Read PWM Thread documentation
         for further information.
         '''
-        self.laser_step = 1
+        self.laser_step = 3
         #Cross-hair Overlay settings
         self.overlay_resolution = self.camera.resolution()
         self.cross_pos =(np.array(self.camera.resolution())/2).astype(int)
@@ -184,7 +184,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.SHCP = int(self.settingsDict.get('SHCP', 5))
         self.STCP = int(self.settingsDict.get('STCP', 17))
 
-        self.delay = self.settingsDict.get('motor_delay', 0.03)
+        self.delay = self.settingsDict.get('motor_delay', 0.001)
 
         GPIO.setup(self.SHCP, GPIO.OUT, initial = GPIO.HIGH)
         GPIO.setup(self.DS, GPIO.OUT, initial = GPIO.LOW)
@@ -284,10 +284,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def get_arrow_dir(self,key):
         # return direction of stepper motor step and cross-hair step.
         if key == keyboard.Key.shift:
-            if self.laser_step == 1:
+            if self.laser_step == 3:
                 self.laser_step = 50
             else:
-                self.laser_step = 1
+                self.laser_step = 3
         if hasattr(key,'char'):
             self.kb.press(keyboard.Key.backspace)
             self.kb.release(keyboard.Key.backspace)
