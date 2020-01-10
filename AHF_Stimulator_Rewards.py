@@ -95,7 +95,7 @@ class AHF_Stimulator_Rewards(AHF_Stimulator):
 if __name__ == '__main__':
     import RPi.GPIO as GPIO
     try:
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
         rewarder = AHF_Rewarder(30e-03, 24)
         rewarder.addToDict('task', 50e-03)
         thisMouse = Mouse(2525, 0,0,0,0)
