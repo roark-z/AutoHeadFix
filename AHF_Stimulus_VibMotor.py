@@ -9,7 +9,7 @@ class AHF_Stimulus_VibMotor(AHF_Stimulus):
     """
     Vibrates a motor placed on the exterior of the chamber.
     """
-    motorPin_def = 25      # GPIO pin used to drive piezo motor for negative feedback
+    motorPin_def = 27      # GPIO pin used to drive piezo motor for negative feedback
     motorFreq_def = 300    # frequency to drive the motor
     motorDuty_def = 0.8    # duty cycle to drive motor, unbalanced duty cycle gives nasty harmonics
     pulseTime_def = 0.2

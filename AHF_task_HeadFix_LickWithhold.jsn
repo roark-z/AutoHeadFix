@@ -62,7 +62,7 @@
 "StimulusClass"="AHF_Stimulus_VibMotor"
 "StimulusDict"={"motorDuty"=0.8
 "motorFreq"=300
-"motorPin"=25
+"motorPin"=27
 "pulseTime"=0.5}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300

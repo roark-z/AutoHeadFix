@@ -423,12 +423,15 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
     def hardwareTest(self):
         # TODO: Test this
+        self.setup()
         while(True):
             inputStr = input('s= test speaker, g= go task, n = no go task, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
+                print('Duty: ' + str(self.speakerDuty))
+                print('Freq: ' + str(self.speakerFreq))
                 self.speaker.start_train
-                sleep(1)
+                sleep(2.0)
                 self.speaker.stop_train
             elif inputStr == 'g':
                 self.goTask()
