@@ -422,6 +422,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
     def hardwareTest(self):
         # TODO: Test this
+        while(True):
+            inputStr = input('g= go task, n = no go task, q= quit: ')
+            if inputStr == 'g':
+                self.goTask()
+            elif inputStr == 'n':
+                self.noGoTask()
+            elif inputStr == 'q':
+                break
         pass
 
 #==== High-level Utility functions: Matching of coord systems, target selection and image registration ====
