@@ -18,6 +18,12 @@ class AHF_Stimulus_VibMotor(AHF_Stimulus):
         return "Vibrates a motor"
 
     def hardwareTest(self):
+        while(True):
+            inputStr = input('m = vibrate a motor, q= quit: ')
+            if inputStr == 'm':
+                self.stimulate
+            elif inputStr == 'q':
+                break
         pass
 
     def trialPrep(self, tag):
