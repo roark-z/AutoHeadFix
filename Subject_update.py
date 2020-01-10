@@ -9,34 +9,64 @@ m1=None
 m2=None
 m3=None
 m4=None
-m5=None
 with open("AHF_mice_subjects.jsn", 'r') as f:
     a=f.read()
     b=a.replace('\n',',')
     c=json.loads(b.replace('=',':'))
-    
 def main():
     try:
-        for (i,z) in zip(c.keys(),range(len(c))):
-            print(str(z)+':'+'    '+i)
+        display_mice()
+        for i, y in mouse_dic.items():
+            print(i,y)
         Tag=input('Choose animal to edit or return to edit all:')
         if Tag != '':
-            print(c[Tag])
+            edit_mouse(int(Tag))
         else:
             for key, values in dic_main.items():
                 print (key, values)
-            manuel2()
+            edit_all()
     except KeyboardInterrupt: 
         loop_manuel()
-def manuel2():
+def display_mice():
+    global mouse_dic
+    mouse_dic={}
+    mouse=[]
+    for i in c:
+        mouse.append(i)
+    mouse = sorted(mouse)
+    for i, y in enumerate(mouse):
+        mouse_dic[i]=y
+def edit_mouse(Tag):
+    for key, values in dic_main.items():
+        print (key, values)
+    manuel1=input('Chose parameter to edit:')
+    if int(manuel1) ==0:
+        a=dic_headFixer
+    elif int(manuel1)==1:
+        a=dic_rewarder
+    elif int(manuel1) ==2:
+        a=dic_stimulator
+    dic_edit=c[mouse_dic[Tag]][dic_main[int(manuel1)]]
+    for i,z in zip(sorted(dic_edit),range(len(dic_edit))):
+        print(z,i,dic_edit[i])
+    manuel2= input('Chose parameter to edit:')
+    manuel3 = input('Values to change to (currently: %s)' % dic_edit[a[int(manuel2)]])
+    if manuel3 != '':
+        c[mouse_dic[Tag]][dic_main[int(manuel1)]][a[int(manuel2)]]= eval(type(dic_edit[a[int(manuel2)]]).__name__+'('+str(manuel3)+')')
+        save_reload()
+        loop_manuel()
+    else:
+        loop_manuel()
+def edit_all():
     global m1, m2, m3,c
+    type_dic=c[next(iter(c))]
     m1=input('Choose class to alter or any key to return: ')
     if m1 == '0':
         for key, values in dic_headFixer.items():
             print(key, values)
         User_input()
         for i in c:
-            c[i]['HeadFixer'][dic_headFixer[int(m2)]] =float(m3)
+            c[i]['HeadFixer'][dic_headFixer[int(m2)]] =eval(type(type_dic['HeadFixer'][dic_headFixer[int(m2)]]).__name__+'('+str(m3)+')')
         save_reload()
         loop_manuel()
     elif m1 =='1':
@@ -44,7 +74,7 @@ def manuel2():
             print(key, values)
         User_input()
         for i in c:
-            c[i]['Rewarder'][dic_rewarder[int(m2)]] =float(m3)
+            c[i]['Rewarder'][dic_rewarder[int(m2)]] =eval(type(type_dic['Rewarder'][dic_rewarder[int(m2)]]).__name__+'('+str(m3)+')')
         save_reload()
         loop_manuel()
     elif m1 =='2':
@@ -52,19 +82,43 @@ def manuel2():
             print(key, values)
         User_input()
         for i in c:
-            c[i]['Stimulator'][dic_stimulator[int(m2)]] =float(m3)
+            c[i]['Stimulator'][dic_stimulator[int(m2)]] =eval(type(type_dic['Stimulator'][dic_stimulator[int(m2)]]).__name__+'('+str(m3)+')')
         save_reload()
         loop_manuel()
     else:
         main()
 def User_input(): 
-    global m2, m3
+    global a,m2, m3
+    a=''
+    b=''
+    type_dic=c[next(iter(c))]
     m2=input('Enter settings to change: ')
-    m3=input('Value to change to: ')
+    if m1 == '0':
+        a=eval(type(type_dic['HeadFixer'][dic_headFixer[int(m2)]]).__name__)
+        b=dic_headFixer[int(m2)]
+        print('Current Values for each mice:')
+        for i in c:
+            print(i+': '+str(c[i]['HeadFixer'][dic_headFixer[int(m2)]]))
+    elif m1 =='1':
+        a=eval(type(type_dic['Rewarder'][dic_rewarder[int(m2)]]).__name__)
+        b=dic_rewarder[int(m2)]
+        print('Current Values for each mice:')
+        for i in c:
+            print(i+': '+str(c[i]['Rewarder'][dic_rewarder[int(m2)]]))
+    elif m1 =='2':
+        a=eval(type(type_dic['Stimulator'][dic_stimulator[int(m2)]]).__name__)
+        b=dic_stimulator[int(m2)]
+        print('Current values for each mice:')
+        for i in c:
+            print(i+': '+str(c[i]['Stimulator'][dic_stimulator[int(m2)]]))
+    m3=input('Changing '+b+' value to  ' +str(a)+' :')
     return m2, m3 
 def save_reload():
     global c
-    c2=json.dumps(c)
+    c3={}
+    for i in sorted(c.keys()):
+        c3.update({i:c[i]})
+    c2=json.dumps(c3)
     c2=c2.replace(':','=')
     c2=c2.replace(',','\n')
     with open('AHF_mice_subjects.jsn','w') as f2:
@@ -76,20 +130,12 @@ def save_reload():
 def loop_manuel():
     global m4 
     m4=input('Edit additional settings (Yes) or press any to exit:')
-    if m4.lower()=='yes' or m4.lower()=='y':
+    if m4.lower()=='y' or m4.lower()=='yes':
         main()
     else: 
         return 
-def loop_manuel2():
-    global m5
-    m5=input('Edit additional settings (Yes) or press any to exit:')
-    if m5.lower()=='yes' or m5.lower()=='y':
-        main()
-    else:
-        return
 if __name__ == "__main__":
-    main()        
-      
+    main()         
         
         
 

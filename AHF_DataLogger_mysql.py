@@ -111,8 +111,8 @@ class AHF_DataLogger_mysql(AHF_DataLogger):
         if remote == True:
             try:
                 db1 = pymysql.connect(host=self.DBhost, user=self.DBuser, db=self.DB, password=self.DBpwd)
-            except:
-                print("Wasn't able to connect to remote database")
+            except Exception as e:
+                print(str(e)) 
                 return False
         else:
             db1 = pymysql.connect(host=self.localHost, user=self.localUser, db=self.localDatabase, password=self.localPassword)
@@ -140,8 +140,8 @@ class AHF_DataLogger_mysql(AHF_DataLogger):
         if remote == True:
             try:
                 db2 = pymysql.connect(host=self.DBhost, user=self.DBuser, db=self.DB, password=self.DBpwd)
-            except:
-                print("Wasn't able to connect to remote database")
+            except Exception as e:
+                print(str(e))
                 db2 = pymysql.connect(host=self.localHost, user=self.localUser, db=self.localDatabase, password=self.localPassword)
         else:
             db2 = pymysql.connect(host=self.localHost, user=self.localUser, db=self.localDatabase, password=self.localPassword)
@@ -345,8 +345,8 @@ class AHF_DataLogger_mysql(AHF_DataLogger):
             else:
                 self.events.append([tag, eventKind, str(eventDict), timeStamp, self.cageID, None])
         if eventKind == "exit" and toShellOrFile & self.TO_FILE:
-            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events, False)).start()
-            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events, True)).start()
+            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events.copy(), False)).start()
+            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events.copy(), True)).start()
             self.events = []
         if(toShellOrFile & self.TO_SHELL) > 0:
             print('{:013}\t{:s}\t{:s}\t{:s}\t{:s}\n'.format(tag, eventKind, str(eventDict), datetime.fromtimestamp(int(timeStamp)).isoformat(' '), self.cageID))
