@@ -3,6 +3,7 @@
 from AHF_Stimulus import AHF_Stimulus
 from PTSimpleGPIO import PTSimpleGPIO, Infinite_train, Train
 from time import sleep
+from AHF_Task import Task
 
 class AHF_Stimulus_VibMotor(AHF_Stimulus):
     """

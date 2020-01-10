@@ -238,6 +238,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         justLicked = True
         while time() < delayEnd:
             sleep(0.01)
+            self.task.DataLogger.writeToLogFile(self.tag, 'CURRENT LEVLE: 3, GO')
+            
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
@@ -367,7 +369,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             # setup to start a trial, withholding licking for lickWithholdRandom secs till buzzer
             # inner loop keeps resetting lickWithholdEnd time until  a succsful withhold
             if(level > 0):
-
                 anyLicks = self.withholdWait(endTime)
                 # inner while loop only exits if trial time is up or lick withholding time passed with no licking
                 if anyLicks > 0:
@@ -423,8 +424,13 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def hardwareTest(self):
         # TODO: Test this
         while(True):
-            inputStr = input('g= go task, n = no go task, q= quit: ')
-            if inputStr == 'g':
+            inputStr = input('s= test speaker, g= go task, n = no go task, q= quit: ')
+            if inputStr == 's':
+                print('testing speaker')
+                self.speaker.start_train
+                sleep(1)
+                self.speaker.stop_train
+            elif inputStr == 'g':
                 self.goTask()
             elif inputStr == 'n':
                 self.noGoTask()
