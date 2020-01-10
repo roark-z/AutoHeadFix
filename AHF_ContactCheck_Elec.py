@@ -84,7 +84,7 @@ class AHF_ContactCheck_Elec(AHF_ContactCheck):
         self.contactPUD = getattr(GPIO, self.settingsDict.get('contactPUD'))
         hasContact = True
         try:
-            GPIO.setmode(GPIO.BCM)
+            GPIO.setmode(GPIO.BOARD)
             GPIO.setwarnings(False)
             GPIO.setup(self.contactPin, GPIO.IN, pull_up_down =self.contactPUD)
             global gContactChecker

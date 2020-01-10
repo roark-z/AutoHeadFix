@@ -54,3 +54,6 @@ ehthumbs.db
 QuickStats
 #ignore repositories neededfor sphinx import
 dependancies
+
+#User IDE files
+.idea/

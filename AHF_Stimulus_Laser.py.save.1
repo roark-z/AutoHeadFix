@@ -113,7 +113,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #End Shift Register Settings
         print('--->Other Settings:')
         motor_delay = starterDict.get('motor_delay', defaultDelay)
-        tempInput = input('Set motor delay in ms(currently {0}): '.format(motor_delay))
+        tempInput = input('Set motor delay(currently {0}): '.format(motor_delay))
         if tempInput != '':
             motor_delay = float(tempInput)
         starterDict.update({'motor_delay' : motor_delay})
@@ -132,21 +132,20 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.PWM_channel = int(self.settingsDict.get('PWM_channel', 2))
         self.array = array('i',(0 for i in range(1000)))
         # self.PWM = PTPWM(1,1000,1000,0,(int(1E6/1000)),1000,2) #PWM object
-        GPIO.setwarnings(False) 
         GPIO.setup(19, GPIO.OUT)
         GPIO.output(19, GPIO.LOW)
-        self.PWM = GPIO.PWM(19, 1000)
+        self.PWM = GPIO.PWM(self.PWM_channel, 1000)
         self.PWM.start(0)
         # self.PWM.add_channel(self.PWM_channel,0,self.PWM_mode,0,0,self.array)
         # self.PWM.set_PWM_enable(1,self.PWM_channel,0)
-        self.duty_cycle = int(self.settingsDict.get('duty_cycle', 50))
-        self.laser_on_time = int(self.settingsDict.get('laser_on_time', 500))
+        self.duty_cycle = int(self.settingsDict.get('duty_cycle', 0))
+        self.laser_on_time = int(self.settingsDict.get('laser_on_time', 0))
         '''
         Info: The laser is controlled using the PTPWM class, which employs a hardsware
         pulse-width modulator to change the laser intensity. Read PWM Thread documentation
         for further information.
         '''
-        self.laser_step = 3
+        self.laser_step = 1
         #Cross-hair Overlay settings
         self.overlay_resolution = self.camera.resolution()
         self.cross_pos =(np.array(self.camera.resolution())/2).astype(int)
@@ -184,7 +183,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.SHCP = int(self.settingsDict.get('SHCP', 5))
         self.STCP = int(self.settingsDict.get('STCP', 17))
 
-        self.delay = self.settingsDict.get('motor_delay', 0.001)
+        self.delay = self.settingsDict.get('motor_delay', 0.03)
 
         GPIO.setup(self.SHCP, GPIO.OUT, initial = GPIO.HIGH)
         GPIO.setup(self.DS, GPIO.OUT, initial = GPIO.LOW)
@@ -284,18 +283,15 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def get_arrow_dir(self,key):
         # return direction of stepper motor step and cross-hair step.
         if key == keyboard.Key.shift:
-            if self.laser_step == 3:
+            if self.laser_step == 1:
                 self.laser_step = 50
             else:
-                self.laser_step = 3
+                self.laser_step = 1
         if hasattr(key,'char'):
             self.kb.press(keyboard.Key.backspace)
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return 0, self.laser_step,0,0
-        elif key == keyboard.Key.left:
-            return 0, -self.laser_step,0,0
         elif key == keyboard.Key.down:
             return self.laser_step,0,0,0
         elif key == keyboard.Key.up:
@@ -339,7 +335,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 return False
             else:
                 print('\n\nNeed at least 3 points!\n\n')
-                #print('Currently have '+len(self.image_points)+' points \n')
                 pass
 
     def make_cross(self):

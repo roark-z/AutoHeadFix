@@ -1,8 +1,9 @@
 ##############################################################################
-############ This program is used by AHF to monitor the water valve. #########
-############ If at any point, the water valve malfunctions and stays #########
-############  open for more then 5 seconds the pi will reboot and    #########
-############  restart autoheadfix                                    #########
+############ This program is used by AHF to monitor the water valve.  ########
+############ If at any point, the water valve malfunctions and stays  ########
+############ open for more then 5 seconds the pi will reboot and      ########
+############ restart autoheadfix. This script should be run from cron ########
+############ at a regular interval while the cage is operating.       ########
 ##############################################################################
 ##############################################################################
 
@@ -12,7 +13,7 @@ import pymysql
 from ast import literal_eval
 from time import sleep, time
 import os
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 cageID = ""
 user = ""
 pwd = ""

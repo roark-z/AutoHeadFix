@@ -205,7 +205,7 @@ class Task(object):
         """
         Sets up hardware and other objects that need setting up, each object is made by initing a class with a dictionary
         """
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
         fields = sorted(inspect.getmembers(self))
         for item in fields:
@@ -259,7 +259,7 @@ class Task(object):
 
     def editSettings(self):
         if(CAD.Edit_Obj_fields(self,  'Auto Head Fix Task', isTaskConfig=True)):
-            response = input('Save changes in settings to a file?')
+            response = input('Save changes in settings to a file? y/n')
             if response [0] == 'Y' or response [0] == 'y':
                 self.saveSettings()
 
