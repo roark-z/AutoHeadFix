@@ -751,7 +751,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, v = vib. motor, p= laser tester, c= motor check, l= preview/LED, s= speaker, q= quit: ')
+            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
@@ -774,12 +774,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 input('adjust camera/LED: Press any key to quit ')
                 self.camera.stop_preview()
                 self.task.BrainLight.offForStim()
-            elif inputStr == 's':
-                self.speaker.start_train()
-                sleep(3)
-                self.speaker.stop_train()
-            elif inputStr == 'v':
-                self.buzzer.do_train()
             elif inputStr == 'c':
                 self.move_to(np.array([0,0]),topleft=True,join=False)
             elif inputStr == 'q':
