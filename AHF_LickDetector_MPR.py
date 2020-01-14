@@ -118,8 +118,7 @@ class AHF_LickDetector_MPR(AHF_LickDetector):
         Get the number of licks for each channel in the global array without stopping the count.
         """
         if not self.touchDetector.getCount() == 0:
-            print("Mouse licked detected")
-
+            print("Mouse lick detected")
         return self.touchDetector.getCount()
 
 
