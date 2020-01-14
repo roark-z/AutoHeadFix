@@ -285,6 +285,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def noGoTask(self):
         # TODO: refine noGo signal
         print("Starting NO GO task")
+        #Double buzz indicates no-go task
         self.task.Stimulus.stimulate()
         sleep(0.2)
         self.task.Stimulus.stimulate()
@@ -293,12 +294,15 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.LickDetector.startLickCount()
         anyLicks = 0
         justLicked = True
+
+        #Mouse is not supposed to lick within wait period
         while time() < delayEnd:
             sleep(0.01)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
             if justLicked:
+                ("Speaker on (licked during wait period)")
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 justLicked = False
@@ -308,6 +312,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.speakerIsOn = False
         if anyLicks > 0:
             return
+
+        #Mouse is not supposed to lick within response time either (no-go trial)
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
@@ -318,11 +324,13 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 anyLicks += x[1]
                 justLicked = True
             if justLicked:
+                print("Speaker on (mouse not supposed to lick in NO GO task")
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1, 'withholdTime': self.lickWithholdRandom}, time())
             elif self.speakerIsOn:
+                print("Speaker off (mouse rewarded for NO GO task")
                 self.speaker.stop_train()
                 self.speakerIsOn = False
         if anyLicks == 0:
@@ -435,7 +443,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         # TODO: Test this
         self.setup()
         while(True):
-            inputStr = input('s= test speaker, q= quit: ')
+            inputStr = input('Tasks can only run when the interrupt occurred with a mouse fixed!!!\n'
+                             's= test speaker, g= go task, n= no go task, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
                 self.speaker.start_train()
@@ -445,6 +454,10 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 print("Entering GO task tester")
                 self.run(2)
                 print("Exiting GO task tester")
+            elif inputStr == 'n':
+                print("Entering NO GO task tester")
+                self.run(3)
+                print("Exiting NO GO task tester")
             elif inputStr == 'q':
                 break
         pass
