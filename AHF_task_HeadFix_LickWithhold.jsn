@@ -54,8 +54,8 @@
 "StimulatorClass"="AHF_Stimulator_LickWithhold"
 "StimulatorDict"={"defaultLevel"=0
 "lickWrongTimeout"=2
-"speakerDuty"=0.8
-"speakerFreq"=300
+"speakerDuty"=0.1
+"speakerFreq"=100
 "speakerOffForReward"=1.5
 "speakerPin"=25
 "videoPath"=""}
@@ -63,7 +63,7 @@
 "StimulusDict"={"motorDuty"=0.8
 "motorFreq"=300
 "motorPin"=27
-"pulseTime"=0.5}
+"pulseTime"=0.2}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
 "jsonName"="subjects"

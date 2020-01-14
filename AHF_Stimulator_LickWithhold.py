@@ -236,11 +236,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = True
+        justLicked = False
 
         #Mouse is not supposed to lick during wait period
         while time() < delayEnd:
-            sleep(0.01)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
@@ -293,11 +293,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = True
+        justLicked = False
 
         #Mouse is not supposed to lick within wait period
         while time() < delayEnd:
-            sleep(0.01)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
@@ -319,7 +319,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         anyLicks = 0
         justLicked = False
         while time() < responseEnd:
-            sleep(0.01)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
