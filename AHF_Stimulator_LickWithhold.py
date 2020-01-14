@@ -207,17 +207,17 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.LickDetector.startLickCount()
         anyLicks = 0
         while time() < lickWithholdEnd and time() < endTime:
-            sleep(0.05)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks == 0:
                 if self.speakerIsOn == True:
-                    print("Speaker off for correct action")
+                    print("Speaker off (no licking in waiting)")
                     self.speaker.stop_train()
                     self.speakerIsOn = False
             else: # there were licks in withholding period
                 if(self.speakerIsOn == False) and(time() > self.OffForRewardEnd):
-                    print("Speaker on for punishment")
+                    print("Speaker on (licked during waiting)")
                     self.speaker.start_train()
                     self.speakerIsOn = True
                 self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
@@ -236,7 +236,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = True
+        justLicked = False
 
         #Mouse is not supposed to lick during wait period
         while time() < delayEnd:
@@ -263,7 +263,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.LickDetector.startLickCount()
         anyLicks = 0
         while time() < responseEnd:
-            sleep(0.01)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks:
@@ -293,11 +293,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = True
+        justLicked = False
 
         #Mouse is not supposed to lick within wait period
         while time() < delayEnd:
-            sleep(0.01)
+            sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
@@ -444,7 +444,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.setup()
         while(True):
             inputStr = input('Tasks can only run when the interrupt occurred with a mouse fixed!!!\n'
-                             's= test speaker, g= go task, n= no go task, q= quit: ')
+                             's= test speaker, g= go task, n= no go task, w= withhold task test, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
                 self.speaker.start_train()
@@ -458,6 +458,9 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 print("Entering NO GO task tester")
                 self.run(3)
                 print("Exiting NO GO task tester")
+            elif inputStr == 'w':
+                time = self.mouse.get("HeadFixer", {}).get('headFixTime')
+                self.withholdWait(time)
             elif inputStr == 'q':
                 break
         pass
