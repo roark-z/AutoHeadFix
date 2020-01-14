@@ -206,14 +206,12 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         lickWithholdEnd = time() + self.lickWithholdRandom
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = False
 
         while time() < lickWithholdEnd and time() < endTime:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-                justLicked = True
-            if not justLicked:
+            if anyLicks == 0:
                 if self.speakerIsOn == True:
                     print("Speaker off (no licking in waiting)")
                     self.speaker.stop_train()
@@ -239,20 +237,18 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-        justLicked = False
 
         #Mouse is not supposed to lick during withhold period
         while time() < delayEnd:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-                justLicked = True
-            if justLicked:
+            if anyLicks > 0:
                 print("Speaker on (licked during wait period)")
                 self.speaker.start_train()
                 self.speakerIsOn = True
-                justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
+                anyLicks = 0
             elif self.speakerIsOn:
                 print("Speaker off (did not lick in wait period")
                 self.speaker.stop_train()
@@ -303,13 +299,12 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
-                justLicked = True
-            if justLicked:
+            if anyLicks > 0:
                 print("Speaker on (licked during withhold period)")
                 self.speaker.start_train()
                 self.speakerIsOn = True
-                justLicked = False
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3, 'withholdTime': self.lickWithholdRandom}, time())
+                anyLicks = 0
             elif self.speakerIsOn:
                 print("Speaker off (did not lick during withhold period)")
                 self.speaker.stop_train()
