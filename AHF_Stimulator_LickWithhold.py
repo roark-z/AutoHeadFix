@@ -238,8 +238,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         justLicked = True
         while time() < delayEnd:
             sleep(0.01)
-            self.task.DataLogger.writeToLogFile(self.tag, 'CURRENT LEVLE: 3, GO')
-            
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
                 justLicked = True
@@ -328,11 +326,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def discrimTask(self):
-        if random() < self.mouse.goLikelihood:
+        #if random() < self.mouse.goLikelihood:
             #GO
-            self.goTask()
-        else:
-            self.noGoTask()
+         #   self.goTask()
+        #else:
+        self.noGoTask()
         pass
 
 
@@ -425,18 +423,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         # TODO: Test this
         self.setup()
         while(True):
-            inputStr = input('s= test speaker, g= go task, n = no go task, q= quit: ')
+            inputStr = input('s= test speaker, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
-                print('Duty: ' + str(self.speakerDuty))
-                print('Freq: ' + str(self.speakerFreq))
-                self.speaker.start_train
-                sleep(2.0)
-                self.speaker.stop_train
+                self.speaker.start_train()
+                sleep(1.0)
+                self.speaker.stop_train()
             elif inputStr == 'g':
-                self.goTask()
-            elif inputStr == 'n':
-                self.noGoTask()
+                self.run(2)
             elif inputStr == 'q':
                 break
         pass
