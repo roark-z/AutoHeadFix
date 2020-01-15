@@ -62,7 +62,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     speakerFreq_def = 300    # frequency to drive the speaker
     speakerDuty_def = 0.8    # duty cycle to drive speaker, unbalanced duty cycle gives nasty harmonics
     speakerOffForReward_def = 1.5   #time for consuming reward without getting buzzed at
-    lickWrongTimeout_def = 2
+    lickWrongTimeout_def = 5
     rewardNoGo_def = True
     goLikelihood_def = 0.5
 
@@ -235,14 +235,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
-
+        
         #Mouse is not supposed to lick during withhold period
         while time() < delayEnd:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks > 0:
-                print("Speaker on (licked during wait period)")
+                print("Speaker on (licked during withhold period)")
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
@@ -251,17 +251,18 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
             elif self.speakerIsOn:
-                print("Speaker off (did not lick in wait period")
+                print("Speaker off (did not lick in withhold period")
                 self.speaker.stop_train()
                 self.speakerIsOn = False
         # If mouse licked during waiting period, the action does not count
         if anyLicks > 0:
             return
 
-        # Detect mouse licking after waiting period is over
+        # Detect mouse licking after withhold period is over
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        lastLicks = 0
         while time() < responseEnd:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
@@ -269,10 +270,12 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             if anyLicks > 0:
                 print("Mouse licked during GO task YAY")
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': 2, 'withholdTime': self.lickWithholdRandom}, time())
-                sleep(max(0, responseEnd - time()))
+                #sleep(max(0, responseEnd - time()))
+                lastLicks = anyLicks
+                anyLicks = 0
 
         # Give reward or timeout based on mouse behaviour
-        if anyLicks is not 0:
+        if lastLicks is not 0:
             self.rewardTimes.append(time())
             self.rewarder.giveReward('task')
         else:
@@ -311,30 +314,39 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             elif self.speakerIsOn:
                 print("Speaker off (did not lick during withhold period)")
                 self.speaker.stop_train()
-                self.speakerIsOn = False
+                # self.speakerIsOn = False
         if anyLicks > 0:
             return
 
         # Mouse is not supposed to lick within response time either (no-go trial)
-        responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
+        # responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
+        """
+        DEBUGGING NUMBER PLEASE CHANGE BACK
+        """
+        responseEnd = 5 + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        lastLicks = 0
         while time() < responseEnd:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks > 0:
                 print("Speaker on (mouse not supposed to lick in NO GO task) BAD")
+                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1, 'withholdTime': self.lickWithholdRandom}, time())
+                lastLicks = anyLicks
                 self.speaker.start_train()
                 self.speakerIsOn = True
-                self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -1, 'withholdTime': self.lickWithholdRandom}, time())
+                self.task.LickDetector.startLickCount()
+                anyLicks = 0
             elif self.speakerIsOn:
-                print("Speaker off (mouse not licking in NO GO task)")
+                print("Speaker off (mouse is not licking in NO GO task)")
                 self.speaker.stop_train()
                 self.speakerIsOn = False
 
         # Mouse rewarded for NO GO task
-        if anyLicks == 0:
+        if lastLicks == 0:
+            print("Mouse did not lick during NO GO trial YAY")
             if self.mouse.get("Stimulator").get("rewardNoGo"):
                 self.rewardTimes.append(time())
                 self.rewarder.giveReward('task')
