@@ -471,15 +471,26 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.run(level=2, tag=111111111)
                 print("Exiting GO task tester")
             elif inputStr == 'n':
-                self.mouse.goLikelihood = 0
                 print("Entering NO GO task tester")
+                #User sets Go/No-Go ratio
+                starterDict = {}
+                goLikelihood = starterDict.get('goLikelihood', self.goLikelihood_def)
+                starterDict.update({'goLikelihood': 0})
+                self.config_user_subject_get(starterDict)
+                #start trial
                 self.run(level=3, tag=111111111)
                 print("Exiting NO GO task tester")
             elif inputStr == 'b':
-                tempInput = input('Set Go/No-Go ratio between 0 and 1 (0 is full No-Go) currently {0}): ')
-                if tempInput != '':
-                    self.mouse.goLikelihood = float(tempInput)
                 print("Entering GO/NO GO task tester")
+                #User sets Go/No-Go ratio
+                starterDict = {}
+                goLikelihood = starterDict.get('goLikelihood', self.goLikelihood_def)
+                tempInput = input('Set Go/No-Go ratio between 0 and 1 (0 is full No-Go) currently {0}): '.format(goLikelihood))
+                if tempInput != '':
+                    goLikelihood = float(tempInput)
+                starterDict.update({'goLikelihood': goLikelihood})
+                self.config_user_subject_get(starterDict)
+                #starts trial
                 self.run(level=3, tag=111111111)
                 print("Exiting GO/NO GO task tester")
             elif inputStr == 'q':
