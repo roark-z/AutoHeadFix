@@ -273,6 +273,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 #sleep(max(0, responseEnd - time()))
                 lastLicks = anyLicks
                 anyLicks = 0
+                self.task.LickDetector.startLickCount()
 
         # Give reward or timeout based on mouse behaviour
         if lastLicks is not 0:
@@ -369,13 +370,17 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
 #=================Main functions called from outside===========================
-    def run(self, level = -1, resultsDict = {}, settingsDict = {}):
+    def run(self, level = -1, resultsDict = {}, settingsDict = {}, tag = 0):
         super().run()
         super().startVideo()
-        self.tag = self.task.tag
-        if self.tag <= 0:
-            super().stopVideo()
-            return
+        if not tag == 0:
+            print('dummy tag used')
+            self.tag = tag
+        else: 
+            if self.tag <= 0:
+                print(str(self.tag))
+                super().stopVideo()
+                return
 
         self.mouse = self.task.Subjects.get(self.tag)
         if level < 0:
@@ -457,7 +462,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         # TODO: Test this
         self.setup()
         while(True):
-            inputStr = input('Tasks can only run when the interrupt occurred with a mouse fixed!!!\n'
+            inputStr = input('Go and no go tasks will be tested with a dummy mouse\n'
                              's= test speaker, g= go task, n= no go task, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
@@ -466,11 +471,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.speaker.stop_train()
             elif inputStr == 'g':
                 print("Entering GO task tester")
-                self.run(2)
+                self.run(level=2, tag=111111111)
                 print("Exiting GO task tester")
             elif inputStr == 'n':
                 print("Entering NO GO task tester")
-                self.run(3)
+                self.run(level=3, tag=111111111)
                 print("Exiting NO GO task tester")
             elif inputStr == 'q':
                 break
