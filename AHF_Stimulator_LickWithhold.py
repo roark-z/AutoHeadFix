@@ -354,11 +354,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def discrimTask(self):
-        if random() < self.mouse.goLikelihood:
+        rand = random()
+        print(str(rand))
+        if rand < self.mouse.get("Stimulator").get("goLikelihood"):
             #GO
             print('G/N: Mouse should perform GO task')
             self.goTask()
         else:
+            #NO GO
             print('G/N: Mouse should perform NO GO task')
             self.noGoTask()
         pass
@@ -388,7 +391,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         if not self.task.Stimulus.trialPrep(self.tag):
             self.task.Stimulus.trialEnd()
             return
-
+        print('Got dicts')
         #every time lickWithholdtime passes with no licks, make a buzz then give a reward after buzz_lead time.
         self.lickWithholdTimes = []
         self.rewardTimes = []
@@ -396,6 +399,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         endTime = time() + self.mouse.get("HeadFixer", {}).get('headFixTime')
         self.speakerIsOn = False
         self.OffForRewardEnd = 0.0
+        print('ready for trial')
         while time() < endTime:
             if not self.running:
                 break
@@ -459,7 +463,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.setup()
         while(True):
             inputStr = input('Go and no go tasks will be tested with a dummy mouse\n'
-                             's= test speaker, g= go task, n= no go task, q= quit: ')
+                             's= test speaker, g= go task, n=go/no go task, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
                 self.speaker.start_train()
@@ -470,15 +474,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.run(level=2, tag=111111111)
                 print("Exiting GO task tester")
             elif inputStr == 'n':
-                print("Entering NO GO task tester")
-                #start trial
-                self.run(level=3, tag=111111111)
-                print("Exiting NO GO task tester")
-            elif inputStr == 'b':
                 print("Entering GO/NO GO task tester")
-                #User sets Go/No-Go ratio
-                self.config_user_subject_get()
-                #starts trial
+                #start trial
                 self.run(level=3, tag=111111111)
                 print("Exiting GO/NO GO task tester")
             elif inputStr == 'q':

@@ -13,10 +13,10 @@
 "totalBreakBeamRewardsToday"=0
 "totalEntryRewardsToday"=0}
 "Stimulator"={"delayTime"=0.5
-"goLikelihood"=0
+"goLikelihood"=0.5
 "lickWithholdTime"=1
 "mouseLevel"=3
 "nRewards"=5
-"responseTime"=5
+"responseTime"=3
 "rewardInterval"=3
-"rewardNoGo"=true}}}
+"rewardNoGo"=false}}}

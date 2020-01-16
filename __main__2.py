@@ -79,6 +79,8 @@ def main():
             print(jsonDict)
             task = Task(object = jsonDict)
             db.close()
+        elif argv.__len__() > 1 and argv[1] == "--noedit":
+            task = Task('')
         else:
             task = Task('')
             task.editSettings()
