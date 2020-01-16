@@ -320,6 +320,8 @@ class AHF_Subjects_mice(AHF_Subjects):
         response = input('Save changes in settings to a json file, too?(recommended)')
         if response[0] == 'Y' or response[0] == 'y':
             CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
+
+
     def hardwareTest(self):
         from time import sleep
         while True:

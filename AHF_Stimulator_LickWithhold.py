@@ -133,7 +133,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             rewardNoGo = False
         starterDict.update({'rewardNoGo' : rewardNoGo})
         goLikelihood = starterDict.get('goLikelihood',AHF_Stimulator_LickWithhold.goLikelihood_def)
-        tempInput = input('Reward No-Go Trials?(Y/N), currently {0}): '.format(goLikelihood))
+        tempInput = input('Set Go/No-Go ratio between 0 and 1 (0 is full No-Go) currently {0}): '.format(goLikelihood))
         if tempInput != '':
             goLikelihood = float(tempInput)
         starterDict.update({'goLikelihood' : goLikelihood})
@@ -320,11 +320,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             return
 
         # Mouse is not supposed to lick within response time either (no-go trial)
-        # responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
-        """
-        DEBUGGING NUMBER PLEASE CHANGE BACK
-        """
-        responseEnd = 5 + time()
+        responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
         self.task.LickDetector.startLickCount()
         anyLicks = 0
         lastLicks = 0
@@ -341,7 +337,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
             elif self.speakerIsOn:
-                print("Speaker off (mouse is not licking in NO GO task)")
                 self.speaker.stop_train()
                 self.speakerIsOn = False
 
@@ -360,16 +355,18 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def discrimTask(self):
-        #if random() < self.mouse.goLikelihood:
+        if random() < self.mouse.goLikelihood:
             #GO
-         #   self.goTask()
-        #else:
-        self.noGoTask()
+            print('G/N: Mouse should perform GO task')
+            self.goTask()
+        else:
+            print('G/N: Mouse should perform NO GO task')
+            self.noGoTask()
         pass
 
 
 
-#=================Main functions called from outside===========================
+    #=================Main functions called from outside===========================
     def run(self, level = -1, resultsDict = {}, settingsDict = {}, tag = 0):
         super().run()
         super().startVideo()
@@ -474,9 +471,17 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.run(level=2, tag=111111111)
                 print("Exiting GO task tester")
             elif inputStr == 'n':
+                self.mouse.goLikelihood = 0
                 print("Entering NO GO task tester")
                 self.run(level=3, tag=111111111)
                 print("Exiting NO GO task tester")
+            elif inputStr == 'b':
+                tempInput = input('Set Go/No-Go ratio between 0 and 1 (0 is full No-Go) currently {0}): ')
+                if tempInput != '':
+                    self.mouse.goLikelihood = float(tempInput)
+                print("Entering GO/NO GO task tester")
+                self.run(level=3, tag=111111111)
+                print("Exiting GO/NO GO task tester")
             elif inputStr == 'q':
                 break
         pass
