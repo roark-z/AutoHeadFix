@@ -754,10 +754,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #specific hardware tester.
         while(True):
             inputStr = input('i= new image, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            self.tag = 111111111
+            self.mouse = self.task.Subjects.get(self.tag)
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
             elif inputStr == 'i':
+                self.loadH5()
                 self.get_ref_im()
             elif inputStr == 'r':
                 self.editReference()
@@ -780,6 +783,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 self.task.BrainLight.offForStim()
             elif inputStr == 'c':
                 self.move_to(np.array([0,0]),topleft=True,join=False)
+            elif inputStr == 'x':
+                self.align(111111111)
             elif inputStr == 'q':
                 break
 
@@ -837,7 +842,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         super().setdown()
 
     def loadH5(self):
-
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
@@ -851,6 +855,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         else:
             with File(self.hdf_path, 'w') as hdf:
                 pass
+
     def editReference(self):
         tag = ""
         if(path.exists(self.hdf_path)):

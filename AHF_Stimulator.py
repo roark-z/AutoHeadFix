@@ -41,42 +41,43 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         self.videoPath = self.settingsDict.get("videoPath")
 
     def startVideo(self):
-        if self.task.StimulusClass == "AHF_Stimulus_Laser":
-            return
-        try:
-            thisTag = self.task.tag
-            self.videoTag = thisTag
-            camera = self.task.Camera
-            #TODO IMPROVE
-            if camera.AHFvideoFormat == 'rgb':
-                extension = 'raw'
-            else:
-                extension = 'h264'
-            self.lastTime =  time()
-            print(hex(id(self)), 'start')
-            print(self.lastTime)
-            video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
-            video_name_path = self.videoPath + "M" + video_name
-            #writeToLogFile(expSettings.logFP, thisMouse, "video:" + video_name)
-            # send socket message to start behavioural camera
-            self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': video_name}, time())
-            if hasattr(self.task, 'Trigger'):
-                #MESSAGE = str(thisMouse.tag) + "_" + stimStr + "_" + '%d' % headFixTime
-                MESSAGE = str(thisTag) + "_" +  "_" + '%d' % self.task.lastFixedTime
-                self.task.Trigger.doTrigger(MESSAGE)
-                # start recording and Turn on the blue led
-                camera.start_recording(video_name_path)
-                sleep(self.task.Trigger.cameraStartDelay) # wait a bit so camera has time to start before light turns on, for synchrony accross cameras
-                self.task.BrainLight.onForStim()
-                self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
-            else: # turn on the blue light and start the movie
-                self.task.BrainLight.onForStim()
-                self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
-                camera.start_recording(video_name_path)
-        except Exception as anError:
-            camera.stop_recording()
-            print('Error in running trial:' + str(anError))
-            raise anError
+        if not self.task.StimulusClass == "AHF_Stimulus_Laser":
+            try:
+                thisTag = self.task.tag
+                self.videoTag = thisTag
+                camera = self.task.Camera
+                #TODO IMPROVE
+                if camera.AHFvideoFormat == 'rgb':
+                    extension = 'raw'
+                else:
+                    extension = 'h264'
+                self.lastTime =  time()
+                print(hex(id(self)), 'start')
+                print(self.lastTime)
+                video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
+                video_name_path = self.videoPath + "M" + video_name
+                #writeToLogFile(expSettings.logFP, thisMouse, "video:" + video_name)
+                # send socket message to start behavioural camera
+                self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': video_name}, time())
+                if hasattr(self.task, 'Trigger'):
+                    #MESSAGE = str(thisMouse.tag) + "_" + stimStr + "_" + '%d' % headFixTime
+                    MESSAGE = str(thisTag) + "_" +  "_" + '%d' % self.task.lastFixedTime
+                    self.task.Trigger.doTrigger(MESSAGE)
+                    # start recording and Turn on the blue led
+                    camera.start_recording(video_name_path)
+                    sleep(self.task.Trigger.cameraStartDelay) # wait a bit so camera has time to start before light turns on, for synchrony accross cameras
+                    self.task.BrainLight.onForStim()
+                    self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
+                else: # turn on the blue light and start the movie
+                    self.task.BrainLight.onForStim()
+                    self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
+                    camera.start_recording(video_name_path)
+            except Exception as anError:
+                camera.stop_recording()
+                print('Error in running trial:' + str(anError))
+                raise anError
+        else:
+            print('Camera used by laser stimulus, no recording')
 
     def stopVideo(self):
         if self.task.StimulusClass == "AHF_Stimulus_Laser":
