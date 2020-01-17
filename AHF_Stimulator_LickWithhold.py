@@ -286,7 +286,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def noGoTask(self):
-        # TODO: refine noGo signal
         print("Starting NO GO task")
         # Double buzz indicates no-go task
         self.task.Stimulus.stimulate()
@@ -372,6 +371,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def run(self, level = -1, resultsDict = {}, settingsDict = {}, tag = 0):
         super().run()
         super().startVideo()
+        self.tag = self.task.tag
         if not tag == 0:
             print('dummy tag used')
             self.tag = tag
@@ -391,7 +391,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         if not self.task.Stimulus.trialPrep(self.tag):
             self.task.Stimulus.trialEnd()
             return
-        print('Got dicts')
+
         #every time lickWithholdtime passes with no licks, make a buzz then give a reward after buzz_lead time.
         self.lickWithholdTimes = []
         self.rewardTimes = []
@@ -463,7 +463,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.setup()
         while(True):
             inputStr = input('Go and no go tasks will be tested with a dummy mouse\n'
-                             's= test speaker, g= go task, n=go/no go task, q= quit: ')
+                             's= test speaker, g= go task, n= go/no go task, t= change settings, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
                 self.speaker.start_train()

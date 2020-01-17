@@ -582,6 +582,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if(mouse.__contains__('ref_im')):
                         tempMouse.update({'ref_im': mouse['ref_im'][:]})
         mice = self.task.Subjects.get_all()
+
         #GUI function for the selecting targets
         def manual_annot(img):
             warnings.filterwarnings("ignore",".*GUI is implemented.*")
@@ -625,6 +626,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if 'targets' in tempMouse:
                         del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+
     def image_registration(self):
         #Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
@@ -751,10 +753,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            inputStr = input('i= new image, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
+            elif inputStr == 'i':
+                self.get_ref_im()
             elif inputStr == 'r':
                 self.editReference()
             elif inputStr == 't':
@@ -790,7 +794,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.camera.start_preview()
             self.pulse(1000,self.duty_cycle)
             center = np.dot(self.coeff, np.asarray([self.camera.resolution()[1]/2, self.camera.resolution()[0]/2, 1]))
-            self.move_to(center, topleft=True,join=True)
+            self.move_to(center, topleft=True, join=True)
             self.accuracyStart = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)
             self.camera.stop_preview()
             self.camera.capture(self.accuracyStart,'rgb')

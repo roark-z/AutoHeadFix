@@ -41,7 +41,8 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         self.videoPath = self.settingsDict.get("videoPath")
 
     def startVideo(self):
-
+        if self.task.StimulusClass == "AHF_Stimulus_Laser":
+            return
         try:
             thisTag = self.task.tag
             self.videoTag = thisTag
@@ -78,6 +79,8 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
             raise anError
 
     def stopVideo(self):
+        if self.task.StimulusClass == "AHF_Stimulus_Laser":
+            return
         if hasattr(self, 'videoTag'):
             thisTag = self.videoTag
         else:
