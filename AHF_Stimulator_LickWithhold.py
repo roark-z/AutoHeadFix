@@ -388,6 +388,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.rewardTimes = []
         self.laserTimes = []
         n = self.mouse.get('Stimulator', {}).get('nRewards', 5)
+        print('ready to start trial')
         if not self.task.Stimulus.trialPrep(self.tag):
             self.task.Stimulus.trialEnd()
             return

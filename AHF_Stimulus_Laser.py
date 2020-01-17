@@ -568,7 +568,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def get_ref_im(self):
         #Save a reference image whithin the mouse object
-        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[0], self.camera.resolution()[1], 3),dtype=np.uint8)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
 
