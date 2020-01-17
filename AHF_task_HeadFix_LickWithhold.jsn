@@ -27,8 +27,8 @@
 "HeadFixerClass"="AHF_HeadFixer_PWM_PCA9685"
 "HeadFixerDict"={"servoAddress"=64
 "servoFixedPosition"=685
-"servoReleasedPosition"=933
-"skeddadleTime"=5}
+"servoReleasedPosition"=945
+"skeddadleTime"=5.0}
 "LickDetectorClass"="AHF_LickDetector_MPR"
 "LickDetectorDict"={"IRQpin"=26
 "mprAddress"=90

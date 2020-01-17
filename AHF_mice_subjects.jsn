@@ -15,7 +15,7 @@
 "Stimulator"={"delayTime"=0.5
 "goLikelihood"=0.5
 "lickWithholdTime"=1
-"mouseLevel"=0
+"mouseLevel"=3
 "nRewards"=5
 "responseTime"=0.5
 "rewardInterval"=3

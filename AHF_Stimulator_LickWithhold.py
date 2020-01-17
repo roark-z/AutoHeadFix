@@ -210,12 +210,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 anyLicks += x[1]
             if anyLicks == 0:
                 if self.speakerIsOn == True:
-                    print("Speaker off (no licking in waiting)")
                     self.speaker.stop_train()
                     self.speakerIsOn = False
             else: # there were licks in withholding period
                 if(self.speakerIsOn == False) and(time() > self.OffForRewardEnd):
-                    print("Speaker on (licked during waiting)")
+                    print("Speaker on (licked during withhold time)")
                     self.speaker.start_train()
                     self.speakerIsOn = True
                 self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
@@ -250,7 +249,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
             elif self.speakerIsOn:
-                print("Speaker off (did not lick in withhold period")
                 self.speaker.stop_train()
                 self.speakerIsOn = False
         # If mouse licked during waiting period, the action does not count
@@ -287,7 +285,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
     def noGoTask(self):
         # TODO: refine noGo signal
-        print("Starting NO GO task")
         # Double buzz indicates no-go task
         self.task.Stimulus.stimulate()
         sleep(0.2)
@@ -312,7 +309,6 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
             elif self.speakerIsOn:
-                print("Speaker off (did not lick during withhold period)")
                 self.speaker.stop_train()
                 # self.speakerIsOn = False
         if anyLicks > 0:
@@ -372,6 +368,10 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def run(self, level = -1, resultsDict = {}, settingsDict = {}, tag = 0):
         super().run()
         super().startVideo()
+        self.tag = self.task.tag
+        print('tag number...')
+        print(str(self.tag))
+
         if not tag == 0:
             print('dummy tag used')
             self.tag = tag
@@ -391,7 +391,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         if not self.task.Stimulus.trialPrep(self.tag):
             self.task.Stimulus.trialEnd()
             return
-        print('Got dicts')
+
         #every time lickWithholdtime passes with no licks, make a buzz then give a reward after buzz_lead time.
         self.lickWithholdTimes = []
         self.rewardTimes = []

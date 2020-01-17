@@ -65,6 +65,10 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
         if self.__class__.hasLevels:
             self.servoIncrement =(self.servoFixedPosition - self.servoReleasedPosition)/self.numLevels
 
+    def setdown(self):
+        super().setdown()
+        self.setPWM((self.servoFixedPosition + self.servoReleasePosition)/2)
+
     def calculate_steps(self,individualDict):
         percentage = individualDict.get('servoFixedPosition', self.servoFixedPosition)
         percentage = min(max(percentage,0),1)

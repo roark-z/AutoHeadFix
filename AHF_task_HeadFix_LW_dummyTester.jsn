@@ -24,10 +24,10 @@
 "dataPath"="/home/pi/Documents/"
 "mouseConfigPath"="/home/pi/Documents/MiceConfig/"
 "oldVersion"=false}
-"HeadFixerClass"="AHF_HeadFixer_PWM_Pi"
-"HeadFixerDict"={"pwmChan"=1
-"servoFixedPosition"=685
-"servoReleasedPosition"=933
+"HeadFixerClass"="AHF_HeadFixer_PWM_PCA9685"
+"HeadFixerDict"={"servoAddress"=64
+"servoFixedPosition"=675
+"servoReleasedPosition"=940
 "skeddadleTime"=5}
 "LickDetectorClass"="AHF_LickDetector_MPR"
 "LickDetectorDict"={"IRQpin"=26
@@ -75,7 +75,7 @@
 "edited"=true
 "entryTime"=0.0
 "fileName"="HeadFix_LW_dummyTester"
-"fixAgainTime"=Infinity
+"fixAgainTime"=1579216018.796731
 "fixed"=false
 "inChamberLimitExceeded"=false
 "isFixTrial"=false

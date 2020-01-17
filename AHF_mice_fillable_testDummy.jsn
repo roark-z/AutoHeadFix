@@ -1,5 +1,5 @@
 {"111111111"={"HeadFixer"={"headFixTime"=40
-"propHeadFix"=0.75
+"propHeadFix"=1
 "tightnessHeadFix"=1}
 "Rewarder"={"breakBeamDelay"=1
 "breakBeamSize"=0.1
