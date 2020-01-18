@@ -284,7 +284,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def noGoTask(self):
-        # TODO: refine noGo signal
+        print("Starting NO GO task")
         # Double buzz indicates no-go task
         self.task.Stimulus.stimulate()
         sleep(0.2)
@@ -464,7 +464,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.setup()
         while(True):
             inputStr = input('Go and no go tasks will be tested with a dummy mouse\n'
-                             's= test speaker, g= go task, n=go/no go task, q= quit: ')
+                             's= test speaker, g= go task, n= go/no go task, t= change settings, q= quit: ')
             if inputStr == 's':
                 print('testing speaker')
                 self.speaker.start_train()

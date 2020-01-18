@@ -30,8 +30,9 @@ class AHF_BrainLight_1GPIO(AHF_BrainLight):
         self.ledPin = self.settingsDict.get('ledPin')
         self.ledDelay = self.settingsDict.get('ledDelay')
         hasGPIO = True
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.ledPin, GPIO.OUT)
+        try:
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(self.ledPin, GPIO.OUT)
         except RuntimeError as e:
             print(str(e))
             hasGPIO = False

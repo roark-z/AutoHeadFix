@@ -20,7 +20,7 @@
 "contactPolarity"="FALLING"
 "ledPin"=24}
 "DataLoggerClass"="AHF_DataLogger_text"
-"DataLoggerDict"={"cageID"="cageA"
+"DataLoggerDict"={"cageID"="cage5thFloor"
 "dataPath"="/home/pi/Documents/"
 "mouseConfigPath"="/home/pi/Documents/MiceConfig/"
 "oldVersion"=false}
