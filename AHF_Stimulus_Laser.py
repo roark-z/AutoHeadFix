@@ -451,9 +451,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def move_to(self,new_pos,topleft=True,join=False):
         #High-level function, which invokes self.move to run on another processor
-        steps = np.around(new_pos).astype(int)-self.pos
+        steps = np.around(new_pos).astype(int) - self.pos
+        print('Current:\nx: '+str(self.pos[0])+'\ny: '+str(self.pos[1]))
+        print('Target:\nx: '+str(new_pos[0])+'\ny: '+str(new_pos[1]))
+
         mp = Process(target=self.move, args=(steps[0],steps[1],self.phase,self.delay,topleft,False,))
         mp.daemon = True
+        print('Diff:\nx: '+str(steps[0])+'\ny: '+str(steps[1]))
         mp.start()
         if join:
             timeout = 30
@@ -757,13 +761,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, x= move to target, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             self.tag = 111111111
             self.mouse = self.task.Subjects.get(self.tag)
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
             elif inputStr == 'i':
+                self.camera.start_preview()
                 self.align(111111111)
             elif inputStr == 'r':
                 self.editReference()
@@ -786,7 +791,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 self.task.BrainLight.offForStim()
             elif inputStr == 'c':
                 self.camera.start_preview()
-                self.move_to(self.mouse.get('targets'),topleft=True,join=False)
+                self.pulse(1000,self.duty_cycle)
+                print('Current: \nx: '+str(self.pos[0])+'\ny: '+str(self.pos[1]))
+                x = []
+                x.append(int(input('enter x target: ')))
+                x.append(int(input('enter y target: ')))
+                self.move_to(x,topleft=True,join=False)
                 input('Press any key to quit ')
                 self.camera.stop_preview()
             elif inputStr == 'q':
