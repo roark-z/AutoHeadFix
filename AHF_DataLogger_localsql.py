@@ -38,7 +38,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
     interval between reading and writing to PSEUDO_MUTEX,another thread may have read PSEUDO_MUTEX as 0 and
     both threads think they have the mutex
     """
-
+    defaultCage = 'cage1'
     localHost = 'localhost'
     localUser = 'pi'
     localDatabase = 'raw_data'
@@ -51,6 +51,10 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
 
     @staticmethod
     def config_user_get(starterDict={}):
+        cageID = starterDict.get('cageID', AHF_DataLogger_localsql.defaultCage)
+        response = input('Enter a name for the cage ID(currently {}): '.format(cageID))
+        if response != '':
+            cageID = response
         localUser =starterDict.get('localUser', AHF_DataLogger_localsql.localUser)
         response = input('Enter your local user name for the database(currently {}): '.format(localUser))
         if response != '':
@@ -65,7 +69,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         response = input('Enter your local user password(currently {}): '.format(localPassword))
         if response != '':
             localPassword = response
-        starterDict.update({'localUser': localUser,'localDatabase': localDatabase, 'localPassword': localPassword })
+        starterDict.update({'cageID': cageID, 'localUser': localUser,'localDatabase': localDatabase, 'localPassword': localPassword })
 
         return starterDict
 
