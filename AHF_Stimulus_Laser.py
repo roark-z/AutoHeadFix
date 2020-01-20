@@ -572,7 +572,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
-        
+
     def select_targets(self):
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
@@ -683,11 +683,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
-        if 'ref_im' in self.mouse:
-            print('has field')
-            print(str(self.mouse.get('ref_im')))
-        if self.mouse.get('ref_im') is not None:
-            print('has image')
         if not 'ref_im' in self.mouse or self.mouse.get('ref_im') is None:
             print('Take reference image')
             self.get_ref_im()
@@ -762,7 +757,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('i= dummy test, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, x= move to target, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             self.tag = 111111111
             self.mouse = self.task.Subjects.get(self.tag)
             if inputStr == 'm':
@@ -790,9 +785,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 self.camera.stop_preview()
                 self.task.BrainLight.offForStim()
             elif inputStr == 'c':
-                self.move_to(np.array([0,0]),topleft=True,join=False)
-            elif inputStr == 'x':
-                self.align(111111111)
+                self.camera.start_preview()
+                self.move_to(self.mouse.get('targets'),topleft=True,join=False)
+                input('Press any key to quit ')
+                self.camera.stop_preview()
             elif inputStr == 'q':
                 break
 
@@ -851,7 +847,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def loadH5(self):
         if(path.exists(self.hdf_path)):
-            print(str(self.hdf_path))
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     if str(tag) == str(self.tag):
@@ -864,7 +859,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         else:
             with File(self.hdf_path, 'w') as hdf:
                 pass
-        
+
     def editReference(self):
         tag = ""
         if(path.exists(self.hdf_path)):
