@@ -568,10 +568,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def get_ref_im(self):
         #Save a reference image whithin the mouse object
-        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[0], self.camera.resolution()[1], 3),dtype=np.uint8)})
+        print('Taking ref image')
+        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
-
+        
     def select_targets(self):
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
@@ -586,7 +587,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #GUI function for the selecting targets
         def manual_annot(img):
             warnings.filterwarnings("ignore",".*GUI is implemented.*")
-            fig = plt.figure(figsize=(10,10))
+            fig = plt.figure(figsize=(self.camera.resolution()[1]/100, self.camera.resolution()[0]/100))
             imgplot = plt.imshow(img)
             plt.title('Choose targets')
             plt.show(block=False)
@@ -611,7 +612,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         targets_coords = manual_annot(mouse.get('ref_im'))
                         mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                         print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[1],mouse.get('targets')[0]))
             if inputStr == str(1):
                 for tag, mouse in mice.items():
                     if 'ref_im' in mouse:
@@ -619,12 +620,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         targets_coords = manual_annot(mouse.get('ref_im'))
                         mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                         print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[1],mouse.get('targets')[0]))
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
                     if 'targets' in tempMouse:
-                        del mouse['targets']
+                        #del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
 
     def image_registration(self):
@@ -645,12 +646,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         timestamp = time()
         self.mouse.update({'trial_name': "M" + str(self.tag % 10000) + '_' + str(timestamp)})
         self.task.DataLogger.writeToLogFile(self.tag, 'Image', {'name': self.mouse.get('trial_name'), 'type': 'trial', 'reference': self.mouse.get('ref_name')}, timestamp)
+
         #Image registration
         #IMPROVE: Could run the registration on a different processor
         warnings.filterwarnings("ignore",".*the returned array has changed*")
         tf = ird.similarity(self.mouse.get('ref_im')[:,:,1],self.mouse.get('trial_image')[:,:,1],numiter=3)
         print('scale\tangle\tty\ttx')
         print('{0:.3}\t{1:.3}\t{2:.3}\t{3:.3}'.format(tf['scale'],tf['angle'],tf['tvec'][0],tf['tvec'][1]))
+
         #Check if results of image registration don't cross boundaries
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
             #Transform the target to new position
@@ -676,9 +679,15 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         """
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
+        print("debug: "+str(self.tag))
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
+        if 'ref_im' in self.mouse:
+            print('has field')
+            print(str(self.mouse.get('ref_im')))
+        if self.mouse.get('ref_im') is not None:
+            print('has image')
         if not 'ref_im' in self.mouse or self.mouse.get('ref_im') is None:
             print('Take reference image')
             self.get_ref_im()
@@ -753,15 +762,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #Tester function called from the hardwareTester. Includes Stimulator
         #specific hardware tester.
         while(True):
-            inputStr = input('i= new image, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            inputStr = input('i= dummy test, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             self.tag = 111111111
             self.mouse = self.task.Subjects.get(self.tag)
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
             elif inputStr == 'i':
-                self.loadH5()
-                self.get_ref_im()
+                self.align(111111111)
             elif inputStr == 'r':
                 self.editReference()
             elif inputStr == 't':
@@ -843,6 +851,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def loadH5(self):
         if(path.exists(self.hdf_path)):
+            print(str(self.hdf_path))
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     if str(tag) == str(self.tag):
@@ -855,7 +864,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         else:
             with File(self.hdf_path, 'w') as hdf:
                 pass
-
+        
     def editReference(self):
         tag = ""
         if(path.exists(self.hdf_path)):
@@ -907,7 +916,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def h5updater(self):
         with File(self.hdf_path, 'r+') as hdf:
             mouse = hdf.require_group(str(self.tag))
-            resolution_shape =( self.camera.resolution()[0], self.camera.resolution()[1], 3) #rgb layers
+            resolution_shape =( self.camera.resolution()[1], self.camera.resolution()[0], 3) #rgb layers
             if 'ref_im' in self.mouse:
                 ref = mouse.require_dataset('ref_im',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('ref_im'))
                 ref.attrs.modify('CLASS', np.string_('IMAGE'))
