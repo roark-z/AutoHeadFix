@@ -16,16 +16,31 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
     trackingDict = {}
     BUFFER_SIZE = 25
 
+    useLocalSql = True
+
     @staticmethod
     def config_user_get(starterDict = {}):
+        useLocalSql =starterDict.get('useLocalSql', AHF_DataLogger_textMySql.useLocalSql)
+        response = input('Do you want to use the local database only? y/n (currently {}): '.format(useLocalSql))
+        if response != '':
+            if response == 'y' or response == 'Y':
+                useLocalSql = True
+            else:
+                useLocalSql = False
+
+        starterDict.update({'useLocalSql': useLocalSql})
         starterDict = AHF_DataLogger_text.config_user_get(starterDict)
         return AHF_DataLogger_mysql.config_user_get(starterDict)
 
     def setup(self):
+        self.useLocalSql = self.settingsDict.get('useLocalSql')
         self.textLogger = AHF_DataLogger_text(self.task, self.settingsDict)
         self.textLogger.setup()
         self.textLogger.isChild = True
-        self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
+        if self.useLocalSql:
+            self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
+        else:
+            self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
         self.sqlLogger.setup()
         self.sqlLogger.isChild = True
         pass
