@@ -254,7 +254,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def feed_byte(self,byte):
         #Toggle a byte into the shjft registers
-        for j in reversed(byte):
+        for j in byte:
             GPIO.output(self.DS,j)
             GPIO.output(self.SHCP,0)
             GPIO.output(self.SHCP,1)
@@ -265,7 +265,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         # Read out serial output and store state. Feed state back into shift reg.
         # Create empty array to store the state
         state = np.empty(8,dtype=int)
-        for j in reversed(range(8)):
+        for j in range(8):
             out = GPIO.input(self.Q7S)
             np.put(state,j,out)
             GPIO.output(self.DS,out) #Feed output into input
@@ -293,13 +293,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return -self.laser_step,0,0,0
-        elif key == keyboard.Key.left:
-            return self.laser_step,0,0,0
-        elif key == keyboard.Key.down:
-            return 0,-self.laser_step,0,0
-        elif key == keyboard.Key.up:
             return 0,self.laser_step,0,0
+        elif key == keyboard.Key.left:
+            return 0,-self.laser_step,0,0
+        elif key == keyboard.Key.down:
+            return self.laser_step,0,0,0
+        elif key == keyboard.Key.up:
+            return -self.laser_step,0,0,0
         elif key == keyboard.Key.delete:
             return 0,0,0,-self.cross_step
         elif key == keyboard.Key.page_down:
@@ -406,11 +406,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             next_phase_x =(phase_x + self.get_dir(x)) % len(states)
             if i in y_steps:
                 next_phase_y =(phase_y + self.get_dir(y)) % len(states)
-                byte = states[next_phase_x]+states[next_phase_y]
+                byte = states[next_phase_y]+states[next_phase_x]
                 phase_y = next_phase_y
             else:
                 state_y = self.get_state()[-4:]
-                byte = states[next_phase_x]+state_y
+                byte = state_y + states[next_phase_x]
             #Send and execute new byte
             self.feed_byte(byte)
             #Update phase
@@ -421,11 +421,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             next_phase_y =(phase_y + self.get_dir(y)) % len(states)
             if i in x_steps:
                 next_phase_x =(phase_x + self.get_dir(x)) % len(states)
-                byte = states[next_phase_x]+states[next_phase_y]
+                byte = states[next_phase_y]+states[next_phase_x]
                 phase_x = next_phase_x
             else:
                 state_x = self.get_state()[:4]
-                byte = state_x+states[next_phase_y]
+                byte = states[next_phase_y] + state_x
             #Send and execute new byte
             self.feed_byte(byte)
             phase_y = next_phase_y

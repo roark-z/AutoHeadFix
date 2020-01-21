@@ -281,8 +281,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
             else:
                 self.events.append([tag, eventKind, str(eventDict), timeStamp, self.cageID, None])
         if eventKind == "exit" and toShellOrFile & self.TO_FILE:
-            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events, False)).start()
-            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events, True)).start()
+            Thread(target=self.saveToDatabase, args=(self.raw_save_query, self.events)).start()
             self.events = []
         if(toShellOrFile & self.TO_SHELL) > 0:
             print('{:013}\t{:s}\t{:s}\t{:s}\t{:s}\n'.format(tag, eventKind, str(eventDict), datetime.fromtimestamp(int(timeStamp)).isoformat(' '), self.cageID))
