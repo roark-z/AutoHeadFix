@@ -74,7 +74,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         return starterDict
 
 
-    def saveToDatabase(self,query, values,remote):
+    def saveToDatabase(self,query, values):
         db1 = pymysql.connect(host=self.localHost, user=self.localUser, db=self.localDatabase, password=self.localPassword)
         cur1 = db1.cursor()
         try:
@@ -96,7 +96,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         db1.close()
         return True
 
-    def getFromDatabase(self,query,values,remote):
+    def getFromDatabase(self,query,values):
         db2 = pymysql.connect(host=self.localHost, user=self.localUser, db=self.localDatabase, password=self.localPassword)
         cur2 = db2.cursor()
         try:
@@ -140,13 +140,10 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
                                     `Timestamp` timestamp(2) NULL DEFAULT NULL,`Cage` varchar(20) NOT NULL,`Tag` varchar(18) NOT NULL,`Note` varchar(100) NULL DEFAULT NULL,
                                     PRIMARY KEY(`ID`),UNIQUE KEY `Tag`(`Tag`,`Cage`)) ENGINE=InnoDB DEFAULT CHARSET=latin1"""
         try:
-            self.saveToDatabase(raw_data_table_generation, [[]], True) # create table on remote DB
-            self.saveToDatabase(raw_data_table_generation, [[]], False) # create table on local DB
-            self.saveToDatabase(config_data_table_generation, [[]], False) # create config data table locally,
-            self.saveToDatabase(config_data_table_generation, [[]], True) # create config data table remote
-            self.saveToDatabase(hardwaretest_table_generation, [[]], True) # create hardware test table in remote DB
-            self.saveToDatabase(hardwaretest_table_generation, [[]], False)  # create hardware test table in local DB
-            self.saveToDatabase(mice_table_generation, [[]], False)  # create hardware test table in local DB
+            self.saveToDatabase(raw_data_table_generation, [[]]) # create table on local DB
+            self.saveToDatabase(config_data_table_generation, [[]]) # create config data table local
+            self.saveToDatabase(hardwaretest_table_generation, [[]]) # create hardware test table in local DB
+            self.saveToDatabase(mice_table_generation, [[]])  # create hardware test table in local DB
         except Exception as e:
                 print("Tables could not be created. Error: ", str(e))
 
@@ -166,8 +163,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         #showDict = self.task.Show_testable_objects()
 
         self.events.append([0, 'SeshStart', None, time(),self.cageID,None])
-        if self.saveToDatabase(self.raw_save_query, self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query, self.events):
             self.events = []
 
     def setdown(self):
@@ -175,8 +171,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         Writes session end and closes log file
         """
         self.events.append([0, 'SeshEnd', None, time(),self.cageID,None])
-        if self.saveToDatabase(self.raw_save_query,self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query,self.events)
             self.events = []
 
 #####################################################################################
@@ -188,7 +183,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         # get the mice first, therefore we need them in the `mice` table, at least their tag number and their cage
         # we will call the mice by their cage which is a class variable
         query_sources = """SELECT DISTINCT `Dictionary_source` FROM `configs` WHERE `Cage` = %s AND `Tag` = %s"""
-        sources_list = [i[0] for i in list(self.getFromDatabase(query_sources, [str(self.cageID), str(settings)], False))]
+        sources_list = [i[0] for i in list(self.getFromDatabase(query_sources, [str(self.cageID), str(settings)]))]
         query_config = """SELECT `Tag`,`Dictionary_source`,`Config` FROM `configs` WHERE `Tag` = %s
                                             AND `Dictionary_source` = %s ORDER BY `Timestamp` DESC LIMIT 1"""
         if settings == "changed_subjects":
@@ -196,22 +191,22 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
             for mice in mice_list:
                 for sources in sources_list:
                     try:
-                        mouse, source, dictio = self.getFromDatabase(query_config, [str(mice), str(sources)], False)[0]
+                        mouse, source, dictio = self.getFromDatabase(query_config, [str(mice), str(sources)])[0]
                     except:
-                        mouse, source, dictio = self.getFromDatabase(query_config, ["default_subjects", str(sources)], False)[0]
+                        mouse, source, dictio = self.getFromDatabase(query_config, ["default_subjects", str(sources)])[0]
                         mouse = mice
                     sources.update({str(source): literal_eval("{}".format(dictio))})
                 data = {int(mouse): sources}
                 yield(data)
         if settings == "default_subjects":
             for sources in sources_list:
-                mouse, source, dictio = self.getFromDatabase(query_config, ["default_subjects", str(sources)], False)[0]
+                mouse, source, dictio = self.getFromDatabase(query_config, ["default_subjects", str(sources)])[0]
                 data = {str(source): literal_eval("{}".format(dictio))}
                 yield(data)
         if settings == "default_hardware":
             for sources in sources_list:
                 print(sources)
-                mouse, source, dictio = self.getFromDatabase(query_config, ["default_hardware", str(sources)], False)[0]
+                mouse, source, dictio = self.getFromDatabase(query_config, ["default_hardware", str(sources)])[0]
                 if "Class" in str(source):
                     data = {str(source): str(dictio)}
                 else:
@@ -219,7 +214,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
                 yield(data)
         if settings == "changed_hardware":
             for sources in sources_list:
-                mouse, source, dictio = self.getFromDatabase(query_config, ["changed_hardware", str(sources)], False)[0]
+                mouse, source, dictio = self.getFromDatabase(query_config, ["changed_hardware", str(sources)])[0]
                 if "Class" in str(source):
                     data = {str(source): str(dictio)}
                 else:
@@ -228,58 +223,50 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
 
     def getMice(self):
         query_mice = """SELECT `Tag` FROM `mice` WHERE `Cage` = %s"""
-        mice_list = [i[0] for i in list(self.getFromDatabase(query_mice, [str(self.cageID)], False))]
+        mice_list = [i[0] for i in list(self.getFromDatabase(query_mice, [str(self.cageID)]))]
         return mice_list
 
     def getConfigData(self, tag,source):
         configs_get = """SELECT `Config` FROM `configs` WHERE `Tag` = %s AND `Dictionary_source` = %s  ORDER BY `Timestamp` DESC LIMIT 1"""
         values=[str(tag),str(source)]
-        config_data = self.getFromDatabase(configs_get,values,False)[0][0]
+        config_data = self.getFromDatabase(configs_get,values)[0][0]
         config_data = literal_eval("{}".format(config_data))
         return config_data
 
     def storeConfig(self, tag, configDict,source):
         # store in raw data
         self.events.append([tag, "config_{}".format(source), str(configDict), time(), self.cageID,None])
-        if self.saveToDatabase(self.raw_save_query, self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query, self.events):
             self.events = []
         # store in the config table
-        self.saveToDatabase(self.config_save_query, [[tag, str(configDict), time(), self.cageID, str(source)]], False)
-        self.saveToDatabase(self.config_save_query, [[tag, str(configDict), time(), self.cageID, str(source)]], True)
+        self.saveToDatabase(self.config_save_query, [[tag, str(configDict), time(), self.cageID, str(source)]])
 
     def saveNewMouse(self,tag,note, dictionary = {}):
         # store new mouse `Timestamp`,`Cage`,`Tag`,`Note`
         self.events.append([tag, 'added_to_cage', str(dict([("Notes",note)])), time(), self.cageID, None])
-        if self.saveToDatabase(self.raw_save_query, self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query, self.events):
             self.events = []
-        self.saveToDatabase(self.add_mouse_query, [[time(), self.cageID, tag,str(note)]], False)
-        self.saveToDatabase(self.add_mouse_query, [[time(), self.cageID, tag,str(note)]], True)
+        self.saveToDatabase(self.add_mouse_query, [[time(), self.cageID, tag,str(note)]])
 
     def retireMouse(self,tag,reason):
         # update information about a mouse `Timestamp`,`Cage`,`Tag`,`Activity`
         self.events.append([tag, 'retired', str(dict([("reason", reason)])), time(), self.cageID, None])
-        if self.saveToDatabase(self.raw_save_query, self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query, self.events):
             self.events = []
         delete_mouse_query = """DELETE FROM `mice` WHERE `Tag`=%s"""
-        self.saveToDatabase(delete_mouse_query, [[tag]], False)
-        self.saveToDatabase(delete_mouse_query, [[tag]], True)
-
+        self.saveToDatabase(delete_mouse_query, [[tag]])
 
 #######################################################################################
     def newDay(self):
         self.events.append([0, 'NewDay', None, time(),self.cageID,None])
-        if self.saveToDatabase(self.raw_save_query, self.events, True):
-            self.saveToDatabase(self.raw_save_query, self.events, False)
+        if self.saveToDatabase(self.raw_save_query, self.events):
             self.events = []
 
     def readFromLogFile(self, index):
         eventQuery = """SELECT `Event` from `raw_data` WHERE 1 ORDER BY `raw_data`.`Timestamp` LIMIT %s-1, 1"""
         eventDictQuery = """SELECT `Event_dict` from `raw_data` WHERE 1 ORDER BY `raw_data`.`Timestamp` LIMIT %s-1, 1"""
-        event = self.getFromDatabase(eventQuery, [index], False)
-        eventDict = self.getFromDatabase(eventDictQuery, [index], False)
+        event = self.getFromDatabase(eventQuery, [index])
+        eventDict = self.getFromDatabase(eventDictQuery, [index])
         return(event, eventDict)
 
     def writeToLogFile(self, tag, eventKind, eventDict, timeStamp, toShellOrFile=3):
@@ -306,8 +293,8 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         values = [[time()]]
         query_get = """SELECT `Timestamp` FROM `hardwaretest` WHERE 1 ORDER BY `hardwaretest`.`Timestamp` DESC LIMIT 1"""
         try:
-            self.saveToDatabase(query_save, values, False)
-            response = str(self.getFromDatabase(query_get, [], False)[0][0])
+            self.saveToDatabase(query_save, values)
+            response = str(self.getFromDatabase(query_get, [])[0][0])
             print("last test entry local DB: ", response)
         except:
             print("no connection to localhost")
@@ -346,7 +333,6 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
 
     def __del__(self):
         self.events.append([0, 'SeshEnd', None, time(),self.cageID,None])
-        self.saveToDatabase(self.raw_save_query, self.events, False)
-        self.saveToDatabase(self.raw_save_query, self.events, True)
+        self.saveToDatabase(self.raw_save_query, self.events)
         self.events = []
         self.setdown()
