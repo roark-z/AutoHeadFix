@@ -632,7 +632,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
 
-    def image_registration(self):
+    def image_registration(self, x_target, y_target):
         #Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
             #Utility function to get the transformation matrix
@@ -665,10 +665,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             print('Debug: self.R matrix')
             print(self.R) 
 
-            cent_targ = self.mouse.get('targets') - np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)]) #translate targets to center of image
-            cent_targ = cent_targ[::-1]
+            if x_target is None or y_target is None:
+                x_target = self.mouse.get('targets')[1]
+                y_target = self.mouse.get('targets')[0]
+
+            #Shift target to fit origin at center of frame
+            cent_targ = np.array([x_target - int(self.camera.resolution()[0] / 2), y_target - int(self.camera.resolution()[1] / 2)])
             print('Debug: target')
-            print('x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
+            print('x: '+str(x_target[0])+' y: '+str(x_target[1]))
             print('Debug: cent_targ')
             print(cent_targ)
 
@@ -721,6 +725,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         elif self.coeff is None:
             print("Match laser and camera coordinates")
             return False
+
+
         try:
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
@@ -728,7 +734,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             # ref_path = self.cageSettings.dataPath+'sample_im/'+datetime.fromtimestamp(int(time())).isoformat('-')+'_'+str(self.mouse.tag)+'.jpg'
             self.mouse.update({'timestamp': time()})
             # self.camera.capture(ref_path)
-            targ_pos = self.image_registration()
+
+            # Manually input target
+            x_target = input('Enter x target bewtween 0 and ' + self.camera.resolution()[1])
+            y_target = input('Enter y target bewtween 0 and ' + self.camera.resolution()[0])
+            targ_pos = self.image_registration(x_target, y_target)
+
             # self.rewarder.giveReward('task')
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
