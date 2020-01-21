@@ -631,8 +631,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if tempMouse is not None and 'targets' in tempMouse:
                         del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+                        print('Debug: x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
 
     def image_registration(self):
+        print('Debug:' +str(self.tag))
+        print(self.mouse.get('targets'))
+
         #Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
             #Utility function to get the transformation matrix
@@ -698,7 +702,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         """
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
-        print("debug: "+str(self.tag))
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
