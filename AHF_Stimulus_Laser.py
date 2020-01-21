@@ -293,13 +293,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return 0,self.laser_step,0,0
-        elif key == keyboard.Key.left:
-            return 0,-self.laser_step,0,0
-        elif key == keyboard.Key.down:
             return self.laser_step,0,0,0
-        elif key == keyboard.Key.up:
+        elif key == keyboard.Key.left:
             return -self.laser_step,0,0,0
+        elif key == keyboard.Key.down:
+            return 0,self.laser_step,0,0
+        elif key == keyboard.Key.up:
+            return 0,-self.laser_step,0,0
         elif key == keyboard.Key.delete:
             return 0,0,0,-self.cross_step
         elif key == keyboard.Key.page_down:
@@ -409,7 +409,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 byte = states[next_phase_y]+states[next_phase_x]
                 phase_y = next_phase_y
             else:
-                state_y = self.get_state()[-4:]
+                state_y = self.get_state()[:4]
                 byte = state_y + states[next_phase_x]
             #Send and execute new byte
             self.feed_byte(byte)
@@ -424,7 +424,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 byte = states[next_phase_y]+states[next_phase_x]
                 phase_x = next_phase_x
             else:
-                state_x = self.get_state()[:4]
+                state_x = self.get_state()[-4:]
                 byte = states[next_phase_y] + state_x
             #Send and execute new byte
             self.feed_byte(byte)
@@ -628,8 +628,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
-                    if 'targets' in tempMouse:
-                        #del mouse['targets']
+                    if tempMouse is not None and 'targets' in tempMouse:
+                        del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
 
     def image_registration(self):
@@ -662,9 +662,24 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
             #Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
+            print('Debug: self.R matrix')
+            print(self.R) 
+
             cent_targ = self.mouse.get('targets') - np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)]) #translate targets to center of image
-            trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)])
-            targ_pos = np.dot(self.coeff,np.append(trans_coord,1))
+            cent_targ = cent_targ[::-1]
+            print('Debug: target')
+            print('x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
+            print('Debug: cent_targ')
+            print(cent_targ)
+
+            trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[0]/2),int(self.camera.resolution()[1]/2)])
+            print('Debug: trans_coord')
+            print(trans_coord)
+
+            targ_pos = np.dot(self.coeff[::-1],np.append(trans_coord,1))
+            print('Debug: targ_pos')
+            print(targ_pos)
+
             print('TARGET\ttx\tty')
             print('{0}\t{1:.01f}\t{2:.01f}'.format('0',trans_coord[0],trans_coord[1]))
             self.task.DataLogger.writeToLogFile(self.tag, 'ImageRegistration', {'scale': tf['scale'], 'angle': tf['angle'], 'trans_x': tf['tvec'][0], 'trans_y': tf['tvec'][1]}, time())
@@ -718,6 +733,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
             if targ_pos is not None:
+                print('Debug: target:\n x:'+str(targ_pos[0])+'\ny: '+str(targ_pos[1]))
                 saved_targ_pos = targ_pos
                 print('Moving laser to target and capture image to assert correct laser position')
                 self.move_to(targ_pos,topleft=True,join=True) #Move laser to target and wait until target reached
@@ -818,7 +834,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.camera.stop_preview()
             self.camera.capture(self.accuracyStart,'rgb')
             self.pulse(0)
-            for i in range(0, 100):
+            for i in range(0, 10):
                 x = randrange(0, self.camera.resolution()[0])
                 y = randrange(0, self.camera.resolution()[1])
                 self.move_to(np.dot(self.coeff, np.asarray([y, x, 1])), topleft=True,join=True)

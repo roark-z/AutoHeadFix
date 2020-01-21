@@ -74,7 +74,12 @@
 "Q7S"=6
 "SHCP"=5
 "STCP"=17
-"coeff_matrix"=null
+"coeff_matrix"=[[33.95522388059701
+8.70646766169153
+-3322.3880597014863]
+[0.12437810945272013
+30.907960199004965
+-15221.144278606957]]
 "duty_cycle"=50
 "hdf_path"="mice_images.h5"
 "laser_on_time"=800
@@ -90,7 +95,8 @@
 "edited"=true
 "entryTime"=0.0
 "fileName"="HeadFix_LW_Laser"
-"fixAgainTime"=Infinity
+"filename"="temp"
+"fixAgainTime"=1579642538.3922575
 "fixed"=false
 "inChamberLimitExceeded"=false
 "isFixTrial"=false
