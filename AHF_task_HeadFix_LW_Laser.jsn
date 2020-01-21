@@ -30,7 +30,8 @@
 "localPassword"="TimMurphy"
 "localUser"="AHF5thFloor"
 "mouseConfigPath"="/home/pi/Documents/MiceConfig/"
-"oldVersion"=false}
+"oldVersion"=false
+"useLocalSql"=true}
 "HeadFixerClass"="AHF_HeadFixer_PWM_PCA9685"
 "HeadFixerDict"={"servoAddress"=64
 "servoFixedPosition"=685

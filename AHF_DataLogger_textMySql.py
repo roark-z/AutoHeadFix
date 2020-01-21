@@ -3,6 +3,7 @@
 
 from AHF_DataLogger_text import AHF_DataLogger_text
 from AHF_DataLogger_mysql import AHF_DataLogger_mysql
+from AHF_DataLogger_localsql import AHF_DataLogger_localsql
 from AHF_DataLogger import AHF_DataLogger
 class AHF_DataLogger_textMySql(AHF_DataLogger):
 
@@ -38,7 +39,8 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         self.textLogger.setup()
         self.textLogger.isChild = True
         if self.useLocalSql:
-            self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
+            self.sqlLogger = AHF_DataLogger_localsql(self.task, self.settingsDict)
+            print('local')
         else:
             self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
         self.sqlLogger.setup()

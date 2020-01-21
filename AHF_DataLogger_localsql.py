@@ -171,7 +171,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
         Writes session end and closes log file
         """
         self.events.append([0, 'SeshEnd', None, time(),self.cageID,None])
-        if self.saveToDatabase(self.raw_save_query,self.events)
+        if self.saveToDatabase(self.raw_save_query,self.events):
             self.events = []
 
 #####################################################################################
@@ -305,6 +305,7 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
             inputStr = '\n************** Mouse Configuration ********************\nEnter:\n'
             inputStr += 'T to Test database connections\n'
             inputStr += 'J to generate a Json file of hardware settings from database\n'
+            inputStr += 'Q to quit\n'
             event = input(inputStr)
             if event == 'T' or event == 't': # send timestamps to servers and then request the last timestamp
                 self.pingServers()
@@ -330,6 +331,9 @@ class AHF_DataLogger_localsql(AHF_DataLogger):
                             gid = grp.getgrnam('pi').gr_gid
                             os.chown(configFile, uid, gid)  # we may run as root for pi PWM, so we need to explicitly set ownership
     # TODO settingsdict????
+            elif event == 'Q' or event == 'q':
+                break
+                
 
     def __del__(self):
         self.events.append([0, 'SeshEnd', None, time(),self.cageID,None])
