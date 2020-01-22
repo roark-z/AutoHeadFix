@@ -524,7 +524,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             t.setDaemon(True)
             t.start()
 
-            #Start the process which updates the motor
+            # Start the process which updates the motor
             while not self.phase_queue.empty():
                 self.phase_queue.get()
             self.phase_queue.put(self.phase)
@@ -532,10 +532,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             mp.daemon = True
             mp.start()
 
-            #Make object for the keyboard Controller
+            # Make object for the keyboard Controller
             self.kb = keyboard.Controller()
 
-            #Start the thread which listens to the keyboard
+            # Start the thread which listens to the keyboard
             with keyboard.Listener(on_press=self.on_press) as k_listener:
                 k_listener.join()
         finally:
@@ -543,7 +543,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             k_listener.stop()
             mp.terminate() #not necessary
             mp.join(timeout=1.0)
-            #Turn off the laser
+            # Turn off the laser
             self.pulse(0)
             self.camera.stop_preview()
             self.camera.remove_overlay(self.l3)
@@ -553,16 +553,17 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #======================Calculation================================
 
         def solver(image_points,laser_points):
-            #Takes 3 points defined in laser- and image-coordinates and returns the coefficient matrix
+            # Takes 3 points defined in laser- and image-coordinates and returns the coefficient matrix
             a=np.column_stack((image_points,np.array([1,1,1])))
             b1=laser_points[:,0]
             b2=laser_points[:,1]
             print('Debug: A')
             print(a)
             return np.vstack((np.linalg.solve(a, b1),np.linalg.solve(a, b2)))
-        #I don't know why this has to be here, but it does
+        # I don't know why this has to be here, but it does
         print(self.laser_points)
-        #Average the coefficient matrix obatained by solving all combinations of triplets.
+
+        # Average the coefficient matrix obatained by solving all combinations of triplets.
         if len(list(set([x[0] for x in self.laser_points])))>=3:
             self.coeff = []
             for i in combinations(enumerate(zip(self.image_points,self.laser_points)),3):
@@ -582,26 +583,26 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
 
     def select_targets(self):
-        if(path.exists(self.hdf_path)):
+        if path.exists(self.hdf_path):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
-                    if(mouse.__contains__('targets')):
+                    if mouse.__contains__('targets'):
                         tempMouse.update({'targets': mouse['targets'][:]})
-                    if(mouse.__contains__('ref_im')):
+                    if mouse.__contains__('ref_im'):
                         tempMouse.update({'ref_im': mouse['ref_im'][:]})
         mice = self.task.Subjects.get_all()
 
-        #GUI function for the selecting targets
+        # GUI function for the selecting targets
         def manual_annot(img):
             warnings.filterwarnings("ignore",".*GUI is implemented.*")
-            fig = plt.figure(figsize=(self.camera.resolution()[1]/100, self.camera.resolution()[0]/100))
-            imgplot = plt.imshow(img)
+            plt.figure(figsize=(self.camera.resolution()[0]/100, self.camera.resolution()[1]/100))
+            plt.imshow(img)
             plt.title('Choose targets')
             plt.show(block=False)
             points = np.around(np.asarray(plt.ginput(n=1,show_clicks=True,timeout=0)))
             plt.close()
-            return [int(points[0][1]),int(points[0][0])]
+            return [int(points[0][0]),int(points[0][1])]
 
         if not hasattr(self,'coeff'):
             print('Need to perform the matching first before selecting targets')
@@ -620,7 +621,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         targets_coords = manual_annot(mouse.get('ref_im'))
                         mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                         print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[1],mouse.get('targets')[0]))
+                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
             if inputStr == str(1):
                 for tag, mouse in mice.items():
                     if 'ref_im' in mouse:
@@ -628,19 +629,19 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         targets_coords = manual_annot(mouse.get('ref_im'))
                         mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                         print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[1],mouse.get('targets')[0]))
+                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
                     if tempMouse is not None and 'targets' in tempMouse:
                         del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
-                        print('Debug: x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
+                        print('Debug: x: '+str(self.mouse.get('targets')[0])+' y: '+str(self.mouse.get('targets')[1]))
 
-    def image_registration(self, x_target, y_target):
-        #Runs at the beginning of a new trial
+    def image_registration(self):
+        # Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
-            #Utility function to get the transformation matrix
+            # Utility function to get the transformation matrix
             angle = -1*np.radians(angle)
             scale = 1/scale
             x = -1*x
@@ -656,26 +657,25 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.mouse.update({'trial_name': "M" + str(self.tag % 10000) + '_' + str(timestamp)})
         self.task.DataLogger.writeToLogFile(self.tag, 'Image', {'name': self.mouse.get('trial_name'), 'type': 'trial', 'reference': self.mouse.get('ref_name')}, timestamp)
 
-        #Image registration
-        #IMPROVE: Could run the registration on a different processor
+        # Image registration
+        # TODO: Could run the registration on a different processor
         warnings.filterwarnings("ignore",".*the returned array has changed*")
         tf = ird.similarity(self.mouse.get('ref_im')[:,:,1],self.mouse.get('trial_image')[:,:,1],numiter=3)
         print('scale\tangle\tty\ttx')
         print('{0:.3}\t{1:.3}\t{2:.3}\t{3:.3}'.format(tf['scale'],tf['angle'],tf['tvec'][0],tf['tvec'][1]))
 
-        #Check if results of image registration don't cross boundaries
+        # Check if results of image registration don't cross boundaries
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
-            #Transform the target to new position
+            # Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
-            if x_target is None or y_target is None:
-                x_target = self.mouse.get('targets')[1]
-                y_target = self.mouse.get('targets')[0]
+            x_target = self.mouse.get('targets')[0]
+            y_target = self.mouse.get('targets')[1]
 
-            #Shift target to fit origin at center of frame
+            # Shift target to fit origin at center of frame
             cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
             trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[0]/2),int(self.camera.resolution()[1]/2)])
 
-            #Convert image target to motor target
+            # Convert image target to motor target
             targ_pos = np.dot(self.coeff,np.append(trans_coord,1))
             print('TARGET\ttx\tty')
             print('{0}\t{1:.01f}\t{2:.01f}'.format('0',trans_coord[0],trans_coord[1]))
@@ -720,6 +720,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
         try:
+            print('Debug: TARGET X: ' + str(self.mouse.get('targets')[0]) + ' Y: ' + str(self.mouse.get('targets')[1]))
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
             print('Image registration')
@@ -728,7 +729,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             # self.camera.capture(ref_path)
             targ_pos = self.image_registration()
 
-
             # self.rewarder.giveReward('task')
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
@@ -736,7 +736,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 print('Debug: target:\n x:'+str(targ_pos[0])+'\ny: '+str(targ_pos[1]))
                 saved_targ_pos = targ_pos
                 print('Moving laser to target and capture image to assert correct laser position')
-                self.move_to(targ_pos,topleft=True,join=True) #Move laser to target and wait until target reached
+                # Move laser to target and wait until target reached
+                self.move_to(targ_pos,topleft=True,join=True)
+
                 self.mouse.update({'laser_spot': np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
                 self.pulse(self.laser_on_time,self.duty_cycle) #At least 60 ms needed to capture laser spot
                 self.camera.capture(self.mouse.get('laser_spot'),'rgb', video_port=True)
@@ -774,8 +776,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def hardwareTest(self):
-        #Tester function called from the hardwareTester. Includes Stimulator
-        #specific hardware tester.
+        # Tester function called from the hardwareTester. Includes Stimulator
+        # specific hardware tester.
         while(True):
             inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             self.tag = 111111111
@@ -785,14 +787,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
             elif inputStr == 'i':
                 self.camera.start_preview()
-                # Manually input target
-                x_target = input('Enter x target between 0 and ' + str(self.camera.resolution()[0]))
-                y_target = input('Enter y target between 0 and ' + str(self.camera.resolution()[1]))
-                targ_pos = self.image_registration(x_target, y_target)
-                print('Moving laser to target and capture image to assert correct laser position')
-                self.pulse(self.laser_on_time, self.duty_cycle)  # At least 60 ms needed to capture laser spot
-                self.move_to(targ_pos, topleft=True, join=True)  # Move laser to target and wait until target reached
-                input("Press enter to quit")
+                self.align(111111111)
                 self.camera.stop_preview()
             elif inputStr == 'r':
                 self.editReference()
