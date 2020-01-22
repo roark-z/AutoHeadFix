@@ -636,7 +636,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if tempMouse is not None and 'targets' in tempMouse:
                         del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
-                        print('Debug: x: '+str(self.mouse.get('targets')[0])+' y: '+str(self.mouse.get('targets')[1]))
+                print('Debug: x: '+str(self.mouse.get('targets')[0])+' y: '+str(self.mouse.get('targets')[1]))
 
     def image_registration(self):
         # Runs at the beginning of a new trial
@@ -695,6 +695,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         """
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
+        print('Debug: x: ' + str(self.mouse.get('targets')[0]) + ' y: ' + str(self.mouse.get('targets')[1]))
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
@@ -862,13 +863,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                     ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                     ref = folder.require_dataset('end',shape=tuple(resolution_shape),dtype=np.uint8,data=self.accuracyEnd)
                     ref.attrs.modify('CLASS', np.string_('IMAGE'))
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                     ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
 
     def setdown(self):
         #Remove portions saved in h5
@@ -947,7 +948,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ref.attrs.modify('NAME', np.string_(self.mouse.get('ref_name')))
             if 'targets' in self.mouse:
                 mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=self.mouse.get('targets'))
@@ -958,7 +959,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 tr.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 tr.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 tr.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                tr.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                tr.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 tr.attrs.modify('timestamp', self.mouse.get('timestamp'))
             if 'laser_spot' in self.mouse:
                 ls = t.require_dataset(self.mouse.get('laser_name') +'_laser_spot',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('laser_spot'))
@@ -966,5 +967,5 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 ls.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ls.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 ls.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                ls.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                ls.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ls.attrs.modify('timestamp', self.mouse.get('timestamp'))
