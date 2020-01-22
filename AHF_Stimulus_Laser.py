@@ -667,31 +667,16 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
             #Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
-            print('Debug: self.R matrix')
-            print(self.R) 
-
             if x_target is None or y_target is None:
                 x_target = self.mouse.get('targets')[1]
                 y_target = self.mouse.get('targets')[0]
 
             #Shift target to fit origin at center of frame
             cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
-            print('Debug: target')
-            print('x: '+str(x_target[0])+' y: '+str(x_target[1]))
-            print('Debug: cent_targ')
-            print(cent_targ)
-
             trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[0]/2),int(self.camera.resolution()[1]/2)])
-            print('Debug: trans_coord')
-            print(trans_coord)
-        
-            print('Debug: coefficient matrix')
-            print(self.coeff)
 
+            #Convert image target to motor target
             targ_pos = np.dot(self.coeff,np.append(trans_coord,1))
-            print('Debug: targ_pos')
-            print(targ_pos)
-
             print('TARGET\ttx\tty')
             print('{0}\t{1:.01f}\t{2:.01f}'.format('0',trans_coord[0],trans_coord[1]))
             self.task.DataLogger.writeToLogFile(self.tag, 'ImageRegistration', {'scale': tf['scale'], 'angle': tf['angle'], 'trans_x': tf['tvec'][0], 'trans_y': tf['tvec'][1]}, time())
@@ -741,11 +726,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             # ref_path = self.cageSettings.dataPath+'sample_im/'+datetime.fromtimestamp(int(time())).isoformat('-')+'_'+str(self.mouse.tag)+'.jpg'
             self.mouse.update({'timestamp': time()})
             # self.camera.capture(ref_path)
+            targ_pos = self.image_registration()
 
-            # Manually input target
-            x_target = input('Enter x target bewtween 0 and ' + str(self.camera.resolution()[0]))
-            y_target = input('Enter y target bewtween 0 and ' + str(self.camera.resolution()[1]))
-            targ_pos = self.image_registration(x_target, y_target)
 
             # self.rewarder.giveReward('task')
             if targ_pos is None and saved_targ_pos is not None:
@@ -803,7 +785,15 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
             elif inputStr == 'i':
                 self.camera.start_preview()
-                self.align(111111111)
+                # Manually input target
+                x_target = input('Enter x target between 0 and ' + str(self.camera.resolution()[0]))
+                y_target = input('Enter y target between 0 and ' + str(self.camera.resolution()[1]))
+                targ_pos = self.image_registration(x_target, y_target)
+                print('Moving laser to target and capture image to assert correct laser position')
+                self.pulse(self.laser_on_time, self.duty_cycle)  # At least 60 ms needed to capture laser spot
+                self.move_to(targ_pos, topleft=True, join=True)  # Move laser to target and wait until target reached
+                input("Press enter to quit")
+                self.camera.stop_preview()
             elif inputStr == 'r':
                 self.editReference()
             elif inputStr == 't':
