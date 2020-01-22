@@ -322,8 +322,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if key == keyboard.Key.space:
             self.kb.press(keyboard.Key.backspace)
             self.kb.release(keyboard.Key.backspace)
-            self.image_points.append(np.copy(self.cross_pos))
-            self.laser_points.append(np.copy(np.flip(self.pos,axis=0)))
+            self.image_points.append(np.copy(np.flip(self.cross_pos, axis=0)))
+            self.laser_points.append(np.copy(self.pos))
             print('\n\nPosition saved!\n\n')
         if key == keyboard.Key.esc:
             if len(self.image_points)>=3:
@@ -557,6 +557,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             a=np.column_stack((image_points,np.array([1,1,1])))
             b1=laser_points[:,0]
             b2=laser_points[:,1]
+            print('Debug: A')
+            print(a)
             return np.vstack((np.linalg.solve(a, b1),np.linalg.solve(a, b2)))
         #I don't know why this has to be here, but it does
         print(self.laser_points)
@@ -568,7 +570,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 lp = np.array([i[0][1][1],i[1][1][1],i[2][1][1]])
                 self.coeff.append(solver(ip, lp))
             self.coeff = np.mean(np.asarray(self.coeff),axis=0)
-        print("Center in laser coords:", np.dot(self.coeff, np.asarray([128, 128, 1])))
+        print('Debug: coeff matrix')
+        print(self.coeff)
+        print("Center in laser coords:", np.dot(self.coeff, np.asarray([self.camera.resolution()[0], self.camera.resolution()[1], 1])))
 
     def get_ref_im(self):
         #Save a reference image whithin the mouse object
@@ -633,10 +637,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
                         print('Debug: x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
 
-    def image_registration(self):
-        print('Debug:' +str(self.tag))
-        print(self.mouse.get('targets'))
-
+    def image_registration(self, x_target, y_target):
         #Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
             #Utility function to get the transformation matrix
@@ -669,18 +670,25 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             print('Debug: self.R matrix')
             print(self.R) 
 
-            cent_targ = self.mouse.get('targets') - np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)]) #translate targets to center of image
-            cent_targ = cent_targ[::-1]
+            if x_target is None or y_target is None:
+                x_target = self.mouse.get('targets')[1]
+                y_target = self.mouse.get('targets')[0]
+
+            #Shift target to fit origin at center of frame
+            cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
             print('Debug: target')
-            print('x: '+str(self.mouse.get('targets')[1])+' y: '+str(self.mouse.get('targets')[0]))
+            print('x: '+str(x_target[0])+' y: '+str(x_target[1]))
             print('Debug: cent_targ')
             print(cent_targ)
 
             trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[0]/2),int(self.camera.resolution()[1]/2)])
             print('Debug: trans_coord')
             print(trans_coord)
+        
+            print('Debug: coefficient matrix')
+            print(self.coeff)
 
-            targ_pos = np.dot(self.coeff[::-1],np.append(trans_coord,1))
+            targ_pos = np.dot(self.coeff,np.append(trans_coord,1))
             print('Debug: targ_pos')
             print(targ_pos)
 
@@ -724,6 +732,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         elif self.coeff is None:
             print("Match laser and camera coordinates")
             return False
+
+
         try:
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
@@ -731,7 +741,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             # ref_path = self.cageSettings.dataPath+'sample_im/'+datetime.fromtimestamp(int(time())).isoformat('-')+'_'+str(self.mouse.tag)+'.jpg'
             self.mouse.update({'timestamp': time()})
             # self.camera.capture(ref_path)
-            targ_pos = self.image_registration()
+
+            # Manually input target
+            x_target = input('Enter x target bewtween 0 and ' + str(self.camera.resolution()[0]))
+            y_target = input('Enter y target bewtween 0 and ' + str(self.camera.resolution()[1]))
+            targ_pos = self.image_registration(x_target, y_target)
+
             # self.rewarder.giveReward('task')
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
