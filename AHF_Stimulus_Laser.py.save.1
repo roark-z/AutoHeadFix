@@ -152,7 +152,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.cross_pos =(np.array(self.camera.resolution())/2).astype(int)
         self.cross_step = int(self.camera.resolution()[0]/50)
         self.cross_q = queue(maxsize=0) #Queues the cross-hair changes.
-        self.coeff = np.asarray(self.settingsDict.get('coeff_matrix', []))
+        self.coeff = np.asarray(self.settingsDict.get('coeff_matrix', None))
         '''
         Info: A cross-hair is used as an overlay to the picamera preview. Commands
         to move the cross-hair are queued in a python queue, which is processed by
@@ -634,9 +634,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
                     if tempMouse is not None and 'targets' in tempMouse:
-                       # del mouse['targets']
+                        del mouse['targets']
                         mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
-               
+                print('Debug: x: '+str(self.mouse.get('targets')[0])+' y: '+str(self.mouse.get('targets')[1]))
+
     def image_registration(self):
         # Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
@@ -694,7 +695,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         """
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
-        #print('Debug: x: ' + str(self.mouse.get('targets')[0]) + ' y: ' + str(self.mouse.get('targets')[1]))
+        print('Debug: x: ' + str(self.mouse.get('targets')[0]) + ' y: ' + str(self.mouse.get('targets')[1]))
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
@@ -713,16 +714,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             print(str(self.mouse.get('ref_im')))
             print('Select targets')
             self.task.DataLogger.writeToLogFile(self.tag, 'TargetError', {'type': 'no targets selected'}, time())
-            self.camera.stop_preview()
-            self.select_targets()
             #If targets haven't been choosen -> release mouse again
             return False
-        elif self.coeff is []:
+        elif self.coeff is None:
             print("Match laser and camera coordinates")
-            self.matcher()
             return False
-        else:
-            print(self.coeff)
 
 
         try:
