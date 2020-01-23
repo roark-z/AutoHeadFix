@@ -149,6 +149,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.laser_step = 3
         #Cross-hair Overlay settings
         self.overlay_resolution = self.camera.resolution()
+        print(self.overlay_resolution)
         self.cross_pos =(np.array(self.camera.resolution())/2).astype(int)
         self.cross_step = int(self.camera.resolution()[0]/50)
         self.cross_q = queue(maxsize=0) #Queues the cross-hair changes.
@@ -222,6 +223,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #self.buzzTypes = []
         #self.lickWithholdTimes = []
         self.rewardTimes = []
+
+        #Temporary variable hopefully
+        targets = []
 
     def trialPrep(self, tag):
         return self.align(tag)
@@ -604,39 +608,39 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             plt.close()
             return [int(points[0][0]),int(points[0][1])]
 
-        if not hasattr(self,'coeff'):
-            print('Need to perform the matching first before selecting targets')
-            return None
-        else:
+
+        for tag, mouse in mice.items():
+            if 'targets' in mouse:
+                inputStr = input('Certain/All mice already have brain targets.\n0: Select targets for remaining mice\n1: Select targets for all registered mice.\n')
+                break
+            else:
+                inputStr = str(1)
+        if inputStr == str(0):
             for tag, mouse in mice.items():
-                if 'targets' in mouse:
-                    inputStr = input('Certain/All mice already have brain targets.\n0: Select targets for remaining mice\n1: Select targets for all registered mice.\n')
-                    break
-                else:
-                    inputStr = str(1)
-            if inputStr == str(0):
-                for tag, mouse in mice.items():
-                    if( 'targets' not in mouse and 'ref_im' in mouse):
-                        print('Mouse: ', tag)
-                        targets_coords = manual_annot(mouse.get('ref_im'))
-                        mouse.update({'targets': np.asarray(targets_coords).astype(int)})
-                        print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
-            if inputStr == str(1):
-                for tag, mouse in mice.items():
-                    if 'ref_im' in mouse:
-                        print('Mouse: ', tag)
-                        targets_coords = manual_annot(mouse.get('ref_im'))
-                        mouse.update({'targets': np.asarray(targets_coords).astype(int)})
-                        print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
-            with File(self.hdf_path, 'r+') as hdf:
-                for tag, mouse in hdf.items():
-                    tempMouse = self.task.Subjects.get(tag)
-                    if tempMouse is not None and 'targets' in tempMouse:
-                       # del mouse['targets']
-                        mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
-               
+                if( 'targets' not in mouse and 'ref_im' in mouse):
+                    print('Mouse: ', tag)
+                    targets_coords = manual_annot(mouse.get('ref_im'))
+                    self.targets = targets_coords
+                    mouse.update({'targets': np.asarray(targets_coords).astype(int)})
+                    print('TARGET\tx\ty')
+                    print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+        if inputStr == str(1):
+            for tag, mouse in mice.items():
+                if 'ref_im' in mouse:
+                    print('Mouse: ', tag)
+                    targets_coords = manual_annot(mouse.get('ref_im'))
+                    self.targets = targets_coords
+                    mouse.update({'targets': np.asarray(targets_coords).astype(int)})
+                    print('TARGET\tx\ty')
+                    print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+        with File(self.hdf_path, 'r+') as hdf:
+            for tag, mouse in hdf.items():
+                tempMouse = self.task.Subjects.get(tag)
+                if tempMouse is not None and 'targets' in tempMouse:
+                    #del mouse['targets']
+                    mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+
+
     def image_registration(self):
         # Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
@@ -667,8 +671,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
             # Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
-            x_target = self.mouse.get('targets')[0]
-            y_target = self.mouse.get('targets')[1]
+            #x_target = self.mouse.get('targets')[0]
+            #y_target = self.mouse.get('targets')[1]
+            x_target = self.targets[0]
+            y_target = self.targets[1]
 
             # Shift target to fit origin at center of frame
             cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
@@ -694,7 +700,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         """
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
-        #print('Debug: x: ' + str(self.mouse.get('targets')[0]) + ' y: ' + str(self.mouse.get('targets')[1]))
         self.loadH5()
         self.rewardTimes = []
         saved_targ_pos = None
@@ -717,7 +722,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.select_targets()
             #If targets haven't been choosen -> release mouse again
             return False
-        elif self.coeff is []:
+        elif self.coeff == np.asarray([]):
             print("Match laser and camera coordinates")
             self.matcher()
             return False
@@ -727,6 +732,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
         try:
             print('Debug: TARGET X: ' + str(self.mouse.get('targets')[0]) + ' Y: ' + str(self.mouse.get('targets')[1]))
+            print('Debug: TARGET X: ' + str(self.targets[0]) + ' Y: ' + str(self.targets[1]))
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
             print('Image registration')
@@ -953,7 +959,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,640])
+                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ref.attrs.modify('NAME', np.string_(self.mouse.get('ref_name')))
             if 'targets' in self.mouse:
                 mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=self.mouse.get('targets'))
