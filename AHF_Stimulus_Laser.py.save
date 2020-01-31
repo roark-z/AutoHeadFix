@@ -344,7 +344,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def make_cross(self):
         #Define a simple cross-hair and add it as an overlay to the preview
-        cross = np.zeros((self.overlay_resolution[1],self.overlay_resolution[0],3),dtype=np.uint8)
+        cross = np.zeros((self.overlay_resolution[1],self.overlay_resolution[0],3),dtype=np.uint16)
         cross[self.cross_pos[0],:,:] = 0xff
         cross[:,self.cross_pos[1],:] = 0xff
         self.l3 = self.camera.add_overlay(cross.tobytes(),
@@ -578,7 +578,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def get_ref_im(self):
         #Save a reference image whithin the mouse object
         print('Taking ref image')
-        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
 
@@ -635,7 +635,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     tempMouse = self.task.Subjects.get(tag)
                     if tempMouse is not None and 'targets' in tempMouse:
                         del mouse['targets']
-                        mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+                        mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=tempMouse.get('targets'))
                 print('Debug: x: '+str(self.mouse.get('targets')[0])+' y: '+str(self.mouse.get('targets')[1]))
 
     def image_registration(self):
@@ -651,7 +651,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             scale_mat = np.array([[scale,1,1],[1,scale,1]])
             return rot_ext*scale_mat
 
-        self.mouse.update({'trial_image' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+        self.mouse.update({'trial_image' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
         self.camera.capture(self.mouse.get('trial_image'),'rgb')
         timestamp = time()
         self.mouse.update({'trial_name': "M" + str(self.tag % 10000) + '_' + str(timestamp)})
@@ -740,7 +740,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 # Move laser to target and wait until target reached
                 self.move_to(targ_pos,topleft=True,join=True)
 
-                self.mouse.update({'laser_spot': np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+                self.mouse.update({'laser_spot': np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
                 self.pulse(self.laser_on_time,self.duty_cycle) #At least 60 ms needed to capture laser spot
                 self.camera.capture(self.mouse.get('laser_spot'),'rgb', video_port=True)
                 timestamp = time()
@@ -834,7 +834,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.pulse(1000,self.duty_cycle)
             center = np.dot(self.coeff, np.asarray([self.camera.resolution()[1]/2, self.camera.resolution()[0]/2, 1]))
             self.move_to(center, topleft=True, join=True)
-            self.accuracyStart = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)
+            self.accuracyStart = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)
             self.camera.stop_preview()
             self.camera.capture(self.accuracyStart,'rgb')
             self.pulse(0)
@@ -846,7 +846,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.camera.start_preview()
             self.pulse(1000,self.duty_cycle)
             self.move_to(center, topleft=True,join=True)
-            self.accuracyEnd = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)
+            self.accuracyEnd = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)
             self.camera.stop_preview()
             self.camera.capture(self.accuracyEnd,'rgb')
             self.pulse(0)
@@ -858,13 +858,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if folder.__contains__('end'):
                         del folder['end']
                     resolution_shape =( self.camera.resolution()[0], self.camera.resolution()[1], 3) #rgb layers
-                    ref = folder.require_dataset('start',shape=tuple(resolution_shape),dtype=np.uint8,data=self.accuracyStart)
+                    ref = folder.require_dataset('start',shape=tuple(resolution_shape),dtype=np.uint16,data=self.accuracyStart)
                     ref.attrs.modify('CLASS', np.string_('IMAGE'))
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                     ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
                     ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
-                    ref = folder.require_dataset('end',shape=tuple(resolution_shape),dtype=np.uint8,data=self.accuracyEnd)
+                    ref = folder.require_dataset('end',shape=tuple(resolution_shape),dtype=np.uint16,data=self.accuracyEnd)
                     ref.attrs.modify('CLASS', np.string_('IMAGE'))
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
@@ -943,7 +943,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             mouse = hdf.require_group(str(self.tag))
             resolution_shape =( self.camera.resolution()[1], self.camera.resolution()[0], 3) #rgb layers
             if 'ref_im' in self.mouse:
-                ref = mouse.require_dataset('ref_im',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('ref_im'))
+                ref = mouse.require_dataset('ref_im',shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('ref_im'))
                 ref.attrs.modify('CLASS', np.string_('IMAGE'))
                 ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
@@ -951,10 +951,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ref.attrs.modify('NAME', np.string_(self.mouse.get('ref_name')))
             if 'targets' in self.mouse:
-                mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=self.mouse.get('targets'))
+                mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=self.mouse.get('targets'))
             t = mouse.require_group('trial_image')
             if 'trial_image' in self.mouse:
-                tr = t.require_dataset(self.mouse.get('trial_name'),shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('trial_image'))
+                tr = t.require_dataset(self.mouse.get('trial_name'),shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('trial_image'))
                 tr.attrs.modify('CLASS', np.string_('IMAGE'))
                 tr.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 tr.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
@@ -962,7 +962,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 tr.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 tr.attrs.modify('timestamp', self.mouse.get('timestamp'))
             if 'laser_spot' in self.mouse:
-                ls = t.require_dataset(self.mouse.get('laser_name') +'_laser_spot',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('laser_spot'))
+                ls = t.require_dataset(self.mouse.get('laser_name') +'_laser_spot',shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('laser_spot'))
                 ls.attrs.modify('CLASS', np.string_('IMAGE'))
                 ls.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ls.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
