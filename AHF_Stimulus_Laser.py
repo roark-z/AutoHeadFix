@@ -126,6 +126,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         return starterDict
 
     def setup(self):
+        self.targets = None
         self.camera = self.task.Camera
         #PWM settings
         self.PWM_mode = int(self.settingsDict.get('PWM_mode', 0))
@@ -223,9 +224,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #self.buzzTypes = []
         #self.lickWithholdTimes = []
         self.rewardTimes = []
-
-        #Temporary variable hopefully
-        targets = []
 
     def trialPrep(self, tag):
         return self.align(tag)
@@ -620,7 +618,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 if( 'targets' not in mouse and 'ref_im' in mouse):
                     print('Mouse: ', tag)
                     targets_coords = manual_annot(mouse.get('ref_im'))
-                    self.targets = targets_coords
                     mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                     print('TARGET\tx\ty')
                     print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
@@ -629,16 +626,15 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 if 'ref_im' in mouse:
                     print('Mouse: ', tag)
                     targets_coords = manual_annot(mouse.get('ref_im'))
-                    self.targets = targets_coords
                     mouse.update({'targets': np.asarray(targets_coords).astype(int)})
                     print('TARGET\tx\ty')
                     print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
         with File(self.hdf_path, 'r+') as hdf:
             for tag, mouse in hdf.items():
                 tempMouse = self.task.Subjects.get(tag)
-                if tempMouse is not None and 'targets' in tempMouse:
-                    #del mouse['targets']
-                    mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+                if tempMouse is not None and 'targets' in tempMouse and tempMouse.get('targets') is not None:
+                    del mouse['targets']
+                    mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=tempMouse.get('targets'))
 
 
     def image_registration(self):
@@ -671,10 +667,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
             # Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
-            #x_target = self.mouse.get('targets')[0]
-            #y_target = self.mouse.get('targets')[1]
-            x_target = self.targets[0]
-            y_target = self.targets[1]
+            x_target = self.mouse.get('targets')[0]
+            y_target = self.mouse.get('targets')[1]
 
             # Shift target to fit origin at center of frame
             cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
@@ -715,7 +709,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.mouse.pop('ref_im')
             return False
         elif not 'targets' in self.mouse or self.mouse.get('targets') is None:
-            print(str(self.mouse.get('ref_im')))
             print('Select targets')
             self.task.DataLogger.writeToLogFile(self.tag, 'TargetError', {'type': 'no targets selected'}, time())
             self.camera.stop_preview()
@@ -727,11 +720,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.matcher()
             return False
         else:
-            print(self.coeff)
+            print('Debug: TARGETS ' +str(self.mouse.get('targets')))
 
 
         try:
-            print('Debug: TARGET X: ' + str(self.mouse.get('targets')[0]) + ' Y: ' + str(self.mouse.get('targets')[1]))
             print('Debug: TARGET X: ' + str(self.targets[0]) + ' Y: ' + str(self.targets[1]))
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
@@ -745,7 +737,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
             if targ_pos is not None:
-                print('Debug: target:\n x:'+str(targ_pos[0])+'\ny: '+str(targ_pos[1]))
                 saved_targ_pos = targ_pos
                 print('Moving laser to target and capture image to assert correct laser position')
                 # Move laser to target and wait until target reached
