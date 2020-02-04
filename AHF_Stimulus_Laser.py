@@ -633,7 +633,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             for tag, mouse in hdf.items():
                 tempMouse = self.task.Subjects.get(tag)
                 if tempMouse is not None and 'targets' in tempMouse and tempMouse.get('targets') is not None:
-                    del mouse['targets']
+                    #del mouse['targets']
                     mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=tempMouse.get('targets'))
 
 
@@ -724,7 +724,6 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
         try:
-            print('Debug: TARGET X: ' + str(self.targets[0]) + ' Y: ' + str(self.targets[1]))
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
             print('Image registration')

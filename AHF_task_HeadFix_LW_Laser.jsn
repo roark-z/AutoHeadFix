@@ -10,8 +10,8 @@
 640
 480]
 "quality"=20
-"resolution"=[640
-480]
+"resolution"=[256
+256]
 "shutter_speed"=30000
 "whiteBalance"=false}
 "ContactCheckClass"="AHF_ContactCheck_BeamBreak"
@@ -74,12 +74,7 @@
 "Q7S"=6
 "SHCP"=5
 "STCP"=17
-"coeff_matrix"=[[33.95522388059701
-8.70646766169153
--3322.3880597014863]
-[0.12437810945272013
-30.907960199004965
--15221.144278606957]]
+"coeff_matrix"=null
 "duty_cycle"=50
 "hdf_path"="mice_images.h5"
 "laser_on_time"=800
@@ -96,7 +91,7 @@
 "entryTime"=0.0
 "fileName"="HeadFix_LW_Laser"
 "filename"="temp"
-"fixAgainTime"=1579642538.3922575
+"fixAgainTime"=1580850306.0430303
 "fixed"=false
 "inChamberLimitExceeded"=false
 "isFixTrial"=false
