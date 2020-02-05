@@ -632,7 +632,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             for tag, mouse in hdf.items():
                 tempMouse = self.task.Subjects.get(tag)
                 if tempMouse is not None and 'targets' in tempMouse and tempMouse.get('targets') is not None:
-                    del mouse['targets']
+                    #del mouse['targets']
                     mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=tempMouse.get('targets'))
 
 
