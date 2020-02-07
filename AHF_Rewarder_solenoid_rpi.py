@@ -51,6 +51,7 @@ class AHF_Rewarder_solenoid_rpi(AHF_Rewarder_solenoid):
 
     def setup(self):
         super().setup()
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.rewardPin, GPIO.OUT)
         self.counterMand = 0
 

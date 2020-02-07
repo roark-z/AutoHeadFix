@@ -320,15 +320,17 @@ class AHF_Subjects_mice(AHF_Subjects):
         response = input('Save changes in settings to a json file, too?(recommended)')
         if response[0] == 'Y' or response[0] == 'y':
             CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
+
+
     def hardwareTest(self):
         from time import sleep
         while True:
             inputStr = '\n change the following variables. \nEnter:\n'
             inputStr += '0: Leave Unchanged\n'
             inputStr += '1: inChamberTimeLimit\n'
-            inputStr += '2: Mouse Settings'
+            inputStr += '2: Mouse Settings\n'
             event = input(inputStr)
-            if event == 0:
+            if event == '0':
                 break
             if event == '1':
                 result = input('Enter in-Chamber duration limit, in minutes, before stopping head-fix trials, currently {:.2f}: '.format(self.inChamberTimeLimit / 60))

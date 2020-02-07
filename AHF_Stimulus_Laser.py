@@ -149,10 +149,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.laser_step = 3
         #Cross-hair Overlay settings
         self.overlay_resolution = self.camera.resolution()
+        print(self.overlay_resolution)
         self.cross_pos =(np.array(self.camera.resolution())/2).astype(int)
         self.cross_step = int(self.camera.resolution()[0]/50)
         self.cross_q = queue(maxsize=0) #Queues the cross-hair changes.
-        self.coeff = np.asarray(self.settingsDict.get('coeff_matrix', None))
+        self.coeff = np.asarray(self.settingsDict.get('coeff_matrix', []))
         '''
         Info: A cross-hair is used as an overlay to the picamera preview. Commands
         to move the cross-hair are queued in a python queue, which is processed by
@@ -254,7 +255,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def feed_byte(self,byte):
         #Toggle a byte into the shjft registers
-        for j in reversed(byte):
+        for j in byte:
             GPIO.output(self.DS,j)
             GPIO.output(self.SHCP,0)
             GPIO.output(self.SHCP,1)
@@ -265,7 +266,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         # Read out serial output and store state. Feed state back into shift reg.
         # Create empty array to store the state
         state = np.empty(8,dtype=int)
-        for j in reversed(range(8)):
+        for j in range(8):
             out = GPIO.input(self.Q7S)
             np.put(state,j,out)
             GPIO.output(self.DS,out) #Feed output into input
@@ -293,13 +294,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.kb.release(keyboard.Key.backspace)
             return 0,0,0,0
         elif key == keyboard.Key.right:
-            return 0, self.laser_step,0,0
-        elif key == keyboard.Key.left:
-            return 0, -self.laser_step,0,0
-        elif key == keyboard.Key.down:
             return self.laser_step,0,0,0
-        elif key == keyboard.Key.up:
+        elif key == keyboard.Key.left:
             return -self.laser_step,0,0,0
+        elif key == keyboard.Key.down:
+            return 0,self.laser_step,0,0
+        elif key == keyboard.Key.up:
+            return 0,-self.laser_step,0,0
         elif key == keyboard.Key.delete:
             return 0,0,0,-self.cross_step
         elif key == keyboard.Key.page_down:
@@ -322,8 +323,8 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         if key == keyboard.Key.space:
             self.kb.press(keyboard.Key.backspace)
             self.kb.release(keyboard.Key.backspace)
-            self.image_points.append(np.copy(self.cross_pos))
-            self.laser_points.append(np.copy(np.flip(self.pos,axis=0)))
+            self.image_points.append(np.copy(np.flip(self.cross_pos, axis=0)))
+            self.laser_points.append(np.copy(self.pos))
             print('\n\nPosition saved!\n\n')
         if key == keyboard.Key.esc:
             if len(self.image_points)>=3:
@@ -344,7 +345,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def make_cross(self):
         #Define a simple cross-hair and add it as an overlay to the preview
-        cross = np.zeros((self.overlay_resolution[1],self.overlay_resolution[0],3),dtype=np.uint8)
+        cross = np.zeros((self.overlay_resolution[1],self.overlay_resolution[0],3),dtype=np.uint16)
         cross[self.cross_pos[0],:,:] = 0xff
         cross[:,self.cross_pos[1],:] = 0xff
         self.l3 = self.camera.add_overlay(cross.tobytes(),
@@ -406,11 +407,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             next_phase_x =(phase_x + self.get_dir(x)) % len(states)
             if i in y_steps:
                 next_phase_y =(phase_y + self.get_dir(y)) % len(states)
-                byte = states[next_phase_x]+states[next_phase_y]
+                byte = states[next_phase_y]+states[next_phase_x]
                 phase_y = next_phase_y
             else:
-                state_y = self.get_state()[-4:]
-                byte = states[next_phase_x]+state_y
+                state_y = self.get_state()[:4]
+                byte = state_y + states[next_phase_x]
             #Send and execute new byte
             self.feed_byte(byte)
             #Update phase
@@ -421,11 +422,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             next_phase_y =(phase_y + self.get_dir(y)) % len(states)
             if i in x_steps:
                 next_phase_x =(phase_x + self.get_dir(x)) % len(states)
-                byte = states[next_phase_x]+states[next_phase_y]
+                byte = states[next_phase_y]+states[next_phase_x]
                 phase_x = next_phase_x
             else:
-                state_x = self.get_state()[:4]
-                byte = state_x+states[next_phase_y]
+                state_x = self.get_state()[-4:]
+                byte = states[next_phase_y] + state_x
             #Send and execute new byte
             self.feed_byte(byte)
             phase_y = next_phase_y
@@ -451,9 +452,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     def move_to(self,new_pos,topleft=True,join=False):
         #High-level function, which invokes self.move to run on another processor
-        steps = np.around(new_pos).astype(int)-self.pos
+        steps = np.around(new_pos).astype(int) - self.pos
+        print('Current:\nx: '+str(self.pos[0])+'\ny: '+str(self.pos[1]))
+        print('Target:\nx: '+str(new_pos[0])+'\ny: '+str(new_pos[1]))
+
         mp = Process(target=self.move, args=(steps[0],steps[1],self.phase,self.delay,topleft,False,))
         mp.daemon = True
+        print('Diff:\nx: '+str(steps[0])+'\ny: '+str(steps[1]))
         mp.start()
         if join:
             timeout = 30
@@ -520,7 +525,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             t.setDaemon(True)
             t.start()
 
-            #Start the process which updates the motor
+            # Start the process which updates the motor
             while not self.phase_queue.empty():
                 self.phase_queue.get()
             self.phase_queue.put(self.phase)
@@ -528,10 +533,10 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             mp.daemon = True
             mp.start()
 
-            #Make object for the keyboard Controller
+            # Make object for the keyboard Controller
             self.kb = keyboard.Controller()
 
-            #Start the thread which listens to the keyboard
+            # Start the thread which listens to the keyboard
             with keyboard.Listener(on_press=self.on_press) as k_listener:
                 k_listener.join()
         finally:
@@ -539,7 +544,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             k_listener.stop()
             mp.terminate() #not necessary
             mp.join(timeout=1.0)
-            #Turn off the laser
+            # Turn off the laser
             self.pulse(0)
             self.camera.stop_preview()
             self.camera.remove_overlay(self.l3)
@@ -549,14 +554,17 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         #======================Calculation================================
 
         def solver(image_points,laser_points):
-            #Takes 3 points defined in laser- and image-coordinates and returns the coefficient matrix
+            # Takes 3 points defined in laser- and image-coordinates and returns the coefficient matrix
             a=np.column_stack((image_points,np.array([1,1,1])))
             b1=laser_points[:,0]
             b2=laser_points[:,1]
+            print('Debug: A')
+            print(a)
             return np.vstack((np.linalg.solve(a, b1),np.linalg.solve(a, b2)))
-        #I don't know why this has to be here, but it does
+        # I don't know why this has to be here, but it does
         print(self.laser_points)
-        #Average the coefficient matrix obatained by solving all combinations of triplets.
+
+        # Average the coefficient matrix obatained by solving all combinations of triplets.
         if len(list(set([x[0] for x in self.laser_points])))>=3:
             self.coeff = []
             for i in combinations(enumerate(zip(self.image_points,self.laser_points)),3):
@@ -564,71 +572,74 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 lp = np.array([i[0][1][1],i[1][1][1],i[2][1][1]])
                 self.coeff.append(solver(ip, lp))
             self.coeff = np.mean(np.asarray(self.coeff),axis=0)
-        print("Center in laser coords:", np.dot(self.coeff, np.asarray([128, 128, 1])))
+        print('Debug: coeff matrix')
+        print(self.coeff)
+        print("Center in laser coords:", np.dot(self.coeff, np.asarray([self.camera.resolution()[0], self.camera.resolution()[1], 1])))
 
     def get_ref_im(self):
         #Save a reference image whithin the mouse object
-        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+        print('Taking ref image')
+        self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
 
     def select_targets(self):
-        if(path.exists(self.hdf_path)):
+        if path.exists(self.hdf_path):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
                     tempMouse = self.task.Subjects.get(tag)
-                    if(mouse.__contains__('targets')):
+                    if mouse.__contains__('targets'):
                         tempMouse.update({'targets': mouse['targets'][:]})
-                    if(mouse.__contains__('ref_im')):
+                    if mouse.__contains__('ref_im'):
                         tempMouse.update({'ref_im': mouse['ref_im'][:]})
         mice = self.task.Subjects.get_all()
-        #GUI function for the selecting targets
+
+        # GUI function for the selecting targets
         def manual_annot(img):
             warnings.filterwarnings("ignore",".*GUI is implemented.*")
-            fig = plt.figure(figsize=(10,10))
-            imgplot = plt.imshow(img)
+            plt.figure(figsize=(self.camera.resolution()[0]/100, self.camera.resolution()[1]/100))
+            plt.imshow(img)
             plt.title('Choose targets')
             plt.show(block=False)
             points = np.around(np.asarray(plt.ginput(n=1,show_clicks=True,timeout=0)))
             plt.close()
-            return [int(points[0][1]),int(points[0][0])]
+            return [int(points[0][0]),int(points[0][1])]
 
-        if not hasattr(self,'coeff'):
-            print('Need to perform the matching first before selecting targets')
-            return None
-        else:
+
+        for tag, mouse in mice.items():
+            if 'targets' in mouse:
+                inputStr = input('Certain/All mice already have brain targets.\n0: Select targets for remaining mice\n1: Select targets for all registered mice.\n')
+                break
+            else:
+                inputStr = str(1)
+        if inputStr == str(0):
             for tag, mouse in mice.items():
-                if 'targets' in mouse:
-                    inputStr = input('Certain/All mice already have brain targets.\n0: Select targets for remaining mice\n1: Select targets for all registered mice.\n')
-                    break
-                else:
-                    inputStr = str(1)
-            if inputStr == str(0):
-                for tag, mouse in mice.items():
-                    if( 'targets' not in mouse and 'ref_im' in mouse):
-                        print('Mouse: ', tag)
-                        targets_coords = manual_annot(mouse.get('ref_im'))
-                        mouse.update({'targets': np.asarray(targets_coords).astype(int)})
-                        print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
-            if inputStr == str(1):
-                for tag, mouse in mice.items():
-                    if 'ref_im' in mouse:
-                        print('Mouse: ', tag)
-                        targets_coords = manual_annot(mouse.get('ref_im'))
-                        mouse.update({'targets': np.asarray(targets_coords).astype(int)})
-                        print('TARGET\tx\ty')
-                        print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
-            with File(self.hdf_path, 'r+') as hdf:
-                for tag, mouse in hdf.items():
-                    tempMouse = self.task.Subjects.get(tag)
-                    if 'targets' in tempMouse:
-                        del mouse['targets']
-                        mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=tempMouse.get('targets'))
+                if( 'targets' not in mouse and 'ref_im' in mouse):
+                    print('Mouse: ', tag)
+                    targets_coords = manual_annot(mouse.get('ref_im'))
+                    mouse.update({'targets': np.asarray(targets_coords).astype(int)})
+                    print('TARGET\tx\ty')
+                    print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+        if inputStr == str(1):
+            for tag, mouse in mice.items():
+                if 'ref_im' in mouse:
+                    print('Mouse: ', tag)
+                    targets_coords = manual_annot(mouse.get('ref_im'))
+                    mouse.update({'targets': np.asarray(targets_coords).astype(int)})
+                    print('TARGET\tx\ty')
+                    print('{0}\t{1}\t{2}'.format('0',mouse.get('targets')[0],mouse.get('targets')[1]))
+        with File(self.hdf_path, 'r+') as hdf:
+            for tag, mouse in hdf.items():
+                tempMouse = self.task.Subjects.get(tag)
+                if tempMouse is not None and 'targets' in tempMouse and tempMouse.get('targets') is not None:
+                    #del mouse['targets']
+                    mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=tempMouse.get('targets'))
+
+
     def image_registration(self):
-        #Runs at the beginning of a new trial
+        # Runs at the beginning of a new trial
         def trans_mat(angle,x,y,scale):
-            #Utility function to get the transformation matrix
+            # Utility function to get the transformation matrix
             angle = -1*np.radians(angle)
             scale = 1/scale
             x = -1*x
@@ -638,23 +649,31 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             scale_mat = np.array([[scale,1,1],[1,scale,1]])
             return rot_ext*scale_mat
 
-        self.mouse.update({'trial_image' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+        self.mouse.update({'trial_image' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
         self.camera.capture(self.mouse.get('trial_image'),'rgb')
         timestamp = time()
         self.mouse.update({'trial_name': "M" + str(self.tag % 10000) + '_' + str(timestamp)})
         self.task.DataLogger.writeToLogFile(self.tag, 'Image', {'name': self.mouse.get('trial_name'), 'type': 'trial', 'reference': self.mouse.get('ref_name')}, timestamp)
-        #Image registration
-        #IMPROVE: Could run the registration on a different processor
+
+        # Image registration
+        # TODO: Could run the registration on a different processor
         warnings.filterwarnings("ignore",".*the returned array has changed*")
         tf = ird.similarity(self.mouse.get('ref_im')[:,:,1],self.mouse.get('trial_image')[:,:,1],numiter=3)
         print('scale\tangle\tty\ttx')
         print('{0:.3}\t{1:.3}\t{2:.3}\t{3:.3}'.format(tf['scale'],tf['angle'],tf['tvec'][0],tf['tvec'][1]))
-        #Check if results of image registration don't cross boundaries
+
+        # Check if results of image registration don't cross boundaries
         if all((abs(tf['angle'])<=self.max_angle,all(np.abs(tf['tvec'])<=self.max_trans),self.max_scale[0]<=tf['scale']<=self.max_scale[1])):
-            #Transform the target to new position
+            # Transform the target to new position
             self.R = trans_mat(tf['angle'],tf['tvec'][1],tf['tvec'][0],tf['scale'])
-            cent_targ = self.mouse.get('targets') - np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)]) #translate targets to center of image
-            trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[1]/2),int(self.camera.resolution()[0]/2)])
+            x_target = self.mouse.get('targets')[0]
+            y_target = self.mouse.get('targets')[1]
+
+            # Shift target to fit origin at center of frame
+            cent_targ = np.array([int(x_target) - int(self.camera.resolution()[0] / 2), int(y_target) - int(self.camera.resolution()[1] / 2)])
+            trans_coord = np.dot(self.R,np.append(cent_targ,1))+np.array([int(self.camera.resolution()[0]/2),int(self.camera.resolution()[1]/2)])
+
+            # Convert image target to motor target
             targ_pos = np.dot(self.coeff,np.append(trans_coord,1))
             print('TARGET\ttx\tty')
             print('{0}\t{1:.01f}\t{2:.01f}'.format('0',trans_coord[0],trans_coord[1]))
@@ -688,14 +707,21 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.h5updater()
             self.mouse.pop('ref_im')
             return False
-        elif not 'targets' in self.mouse:
+        elif not 'targets' in self.mouse or self.mouse.get('targets') is None:
             print('Select targets')
             self.task.DataLogger.writeToLogFile(self.tag, 'TargetError', {'type': 'no targets selected'}, time())
+            self.camera.stop_preview()
+            self.select_targets()
             #If targets haven't been choosen -> release mouse again
             return False
-        elif self.coeff is None:
+        elif self.coeff == np.asarray([]):
             print("Match laser and camera coordinates")
+            self.matcher()
             return False
+        else:
+            print('Debug: TARGETS ' +str(self.mouse.get('targets')))
+
+
         try:
             # Run this only if headfixed
             # self.rewarder.giveReward('task')
@@ -704,14 +730,17 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.mouse.update({'timestamp': time()})
             # self.camera.capture(ref_path)
             targ_pos = self.image_registration()
+
             # self.rewarder.giveReward('task')
             if targ_pos is None and saved_targ_pos is not None:
                 targ_pos = saved_targ_pos
             if targ_pos is not None:
                 saved_targ_pos = targ_pos
                 print('Moving laser to target and capture image to assert correct laser position')
-                self.move_to(targ_pos,topleft=True,join=True) #Move laser to target and wait until target reached
-                self.mouse.update({'laser_spot': np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)})
+                # Move laser to target and wait until target reached
+                self.move_to(targ_pos,topleft=True,join=True)
+
+                self.mouse.update({'laser_spot': np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
                 self.pulse(self.laser_on_time,self.duty_cycle) #At least 60 ms needed to capture laser spot
                 self.camera.capture(self.mouse.get('laser_spot'),'rgb', video_port=True)
                 timestamp = time()
@@ -748,13 +777,19 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def hardwareTest(self):
-        #Tester function called from the hardwareTester. Includes Stimulator
-        #specific hardware tester.
+        # Tester function called from the hardwareTester. Includes Stimulator
+        # specific hardware tester.
         while(True):
-            inputStr = input('r=reference image, m= matching, t= targets, a = accuracy, v = vib. motor, p= laser tester, c= motor check, l= preview/LED, s= speaker, q= quit: ')
+            inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
+            self.tag = 111111111
+            self.mouse = self.task.Subjects.get(self.tag)
             if inputStr == 'm':
                 self.matcher()
                 self.settingsDict.update({'coeff_matrix' : self.coeff.tolist()})
+            elif inputStr == 'i':
+                self.camera.start_preview()
+                self.align(111111111)
+                self.camera.stop_preview()
             elif inputStr == 'r':
                 self.editReference()
             elif inputStr == 't':
@@ -774,14 +809,16 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 input('adjust camera/LED: Press any key to quit ')
                 self.camera.stop_preview()
                 self.task.BrainLight.offForStim()
-            elif inputStr == 's':
-                self.speaker.start_train()
-                sleep(3)
-                self.speaker.stop_train()
-            elif inputStr == 'v':
-                self.buzzer.do_train()
             elif inputStr == 'c':
-                self.move_to(np.array([0,0]),topleft=True,join=False)
+                self.camera.start_preview()
+                self.pulse(1000,self.duty_cycle)
+                print('Current: \nx: '+str(self.pos[0])+'\ny: '+str(self.pos[1]))
+                x = []
+                x.append(int(input('enter x target: ')))
+                x.append(int(input('enter y target: ')))
+                self.move_to(x,topleft=True,join=False)
+                input('Press any key to quit ')
+                self.camera.stop_preview()
             elif inputStr == 'q':
                 break
 
@@ -796,12 +833,12 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.camera.start_preview()
             self.pulse(1000,self.duty_cycle)
             center = np.dot(self.coeff, np.asarray([self.camera.resolution()[1]/2, self.camera.resolution()[0]/2, 1]))
-            self.move_to(center, topleft=True,join=True)
-            self.accuracyStart = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)
+            self.move_to(center, topleft=True, join=True)
+            self.accuracyStart = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)
             self.camera.stop_preview()
             self.camera.capture(self.accuracyStart,'rgb')
             self.pulse(0)
-            for i in range(0, 100):
+            for i in range(0, 10):
                 x = randrange(0, self.camera.resolution()[0])
                 y = randrange(0, self.camera.resolution()[1])
                 self.move_to(np.dot(self.coeff, np.asarray([y, x, 1])), topleft=True,join=True)
@@ -809,7 +846,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             self.camera.start_preview()
             self.pulse(1000,self.duty_cycle)
             self.move_to(center, topleft=True,join=True)
-            self.accuracyEnd = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint8)
+            self.accuracyEnd = np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)
             self.camera.stop_preview()
             self.camera.capture(self.accuracyEnd,'rgb')
             self.pulse(0)
@@ -821,25 +858,24 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     if folder.__contains__('end'):
                         del folder['end']
                     resolution_shape =( self.camera.resolution()[0], self.camera.resolution()[1], 3) #rgb layers
-                    ref = folder.require_dataset('start',shape=tuple(resolution_shape),dtype=np.uint8,data=self.accuracyStart)
+                    ref = folder.require_dataset('start',shape=tuple(resolution_shape),dtype=np.uint16,data=self.accuracyStart)
                     ref.attrs.modify('CLASS', np.string_('IMAGE'))
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                     ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
-                    ref = folder.require_dataset('end',shape=tuple(resolution_shape),dtype=np.uint8,data=self.accuracyEnd)
+                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
+                    ref = folder.require_dataset('end',shape=tuple(resolution_shape),dtype=np.uint16,data=self.accuracyEnd)
                     ref.attrs.modify('CLASS', np.string_('IMAGE'))
                     ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                     ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                     ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                    ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
 
     def setdown(self):
         #Remove portions saved in h5
         super().setdown()
 
     def loadH5(self):
-
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
@@ -853,6 +889,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         else:
             with File(self.hdf_path, 'w') as hdf:
                 pass
+
     def editReference(self):
         tag = ""
         if(path.exists(self.hdf_path)):
@@ -904,31 +941,31 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def h5updater(self):
         with File(self.hdf_path, 'r+') as hdf:
             mouse = hdf.require_group(str(self.tag))
-            resolution_shape =( self.camera.resolution()[0], self.camera.resolution()[1], 3) #rgb layers
+            resolution_shape =( self.camera.resolution()[1], self.camera.resolution()[0], 3) #rgb layers
             if 'ref_im' in self.mouse:
-                ref = mouse.require_dataset('ref_im',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('ref_im'))
+                ref = mouse.require_dataset('ref_im',shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('ref_im'))
                 ref.attrs.modify('CLASS', np.string_('IMAGE'))
                 ref.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ref.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 ref.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ref.attrs.modify('NAME', np.string_(self.mouse.get('ref_name')))
             if 'targets' in self.mouse:
-                mouse.require_dataset('targets',shape=(2,),dtype=np.uint8,data=self.mouse.get('targets'))
+                mouse.require_dataset('targets',shape=(2,),dtype=np.uint16,data=self.mouse.get('targets'))
             t = mouse.require_group('trial_image')
             if 'trial_image' in self.mouse:
-                tr = t.require_dataset(self.mouse.get('trial_name'),shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('trial_image'))
+                tr = t.require_dataset(self.mouse.get('trial_name'),shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('trial_image'))
                 tr.attrs.modify('CLASS', np.string_('IMAGE'))
                 tr.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 tr.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 tr.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                tr.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                tr.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 tr.attrs.modify('timestamp', self.mouse.get('timestamp'))
             if 'laser_spot' in self.mouse:
-                ls = t.require_dataset(self.mouse.get('laser_name') +'_laser_spot',shape=tuple(resolution_shape),dtype=np.uint8,data=self.mouse.get('laser_spot'))
+                ls = t.require_dataset(self.mouse.get('laser_name') +'_laser_spot',shape=tuple(resolution_shape),dtype=np.uint16,data=self.mouse.get('laser_spot'))
                 ls.attrs.modify('CLASS', np.string_('IMAGE'))
                 ls.attrs.modify('IMAGE_VERSION', np.string_('1.2'))
                 ls.attrs.modify('IMAGE_SUBCLASS', np.string_('IMAGE_TRUECOLOR'))
                 ls.attrs.modify('INTERLACE_MODE', np.string_('INTERLACE_PIXEL'))
-                ls.attrs.modify('IMAGE_MINMAXRANGE', [0,255])
+                ls.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
                 ls.attrs.modify('timestamp', self.mouse.get('timestamp'))

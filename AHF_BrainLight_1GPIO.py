@@ -31,6 +31,7 @@ class AHF_BrainLight_1GPIO(AHF_BrainLight):
         self.ledDelay = self.settingsDict.get('ledDelay')
         hasGPIO = True
         try:
+            GPIO.setmode(GPIO.BCM)
             GPIO.setup(self.ledPin, GPIO.OUT)
         except RuntimeError as e:
             print(str(e))
@@ -59,6 +60,7 @@ class AHF_BrainLight_1GPIO(AHF_BrainLight):
         super().offForStim()
         if self.ledDelay > 0:
             sleep(self.ledDelay)
-        GPIO.output(self.ledPin, GPIO.LOW)
+            GPIO.output(self.ledPin, GPIO.LOW)
+
 
 

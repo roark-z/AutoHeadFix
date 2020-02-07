@@ -3,12 +3,13 @@
 from AHF_Stimulus import AHF_Stimulus
 from PTSimpleGPIO import PTSimpleGPIO, Infinite_train, Train
 from time import sleep
+from AHF_Task import Task
 
 class AHF_Stimulus_VibMotor(AHF_Stimulus):
     """
     Vibrates a motor placed on the exterior of the chamber.
     """
-    motorPin_def = 25      # GPIO pin used to drive piezo motor for negative feedback
+    motorPin_def = 27      # GPIO pin used to drive piezo motor for negative feedback
     motorFreq_def = 300    # frequency to drive the motor
     motorDuty_def = 0.8    # duty cycle to drive motor, unbalanced duty cycle gives nasty harmonics
     pulseTime_def = 0.2
@@ -18,6 +19,16 @@ class AHF_Stimulus_VibMotor(AHF_Stimulus):
         return "Vibrates a motor"
 
     def hardwareTest(self):
+        while(True):
+            inputStr = input('m = vibrate a motor, q= quit: ')
+            if inputStr == 'm':
+                print('testing now')
+                self.motor.start_train()
+                sleep(1)
+                self.motor.stop_train()
+                print('testing done')
+            elif inputStr == 'q':
+                break
         pass
 
     def trialPrep(self, tag):
@@ -27,6 +38,7 @@ class AHF_Stimulus_VibMotor(AHF_Stimulus):
         return True
 
     def stimulate(self):
+        print('Vibrating a motor\n')
         self.motor.start_train()
         sleep(self.pulseTime)
         self.motor.stop_train()

@@ -105,6 +105,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         """
         print('Now displaying current output')
         self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
+        self.piCam.capture()
         result = input('Do you wish to edit Camera settings?')
         while result [0].lower() != 'y' and result[0].lower() !='n':
             result = input('Do you wish to edit Camera settings?(Y/N)')

@@ -5,6 +5,7 @@
 *.obj
 *.pyc
 *.pyo
+*.h264
 
 # Precompiled Headers
 *.gch
