@@ -104,8 +104,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         Tests functionality, gives user a chance to change settings
         """
         print('Now displaying current output')
-        self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
-        self.piCam.capture()
+        self.start_preview()
         result = input('Do you wish to edit Camera settings?')
         while result [0].lower() != 'y' and result[0].lower() !='n':
             result = input('Do you wish to edit Camera settings?(Y/N)')
