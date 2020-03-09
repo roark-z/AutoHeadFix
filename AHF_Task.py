@@ -40,11 +40,11 @@ class Task(object):
         if fileName != '':
             # file name passed in may or may not start with AFH_task_ and end with .jsn
             self.fileName = fileName
-            if self.fileName.startswith('AHF_task_'):
-                self.fileName = self.filename[9:]
+            if self.fileName.startswith('AHF_config_'):
+                self.fileName = self.filename[11:]
             if self.fileName.endswith('.jsn'):
                 self.filename = self.fileName.rstrip('.jsn')
-            if not CAD.File_exists('task', self.fileName, '.jsn'):
+            if not CAD.File_exists('config', self.fileName, '.jsn'):
                 self.fileName = ''
         else:
             self.fileName = ''
@@ -53,7 +53,7 @@ class Task(object):
             for key, value in object.items():
                 if type(value) is str and  key.endswith('Class'):
                      if value.startswith("AHF_"):
-                          setattr(self, key, CAD.Class_from_file(value[4:], ''))
+                          setattr(self, key, CAD.Class_from_file(value[4:], '', dirName='AHF_config'))
                      else:
                           setattr(self, key, None)
                 else:
@@ -62,7 +62,7 @@ class Task(object):
         # no file passed in, or passed in file could not be found. Get user to choose a file
         if object is None and self.fileName == '':
             try:
-                self.fileName = CAD.File_from_user('task', 'Auto Head Fix task configuration', '.jsn', True)
+                self.fileName = CAD.File_from_user('config', 'Auto Head Fix task configuration', '.jsn', True)
             except FileNotFoundError:
                 self.fileName = ''
                 print('Let\'s configure a new task.\n')
@@ -70,7 +70,7 @@ class Task(object):
         # if we found a file, try to load it
         if object is None and self.fileName != '':
             try:
-                CAD.File_to_obj_fields('task', self.fileName, '.jsn', self)
+                CAD.File_to_obj_fields('config', self.fileName, '.jsn', self, dir='AHF_config')
             except ValueError as e:
                 print('Unable to open and fully load task configuration:' + str(e))
                 fileErr = True
@@ -78,29 +78,29 @@ class Task(object):
         # things like head fixer that are subclassable need some extra work , when either loaded from file or user queried
         ########## Head Fixer(obligatory) makes its own dictionary #################################
         if not hasattr(self, 'HeadFixerClass') or not hasattr(self, 'HeadFixerDict'):
-            self.HeadFixerClass =  CAD.Class_from_file('HeadFixer', CAD.File_from_user('HeadFixer', 'Head Fixer Class', '.py'))
+            self.HeadFixerClass =  CAD.Class_from_file('HeadFixer', CAD.File_from_user('HeadFixer', 'Head Fixer Class', '.py'), dirName='AHF_HeadFixer')
             self.HeadFixerDict = self.HeadFixerClass.config_user_get()
             fileErr = True
         ################################ Stimulator(Obligatory) makes its own dictionary #######################
         if not hasattr(self, 'StimulusClass') or not hasattr(self, 'StimulusDict'):
-            self.StimulusClass = CAD.Class_from_file('Stimulus', CAD.File_from_user('Stimulus', 'Experiment Stimulus Class', '.py'))
+            self.StimulusClass = CAD.Class_from_file('Stimulus', CAD.File_from_user('Stimulus', 'Experiment Stimulus Class', '.py'), dirName='AHF_Stimulus')
             #requires a starter dict?
             self.StimulusDict = self.StimulusClass.config_user_get()
             fileErr = True
         ################################ Stimulator(Obligatory) makes its own dictionary #######################
         if not hasattr(self, 'StimulatorClass') or not hasattr(self, 'StimulatorDict'):
-            self.StimulatorClass = CAD.Class_from_file('Stimulator', CAD.File_from_user('Stimulator', 'Experiment Stimulator Class', '.py'))
+            self.StimulatorClass = CAD.Class_from_file('Stimulator', CAD.File_from_user('Stimulator', 'Experiment Stimulator Class', '.py'), dirName='AHF_Stimulator')
             #requires a starter dict?
             self.StimulatorDict = self.StimulatorClass.config_user_get()
             fileErr = True
         ################################ Rewarder(Obligatory) class makes its own dictionary #######################
         if not hasattr(self, 'RewarderClass') or not hasattr(self, 'RewarderDict'):
-            self.RewarderClass = CAD.Class_from_file('Rewarder', CAD.File_from_user('Rewarder', 'Rewarder', '.py'))
+            self.RewarderClass = CAD.Class_from_file('Rewarder', CAD.File_from_user('Rewarder', 'Rewarder', '.py'), dirName='AHF_Rewarder')
             self.RewarderDict = self.RewarderClass.config_user_get()
             fileErr = True
         ############################ Reader(Obligatory) makes its own dictionary ##############
         if not hasattr(self, 'ReaderClass') or not hasattr(self, 'ReaderDict'):
-            self.ReaderClass = CAD.Class_from_file('Reader', CAD.File_from_user('Reader', 'RFID-Tag Reader', '.py'))
+            self.ReaderClass = CAD.Class_from_file('Reader', CAD.File_from_user('Reader', 'RFID-Tag Reader', '.py'), dirName='AHF_Reader')
             self.ReaderDict = self.ReaderClass.config_user_get()
             fileErr = True
         ################################ Camera(optional) makes its own dictionary of settings ####################
@@ -111,7 +111,7 @@ class Task(object):
             else:
                 tempInput = input('Does this system have a main camera installed(Y or N):')
                 if tempInput [0] == 'y' or tempInput [0] == 'Y':
-                    self.CameraClass = CAD.Class_from_file('Camera', CAD.File_from_user('Camera', 'main camera', '.py'))
+                    self.CameraClass = CAD.Class_from_file('Camera', CAD.File_from_user('Camera', 'main camera', '.py'), dirName='AHF_Camera')
                     self.CameraDict = self.CameraClass.config_user_get()
                 else:
                     self.cameraClass = None
@@ -119,12 +119,12 @@ class Task(object):
                 fileErr = True
         ############################# ContactCheck(Obligatory) makes its own dictionary of settings ###################
         if not hasattr(self, 'ContactCheckClass') or not hasattr(self, 'ContactCheckDict'):
-            self.ContactCheckClass = CAD.Class_from_file('ContactCheck', CAD.File_from_user('ContactCheck', 'Contact Checker', '.py'))
+            self.ContactCheckClass = CAD.Class_from_file('ContactCheck', CAD.File_from_user('ContactCheck', 'Contact Checker', '.py'), dirName='AHF_ContactCheck')
             self.ContactCheckDict = self.ContactCheckClass.config_user_get()
             fileErr = True
         ############################ NOT just A single GPIO pin for brain illumination, unless you want that ###########
         if not hasattr(self, 'BrainLightClass') or not hasattr(self, 'BrainLightDict'):
-            self.BrainLightClass = CAD.Class_from_file('BrainLight', CAD.File_from_user('BrainLight', 'Brain illuminator', '.py'))
+            self.BrainLightClass = CAD.Class_from_file('BrainLight', CAD.File_from_user('BrainLight', 'Brain illuminator', '.py'), dirName='AHF_BrainLight')
             self.BrainLightDict = self.BrainLightClass.config_user_get()
             fileErr = True
         ####################################### triggers for alerting other computers(Optional) only 1 subclass so far ######################3
@@ -135,7 +135,7 @@ class Task(object):
             else:
                 tempInput = input('Send triggers to start tasks on secondary computers(Y or N):')
                 if tempInput [0] == 'y' or tempInput [0] == 'Y':
-                    self.TriggerClass = CAD.Class_from_file('Trigger', CAD.File_from_user('Trigger', 'Trigger', '.py'))
+                    self.TriggerClass = CAD.Class_from_file('Trigger', CAD.File_from_user('Trigger', 'Trigger', '.py'), dirName = 'AHF_Trigger')
                     self.TriggerDict = self.TriggerClass.config_user_get()
                 else:
                     self.TriggerClass = None
@@ -149,7 +149,7 @@ class Task(object):
             else:
                 tempInput = input('Does this setup have a Lick Detector installed?(Y or N)')
                 if tempInput [0] == 'y' or tempInput [0] == 'Y':
-                    self.LickDetectorClass = CAD.Class_from_file('LickDetector', CAD.File_from_user('LickDetector', 'Lick Detector', '.py'))
+                    self.LickDetectorClass = CAD.Class_from_file('LickDetector', CAD.File_from_user('LickDetector', 'Lick Detector', '.py'), dirName='AHF_LickDetector')
                     self.LickDetectorDict = self.LickDetectorClass.config_user_get()
                 else:
                     self.LickDetectorClass = None
@@ -157,7 +157,7 @@ class Task(object):
                 fileErr = True
         ###################### DataLogger(Obligatory) for logging data in text files, or database of HD5,or .... #################
         if not hasattr(self, 'DataLoggerClass') or not hasattr(self, 'DataLoggerDict'):
-            self.DataLoggerClass = CAD.Class_from_file('DataLogger', CAD.File_from_user('DataLogger', 'Data Logger', '.py'))
+            self.DataLoggerClass = CAD.Class_from_file('DataLogger', CAD.File_from_user('DataLogger', 'Data Logger', '.py'), dirName='AHF_DataLogger')
             self.DataLoggerDict = self.DataLoggerClass.config_user_get()
             fileErr = True
         ############################ text messaging using textbelt service(Optional) only 1 subclass so far ######################
@@ -168,7 +168,7 @@ class Task(object):
             else:
                 tempInput = input('Send notifications if subject exceeds criterion time in chamber?(Y or N):')
                 if tempInput[0] == 'y' or tempInput[0] == 'Y':
-                    self.NotifierClass = CAD.Class_from_file('Notifier', CAD.File_from_user('Notifier', 'Text Messaging Notifier','.py'))
+                    self.NotifierClass = CAD.Class_from_file('Notifier', CAD.File_from_user('Notifier', 'Text Messaging Notifier','.py'), dirName='AHF_Notifier')
                     self.NotifierDict = self.NotifierClass.config_user_get()
                     self.NotifierDict.update({'cageID': self.DataLoggerDict.get('cageID')})
                 else:
@@ -177,7 +177,7 @@ class Task(object):
                 fileErr = True
         ############################## Subjects only 1 subclass so far(generic mice) ##############
         if not hasattr(self, 'SubjectsClass') or not hasattr(self, 'SubjectsDict'):
-            self.SubjectsClass = CAD.Class_from_file('Subjects',CAD.File_from_user('Subjects', 'test subjects', '.py'))
+            self.SubjectsClass = CAD.Class_from_file('Subjects',CAD.File_from_user('Subjects', 'test subjects', '.py'), dirName='AHF_Subjects')
             self.SubjectsDict = self.SubjectsClass.config_user_get()
             fileErr = True
         ###################### things we track in the main program #################################
@@ -248,13 +248,13 @@ class Task(object):
         if self.fileName != '' and newConfig == '':
             newConfig = self.fileName
         else:
-            if newConfig.startswith('AHF_task_'):
+            if newConfig.startswith('AHF_config_'):
                 newConfig = newConfig [9 :]
             if newConfig.endswith('.jsn'):
                 newConfig.rstrip('.jsn')
             newConfig = ''.join([c for c in newConfig if c.isalpha() or c.isdigit() or c=='_'])
             self.fileName = newConfig
-        CAD.Obj_fields_to_file(self, 'task', newConfig, '.jsn')
+        CAD.Obj_fields_to_file(self, 'config', newConfig, '.jsn')
 
 
     def editSettings(self):

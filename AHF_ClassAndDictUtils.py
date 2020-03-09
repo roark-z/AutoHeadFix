@@ -21,7 +21,7 @@ transferring structured data between JSON text files <-> dictionaries <-> object
 ##################################################################################
 
 
-def Class_from_file(nameTypeStr, nameStr):
+def Class_from_file(nameTypeStr, nameStr, dirName=''):
     """
     Imports a module from a fileName(stripped of the .py) and returns the class
 
@@ -31,7 +31,7 @@ def Class_from_file(nameTypeStr, nameStr):
         fileName = 'AHF_' + nameTypeStr
     else:
         fileName = 'AHF_' + nameTypeStr + '_' + nameStr
-    module = __import__(fileName)
+    module = __import__(dirName+'.'+fileName)
     return getattr(module, fileName)
 
 
@@ -107,8 +107,8 @@ def File_from_user(nameTypeStr, longName, typeSuffix, makeNew = False):
     startStr = 'AHF_' + nameTypeStr + '_'
     startlen = len(startStr)
     endLn = len(typeSuffix)
-   # print(os.listdir(os.curdir))
-    for f in os.listdir(os.curdir):
+    print(os.listdir(os.curdir))
+    for f in os.listdir(os.curdir + os.sep + 'AHF_'+nameTypeStr):
         if f.startswith(startStr) and f.endswith(typeSuffix):
             fname = f[startlen :-endLn]
             if typeSuffix != '.py':
@@ -427,7 +427,7 @@ def File_to_obj_fields(nameTypeStr, nameStr, typeSuffix, anObject, dir = ''):
     """
     filename = 'AHF_' + nameTypeStr + '_' + nameStr + typeSuffix
     errFlag = False
-    with open(dir + filename, 'r') as fp:
+    with open(dir + os.sep + filename, 'r') as fp:
         data = fp.read()
         data = data.rstrip("\n")
         data=data.replace('\n', ',')
@@ -438,7 +438,7 @@ def File_to_obj_fields(nameTypeStr, nameStr, typeSuffix, anObject, dir = ''):
         try:
             if type(value) is str and key.endswith('Class'):
                 if value.startswith('AHF_'):
-                    setattr(anObject, key, Class_from_file(value[4:], ''))
+                     setattr(anObject, key, Class_from_file(value[4:], '', 'AHF_'+str(key[:-5])))
                 else:
                     setattr(anObject, key, None)
             else:

@@ -1,9 +1,10 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
-
+import sys
+sys.path.append('..')
 from abc import ABCMeta, abstractmethod
 from time import sleep
-from AHF_Base import AHF_Base
+from AutoHeadFix import AHF_Base
 
 class AHF_BrainLight(AHF_Base, metaclass = ABCMeta):
 
