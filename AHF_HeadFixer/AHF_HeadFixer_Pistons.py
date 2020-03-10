@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_HeadFixer import AHF_HeadFixer
+from AHF_HeadFixer.AHF_HeadFixer import AHF_HeadFixer
 import RPi.GPIO as GPIO
 from time import sleep
 from random import random

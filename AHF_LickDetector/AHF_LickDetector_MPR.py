@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from TouchDetectorMPR121 import TouchDetector
-from AHF_LickDetector import AHF_LickDetector
+from AHF_LickDetector.AHF_LickDetector import AHF_LickDetector
 import AHF_Task
 from time import time
 

@@ -1,7 +1,7 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
 from abc import ABCMeta, abstractmethod
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
 class AHF_Stimulus(AHF_Base, metaclass = ABCMeta):
     """

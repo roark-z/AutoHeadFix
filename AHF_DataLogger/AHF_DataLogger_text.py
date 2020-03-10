@@ -5,7 +5,7 @@ from grp import getgrnam
 from time import time, localtime,timezone, sleep
 from datetime import datetime
 import AHF_ClassAndDictUtils as CAD
-from AHF_DataLogger import AHF_DataLogger
+from AHF_DataLogger.AHF_DataLogger import AHF_DataLogger
 class AHF_DataLogger_text(AHF_DataLogger):
     """
     Simple text-based data logger modified from the original Auto Head Fix code

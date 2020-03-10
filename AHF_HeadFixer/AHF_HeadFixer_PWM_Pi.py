@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
+from AHF_HeadFixer.AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
 import ptPWM
 from time import sleep
 

@@ -3,9 +3,9 @@
 
 from abc import ABCMeta, abstractmethod
 
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_ContactCheck(AHF_Base, metaclass = ABCMeta):
+class AHF_ContactCheck(AHF_Base):
 
     @abstractmethod
     def checkContact(self):

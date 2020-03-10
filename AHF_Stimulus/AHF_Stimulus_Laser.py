@@ -6,7 +6,7 @@ stimulation/inhibition.
 '''
 
 # AHF-specific moudules
-from AHF_Stimulus import AHF_Stimulus
+from AHF_Stimulus.AHF_Stimulus import AHF_Stimulus
 
 # Laser-stimulator modules
 try:

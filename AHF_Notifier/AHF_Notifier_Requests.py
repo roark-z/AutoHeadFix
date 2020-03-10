@@ -1,6 +1,6 @@
 import requests
 from time import sleep
-from AHF_Notifier import AHF_Notifier
+from AHF_Notifier.AHF_Notifier import AHF_Notifier
 
 class AHF_Notifier_Requests(AHF_Notifier):
     """

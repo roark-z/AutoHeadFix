@@ -3,9 +3,9 @@
 from abc import ABCMeta, abstractmethod
 import os
 import inspect
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_Camera(AHF_Base, metaclass = ABCMeta):
+class AHF_Camera(AHF_Base):
     """
     AHF_Camera is the base class for the main brain imaging camera used in Auto Head Fix
     """

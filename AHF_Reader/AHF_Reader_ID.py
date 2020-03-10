@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 import RFIDTagReader
 import AHF_Task
-from AHF_Reader import AHF_Reader
+from AHF_Reader.AHF_Reader import AHF_Reader
 
 class AHF_Reader_ID(AHF_Reader):
 

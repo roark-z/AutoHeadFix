@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 import RPi.GPIO as GPIO
 from time import time, sleep
-from AHF_ContactCheck import AHF_ContactCheck
+from AHF_ContactCheck.AHF_ContactCheck import AHF_ContactCheck
 import AHF_Task
 
 gContactChecker = None

@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_Camera import AHF_Camera
+from AHF_Camera.AHF_Camera import AHF_Camera
 from picamera import PiCamera
 from time import sleep
 

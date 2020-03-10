@@ -1,7 +1,7 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
 
-from AHF_Rewarder_solenoid import AHF_Rewarder_solenoid
+from AHF_Rewarder.AHF_Rewarder_solenoid import AHF_Rewarder_solenoid
 import AHF_Task
 import RPi.GPIO as GPIO
 from _thread import start_new_thread

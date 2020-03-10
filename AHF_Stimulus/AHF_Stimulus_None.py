@@ -1,6 +1,6 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
-from AHF_Stimulus import AHF_Stimulus
+from AHF_Stimulus.AHF_Stimulus import AHF_Stimulus
 
 class AHF_Stimulus_None(AHF_Stimulus):
     """

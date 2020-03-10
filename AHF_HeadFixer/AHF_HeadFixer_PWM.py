@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from abc import ABCMeta, abstractmethod
-from AHF_HeadFixer import AHF_HeadFixer
+from AHF_HeadFixer.AHF_HeadFixer import AHF_HeadFixer
 from time import sleep
 from _thread import start_new_thread
 from random import random

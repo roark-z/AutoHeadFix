@@ -3,7 +3,7 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from _thread import start_new_thread
-from AHF_BrainLight import AHF_BrainLight
+from AHF_BrainLight.AHF_BrainLight import AHF_BrainLight
 
 class AHF_BrainLight_1GPIO(AHF_BrainLight):
     

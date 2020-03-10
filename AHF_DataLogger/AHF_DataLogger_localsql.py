@@ -7,7 +7,7 @@ from ast import literal_eval
 from AHF_Task import Task
 from threading import Thread
 import AHF_ClassAndDictUtils as CAD
-from AHF_DataLogger import AHF_DataLogger
+from AHF_DataLogger.AHF_DataLogger import AHF_DataLogger
 import json
 import os
 import pwd

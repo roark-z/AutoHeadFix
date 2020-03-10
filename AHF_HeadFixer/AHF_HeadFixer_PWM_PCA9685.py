@@ -12,11 +12,11 @@ git clone https://github.com/adafruit/Adafruit_Python_PCA9685.git
 
 # Import the PCA9685 module.
 import Adafruit_PCA9685
-from AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
+from AHF_HeadFixer.AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
 
 class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
     """
-    inherits from AHF_HeadFixer_PWM
+    inherits from AHF_HeadFixer.AHF_HeadFixer_PWM
     """
     defaultAddress = 0x40
     

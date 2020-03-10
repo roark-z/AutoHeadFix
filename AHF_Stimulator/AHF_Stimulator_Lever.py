@@ -3,8 +3,8 @@
 
 import ptLeverThread
 from array import array
-from AHF_Stimulator import AHF_Stimulator
-from AHF_Rewarder import AHF_Rewarder
+from AHF_Stimulator.AHF_Stimulator import AHF_Stimulator
+from AHF_Rewarder.Rewarder import AHF_Rewarder
 import time
 from random import random
 from PTLeverThread import PTLeverThread

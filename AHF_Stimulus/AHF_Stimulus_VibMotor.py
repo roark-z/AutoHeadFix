@@ -1,6 +1,6 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
-from AHF_Stimulus import AHF_Stimulus
+from AHF_Stimulus.AHF_Stimulus import AHF_Stimulus
 from PTSimpleGPIO import PTSimpleGPIO, Infinite_train, Train
 from time import sleep
 from AHF_Task import Task

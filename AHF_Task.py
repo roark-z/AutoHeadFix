@@ -1,6 +1,7 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
-
+import sys
+sys.path.append('..')
 
 """
 We copy all variables from cage settings and exp settings, plus references to all created objects,

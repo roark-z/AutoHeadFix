@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_Stimulator_Rewards import AHF_Stimulator_Rewards
+from AHF_Stimulator.AHF_Stimulator_Rewards import AHF_Stimulator_Rewards
 import RPi.GPIO as GPIO
 from time import time, sleep
 from datetime import datetime

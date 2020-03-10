@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 
-from AHF_Subjects import AHF_Subjects
+from AHF_Subjects.AHF_Subjects import AHF_Subjects
 import AHF_ClassAndDictUtils as CAD
 import json
 import os
@@ -12,7 +12,7 @@ from time import sleep
 from AHF_Task import Task
 
 from AHF_Reader import AHF_Reader
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 class AHF_Subjects_mice(AHF_Subjects):
     """
     class for the mice, as experimental subjects. Contains a dictionary where key id IDtag, and value is a dictionary

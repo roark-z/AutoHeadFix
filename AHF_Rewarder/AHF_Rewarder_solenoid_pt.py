@@ -1,7 +1,7 @@
 #! /usr/bin/python
 #-*-coding: utf-8 -*-
 
-from AHF_Rewarder_solenoid import AHF_Rewarder_solenoid
+from AHF_Rewarder.AHF_Rewarder_solenoid import AHF_Rewarder_solenoid
 from PTSimpleGPIO import CountermandPulse
 
 class AHF_Rewarder_solenoid_pt(AHF_Rewarder_solenoid):

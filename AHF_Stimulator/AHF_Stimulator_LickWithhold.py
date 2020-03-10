@@ -1,8 +1,8 @@
 #AHF-specific moudules
 
-from AHF_Stimulus_Laser import AHF_Stimulus_Laser
-from AHF_Stimulator_Rewards import AHF_Stimulator_Rewards
-from AHF_Stimulator import AHF_Stimulator
+from AHF_Stimulus.AHF_Stimulus_Laser import AHF_Stimulus_Laser
+from AHF_Stimulator.AHF_Stimulator_Rewards import AHF_Stimulator_Rewards
+from AHF_Stimulator.AHF_Stimulator import AHF_Stimulator
 from PTSimpleGPIO import PTSimpleGPIO, Infinite_train, Train
 from random import random
 import RPi.GPIO as GPIO

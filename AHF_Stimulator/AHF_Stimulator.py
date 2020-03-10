@@ -3,7 +3,7 @@
 
 from abc import ABCMeta, abstractmethod
 from time import time, sleep
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 from os import chown
 from pwd import getpwnam
 from grp import getgrnam

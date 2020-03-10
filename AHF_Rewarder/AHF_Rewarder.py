@@ -3,7 +3,7 @@
 from time import sleep
 from abc import ABCMeta, abstractmethod
 
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
 class AHF_Rewarder(AHF_Base, metaclass = ABCMeta):
     """

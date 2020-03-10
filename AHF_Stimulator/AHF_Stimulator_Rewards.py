@@ -3,7 +3,7 @@
 
 from time import time, localtime,timezone, sleep
 from datetime import datetime
-from AHF_Stimulator import AHF_Stimulator
+from AHF_Stimulator.AHF_Stimulator import AHF_Stimulator
 
 class AHF_Stimulator_Rewards(AHF_Stimulator):
     defaultRewards = 5

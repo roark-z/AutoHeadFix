@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from abc import ABCMeta, abstractmethod
-from AHF_Rewarder import AHF_Rewarder
+from AHF_Rewarder.AHF_Rewarder import AHF_Rewarder
 from time import sleep, time
 from collections import deque
 

@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_ContactCheck_Elec import AHF_ContactCheck_Elec
+from AHF_ContactCheck.AHF_ContactCheck_Elec import AHF_ContactCheck_Elec
 import RPi.GPIO as GPIO
 
 class AHF_ContactCheck_BeamBreak(AHF_ContactCheck_Elec):

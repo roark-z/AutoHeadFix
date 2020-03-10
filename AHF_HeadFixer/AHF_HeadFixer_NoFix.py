@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from AHF_HeadFixer import AHF_HeadFixer
+from AHF_HeadFixer.AHF_HeadFixer import AHF_HeadFixer
 import AHF_Task
 from time import sleep, time
 from _thread import start_new_thread

@@ -1,12 +1,11 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
-import sys
-sys.path.append('..')
+
 from abc import ABCMeta, abstractmethod
 from time import sleep
-from AutoHeadFix import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_BrainLight(AHF_Base, metaclass = ABCMeta):
+class AHF_BrainLight(AHF_Base):
 
     defaultDelay = 3.0
            
@@ -22,7 +21,7 @@ class AHF_BrainLight(AHF_Base, metaclass = ABCMeta):
 
         
     @abstractmethod
-    def onForStim(self):
+    def onForStim(self): 
         """
         Runs when headFixing starts, illuminating the brain or whatever needs illuminating
         """

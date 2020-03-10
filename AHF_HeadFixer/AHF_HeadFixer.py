@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 from time import time, sleep
 from abc import ABCMeta, abstractmethod
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 import AHF_Task
 from random import random
 class AHF_HeadFixer(AHF_Base, metaclass= ABCMeta):

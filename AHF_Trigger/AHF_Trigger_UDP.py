@@ -3,7 +3,7 @@
 
 import socket
 
-from AHF_Trigger import AHF_Trigger
+from AHF_Trigger.AHF_Trigger import AHF_Trigger
 
 class AHF_Trigger_UDP(AHF_Trigger):
     """
