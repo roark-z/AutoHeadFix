@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
 from time import sleep
 from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_BrainLight(AHF_Base):
+class AHF_BrainLight(AHF_Base, metaclass = ABCMeta):
 
     defaultDelay = 3.0
            

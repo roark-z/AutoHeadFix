@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
 
 from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_ContactCheck(AHF_Base):
+class AHF_ContactCheck(AHF_Base, metaclass = ABCMeta):
 
     @abstractmethod
     def checkContact(self):

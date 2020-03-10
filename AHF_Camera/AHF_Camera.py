@@ -5,7 +5,7 @@ import os
 import inspect
 from AutoHeadFix.AHF_Base import AHF_Base
 
-class AHF_Camera(AHF_Base):
+class AHF_Camera(AHF_Base, metaclass = ABCMeta):
     """
     AHF_Camera is the base class for the main brain imaging camera used in Auto Head Fix
     """

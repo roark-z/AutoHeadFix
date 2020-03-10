@@ -6,7 +6,7 @@ from AutoHeadFix.AHF_Base import AHF_Base
 from collections import deque
 
 
-class AHF_DataLogger(AHF_Base):
+class AHF_DataLogger(AHF_Base, metaclass = ABCMeta):
     """
     A Data Logger provides an interface to save task data, and to save
     and load mouse configuration data. This can be either to text files, or to

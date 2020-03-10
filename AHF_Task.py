@@ -210,7 +210,7 @@ class Task(object):
         GPIO.setwarnings(False)
         fields = sorted(inspect.getmembers(self))
         for item in fields:
-            if isinstance(item [1],  ABCMeta):
+            if isinstance(item[1], ABCMeta):
                 baseName =(item [0], item[0][:-5])[item[0].endswith('Class')]
                 classDict = getattr(self, baseName + 'Dict')
                 setattr(self, baseName, item [1](self, classDict))
@@ -222,7 +222,7 @@ class Task(object):
             if str(temp[0]).lower() == "y":
                 default = True
             for item in fields:
-                if isinstance(item [1],  ABCMeta):
+                if isinstance(item[1], ABCMeta):
                     baseName =(item [0], item[0][:-5])[item[0].endswith('Class')]
                     classDict = getattr(self, baseName + 'Dict')
                     self.DataLogger.storeConfig("changed_hardware", item[1].__name__, baseName + "Class")

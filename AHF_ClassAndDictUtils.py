@@ -32,7 +32,7 @@ def Class_from_file(nameTypeStr, nameStr, dirName=''):
     else:
         fileName = 'AHF_' + nameTypeStr + '_' + nameStr
     module = __import__(dirName+'.'+fileName)
-    return getattr(module, fileName)
+    return getattr(getattr(module, fileName), fileName)
 
 
 def Super_of_object(anObject):
