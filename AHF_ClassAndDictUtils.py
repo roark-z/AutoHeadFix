@@ -117,10 +117,10 @@ def File_from_user(nameTypeStr, longName, typeSuffix, makeNew = False):
                 #print(fname)
             else:
                 try:
-                    moduleObj=__import__(f.rstrip(typeSuffix))
-                    print('module=' + str(moduleObj))
-                    classObj = getattr(moduleObj, moduleObj.__name__)
-                    print(classObj)
+                    className = f.rstrip(typeSuffix)
+                    moduleObj=__import__(startStr[:-1]+'.'+className)
+                    #Going from two modules into one module and then into one class
+                    classObj = getattr(getattr(moduleObj, className),className)
                     isAbstractClass = inspect.isabstract(classObj)
                     if isAbstractClass == False:
                         fileList.append(fname + ": " + classObj.about())
@@ -236,7 +236,7 @@ def Edit_Obj_fields(anObject, longName, isTaskConfig = False):
             if itemKey.endswith('Class') and(itemValue is None or isinstance(itemValue,  ABCMeta)):
                 baseName = itemKey[:-5]
                 #newClassName = File_from_user(baseName, baseName, '.py')
-                newClass = Class_from_file(baseName, File_from_user(baseName, baseName, '.py'))
+                newClass = Class_from_file(baseName, File_from_user(baseName, baseName, '.py'), 'AHF_'+baseName)
                 setattr(anObject, itemKey, newClass)
                 # new class needs  new dict
                 dictName = baseName + 'Dict'
@@ -247,7 +247,7 @@ def Edit_Obj_fields(anObject, longName, isTaskConfig = False):
                 theClass = getattr(anObject, baseName + 'Class')
                 if theClass is None:
                     #newClassName = File_from_user(baseName, baseName, '.py')
-                    theClass = Class_from_file(baseName, File_from_user(baseName, baseName, '.py'))
+                    theClass = Class_from_file(baseName, File_from_user(baseName, baseName, '.py'), 'AHF_'+baseName)
                     setattr(anObject, baseName + 'Class', theClass)
                 setattr(anObject, itemKey, theClass.config_user_get(itemValue))
             elif type(itemValue) is str:

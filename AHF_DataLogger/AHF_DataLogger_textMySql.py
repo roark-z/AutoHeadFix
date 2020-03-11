@@ -1,9 +1,9 @@
  #! /usr/bin/python
 #-*-coding: utf-8 -*-
 
-from AHF_DataLogger_text import AHF_DataLogger_text
-from AHF_DataLogger_mysql import AHF_DataLogger_mysql
-from AHF_DataLogger_localsql import AHF_DataLogger_localsql
+from AHF_DataLogger.AHF_DataLogger_text import AHF_DataLogger_text
+from AHF_DataLogger.AHF_DataLogger_mysql import AHF_DataLogger_mysql
+from AHF_DataLogger.AHF_DataLogger_localsql import AHF_DataLogger_localsql
 from AHF_DataLogger.AHF_DataLogger import AHF_DataLogger
 class AHF_DataLogger_textMySql(AHF_DataLogger):
 

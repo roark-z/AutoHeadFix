@@ -28,6 +28,7 @@ class AHF_Subjects_mice(AHF_Subjects):
     jsonNameDefault = "subjects"
     inChamberTimeLimitDefault = 300 #seconds
     headFixTimeDefault = 40 #seconds
+    configPath = 'AHF_config/'
 
 
     @staticmethod
@@ -74,7 +75,7 @@ class AHF_Subjects_mice(AHF_Subjects):
                 self.miceDict.update(configTuple)
         elif self.loadConfigs == "provide_json":  #check file, if not existing or not correct provide a fillable json, then update miceDict when user is ready
             try:
-                direc = ''
+                direc = ""
                 if os.getcwd() == "/root":
                     with open("/home/pi/config.txt", "r") as file:
                          configs = file.readlines()
@@ -82,7 +83,7 @@ class AHF_Subjects_mice(AHF_Subjects):
                              config = config.split("=")
                              if config[0] == "path":
                                  direc = config[1].rstrip("\n")
-                self.miceDict = CAD.File_to_dict('mice', self.jsonName, '.jsn', direc)
+                self.miceDict = CAD.File_to_dict('mice', self.jsonName, '.jsn', self.configPath)
                 if self.check_miceDict(self.miceDict) == False:
                     raise Exception('Could not confirm dictionary')
             except Exception as e:
@@ -119,11 +120,11 @@ class AHF_Subjects_mice(AHF_Subjects):
                 if stillmore[0] == "n" or stillmore[0] == "N":
                     moreMice = False
         print(self.miceDict)
-        CAD.Dict_to_file(self.miceDict, "mice_fillable", self.jsonName, ".jsn")
+        CAD.Dict_to_file(self.miceDict, "mice_fillable", self.jsonName, ".jsn", dir=configPath)
         input("Please edit the values in AHF_mice_fillable_" + self.jsonName + '.jsn now. Do not modify the structure.\n' +
               "Press enter when done")
         os.system("sudo cp AHF_mice_fillable_" + self.jsonName + ".jsn" + " AHF_mice_" + self.jsonName + ".jsn")
-        self.miceDict = CAD.File_to_dict('mice', self.jsonName, '.jsn')
+        self.miceDict = CAD.File_to_dict('mice', self.jsonName, '.jsn',dir=configPath)
 
 
     def depth(self,d, level=0):
