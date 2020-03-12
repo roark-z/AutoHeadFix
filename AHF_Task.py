@@ -17,8 +17,9 @@ import pwd
 import grp
 import AHF_ClassAndDictUtils as CAD
 from abc import ABCMeta
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 import RPi.GPIO as GPIO
+from AHF_BrainLight.AHF_BrainLight import AHF_BrainLight
 
 gTask = None
 
@@ -255,7 +256,7 @@ class Task(object):
                 newConfig.rstrip('.jsn')
             newConfig = ''.join([c for c in newConfig if c.isalpha() or c.isdigit() or c=='_'])
             self.fileName = newConfig
-        CAD.Obj_fields_to_file(self, 'config', newConfig, '.jsn')
+        CAD.Obj_fields_to_file(self, 'config', newConfig, '.jsn', 'AHF_config/')
 
 
     def editSettings(self):
@@ -300,7 +301,7 @@ class Task(object):
                 itemDict.update(showDict [inputNum -1]) #itemDict = OrderedDict.get(inputNum -1)
                 kvp = itemDict.popitem()
                 itemValue = kvp [1]
-                itemValue.hardwareTest()
+                itemValue.hardwareTest()  
         response = input('Save changes in settings to a file?')
         if response [0] == 'Y' or response [0] == 'y':
             self.saveSettings()

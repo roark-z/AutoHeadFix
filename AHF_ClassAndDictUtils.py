@@ -9,7 +9,7 @@ import inspect
 from collections import OrderedDict
 import json
 
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Base import AHF_Base
 
 """
 methods for
@@ -417,7 +417,7 @@ def Obj_fields_to_file(anObject, nameTypeStr, nameStr, typeSuffix, dir = ''):
         fp.close()
         uid = pwd.getpwnam('pi').pw_uid
         gid = grp.getgrnam('pi').gr_gid
-        os.chown(configFile, uid, gid) # we may run as root for pi PWM, so we need to expicitly set ownership
+        os.chown(dir+configFile, uid, gid) # we may run as root for pi PWM, so we need to expicitly set ownership
 
 
 
