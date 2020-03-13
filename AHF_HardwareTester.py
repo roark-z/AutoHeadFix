@@ -3,8 +3,8 @@
 
 from collections import OrderedDict
 import inspect
-from AHF_Task import Task
-from AHF_Base import AHF_Base
+from AutoHeadFix.AHF_Task import Task
+from AutoHeadFix.AHF_Base import AHF_Base
 
 def Show_testable_objects(anObject):
     print('\n*************** Testable Auto Head Fix Objects *******************')
