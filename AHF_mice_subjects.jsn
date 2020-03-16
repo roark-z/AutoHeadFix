@@ -1,338 +1,374 @@
-{"124563082482"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
+{"2018121379"= {"Rewarder"= {"maxEntryRewards"= 10000
  "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
  "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
  "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 500000000.0
- "delayTime"= 0.95}}
- "2018121343"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121234"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121318"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "801010565"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 300.0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 1000
- "maxBreakBeamRewards"= 200}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
  "rewardInterval"= 3
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121279"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "124563082475"= {"Rewarder"= {"maxEntryRewards"= 10000
  "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
  "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
  "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 1000
- "maxBreakBeamRewards"= 200}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "801010258"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 120.0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
  "rewardInterval"= 3
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "801010240"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121244"= {"Rewarder"= {"maxEntryRewards"= 10000
  "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
  "taskSize"= 0.4
- "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 200}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121244"= {"Rewarder"= {"totalEntryRewardsToday"= 0
+ "entrySize"= 0.4
  "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.2
- "entryDelay"= 0
+ "maxBreakBeamRewards"= 200
  "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121320"= {"Rewarder"= {"totalEntryRewardsToday"= 0
- "lastEntryTime"= 0
- "entrySize"= 0.15
  "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "111111111"= {"Rewarder"= {"maxEntryRewards"= 10000
  "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
  "taskSize"= 0.4
- "entryDelay"= 0
- "breakBeamSize"= 0.1
- "maxEntryRewards"= 1000
- "maxBreakBeamRewards"= 200}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "1"= {"Rewarder"= {"totalEntryRewardsToday"= 0
+ "entrySize"= 0.4
  "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
+ "maxBreakBeamRewards"= 200
  "breakBeamSize"= 0.1
- "maxEntryRewards"= 1000
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121245"= {"Rewarder"= {"totalEntryRewardsToday"= 0
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121320"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
  "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
+ "maxBreakBeamRewards"= 200
  "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "124563082475"= {"Rewarder"= {"totalEntryRewardsToday"= 0
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2016080059"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
  "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
+ "maxBreakBeamRewards"= 200
  "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
- "2018121379"= {"Rewarder"= {"totalEntryRewardsToday"= 0
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121279"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
  "lastEntryTime"= 0
- "entrySize"= 0.15
- "lastBreakBeamTime"= 0
- "breakBeamDelay"= 1
- "totalBreakBeamRewardsToday"= 0
- "taskSize"= 0.4
- "entryDelay"= 0
+ "maxBreakBeamRewards"= 200
  "breakBeamSize"= 0.1
- "maxEntryRewards"= 500
- "maxBreakBeamRewards"= 500}
- "HeadFixer"= {"propHeadFix"= 0.75
- "tightnessHeadFix"= 1
- "headFixTime"= 34}
- "Stimulator"= {"nRewards"= 5
- "lickWithholdTime"= 1.45
- "rewardNoGo"= false
- "mouseLevel"= 3
- "rewardInterval"= 4
- "responseTime"= 1.25
- "delayTime"= 0.95}}
-"111111111"={"HeadFixer"={"headFixTime"=40
-"propHeadFix"=1.0
-"tightnessHeadFix"=1}
-"Rewarder"={"breakBeamDelay"=1
-"breakBeamSize"=0.1
-"entryDelay"=900
-"entrySize"=0.2
-"lastBreakBeamTime"=0
-"lastEntryTime"=0
-"maxBreakBeamRewards"=200
-"maxEntryRewards"=1000
-"taskSize"=0.4
-"totalBreakBeamRewardsToday"=0
-"totalEntryRewardsToday"=0}
-"Stimulator"={"delayTime"=0.5
-"goLikelihood"=0.5
-"lickWithholdTime"=1
-"mouseLevel"=3
-"nRewards"=5
-"responseTime"=2.5
-"rewardInterval"=3
-"rewardNoGo"=false}}
-"801011070"={"HeadFixer"={"headFixTime"=40
-"propHeadFix"=0.75
-"tightnessHeadFix"=1}
-"Rewarder"={"breakBeamDelay"=1
-"breakBeamSize"=0.1
-"entryDelay"=900
-"entrySize"=0.2
-"lastBreakBeamTime"=0
-"lastEntryTime"=0
-"maxBreakBeamRewards"=200
-"maxEntryRewards"=1000
-"taskSize"=0.4
-"totalBreakBeamRewardsToday"=0
-"totalEntryRewardsToday"=0}
-"Stimulator"={"delayTime"=0.5
-"goLikelihood"=0.5
-"lickWithholdTime"=1
-"mouseLevel"=3
-"nRewards"=5
-"responseTime"=0.5
-"rewardInterval"=3
-"rewardNoGo"=true}}}
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121245"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "1"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121234"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "801010240"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "801010258"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "801010565"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "124563082482"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121318"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "801011070"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}
+ "2018121343"= {"Rewarder"= {"maxEntryRewards"= 10000
+ "breakBeamDelay"= 1
+ "taskSize"= 0.4
+ "entrySize"= 0.4
+ "lastEntryTime"= 0
+ "maxBreakBeamRewards"= 200
+ "breakBeamSize"= 0.1
+ "lastBreakBeamTime"= 0
+ "totalEntryRewardsToday"= 0
+ "entryDelay"= 0
+ "totalBreakBeamRewardsToday"= 0}
+ "HeadFixer"= {"tightnessHeadFix"= 1
+ "propHeadFix"= 0.0
+ "headFixTime"= 40}
+ "Stimulator"= {"mouseLevel"= 0
+ "responseTime"= 2.5
+ "delayTime"= 0.5
+ "goLikelihood"= 0.5
+ "rewardInterval"= 3
+ "nRewards"= 5
+ "lickWithholdTime"= 1
+ "rewardNoGo"= true}}}

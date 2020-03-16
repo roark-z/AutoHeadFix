@@ -3,7 +3,9 @@
 
 from AHF_Camera import AHF_Camera
 from picamera import PiCamera
-from time import sleep
+import time
+from datetime import datetime
+from os import path, makedirs, chown, listdir
 
 class AHF_Camera_PiCam(AHF_Camera):
 
@@ -19,6 +21,15 @@ class AHF_Camera_PiCam(AHF_Camera):
         defaultShutterSpeed = 30000
         defaultFormat = 'rgb'
         defaultQuality = 20
+        defaultVideoPath = '/home/pi/Videos/'
+        # path
+        video_path = starterDict.get('video_path', defaultVideoPath)
+        tempInput = input('Where do you want to save the videos? '.format(video_path))
+        if tempInput != '':
+            video_path = str(tempInput)
+        if not video_path.endswith('/'):
+            video_path += '/'
+        starterDict.update({'video_path' : video_path})
         # resolution
         resolution = starterDict.get('resolution', defaultRes)
         tempInput = input('set X,Y resolution(currently {0}): '.format(resolution))
@@ -83,6 +94,10 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.iso = self.settingsDict.get('iso', 0)
         self.piCam.shutter_speed = self.settingsDict.get('shutter_speed', 30000)
         # set fields that are in AHF_Camera class
+        self.video_path = self.settingsDict.get('video_path', '/home/pi/Videos/')
+        self.video_path+=str(datetime.now().date())+'/'
+        if not path.exists(self.video_path):
+            makedirs(self.video_path, mode=0o777, exist_ok=True)
         self.AHFvideoFormat = self.settingsDict.get('format', 'h264')
         self.AHFvideoQuality = self.settingsDict.get('quality', 20)
         self.AHFframerate= self.settingsDict.get('framerate', 30)
@@ -150,7 +165,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         #else:
         #    self.exposure_mode = 'off'
         self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
-        sleep(2.0) # let gains settle, then fix values
+        time.sleep(2.0) # let gains settle, then fix values
         if(self.AHFgainMode & 1):
             savedGain = self.piCam.awb_gains
             self.piCam.awb_gains = savedGain
@@ -175,10 +190,11 @@ class AHF_Camera_PiCam(AHF_Camera):
 
         :param video_name_path: a full path to the file where the video will be stored. Always save to a file, not a PIL, for, example
         """
+        video_name = self.video_path+video_name_path
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(video_name_path, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         return
 
@@ -215,9 +231,9 @@ class AHF_Camera_PiCam(AHF_Camera):
         :param recTime: duration of the recorded video, in seconds
         """
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         self.piCam.wait_recording(timeout=recTime)
         self.stop_recording()

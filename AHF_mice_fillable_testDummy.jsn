@@ -1,9 +1,9 @@
-{"111111111"={"HeadFixer"={"headFixTime"=40
-"propHeadFix"=1
+{"801011070"={"HeadFixer"={"headFixTime"=40
+"propHeadFix"=0.75
 "tightnessHeadFix"=1}
 "Rewarder"={"breakBeamDelay"=1
 "breakBeamSize"=0.1
-"entryDelay"=900
+"entryDelay"=0
 "entrySize"=0.2
 "lastBreakBeamTime"=0
 "lastEntryTime"=0
@@ -13,10 +13,10 @@
 "totalBreakBeamRewardsToday"=0
 "totalEntryRewardsToday"=0}
 "Stimulator"={"delayTime"=0.5
-"goLikelihood"=0
+"goLikelihood"=0.5
 "lickWithholdTime"=1
-"mouseLevel"=3
+"mouseLevel"=0
 "nRewards"=5
-"responseTime"=5
+"responseTime"=2.5
 "rewardInterval"=3
 "rewardNoGo"=true}}}

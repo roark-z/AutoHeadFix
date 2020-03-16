@@ -9,7 +9,7 @@ m1=None
 m2=None
 m3=None
 m4=None
-with open("AHF_mice_subjects.jsn", 'r') as f:
+with open("AHF_mice__subjects.jsn", 'r') as f:
     a=f.read()
     b=a.replace('\n',',')
     c=json.loads(b.replace('=',':'))
@@ -121,9 +121,9 @@ def save_reload():
     c2=json.dumps(c3)
     c2=c2.replace(':','=')
     c2=c2.replace(',','\n')
-    with open('AHF_mice_subjects.jsn','w') as f2:
+    with open('AHF_mice__subjects.jsn','w') as f2:
         f2.write(c2)
-    with open("AHF_mice_subjects.jsn", 'r') as f:
+    with open("AHF_mice__subjects.jsn", 'r') as f:
         a=f.read()
         b=a.replace('\n',',')
         c=json.loads(b.replace('=',':'))
