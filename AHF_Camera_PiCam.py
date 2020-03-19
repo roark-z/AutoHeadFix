@@ -94,7 +94,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.iso = self.settingsDict.get('iso', 0)
         self.piCam.shutter_speed = self.settingsDict.get('shutter_speed', 30000)
         # set fields that are in AHF_Camera class
-        self.video_path = self.settingsDict.get('video_path', '/home/pi/Videos/')
+        self.video_path = self.settingsDict.get('video_path', '/mnt/AHF_Videos/')
         self.video_path+=str(datetime.now().date())+'/'
         if not path.exists(self.video_path):
             makedirs(self.video_path, mode=0o777, exist_ok=True)

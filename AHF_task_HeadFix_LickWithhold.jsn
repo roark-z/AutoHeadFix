@@ -66,8 +66,7 @@
 "speakerDuty"=0.1
 "speakerFreq"=400
 "speakerOffForReward"=1.5
-"speakerPin"=11
-"videoPath"=""}
+"speakerPin"=11}
 "StimulusClass"="AHF_Stimulus_VibMotor"
 "StimulusDict"={"motorDuty"=1.0
 "motorFreq"=300

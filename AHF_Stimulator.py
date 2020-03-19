@@ -17,9 +17,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
     """
     @staticmethod
     def config_user_get(starterDict = {}):
-        videoPath = starterDict.get("videoPath", "/home/pi/Documents")
-        videoPath = input("Enter the path for videos to be saved under, currently " + videoPath)
-        starterDict.update({"videoPath": videoPath})
         return starterDict
  
     @abstractmethod
@@ -37,9 +34,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
     def stop(self):
         self.running = False
 
-    def setup(self):
-        self.videoPath = self.settingsDict.get("videoPath")
-
     def startVideo(self):
         if not self.task.Stimulus.__class__.__name__ == 'AHF_Stimulus_Laser':
             try:
@@ -54,8 +48,7 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
                 self.lastTime =  time()
                 print(hex(id(self)), 'start')
                 print(self.lastTime)
-                video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
-                video_name_path = self.videoPath + "M" + video_name
+                video_name_path = "M" + video_name
                 #writeToLogFile(expSettings.logFP, thisMouse, "video:" + video_name)
                 # send socket message to start behavioural camera
                 self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': video_name}, time())
@@ -96,8 +89,7 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         if self.lastTime is None:
             print("no last")
             return 
-        video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
-        video_name_path = self.videoPath + "M" + video_name
+        video_name_path = "M" + video_name
         if hasattr(self.task, 'Trigger'):
             self.task.BrainLight.offForStim() # turn off the blue LED
             self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDOFF', None, time())
@@ -114,4 +106,4 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         uid = getpwnam('pi').pw_uid
         gid = getgrnam('pi').gr_gid
         self.lastTime = None
-        chown(video_name_path, uid, gid) # we run AutoheadFix as root if using pi PWM, so we expicitly set ownership to pi
+        #chown(video_name_path, uid, gid) # we run AutoheadFix as root if using pi PWM, so we expicitly set ownership to pi
