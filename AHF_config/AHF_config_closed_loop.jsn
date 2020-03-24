@@ -1,10 +1,10 @@
 {"BrainLightClass"="AHF_BrainLight_1GPIO"
 "BrainLightDict"={"ledDelay"=3.0
 "ledPin"=22}
-"CameraClass"="AHF_Camera_PiCam"
-"CameraDict"={"format"="h264"
+"CameraClass"="AHF_Camera_PiStream"
+"CameraDict"={"format"="hdf5"
 "framerate"=30
-"iso"=0
+"iso"=200
 "previewWin"=[0
 0
 640
@@ -12,7 +12,9 @@
 "quality"=20
 "resolution"=[640
 480]
+"sensor_mode"=4
 "shutter_speed"=30000
+"video_path"="/home/Pi/Videos/closed_loop/"
 "whiteBalance"=false}
 "ContactCheckClass"="AHF_ContactCheck_BeamBreak"
 "ContactCheckDict"={"contactPUD"="PUD_UP"
@@ -74,9 +76,9 @@
 "contactTime"=0
 "edited"=true
 "entryTime"=0.0
-"fileName"="HeadFix_LickWithhold"
+"fileName"="closed_loop"
 "filename"="temp"
-"fixAgainTime"=1581382106.743701
+"fixAgainTime"=Infinity
 "fixed"=false
 "inChamberLimitExceeded"=false
 "isFixTrial"=false

@@ -33,7 +33,7 @@ class AHF_Camera_PiStream(AHF_Camera):
         defaultFrameRate = 30
         defaultISO = 200
         defaultShutterSpeed = 30000
-        defaultPath = /home/Pi/Videos/closed_loop
+        defaultPath = '/home/Pi/Videos/closed_loop/'
         
         # video path
         video_path = starterDict.get('video_path', defaultPath)
@@ -103,7 +103,7 @@ class AHF_Camera_PiStream(AHF_Camera):
 
     def setup(self):
         # Set up text file and paths
-        self.data_path = data_path
+        self.data_path = self.settingsDict.get('data_path', '/home/Pi/Videos/closed_loop/')
         # Create pi camera objecy
         try:
             self.piCam = PiCamera()
