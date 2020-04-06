@@ -98,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html">AHF_Stimulator</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Stimulus</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulus.AHF_Stimulus">AHF_Stimulus.AHF_Stimulus module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-stimulus-ahf-stimulus-laser-module">AHF_Stimulus.AHF_Stimulus_Laser module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulus.AHF_Stimulus_Laser">AHF_Stimulus.AHF_Stimulus_Laser module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulus.AHF_Stimulus_None">AHF_Stimulus.AHF_Stimulus_None module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulus.AHF_Stimulus_VibMotor">AHF_Stimulus.AHF_Stimulus_VibMotor module</a></li>
 </ul>
@@ -216,8 +216,199 @@ vibration motor, laser pulse in a specific brain region, or nothing.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="ahf-stimulus-ahf-stimulus-laser-module">
-<h2>AHF_Stimulus.AHF_Stimulus_Laser module<a class="headerlink" href="#ahf-stimulus-ahf-stimulus-laser-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AHF_Stimulus.AHF_Stimulus_Laser">
+<span id="ahf-stimulus-ahf-stimulus-laser-module"></span><h2>AHF_Stimulus.AHF_Stimulus_Laser module<a class="headerlink" href="#module-AHF_Stimulus.AHF_Stimulus_Laser" title="Permalink to this headline">¶</a></h2>
+<p>This Stimulator is subclassed from Rewards. It captures a reference image for each
+mouse and includes a user interface to select targets on reference images.
+The Stimulator directs and pulses a laser to selected targets for optogenetic
+stimulation/inhibition.</p>
+<dl class="class">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser">
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_Laser.</code><code class="sig-name descname">AHF_Stimulus_Laser</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulus.AHF_Stimulus.AHF_Stimulus</span></code></a></p>
+<p>Stimulates a specified region of the mouse’s brain with a laser,
+controlled via a stepper motor stage. Requires a camera - if using,
+cannot record video of the trial with overhead camera (used for aligning)</p>
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.about">
+<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.about" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.accuracyTest">
+<code class="sig-name descname">accuracyTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.accuracyTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>For the given coefficient matrix, moves the laser to the center, then takes an image.
+Then, moves to 100 random points, and then back to center, taking another image.
+These images can then be compared to determine the long-term accuracy of the stepper motors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.align">
+<code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns laser with reference image and assigned targets.
+Returns True if aligned successfully, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.config_user_get">
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.editReference">
+<code class="sig-name descname">editReference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.editReference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.feed_byte">
+<code class="sig-name descname">feed_byte</code><span class="sig-paren">(</span><em class="sig-param">byte</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.feed_byte" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_arrow_dir">
+<code class="sig-name descname">get_arrow_dir</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_arrow_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_dir">
+<code class="sig-name descname">get_dir</code><span class="sig-paren">(</span><em class="sig-param">steps</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_ref_im">
+<code class="sig-name descname">get_ref_im</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_ref_im" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_state">
+<code class="sig-name descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.h5updater">
+<code class="sig-name descname">h5updater</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.h5updater" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.hardwareTest">
+<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests functionality, gives user a chance to change settings.
+:Returns: bool – True if any settings have changed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.image_registration">
+<code class="sig-name descname">image_registration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.image_registration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return length of stimulus (e.g. pulse duration)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.loadH5">
+<code class="sig-name descname">loadH5</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.loadH5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.make_cross">
+<code class="sig-name descname">make_cross</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.make_cross" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.matcher">
+<code class="sig-name descname">matcher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.matcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">phase</em>, <em class="sig-param">delay</em>, <em class="sig-param">topleft</em>, <em class="sig-param">mp</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move_to">
+<code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param">new_pos</em>, <em class="sig-param">topleft=True</em>, <em class="sig-param">join=False</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move_to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.on_press">
+<code class="sig-name descname">on_press</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.on_press" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.period">
+<code class="sig-name descname">period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return period of stimulus (1/frequency for motor/laser)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.pulse">
+<code class="sig-name descname">pulse</code><span class="sig-paren">(</span><em class="sig-param">duration</em>, <em class="sig-param">duty_cycle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.pulse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets">
+<code class="sig-name descname">select_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown">
+<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
+pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
+Run by __init__, or can be run  separately after editing the settingsDict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.stimulate">
+<code class="sig-name descname">stimulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.stimulate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialEnd">
+<code class="sig-name descname">trialEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Code to be run at end of trial. E.g. moving laser to zero position</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialPrep">
+<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialPrep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares stimulus for trial: e.g. aligns laser, preps vib. motor, etc</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.unlock">
+<code class="sig-name descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.unlock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_cross">
+<code class="sig-name descname">update_cross</code><span class="sig-paren">(</span><em class="sig-param">q</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_cross" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_mot">
+<code class="sig-name descname">update_mot</code><span class="sig-paren">(</span><em class="sig-param">mot_q</em>, <em class="sig-param">phase_queue</em>, <em class="sig-param">delay</em>, <em class="sig-param">topleft</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_mot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-AHF_Stimulus.AHF_Stimulus_None">
 <span id="ahf-stimulus-ahf-stimulus-none-module"></span><h2>AHF_Stimulus.AHF_Stimulus_None module<a class="headerlink" href="#module-AHF_Stimulus.AHF_Stimulus_None" title="Permalink to this headline">¶</a></h2>
