@@ -1,0 +1,30 @@
+AutoHeadFix.AHF\_Trigger package
+================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Trigger.AHF\_Trigger module
+--------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Trigger.AHF_Trigger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Trigger.AHF\_Trigger\_UDP module
+-------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Trigger.AHF_Trigger_UDP
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Trigger
+   :members:
+   :undoc-members:
+   :show-inheritance:
