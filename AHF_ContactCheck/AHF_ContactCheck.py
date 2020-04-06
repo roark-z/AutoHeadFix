@@ -1,8 +1,10 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
 
-from abc import ABCMeta, abstractmethod
+import sys
+sys.path.append("../..")
 
+from abc import ABCMeta, abstractmethod
 from AutoHeadFix.AHF_Base import AHF_Base
 
 class AHF_ContactCheck(AHF_Base, metaclass = ABCMeta):

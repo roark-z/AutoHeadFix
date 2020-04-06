@@ -1,5 +1,9 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
+
+import sys
+sys.path.append("../..")
+
 from abc import ABCMeta, abstractmethod
 import os
 import inspect

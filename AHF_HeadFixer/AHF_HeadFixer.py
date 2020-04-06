@@ -1,10 +1,15 @@
 #! /usr/bin/python3
 #-*-coding: utf-8 -*-
+
+import sys
+sys.path.append("../..")
+
 from time import time, sleep
 from abc import ABCMeta, abstractmethod
 from AutoHeadFix.AHF_Base import AHF_Base
 import AHF_Task
 from random import random
+
 class AHF_HeadFixer(AHF_Base, metaclass= ABCMeta):
     """
     Base class for all head fix classs. Other head fixers subclass from this, or from one of its subclasses

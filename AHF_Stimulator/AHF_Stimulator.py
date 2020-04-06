@@ -1,5 +1,7 @@
 #! /usr/bin/python
 # -*-coding: utf-8 -*
+import sys
+sys.path.append("../..")
 
 from abc import ABCMeta, abstractmethod
 from time import time, sleep

@@ -1,0 +1,30 @@
+AutoHeadFix.AHF\_Reader package
+===============================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Reader.AHF\_Reader module
+------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Reader.AHF_Reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Reader.AHF\_Reader\_ID module
+----------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Reader.AHF_Reader_ID
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
