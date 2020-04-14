@@ -83,8 +83,6 @@ class AHF_Camera_PiStream(AHF_Camera):
         if tempInput != '':
             sensor_mode= int(tempInput)
         starterDict.update({'sensor_mode' : sensor_mode})
-
-
         # preview window
         previewWin = starterDict.get('previewWin',(0,0,640,480))
         tempInput = input('Set video preview window, left, top, right, bottom,(currently ' + str(previewWin) + ') to :')
