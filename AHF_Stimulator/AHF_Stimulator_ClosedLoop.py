@@ -28,13 +28,13 @@ class AHF_Stimulator_ClosedLoop(AHF_Stimulator):
     """
 
     """
-    self.defaultSummaryFile = 'expt_summary.csv'
-    self.defaultAudioPin = -1
-    self.defaultNumTones = 10
-    self.defaultRewardThreshold = 50
-    self.defaultSessionDuration = 2
-    self.defaultMOGHistory = 15
-    self.defaultVarThreshold = 3
+    defaultSummaryFile = 'expt_summary.csv'
+    defaultAudioPin = -1
+    defaultNumTones = 10
+    defaultRewardThreshold = 50
+    defaultSessionDuration = 2
+    defaultMOGHistory = 15
+    defaultVarThreshold = 3
 
 
     @staticmethod
@@ -45,43 +45,56 @@ class AHF_Stimulator_ClosedLoop(AHF_Stimulator):
     @staticmethod
     def config_user_get(starterDict = {}):
         # Summary file name
-        summary_file_name = starterDict.get('summary_file_name', self.defaultSummaryFile)
-        temp = input('Enter the name of the summary csv file, currently %d: ', % summary_file_name)
+        summary_file_name = starterDict.get('summary_file_name', AHF_Stimulator_ClosedLoop.defaultSummaryFile)
+        temp = input('Enter the name of the summary csv file, currently ' + summary_file_name  + ' : ')
         if temp != '':
             summary_file_name = temp
         starterDict.update({'summary_file_name' : summary_file_name})
         # Audio pin
-        audio_pin = starterDict.get('audio_pin', self.defaultAudioPin)
-        temp = input('Enter the pin for audio tone generation, -1 for output to terminal only, currently %d: ', % audio_pin)
+        audio_pin = starterDict.get('audio_pin', AHF_Stimulator_ClosedLoop.defaultAudioPin)
+        temp = input('Enter the pin for audio tone generation, -1 for output to terminal only, currently ' + str(audio_pin) + ' : ')
         if temp != '':
             audio_pin = int(temp)
-        started.update({'audio_pin', audio_pin})
+        starterDict.update({'audio_pin' : audio_pin})
         # Number of tones
-        num_tones = starterDict.get('num_tones', self.defaultNumTones)
-        temp = input('Enter the number of tones for audio tone generation, currently %d', % num_tones)
+        num_tones = starterDict.get('num_tones', AHF_Stimulator_ClosedLoop.defaultNumTones)
+        temp = input('Enter the number of tones for audio tone generation, currently ' + str(num_tones) + ' : ')
         if temp != '':
             num_tones = int(temp) 
-        starterDict.update({'num_tones', num_tones})
+        starterDict.update({'num_tones' : num_tones})
         # More configs here
 
         return AHF_Stimulator.config_user_get(starterDict)
 
+    def config_user_subject_get(self, starterDict = {}):
+        # reward threshold
+        reward_threshold = starterDict.get('reward_threshold', AHF_Stimulator_ClosedLoop.defaultRewardThreshold)
+        temp = input ('Enter the reward threshold for this mouse, currently ' + reward_threshold + ' : ')
+        if temp != '':
+            reward_threshold = temp
+        starterDict.update({'reward_threshold' : reward_threshold})
+        return starterDict
+
+    def config_subject_get(self, starterDict = {}):
+        reward_threshold = starterDict.get('reward_threshold', AHF_Stimulator_ClosedLoop.defaultRewardThreshold)
+        starterDict.update({'reward_threshold' : reward_threshold})
+        return starterDict
 
     def setup(self):
         # super() sets up all the laser stuff plus self.headFixTime plus # rewards(not used here)
         super().setup()
-        self.summary_file_name = starterDict.get('summary_file_name', self.defaultSummaryFile)
-        self.audio_pin=int(self.settingsDict.get('audio_pin', self.defaultAudioPin))
-        self.num_tones=int(self.settingsDict.get('num_tones', self.defaultNumTones))
-        self.moghistory = self.defaultMOGHistory
-        self.var_threshold = self.defaultVarThreshold
+        self.summary_file_name = self.settingsDict.get('summary_file_name', AHF_Stimulator_ClosedLoop.defaultSummaryFile)
+        self.audio_pin=int(self.settingsDict.get('audio_pin', AHF_Stimulator_ClosedLoop.defaultAudioPin))
+        self.num_tones=int(self.settingsDict.get('num_tones', AHF_Stimulator_ClosedLoop.defaultNumTones))
+        self.moghistory = AHF_Stimulator_ClosedLoop.defaultMOGHistory
+        self.var_threshold = AHF_Stimulator_ClosedLoop.defaultVarThreshold
 
         # Closed-loop specific settings
         # Starting audio pin
         wpi.wiringPiSetupGpio()
         wpi.softToneCreate(self.audio_pin)
         # Compute frequency
-        self.freq_dict = _get_freqs(self.num_tones)
+        self.freq_dict = self._get_freqs(self.num_tones)
 
         # General AHF attributes
         self.rewarder = self.task.Rewarder
@@ -138,7 +151,7 @@ class AHF_Stimulator_ClosedLoop(AHF_Stimulator):
         pass
 
 
-    def _get_freqs(nTones):
+    def _get_freqs(self, nTones):
         # quarter-octave increment factor
         qo = 2 ** (1 / 4)
         # initial audio frequency

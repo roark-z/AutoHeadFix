@@ -53,13 +53,10 @@
 "rewards"={"entry"=0.2
 "task"=0.4
 "test"=1.0}}
-"StimulatorClass"="AHF_Stimulator_LickWithhold"
-"StimulatorDict"={"defaultLevel"=3
-"lickWrongTimeout"=2
-"speakerDuty"=0.1
-"speakerFreq"=100
-"speakerOffForReward"=1.5
-"speakerPin"=25
+"StimulatorClass"="AHF_Stimulator_ClosedLoop"
+"StimulatorDict"={"audio_pin"=-1
+"num_tones"=10
+"summary_file_name"="expt_summary.csv"
 "videoPath"=""}
 "StimulusClass"="AHF_Stimulus_VibMotor"
 "StimulusDict"={"motorDuty"=0.8
@@ -68,7 +65,7 @@
 "pulseTime"=0.2}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
-"jsonName"="subjects"
+"jsonName"="fillable_testDummy"
 "loadMiceConfigs"="provide_json"}
 "TriggerClass"=null
 "TriggerDict"=null

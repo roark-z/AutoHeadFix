@@ -12,11 +12,4 @@
 "taskSize"=0.4
 "totalBreakBeamRewardsToday"=0
 "totalEntryRewardsToday"=0}
-"Stimulator"={"delayTime"=0.5
-"goLikelihood"=0
-"lickWithholdTime"=1
-"mouseLevel"=3
-"nRewards"=5
-"responseTime"=5
-"rewardInterval"=3
-"rewardNoGo"=true}}}
+"Stimulator"={"reward_threshold" = 50}}}
