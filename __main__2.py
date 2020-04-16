@@ -79,8 +79,6 @@ def main():
             print(jsonDict)
             task = Task(object = jsonDict)
             db.close()
-        elif argv.__len__() > 1 and argv[1] == "--noedit":
-            task = Task('')
         else:
             task = Task('')
             task.editSettings()
@@ -154,14 +152,18 @@ def main():
                     inputStr += 'S to edit Stimulator settings\n'
                     inputStr += 'T to edit Task configuration\n'
                     inputStr += 'L to log a note\n'
-                    inputStr += 'R to Return to head fix trials\n'
+                    inputStr += 'R to save and return to head fix trials\n'
                     inputStr += 'Q to quit\n:'
                     while True:
                         event = input(inputStr)
                         if event == 'r' or event == "R":
-                            GPIO.setmode(GPIO.BCM)
+                            if hasattr(task, "Camera"):
+                                task.Camera.setdown()
+                                task.BrainLight.setdown()
                             if hasattr(task, 'LickDetector'):
-                                task.LickDetector.startLogging()
+                                task.LickDetector.setdown()
+                            task.editSettings()
+                            task.setup()
                             break
                         elif event == 'q' or event == 'Q':
                             return
@@ -181,9 +183,6 @@ def main():
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.setdown()
                             task.editSettings()
-                            #response = input('Save edited settings to file?')
-                            #if response [0] == 'Y' or response [0] == 'y':
-                             #   task.saveSettings()
                             task.setup()
                             print("hello")
                         elif event == 'S' or event == 's':
