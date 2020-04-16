@@ -154,7 +154,6 @@ class AHF_DataLogger_text(AHF_DataLogger):
             CAD.Dict_to_file(configDict, 'mouse', '{:013}'.format(int(tag)), '.jsn', dir = self.configPath)
 
     def saveNewMouse(self, tag, note, dictionary = {}):
-        self.storeConfig(tag, dictionary)
         self.writeToLogFile(tag, "NewMouse", dictionary, time())
 
     def getMice(self):

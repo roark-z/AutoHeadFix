@@ -30,7 +30,7 @@
 "localDatabase"="raw_data"
 "localPassword"="AutoHead2015"
 "localUser"="pi"
-"mouseConfigPath"="/home/pi/Documents/MiceConfig/"
+"mouseConfigPath"="AHF_config/"
 "oldVersion"=true
 "useLocalSql"=true}
 "HeadFixerClass"="AHF_HeadFixer_PWM_PCA9685"
@@ -68,13 +68,13 @@
 "speakerOffForReward"=1.5
 "speakerPin"=11}
 "StimulusClass"="AHF_Stimulus_VibMotor"
-"StimulusDict"={"motorDuty"=1.0
+"StimulusDict"={"motorDuty"=0.8
 "motorFreq"=300
 "motorPin"=27
 "pulseTime"=0.2}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
-"jsonName"="_subjects"
+"jsonName"="subjects"
 "loadMiceConfigs"="provide_json"}
 "TriggerClass"=null
 "TriggerDict"=null
@@ -83,7 +83,7 @@
 "edited"=true
 "entryTime"=0.0
 "fileName"="HeadFix_LickWithhold"
-"fixAgainTime"=Infinity
+"fixAgainTime"=1586994292.992053
 "fixed"=false
 "inChamberLimitExceeded"=false
 "isFixTrial"=false
