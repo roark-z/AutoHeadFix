@@ -1,8 +1,8 @@
 Quick Start
 ==========================
 
-Installation/setup
-------------------
+Installation of AutoHeadFix
+-----------------------------
 
 To downlowd the setup script for AutoHeadFix, `click here  <https://github.com/ubcbraincircuits/AHF_setup>`_.
 
