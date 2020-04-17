@@ -1,0 +1,30 @@
+AutoHeadFix.AHF\_Notifier package
+=================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Notifier.AHF\_Notifier module
+----------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Notifier.AHF_Notifier
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Notifier.AHF\_Notifier\_Requests module
+--------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Notifier.AHF_Notifier_Requests
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Notifier
+   :members:
+   :undoc-members:
+   :show-inheritance:

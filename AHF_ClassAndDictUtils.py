@@ -66,7 +66,7 @@ def Subclass_from_user(aSuperClass):
 
     for f in os.listdir(os.curdir):
         try:
-            moduleObj=__import__(f.rstrip('.py'))
+            moduleObj=__import__(f[:-3])
             #print('module=' + str(moduleObj))
             classObj = getattr(moduleObj, moduleObj.__name__)
             #print(classObj)
@@ -107,7 +107,6 @@ def File_from_user(nameTypeStr, longName, typeSuffix, makeNew = False):
     startStr = 'AHF_' + nameTypeStr + '_'
     startlen = len(startStr)
     endLn = len(typeSuffix)
-    print(os.listdir(os.curdir))
     for f in os.listdir(os.curdir + os.sep + 'AHF_'+nameTypeStr):
         if f.startswith(startStr) and f.endswith(typeSuffix):
             fname = f[startlen :-endLn]
@@ -117,7 +116,7 @@ def File_from_user(nameTypeStr, longName, typeSuffix, makeNew = False):
                 #print(fname)
             else:
                 try:
-                    className = f.rstrip(typeSuffix)
+                    className = f[:-len(typeSuffix)]
                     moduleObj=__import__(startStr[:-1]+'.'+className)
                     #Going from two modules into one module and then into one class
                     classObj = getattr(getattr(moduleObj, className),className)

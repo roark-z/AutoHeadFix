@@ -1,0 +1,30 @@
+AutoHeadFix.AHF\_BrainLight package
+===================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_BrainLight.AHF\_BrainLight module
+--------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_BrainLight.AHF_BrainLight
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_BrainLight.AHF\_BrainLight\_1GPIO module
+---------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_BrainLight.AHF_BrainLight_1GPIO
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_BrainLight
+   :members:
+   :undoc-members:
+   :show-inheritance:

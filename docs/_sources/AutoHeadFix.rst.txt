@@ -1,0 +1,105 @@
+AutoHeadFix package
+===================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   AutoHeadFix.AHF_BrainLight
+   AutoHeadFix.AHF_Camera
+   AutoHeadFix.AHF_ContactCheck
+   AutoHeadFix.AHF_DataLogger
+   AutoHeadFix.AHF_HeadFixer
+   AutoHeadFix.AHF_LickDetector
+   AutoHeadFix.AHF_Notifier
+   AutoHeadFix.AHF_Reader
+   AutoHeadFix.AHF_Rewarder
+   AutoHeadFix.AHF_Stimulator
+   AutoHeadFix.AHF_Stimulus
+   AutoHeadFix.AHF_Subjects
+   AutoHeadFix.AHF_Trigger
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Base module
+----------------------------
+
+.. automodule:: AutoHeadFix.AHF_Base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_ClassAndDictUtils module
+-----------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_ClassAndDictUtils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HardwareTester module
+--------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HardwareTester
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Task module
+----------------------------
+
+.. automodule:: AutoHeadFix.AHF_Task
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_ValveControl module
+------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_ValveControl
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.Subject\_update module
+----------------------------------
+
+.. automodule:: AutoHeadFix.Subject_update
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.quickstats module
+-----------------------------
+
+.. automodule:: AutoHeadFix.quickstats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.restart\_if\_no\_data module
+----------------------------------------
+
+.. automodule:: AutoHeadFix.restart_if_no_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.water\_failsafe module
+----------------------------------
+
+.. automodule:: AutoHeadFix.water_failsafe
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix
+   :members:
+   :undoc-members:
+   :show-inheritance:

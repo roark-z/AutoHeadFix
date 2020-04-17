@@ -1,8 +1,8 @@
 Quick Start
 ==========================
 
-Installation/setup
-------------------
+Installation of AutoHeadFix
+-----------------------------
 
 To downlowd the setup script for AutoHeadFix, `click here  <https://github.com/ubcbraincircuits/AHF_setup>`_.
 
@@ -11,7 +11,7 @@ To downlowd the setup script for AutoHeadFix, `click here  <https://github.com/u
 .. raw:: html
 
         <video width="640" height="360" controls>
-        <source src="../../setup_script.mp4">
+        <source src="setup_script.mp4">
            type="video/mp4">
            Your browser does not support this video type.
         </video>
@@ -35,12 +35,24 @@ Developers
 Usage
 ------
 
+**First Time Configuration**
+
+.. raw:: html
+
+        <video width="640" height="360" controls>
+        <source src="configs.mp4">
+           type="video/mp4">
+           Your browser does not support this video type.
+        </video>
+
+|
+
 **Generic Usage Guide**
 
 .. raw:: html
 
         <video width="640" height="360" controls>
-        <source src="../../AutoHeadFixGuide.mp4">
+        <source src="AutoHeadFixGuide.mp4">
            type="video/mp4">
            Your browser does not support this video type.
         </video>
@@ -52,7 +64,7 @@ Usage
 .. raw:: html
 
         <video width="640" height="360" controls>
-        <source src="../../cronSetup.mp4">
+        <source src="cronSetup.mp4">
            type="video/mp4">
            Your browser does not support this video type.
         </video>
@@ -64,18 +76,19 @@ Usage
 .. raw:: html
 
         <video width="640" height="360" controls>
-        <source src="../../changeMouseSpecificVar.mp4">
+        <source src="changeMouseSpecificVar.mp4">
            type="video/mp4">
            Your browser does not support this video type.
         </video>
 
 |
+
 **Training Difficulty**
 
 .. raw:: html
 
         <video width="640" height="360" controls>
-        <source src="../../training.mp4">
+        <source src="training.mp4">
            type="video/mp4">
            Your browser does not support this video type.
         </video>

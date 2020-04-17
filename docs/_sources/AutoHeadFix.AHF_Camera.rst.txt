@@ -1,0 +1,38 @@
+AutoHeadFix.AHF\_Camera package
+===============================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Camera.AHF\_Camera module
+------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Camera.AHF_Camera
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Camera.AHF\_Camera\_PiCam module
+-------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Camera.AHF_Camera_PiCam
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Camera.AHF\_Camera\_PiStream module
+----------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Camera.AHF_Camera_PiStream
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Camera
+   :members:
+   :undoc-members:
+   :show-inheritance:

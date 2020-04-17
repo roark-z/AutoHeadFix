@@ -9,7 +9,6 @@ class AHF_Stimulator_Rewards(AHF_Stimulator):
     defaultRewards = 5
     defaultInterval = 3
 
-
     @staticmethod
     def about():
         return 'Rewards stimulator gives periodic rewards, no interaction from mouse required.'

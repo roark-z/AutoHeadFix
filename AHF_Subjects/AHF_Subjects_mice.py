@@ -314,13 +314,13 @@ class AHF_Subjects_mice(AHF_Subjects):
             elif event[0].lower() == 'a' or event[0].lower() == 't': # other two choices are for adding a mouse by RFID Tag, either reading from Tag Reader, or typing it
                 self.task.Reader.stopLogging()
                 self.add(event)
-                CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
+                CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn", dir='AHF_config/')
                 self.task.Reader.startLogging()
             else:
                 break
         response = input('Save changes in settings to a json file, too?(recommended)')
         if response[0] == 'Y' or response[0] == 'y':
-            CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
+            CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn", dir='AHF_config/')
 
 
     def hardwareTest(self):

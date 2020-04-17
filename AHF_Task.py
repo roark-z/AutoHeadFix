@@ -55,7 +55,7 @@ class Task(object):
             for key, value in object.items():
                 if type(value) is str and  key.endswith('Class'):
                      if value.startswith("AHF_"):
-                          setattr(self, key, CAD.Class_from_file(value[4:], '', dirName='AHF_config'))
+                          setattr(self, key, CAD.Class_from_file(value[4:], '', dirName='AHF_'+key[:-5]))
                      else:
                           setattr(self, key, None)
                 else:

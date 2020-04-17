@@ -1,0 +1,46 @@
+AutoHeadFix.AHF\_Rewarder package
+=================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Rewarder.AHF\_Rewarder module
+----------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Rewarder.AHF_Rewarder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Rewarder.AHF\_Rewarder\_solenoid module
+--------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Rewarder.AHF_Rewarder_solenoid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Rewarder.AHF\_Rewarder\_solenoid\_pt module
+------------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Rewarder.AHF_Rewarder_solenoid_pt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Rewarder.AHF\_Rewarder\_solenoid\_rpi module
+-------------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Rewarder.AHF_Rewarder_solenoid_rpi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Rewarder
+   :members:
+   :undoc-members:
+   :show-inheritance:
