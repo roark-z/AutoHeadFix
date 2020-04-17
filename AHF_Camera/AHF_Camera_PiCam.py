@@ -165,7 +165,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         #else:
         #    self.exposure_mode = 'off'
         self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
-        sleep(2.0) # let gains settle, then fix values
+        time.sleep(2.0) # let gains settle, then fix values
         if(self.AHFgainMode & 1):
             savedGain = self.piCam.awb_gains
             self.piCam.awb_gains = savedGain

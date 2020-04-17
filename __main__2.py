@@ -164,6 +164,7 @@ def main():
                                 task.LickDetector.setdown()
                             task.editSettings()
                             task.setup()
+                            task.Reader.startLogging()
                             break
                         elif event == 'q' or event == 'Q':
                             return
