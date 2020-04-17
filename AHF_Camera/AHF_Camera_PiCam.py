@@ -3,7 +3,9 @@
 
 from AHF_Camera.AHF_Camera import AHF_Camera
 from picamera import PiCamera
-from time import sleep
+import time
+from datetime import datetime
+from os import path, makedirs, chown, listdir
 
 class AHF_Camera_PiCam(AHF_Camera):
 
@@ -19,6 +21,15 @@ class AHF_Camera_PiCam(AHF_Camera):
         defaultShutterSpeed = 30000
         defaultFormat = 'rgb'
         defaultQuality = 20
+        defaultVideoPath = '/home/pi/Videos/'
+        # path
+        video_path = starterDict.get('video_path', defaultVideoPath)
+        tempInput = input('Where do you want to save the videos? '.format(video_path))
+        if tempInput != '':
+            video_path = str(tempInput)
+        if not video_path.endswith('/'):
+            video_path += '/'
+        starterDict.update({'video_path' : video_path})
         # resolution
         resolution = starterDict.get('resolution', defaultRes)
         tempInput = input('set X,Y resolution(currently {0}): '.format(resolution))
@@ -83,6 +94,10 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.iso = self.settingsDict.get('iso', 0)
         self.piCam.shutter_speed = self.settingsDict.get('shutter_speed', 30000)
         # set fields that are in AHF_Camera class
+        self.video_path = self.settingsDict.get('video_path', '/home/pi/Videos/')
+        self.video_path+=str(datetime.now().date())+'/'
+        if not path.exists(self.video_path):
+            makedirs(self.video_path, mode=0o777, exist_ok=True)
         self.AHFvideoFormat = self.settingsDict.get('format', 'h264')
         self.AHFvideoQuality = self.settingsDict.get('quality', 20)
         self.AHFframerate= self.settingsDict.get('framerate', 30)
@@ -167,18 +182,18 @@ class AHF_Camera_PiCam(AHF_Camera):
     def capture(self, path, type, video_port =False):
         self.piCam.capture(path, type, use_video_port=video_port)
 
-    def start_recording(self, video_name_path):
+    def start_recording(self, video_name):
         """
         Starts a video recording using the saved settings for format, quality, gain, etc.
 
         A preview of the recording is always shown
 
-        :param video_name_path: a full path to the file where the video will be stored. Always save to a file, not a PIL, for, example
+        :param video_name: Name of saved recording. Always save to a file, not a PIL, for, example
         """
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(video_name_path, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            self.piCam.start_recording(video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         return
 
@@ -204,20 +219,19 @@ class AHF_Camera_PiCam(AHF_Camera):
             self.piCam.stop_preview()
         return
 
-    def timed_recording(self, video_name_path, recTime):
+    def timed_recording(self, recTime):
         """
         Does a timed video recording using the PiCamera wait_recording function.
 
         A preview of the recording is always shown
 
         Control does not pass back to the calling function until the recording is finished
-        :param  video_name_path: a full path to the file where the video will be stored.
         :param recTime: duration of the recorded video, in seconds
         """
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         self.piCam.wait_recording(timeout=recTime)
         self.stop_recording()

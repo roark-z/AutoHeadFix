@@ -19,9 +19,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
     """
     @staticmethod
     def config_user_get(starterDict = {}):
-        videoPath = starterDict.get("videoPath", "/home/pi/Documents")
-        videoPath = input("Enter the path for videos to be saved under, currently " + videoPath)
-        starterDict.update({"videoPath": videoPath})
         return starterDict
  
     @abstractmethod
@@ -56,8 +53,7 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
                 self.lastTime =  time()
                 print(hex(id(self)), 'start')
                 print(self.lastTime)
-                video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
-                video_name_path = self.videoPath + "M" + video_name
+                video_name = 'M' + str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
                 #writeToLogFile(expSettings.logFP, thisMouse, "video:" + video_name)
                 # send socket message to start behavioural camera
                 self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': video_name}, time())
@@ -66,14 +62,14 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
                     MESSAGE = str(thisTag) + "_" +  "_" + '%d' % self.task.lastFixedTime
                     self.task.Trigger.doTrigger(MESSAGE)
                     # start recording and Turn on the blue led
-                    camera.start_recording(video_name_path)
+                    camera.start_recording(video_name)
                     sleep(self.task.Trigger.cameraStartDelay) # wait a bit so camera has time to start before light turns on, for synchrony accross cameras
                     self.task.BrainLight.onForStim()
                     self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
                 else: # turn on the blue light and start the movie
                     self.task.BrainLight.onForStim()
                     self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDON', None, time())
-                    camera.start_recording(video_name_path)
+                    camera.start_recording(video_name)
             except Exception as anError:
                 camera.stop_recording()
                 print('Error in running trial:' + str(anError))
@@ -99,7 +95,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
             print("no last")
             return 
         video_name = str(thisTag)  + "_" + '%d' % self.lastTime + '.' + extension
-        video_name_path = self.videoPath + "M" + video_name
         if hasattr(self.task, 'Trigger'):
             self.task.BrainLight.offForStim() # turn off the blue LED
             self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDOFF', None, time())
@@ -116,4 +111,4 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         uid = getpwnam('pi').pw_uid
         gid = getgrnam('pi').gr_gid
         self.lastTime = None
-        chown(video_name_path, uid, gid) # we run AutoheadFix as root if using pi PWM, so we expicitly set ownership to pi
+        #chown(video_name_path, uid, gid) # we run AutoheadFix as root if using pi PWM, so we expicitly set ownership to pi
