@@ -94,7 +94,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.iso = self.settingsDict.get('iso', 0)
         self.piCam.shutter_speed = self.settingsDict.get('shutter_speed', 30000)
         # set fields that are in AHF_Camera class
-        self.video_path = self.settingsDict.get('video_path', '/home/pi/Videos/')
+        self.video_path = self.settingsDict.get('video_path', '/mnt/AHF_Videos/')
         self.video_path+=str(datetime.now().date())+'/'
         if not path.exists(self.video_path):
             makedirs(self.video_path, mode=0o777, exist_ok=True)
@@ -119,7 +119,7 @@ class AHF_Camera_PiCam(AHF_Camera):
         Tests functionality, gives user a chance to change settings
         """
         print('Now displaying current output')
-        self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
+        self.start_preview()
         result = input('Do you wish to edit Camera settings?')
         while result [0].lower() != 'y' and result[0].lower() !='n':
             result = input('Do you wish to edit Camera settings?(Y/N)')
@@ -190,10 +190,11 @@ class AHF_Camera_PiCam(AHF_Camera):
 
         :param video_name: Name of saved recording. Always save to a file, not a PIL, for, example
         """
+        video_name = self.video_path+video_name_path
         if self.AHFvideoFormat == 'rgb':
             self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         return
 

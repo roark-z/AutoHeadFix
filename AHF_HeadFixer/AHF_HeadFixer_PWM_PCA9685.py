@@ -54,5 +54,5 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
 
     def setPWM(self, servoPosition):
         self.PCA9685.set_pwm(0, 0, servoPosition)
-        
-    
+
+

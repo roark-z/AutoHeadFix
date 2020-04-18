@@ -68,13 +68,13 @@
 "speakerOffForReward"=1.5
 "speakerPin"=11}
 "StimulusClass"="AHF_Stimulus_VibMotor"
-"StimulusDict"={"motorDuty"=0.8
+"StimulusDict"={"motorDuty"=1.0
 "motorFreq"=300
 "motorPin"=27
 "pulseTime"=0.2}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
-"jsonName"="subjects"
+"jsonName"="_subjects"
 "loadMiceConfigs"="provide_json"}
 "TriggerClass"=null
 "TriggerDict"=null

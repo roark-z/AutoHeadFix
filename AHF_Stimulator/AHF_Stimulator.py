@@ -36,9 +36,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
     def stop(self):
         self.running = False
 
-    def setup(self):
-        self.videoPath = self.settingsDict.get("videoPath")
-
     def startVideo(self):
         if not self.task.Stimulus.__class__.__name__ == 'AHF_Stimulus_Laser':
             try:

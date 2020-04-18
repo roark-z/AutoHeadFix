@@ -162,6 +162,7 @@ class AHF_HeadFixer(AHF_Base, metaclass= ABCMeta):
                 resultsDict.update({'unFixes' : newUnFixes})
 
 
+    @abstractmethod
     def hardwareTest(self):
         print(self.__class__.about())
         print('Head Fixer head-fixing for 2 sec')

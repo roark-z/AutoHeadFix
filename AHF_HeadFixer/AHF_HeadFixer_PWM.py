@@ -121,3 +121,16 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
             self.settingsDict = AHF_HeadFixer_PWM.config_user_get(self.settingsDict)
             self.servoReleasedPosition = self.settingsDict.get('servoReleasedPosition')
             self.servoFixedPosition = self.settingsDict.get('servoFixedPosition')
+        repeatedTest = input('Do you want to start a fatigue test? (y/n)')
+        if repeatedTest[0].lower() == 'y':
+            while True:
+                try:
+                    self.setPWM(self.servoFixedPosition)
+                    sleep(3)
+                    print('servo moving to Released position')
+                    self.setPWM(self.servoReleasedPosition)
+                    sleep(3)
+                except KeyboardInterrupt:
+                    break
+
+

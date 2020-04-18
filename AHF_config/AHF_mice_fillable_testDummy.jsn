@@ -1,9 +1,9 @@
-{"111111111"={"HeadFixer"={"headFixTime"=40
-"propHeadFix"=1
+{"801011070"={"HeadFixer"={"headFixTime"=40
+"propHeadFix"=0.75
 "tightnessHeadFix"=1}
 "Rewarder"={"breakBeamDelay"=1
 "breakBeamSize"=0.1
-"entryDelay"=900
+"entryDelay"=0
 "entrySize"=0.2
 "lastBreakBeamTime"=0
 "lastEntryTime"=0
