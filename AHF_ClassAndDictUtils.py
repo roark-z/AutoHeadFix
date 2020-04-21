@@ -216,6 +216,8 @@ def Edit_Obj_fields(anObject, longName, isTaskConfig = False):
     changes = False
     while True:
         showDict = Show_ordered_object(anObject, longName, isTaskConfig)
+        print('\n')
+        print('Make sure you check [DataLoggerDict] for database passwords and [SubjectsDict] for mouse config file names before proceeding')
         inputStr = input('Enter number of setting to edit, or 0 to exit:')
         try:
             inputNum = int(inputStr)

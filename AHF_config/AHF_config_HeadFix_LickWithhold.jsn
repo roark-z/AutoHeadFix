@@ -74,7 +74,7 @@
 "pulseTime"=0.2}
 "SubjectsClass"="AHF_Subjects_mice"
 "SubjectsDict"={"inChamberTimeLimit"=300
-"jsonName"="_subjects"
+"jsonName"="subjects"
 "loadMiceConfigs"="provide_json"}
 "TriggerClass"=null
 "TriggerDict"=null
