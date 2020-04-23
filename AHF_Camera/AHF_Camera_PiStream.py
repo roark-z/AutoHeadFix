@@ -123,11 +123,25 @@ class AHF_Camera_PiStream(AHF_Camera):
         self.AHFframerate= self.settingsDict.get('framerate', 30)
         self.AHFpreview = self.settingsDict.get('previewWin',(0,0,640,480))
         whiteBalance = self.settingsDict.get('whiteBalance', False)
-        self.AHFgainMode =(whiteBalance == True) # set bit 0 of gain for auto white balancing
-        self.AHFgainMode += 2 *(self.piCam.iso == 0) # set bit 1 for auto gain
         
-        # set gain based on 2 sec preview
-        self.set_gain()
+        # set gain
+        self.cfgDict = self.settingsDict.get('cfgDict', '')
+        if 'dff_history' in cfgDict:
+            while True:
+                if(self.piCam.analopiCg_gain>=7.0 and
+                self.piCam.analog_gain<=8.0 and
+                self.piCam.digital_gain>=1 and
+                self.piCam.digital_gain<=1.5):
+                    self.piCam.exposure_mode='off'
+                    print("ok")
+                    break
+                else:
+                    print('analog gain: ' + str(eval(str(self.piCam.analog_gain))))
+                    print('digital gain: ' + str(eval(str(self.piCam.digital_gain))))
+
+
+        self.is_recording = False
+        self.stopped = False
         self.rawCapture = PiRGBArray(self.piCam, size=self.resolution())
 
         # Allow the camera to warmup
@@ -138,22 +152,6 @@ class AHF_Camera_PiStream(AHF_Camera):
     def resolution(self):
         return self.piCam.resolution
 
-    def hardwareTest(self):
-        """
-        Tests functionality, gives user a chance to change settings
-        """
-        print('Now displaying current output')
-        self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
-        result = input('Do you wish to edit Camera settings?')
-        while result [0].lower() != 'y' and result[0].lower() !='n':
-            result = input('Do you wish to edit Camera settings?(Y/N)')
-        if result [0] == 'y' or result [0] == 'Y':
-            self.setdown()
-            self.settingsDict = self.config_user_get(self.settingsDict)
-            self.setup()
-        self.piCam.stop_preview()
-        pass
-
     def setdown(self):
         """
         Writes session end and closes log file
@@ -161,72 +159,39 @@ class AHF_Camera_PiStream(AHF_Camera):
         self.piCam.close()
         pass
 
-    def set_gain(self):
-        """
-        Sets the gain and white balance of the camera based on a 2 second preview - so set illumination as you like before calling
 
-        If ISO for the camera is set to non-zero value, gain is not settable. If pWhiteBalance was set to False, white balancing is not done,
-        and gains for red and green are set to 1.
-        :raises PiCameraError: error raised by superclass PiCamera from preview
-        """
-        DescStr = 'Setting Gain for AHF_Camera '
-        if(self.AHFgainMode & 2):
-            DescStr += 'from current illumination'
-        else:
-            DescStr += "from ISO " + str(self.piCam.iso)
-        if(self.AHFgainMode & 1):
-            DescStr += ' with white balancing'
-        else:
-            DescStr += " with No white balancing"
-        print(DescStr)
-        if(self.AHFgainMode & 1):
-            self.piCam.awb_mode='auto'
-        else:
-            self.piCam.awb_mode='off'
-            self.piCam.awb_gains =(1,1)
-        #if(self.AHFgainMode & 2):
-        self.exposure_mode = 'auto'
-        #else:
-        #    self.exposure_mode = 'off'
-        self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
-        sleep(2.0) # let gains settle, then fix values
-        if(self.AHFgainMode & 1):
-            savedGain = self.piCam.awb_gains
-            self.piCam.awb_gains = savedGain
-            self.piCam.awb_mode = "off"
-        #if(self.AHFgainMode & 2):
-        self.exposure_mode = 'off'
-        self.piCam.stop_preview()
-        print("Red Gain for white balance =" + str(float(self.piCam.awb_gains [0])))
-        print("Blue Gain for white balance =" + str(float(self.piCam.awb_gains [1])))
-        print("Analog Gain = " + str(float(self.piCam.analog_gain)))
-        print("Digital Gain = " + str(float(self.piCam.digital_gain)))
-        return
+    def update(self, path, type, video_port =False):
+        if self.data_path:
+            self.camera.start_recording(self.data_path, format='rgb')
+        for f in self.stream:
+            start = time.time()
+            # grab the frame from the stream and clear the stream in
+            # preparation for the next frame
+            self.frame = f.array
+            self.rawCapture.seek(0)
 
-    def capture(self, path, type, video_port =False):
-        self.piCam.capture(path, type, use_video_port=video_port)
+            # if the thread indicator variable is set, stop the thread
+            # and resource camera resources
+            if self.stopped:
+                self.stream.close()
+                if self.data_path:
+                    self.camera.stop_recording()
+                self.rawCapture.close()
+                self.piCam.close()
+                return
+            time.sleep(max(0.5/(self.piCam.framerate) - (time.time() - start), 0.0))
+        
 
     def start_recording(self, video_name_path):
         """
-        Starts a video recording using the saved settings for format, quality, gain, etc.
-
-        A preview of the recording is always shown
-
-        :param video_name_path: a full path to the file where the video will be stored. Always save to a file, not a PIL, for, example
         """
-        if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
-        else:
-            self.piCam.start_recording(video_name_path, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
-        self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
-        return
-
-    def add_overlay(self, bytes, layer, alpha):
-        return self.piCam.add_overlay(bytes, layer=layer, alpha = alpha, fullscreen=False, window= self.AHFpreview)
-
-    def remove_overlay(self, overlay):
-        self.piCam.remove_overlay(overlay)
-
+        self.start_preview()
+        self.is_recording = True
+        self.frame = None
+        t = Thread(target=self.update, args=())
+        t.daemon = True
+        t.start()
+        return self
 
     def start_preview(self):
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
@@ -238,28 +203,34 @@ class AHF_Camera_PiStream(AHF_Camera):
         """
         Stops a video recording previously started with start_recording.
         """
-        if self.piCam.recording:
-            self.piCam.stop_recording()
-            self.piCam.stop_preview()
+        if self.is_recording:
+            self.stopped = False
         return
 
-    def timed_recording(self, video_name_path, recTime):
+    def hardwareTest(self):
         """
-        Does a timed video recording using the PiCamera wait_recording function.
-
-        A preview of the recording is always shown
-
-        Control does not pass back to the calling function until the recording is finished
-        :param  video_name_path: a full path to the file where the video will be stored.
-        :param recTime: duration of the recorded video, in seconds
+        Tests functionality, gives user a chance to change settings
         """
-        if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
-        else:
-            self.piCam.start_recording(output=video_name_path, format=self.AHFvideoFormat)
-        self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
-        self.piCam.wait_recording(timeout=recTime)
-        self.stop_recording()
-        return
+        self.setup()
+        while(True):
+            inputStr = input('p=display preview, r=record for 10 seconds, t= edit task settings, q= quit: ')
+            if inputStr == 'p':
+                print('Now displaying current output')
+                self.piCam.start_preview(fullscreen = False, window=self.AHFpreview)
+                result = input('Press any key to stop')
+                self.piCam.stop_preview()
+            elif inputStr == 'r':
+                print("Starting recording for 10 seconds")
+                self.start_recording(video_name_path = '')
+                time.sleep(10)
+                self.stop_recording()
+                print("Video is saved in current directory")
+            elif inputStr == 't':
+                self.setdown()
+                self.settingsDict = self.config_user_get(self.settingsDict)
+                self.setup()
+            elif inputStr == 'q':
+                break
+        pass
 
 
