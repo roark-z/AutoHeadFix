@@ -9,8 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/__main__2.py",
-            "console": "integratedTerminal",
-            "args":["--temp"]
+            "console": "integratedTerminal"
         }
     ]
 }

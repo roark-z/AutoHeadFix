@@ -17,6 +17,7 @@ import io
 from AHF_Camera.AHF_Camera import AHF_Camera
 from picamera import PiCamera
 from time import sleep
+from threading import Thread
 
 class AHF_Camera_PiStream(AHF_Camera):
 
@@ -33,7 +34,7 @@ class AHF_Camera_PiStream(AHF_Camera):
         defaultFrameRate = 30
         defaultISO = 200
         defaultShutterSpeed = 30000
-        defaultPath = '/home/Pi/Videos/closed_loop/'
+        defaultPath = '/home/Pi/Videos/'
         
         # video path
         video_path = starterDict.get('video_path', defaultPath)
@@ -126,7 +127,7 @@ class AHF_Camera_PiStream(AHF_Camera):
         
         # set gain
         self.cfgDict = self.settingsDict.get('cfgDict', '')
-        if 'dff_history' in cfgDict:
+        if 'dff_history' in self.cfgDict:
             while True:
                 if(self.piCam.analopiCg_gain>=7.0 and
                 self.piCam.analog_gain<=8.0 and
@@ -160,9 +161,9 @@ class AHF_Camera_PiStream(AHF_Camera):
         pass
 
 
-    def update(self, path, type, video_port =False):
+    def update(self):
         if self.data_path:
-            self.camera.start_recording(self.data_path, format='rgb')
+            self.piCam.start_recording(self.data_path, format='rgb')
         for f in self.stream:
             start = time.time()
             # grab the frame from the stream and clear the stream in
@@ -175,14 +176,14 @@ class AHF_Camera_PiStream(AHF_Camera):
             if self.stopped:
                 self.stream.close()
                 if self.data_path:
-                    self.camera.stop_recording()
+                    self.piCam.stop_recording()
                 self.rawCapture.close()
                 self.piCam.close()
                 return
             time.sleep(max(0.5/(self.piCam.framerate) - (time.time() - start), 0.0))
         
 
-    def start_recording(self, video_name_path):
+    def start_recording(self):
         """
         """
         self.start_preview()
@@ -211,7 +212,6 @@ class AHF_Camera_PiStream(AHF_Camera):
         """
         Tests functionality, gives user a chance to change settings
         """
-        self.setup()
         while(True):
             inputStr = input('p=display preview, r=record for 10 seconds, t= edit task settings, q= quit: ')
             if inputStr == 'p':
@@ -221,10 +221,9 @@ class AHF_Camera_PiStream(AHF_Camera):
                 self.piCam.stop_preview()
             elif inputStr == 'r':
                 print("Starting recording for 10 seconds")
-                self.start_recording(video_name_path = '')
+                self.start_recording()
                 time.sleep(10)
                 self.stop_recording()
-                print("Video is saved in current directory")
             elif inputStr == 't':
                 self.setdown()
                 self.settingsDict = self.config_user_get(self.settingsDict)
