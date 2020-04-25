@@ -14,7 +14,7 @@
 480]
 "sensor_mode"=4
 "shutter_speed"=30000
-"video_path"="/home/Pi/Videos/closed_loop/"
+"video_path"="/home/pi/Videos"
 "whiteBalance"=false}
 "ContactCheckClass"="AHF_ContactCheck_BeamBreak"
 "ContactCheckDict"={"contactPUD"="PUD_UP"
