@@ -190,11 +190,11 @@ class AHF_Camera_PiCam(AHF_Camera):
 
         :param video_name: Name of saved recording. Always save to a file, not a PIL, for, example
         """
-        video_name = self.video_path+video_name_path
+        video_name_full = self.video_path+video_name
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
+            self.piCam.start_recording(output=video_name_full, format=self.AHFvideoFormat)
         else:
-            self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            self.piCam.start_recording(output=video_name_full, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         return
 

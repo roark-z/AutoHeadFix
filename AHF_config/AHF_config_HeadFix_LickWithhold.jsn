@@ -2,7 +2,7 @@
 "BrainLightDict"={"ledDelay"=3.0
 "ledPin"=23}
 "CameraClass"="AHF_Camera_PiCam"
-"CameraDict"={"format"="h264"
+"CameraDict"={"format"="rgb"
 "framerate"=30
 "iso"=0
 "previewWin"=[0
@@ -54,7 +54,7 @@
 "inChamberTimeLimit"=600
 "serialPort"="/dev/ttyUSB0"}
 "RewarderClass"="AHF_Rewarder_solenoid_rpi"
-"RewarderDict"={"entryRewardDelay"=1.0
+"RewarderDict"={"entryRewardDelay"=5.0
 "maxEntryRewards"=10000
 "rewardPin"=13
 "rewards"={"entry"=0.4
@@ -68,7 +68,7 @@
 "speakerOffForReward"=1.5
 "speakerPin"=11}
 "StimulusClass"="AHF_Stimulus_VibMotor"
-"StimulusDict"={"motorDuty"=1.0
+"StimulusDict"={"motorDuty"=0.8
 "motorFreq"=300
 "motorPin"=27
 "pulseTime"=0.2}
