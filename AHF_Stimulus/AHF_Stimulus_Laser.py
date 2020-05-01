@@ -47,6 +47,18 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
     @staticmethod
     def config_user_get(starterDict = {}):
+        """
+        Prompts the user for settings for the AHF_Stimulus_Laser class. The following can be changed:
+        * **PWM_mode**: used for adding channels to PWM, use default setting 0
+        * **PWM_channel**: current channel for PWM, use default setting 2
+        * **duty_cycle**: duty cycle for the laser out of 100. Indicates the strength of laser, 0 means the laser is off.
+        * **laser_on_time**: how many seconds the laser is on for per pulse/stimulation
+        * **coeff_matrix**: matrix used for matching xy coordinates on user interface and xy coordinates of the stepper motor tracks.
+        * **Shift Register Settings**: DS, Q7S, SHCP, STCP are pins for the shift registers controlling the stepper motors. Keep these as default or as indicated by the wiring diagrams.
+        * **motor_delay**: how long (in seconds) the stepper motor waits between each step, smaller delay means faster maximum movement speed. 
+        * **hdf_path**: directory to save hdf5 files
+        """
+
         defaultMode = 0
         defaultChannel = 2
         defaultDutyCycle = 0
@@ -126,6 +138,11 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         return starterDict
 
     def setup(self):
+        """
+        Initializes the camera, pwm for laser, and relevant stepper motor settings from the settings dictionary.
+        This function is usually ran after self.config_user_get(), which ensures the settings dict exists.
+        This function also sets up GPIO pins. The pi throws errors when uninitialized pins are used, so make sure setup is called whenever program is restarted.
+        """
         self.camera = self.task.Camera
         #PWM settings
         self.PWM_mode = int(self.settingsDict.get('PWM_mode', 0))
@@ -225,12 +242,22 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.rewardTimes = []
 
     def trialPrep(self, tag):
+        """
+        Runs once at the start of stimulator. Calls the align() funtion.
+        """
         return self.align(tag)
 
     def stimulate(self):
+        """
+        Generates a single pulse with the laser. See pulse() function
+        """
         self.pulse(self.laser_on_time, self.duty_cycle)
 
     def length(self):
+        """
+        :return: the laser on time per pulse
+        :rtype: integer
+        """
         return self.laser_on_time
 
     def period(self):
@@ -238,6 +265,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         return 0.001
 
     def trialEnd(self):
+        """
+        Procedures to end a trial: stops camera preview and recenters the stepper motors 
+        """
         #Move laser back to zero position at the end of the trial
         self.camera.stop_preview()
         self.move_to(np.array([0,0]),topleft=True,join=False)
@@ -245,7 +275,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 #============== Utility functions for the stepper motors and laser =================
 
     def unlock(self):
-        #De-energize the motors by toggling 0 into all shift registers
+        """
+        De-energize the stepper motors by toggling 0 into all shift registers
+        """
         GPIO.output(self.DS,0)
         for i in range(8):
             GPIO.output(self.SHCP,0)
@@ -254,7 +286,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         GPIO.output(self.STCP,1)
 
     def feed_byte(self,byte):
-        #Toggle a byte into the shjft registers
+        """
+        Toggle a byte into the shjft registers
+        """
         for j in byte:
             GPIO.output(self.DS,j)
             GPIO.output(self.SHCP,0)
@@ -263,8 +297,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         GPIO.output(self.STCP,1)
 
     def get_state(self):
-        # Read out serial output and store state. Feed state back into shift reg.
-        # Create empty array to store the state
+        """
+        Read out serial output and store state. Feed state back into shift reg.
+        Create empty array to store the state
+
+        :return: current serial output state
+        :rtype: list of integers
+        """
         state = np.empty(8,dtype=int)
         for j in range(8):
             out = GPIO.input(self.Q7S)
@@ -275,6 +314,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         return state.tolist()
 
     def get_dir(self,steps):
+        """
+        Utility function to get the direction of movement from a signed integer
+
+        :param steps: input displacement from user
+        :type steps: signed integer
+        :return: 1 if input is positive, -1 if negative, 0 if no motion
+        :rtype: integer
+        """
         if steps > 0:
             return 1
         elif steps < 0:
@@ -283,6 +330,18 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             return 0
 
     def get_arrow_dir(self,key):
+        """
+        If arrow keys are pressed, return information fed to stepper motors
+        If page_up/down/home/end keys are pressed, return information fed to control UI crosshair.
+        Tapping on left shift key will toggle between fast and slow move speed. 
+        Note: The fastest speed of motor movement depends on the motor_delay in config_user_get.   
+        Note (signs): The UI and stepper motors both follow the coordinate system with right and down as positive, left and up as negative.         
+
+        :param key: current keyboard stroke 
+        :type key: keyboard.Key object
+        :return: motor x-axis displacement, motor y-axis displacement, crosshair x-axis displacement, crosshair y-axis displacement
+        :rtype: list of four integers
+        """
         # return direction of stepper motor step and cross-hair step.
         if key == keyboard.Key.shift:
             if self.laser_step == 3:
@@ -313,7 +372,20 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             return 0,0,0,0
 
     def on_press(self,key):
-        # Callback function, which responds to keyboard strokes.
+        """
+        Callback function, which responds to keyboard strokes. Processes the results from get_arrow_dir
+        If arrow keys are pressed, queue up motor command and update motor position.
+        If page_up/down/home/end keys are pressed, update the crosshair position.
+        Space key saves the current stepper motor and crosshair position into arrays laser_points and image_points to be processed by matching()
+        Esc key saves the arrays laser_points and image_points arrays and terminates the matching process
+
+        Note: At least 3 points are required for matching
+
+        :param key: [description]
+        :type key: [type]
+        :return: [description]
+        :rtype: [type]
+        """
         di = self.get_arrow_dir(key)
         if any(np.asarray(di[:2])!=0):
             self.mot_q.put(di[:2]) #Queue the motor command
@@ -344,7 +416,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 pass
 
     def make_cross(self):
-        #Define a simple cross-hair and add it as an overlay to the preview
+        """
+        Define a simple cross-hair and add it as an overlay to the preview
+        """
         cross = np.zeros((self.overlay_resolution[1],self.overlay_resolution[0],3),dtype=np.uint16)
         cross[self.cross_pos[0],:,:] = 0xff
         cross[:,self.cross_pos[1],:] = 0xff
@@ -353,9 +427,16 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                             alpha=100)
 
     def update_cross(self,q):
-        #Callback function, which processes changes in the cross-hair position.
+        """        
+        Callback function which processes changes in the cross-hair position and moves the crosshair on UI  
+
+        :param q: 
+        :type q: 2 entry array
+        :return: returns false if q contains null entries
+        :rtype: boolean
+        """
         while True:
-            #Repeatedly check wether queue has something to process
+            #Repeatedly check whether queue has something to process
             if not q.empty():
                 prod = q.get()
                 if prod is None:
@@ -370,7 +451,18 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     pass
 
     def update_mot(self,mot_q,phase_queue,delay,topleft):
-        #Callback funtion to process new motor steps. Runs on a different processor.
+        """
+        Callback funtion to process new motor steps. Infinite loop that runs on a different processor.
+
+        :param mot_q: displacement to move the stepper motors by, updated by on_press 
+        :type mot_q: 2-entry array 
+        :param phase_queue: queue representing the current motor phase
+        :type phase_queue: 2-entry array
+        :param delay: delay between each step
+        :type delay: integer
+        :param topleft: true if origin is set to top left corner instead of center
+        :type topleft: boolean
+        """
         while True:
             if not mot_q.empty():
                 x,y = mot_q.get()
@@ -381,7 +473,20 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def move(self,x,y,phase,delay,topleft,mp):
-        #Main function, which moves stepper motors by x and y.
+        """
+        Main function, which moves stepper motors by x and y.
+
+        :param x: x-axis displacement
+        :type x: integer
+        :param y: y-axis displacement
+        :type y: integer
+        :param phase: current phase of the stepper motors
+        :type phase: 2 entry array
+        :param delay: delay between each step
+        :type delay: integer
+        :param topleft: true if origin is set to top left corner instead of center
+        :type topleft: boolean
+        """
         if mp == True:
             phase_x,phase_y = phase.get()
         else:
