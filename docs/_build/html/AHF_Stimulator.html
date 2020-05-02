@@ -96,11 +96,11 @@
 <li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html">AHF_Reader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html">AHF_Rewarder</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Stimulator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-stimulator-ahf-stimulator-module">AHF_Stimulator.AHF_Stimulator module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-stimulator-ahf-stimulator-leds-module">AHF_Stimulator.AHF_Stimulator_LEDs module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulator.AHF_Stimulator">AHF_Stimulator.AHF_Stimulator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulator.AHF_Stimulator_LEDs">AHF_Stimulator.AHF_Stimulator_LEDs module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ahf-stimulator-ahf-stimulator-lever-module">AHF_Stimulator.AHF_Stimulator_Lever module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-stimulator-ahf-stimulator-lickwithhold-module">AHF_Stimulator.AHF_Stimulator_LickWithhold module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-stimulator-ahf-stimulator-rewards-module">AHF_Stimulator.AHF_Stimulator_Rewards module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulator.AHF_Stimulator_LickWithhold">AHF_Stimulator.AHF_Stimulator_LickWithhold module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Stimulator.AHF_Stimulator_Rewards">AHF_Stimulator.AHF_Stimulator_Rewards module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html">AHF_Stimulus</a></li>
@@ -176,20 +176,427 @@
             
   <div class="section" id="ahf-stimulator">
 <h1>AHF_Stimulator<a class="headerlink" href="#ahf-stimulator" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ahf-stimulator-ahf-stimulator-module">
-<h2>AHF_Stimulator.AHF_Stimulator module<a class="headerlink" href="#ahf-stimulator-ahf-stimulator-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AHF_Stimulator.AHF_Stimulator">
+<span id="ahf-stimulator-ahf-stimulator-module"></span><h2>AHF_Stimulator.AHF_Stimulator module<a class="headerlink" href="#module-AHF_Stimulator.AHF_Stimulator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator">
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator.</code><code class="sig-name descname">AHF_Stimulator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
+<p>Stimulator does all stimulation and reward during a head fix task
+All events and their timings in a head fix, including rewards, are controlled by a Stimulator.</p>
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.config_user_get">
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.quitting">
+<em class="property">abstract </em><code class="sig-name descname">quitting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.quitting" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.run">
+<em class="property">abstract </em><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at start of each head fix. Does whatever</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.startVideo">
+<code class="sig-name descname">startVideo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.startVideo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.stopVideo">
+<code class="sig-name descname">stopVideo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator.stopVideo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="ahf-stimulator-ahf-stimulator-leds-module">
-<h2>AHF_Stimulator.AHF_Stimulator_LEDs module<a class="headerlink" href="#ahf-stimulator-ahf-stimulator-leds-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AHF_Stimulator.AHF_Stimulator_LEDs">
+<span id="ahf-stimulator-ahf-stimulator-leds-module"></span><h2>AHF_Stimulator.AHF_Stimulator_LEDs module<a class="headerlink" href="#module-AHF_Stimulator.AHF_Stimulator_LEDs" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs">
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator_LEDs.</code><code class="sig-name descname">AHF_Stimulator_LEDs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards" title="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards</span></code></a></p>
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.about">
+<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.about" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.configStim">
+<code class="sig-name descname">configStim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.configStim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_subject_get">
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_user_get">
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_user_subject_get">
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompts the user for individualized parameters, with default responses
+from starterDict, and returns starterDict with settings
+as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.hardwareTest">
+<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests functionality, gives user a chance to change settings.
+:Returns: bool – True if any settings have changed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.logFile">
+<code class="sig-name descname">logFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.logFile" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Called after each head fix, prints more detailed text to the log file, perhaps a line for each event</p>
+</div></blockquote>
+<p>You may wish to use the same format as writeToLogFile function in __main__.py</p>
+<p>Or you may wish to override with pass and log from the run method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.logfile">
+<code class="sig-name descname">logfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.logfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at start of each head fix. Does whatever</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.AHF_Stimulator_LEDs.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
+Run by __init__, or can be run  separately after editing the settingsDict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="AHF_Stimulator.AHF_Stimulator_LEDs.random">
+<code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator_LEDs.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LEDs.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="ahf-stimulator-ahf-stimulator-lever-module">
 <h2>AHF_Stimulator.AHF_Stimulator_Lever module<a class="headerlink" href="#ahf-stimulator-ahf-stimulator-lever-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="ahf-stimulator-ahf-stimulator-lickwithhold-module">
-<h2>AHF_Stimulator.AHF_Stimulator_LickWithhold module<a class="headerlink" href="#ahf-stimulator-ahf-stimulator-lickwithhold-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-AHF_Stimulator.AHF_Stimulator_LickWithhold">
+<span id="ahf-stimulator-ahf-stimulator-lickwithhold-module"></span><h2>AHF_Stimulator.AHF_Stimulator_LickWithhold module<a class="headerlink" href="#module-AHF_Stimulator.AHF_Stimulator_LickWithhold" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold">
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator_LickWithhold.</code><code class="sig-name descname">AHF_Stimulator_LickWithhold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator" title="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulator.AHF_Stimulator.AHF_Stimulator</span></code></a></p>
+<div class="line-block">
+<div class="line">AHF_Stimulator_LickWithhold gives mice rewards based on their “level”</div>
+<div class="line">within the program. These rewards are given based on the mouse’s response</div>
+<div class="line">to a defined stimulus. Levels are as follows:</div>
 </div>
-<div class="section" id="ahf-stimulator-ahf-stimulator-rewards-module">
-<h2>AHF_Stimulator.AHF_Stimulator_Rewards module<a class="headerlink" href="#ahf-stimulator-ahf-stimulator-rewards-module" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Level 0: Mouse gets periodic rewards paired with a stimulus. No input</div>
+<div class="line">required from the mouse at this stage.</div>
+<div class="line">Level 1: Mouse gets periodic rewards, again paired with a stimulus. The</div>
+<div class="line">mouse must refrain from licking for a defined withhold time before another</div>
+<div class="line">reward is given. If they lick within the withhold time, a buzzer sounds.</div>
+<div class="line">Level 2: Mouse must lick after a given delay time from the stimulus, and</div>
+<div class="line">within a defined response time, in order to receive a reward. In brief,</div>
+<div class="line">this is the “GO” task.</div>
+<div class="line">Level 3: Mouse must differentiate between two stimuluses, either one pulse</div>
+<div class="line">for “GO” or two successive pulses for “NO-GO”. In either case, they must</div>
+<div class="line">wait for the delay time before responding, and then within the response</div>
+<div class="line">time decide to either lick or not lick. “NO-GO” trials can be rewarded</div>
+<div class="line">with water or not if desired.</div>
+<div class="line">For levels 2 and 3, the outcome of the task is recorded as follows:</div>
+<div class="line">“GO”:</div>
+<div class="line">-4: licked within delay time, failure</div>
+<div class="line">-2: did not lick, failure</div>
+<div class="line">+2: waited until response time to lick and then licked, success</div>
+<div class="line">“NO-GO”:</div>
+<div class="line">-3: licked within delay time, failure</div>
+<div class="line">-1: waited until response time to lick and then licked, failure</div>
+<div class="line">+1: did not lick, success</div>
+</div>
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.about">
+<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.about" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_subject_get">
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_user_get">
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_user_subject_get">
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompts the user for individualized parameters, with default responses
+from starterDict, and returns starterDict with settings
+as edited by the user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.delayTime_def">
+<code class="sig-name descname">delayTime_def</code><em class="property"> = 0.5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.delayTime_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.discrimTask">
+<code class="sig-name descname">discrimTask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.discrimTask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.goLikelihood_def">
+<code class="sig-name descname">goLikelihood_def</code><em class="property"> = 0.5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.goLikelihood_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.goTask">
+<code class="sig-name descname">goTask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.goTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>A GO trial. Mouse must lick before getting a reward.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.hardwareTest">
+<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests functionality, gives user a chance to change settings.
+:Returns: bool – True if any settings have changed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.lickWithholdTime_def">
+<code class="sig-name descname">lickWithholdTime_def</code><em class="property"> = 1</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.lickWithholdTime_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.lickWrongTimeout_def">
+<code class="sig-name descname">lickWrongTimeout_def</code><em class="property"> = 5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.lickWrongTimeout_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.noGoTask">
+<code class="sig-name descname">noGoTask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.noGoTask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.quitting">
+<code class="sig-name descname">quitting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.quitting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called before AutoHEadFix exits. Gives stimulator chance to do any needed cleanup</p>
+<p>A stimulator may, e.g., open files and wish to close them before exiting, or use hardware that needs to be cleaned up</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.responseTime_def">
+<code class="sig-name descname">responseTime_def</code><em class="property"> = 2.5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.responseTime_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.rewardNoGo_def">
+<code class="sig-name descname">rewardNoGo_def</code><em class="property"> = True</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.rewardNoGo_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.rewardTask">
+<code class="sig-name descname">rewardTask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.rewardTask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">tag</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at start of each head fix. Does whatever</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.setdown">
+<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.setdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
+pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
+Run by __init__, or can be run  separately after editing the settingsDict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerDuty_def">
+<code class="sig-name descname">speakerDuty_def</code><em class="property"> = 0.8</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerDuty_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerFreq_def">
+<code class="sig-name descname">speakerFreq_def</code><em class="property"> = 300</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerFreq_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerOffForReward_def">
+<code class="sig-name descname">speakerOffForReward_def</code><em class="property"> = 1.5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerOffForReward_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerPin_def">
+<code class="sig-name descname">speakerPin_def</code><em class="property"> = 25</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.speakerPin_def" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.withholdWait">
+<code class="sig-name descname">withholdWait</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">endTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.AHF_Stimulator_LickWithhold.withholdWait" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="AHF_Stimulator.AHF_Stimulator_LickWithhold.random">
+<code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator_LickWithhold.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_LickWithhold.random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-AHF_Stimulator.AHF_Stimulator_Rewards">
+<span id="ahf-stimulator-ahf-stimulator-rewards-module"></span><h2>AHF_Stimulator.AHF_Stimulator_Rewards module<a class="headerlink" href="#module-AHF_Stimulator.AHF_Stimulator_Rewards" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards">
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulator.AHF_Stimulator_Rewards.</code><code class="sig-name descname">AHF_Stimulator_Rewards</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Stimulator.AHF_Stimulator.AHF_Stimulator" title="AHF_Stimulator.AHF_Stimulator.AHF_Stimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulator.AHF_Stimulator.AHF_Stimulator</span></code></a></p>
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.about">
+<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.about" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_subject_get">
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_user_get">
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_user_subject_get">
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompts the user for individualized parameters, with default responses
+from starterDict, and returns starterDict with settings
+as edited by the user.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.defaultInterval">
+<code class="sig-name descname">defaultInterval</code><em class="property"> = 3</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.defaultInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.defaultRewards">
+<code class="sig-name descname">defaultRewards</code><em class="property"> = 5</em><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.defaultRewards" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.hardwareTest">
+<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests functionality, gives user a chance to change settings.
+:Returns: bool – True if any settings have changed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.nextDay">
+<code class="sig-name descname">nextDay</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.nextDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the next day starts. The stimulator is given the new log file pointer. Can do other things as needed
+:param newFP: the file pointer for the new day’s log file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.quitting">
+<code class="sig-name descname">quitting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.quitting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called before AutoHEadFix exits. Gives stimulator chance to do any needed cleanup</p>
+<p>A stimulator may, e.g., open files and wish to close them before exiting, or use hardware that needs to be cleaned up</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at start of each head fix. Does whatever</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.setdown">
+<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.setdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
+pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulator.AHF_Stimulator_Rewards.AHF_Stimulator_Rewards.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
+Run by __init__, or can be run  separately after editing the settingsDict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

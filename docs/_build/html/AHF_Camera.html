@@ -90,7 +90,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Camera</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera.AHF_Camera">AHF_Camera.AHF_Camera module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera.AHF_Camera_PiCam">AHF_Camera.AHF_Camera_PiCam module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera.AHF_Camera_PiStream">AHF_Camera.AHF_Camera_PiStream module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ahf-camera-ahf-camera-pistream-module">AHF_Camera.AHF_Camera_PiStream module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html">AHF_ContactCheck</a></li>
@@ -176,36 +176,36 @@
 <h1>AHF_Camera<a class="headerlink" href="#ahf-camera" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_Camera.AHF_Camera">
 <span id="ahf-camera-ahf-camera-module"></span><h2>AHF_Camera.AHF_Camera module<a class="headerlink" href="#module-AHF_Camera.AHF_Camera" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera.</code><code class="sig-name descname">AHF_Camera</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera.</code><code class="sig-name descname">AHF_Camera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
 <p>AHF_Camera is the base class for the main brain imaging camera used in Auto Head Fix</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera.resolution">
 <em class="property">abstract </em><code class="sig-name descname">resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.resolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the resolution of the camera. Used for certain stimulators.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera.start_preview">
 <em class="property">abstract </em><code class="sig-name descname">start_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.start_preview" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a preview of the camera’s current vision.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera.start_recording">
 <em class="property">abstract </em><code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.start_recording" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a recording of the camera’s current vision.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera.stop_preview">
 <em class="property">abstract </em><code class="sig-name descname">stop_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.stop_preview" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ends a preview of the camera’s current vision.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera.AHF_Camera.stop_recording">
 <em class="property">abstract </em><code class="sig-name descname">stop_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.stop_recording" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ends a recording of the camera’s current vision.</p>
@@ -216,51 +216,51 @@
 </div>
 <div class="section" id="module-AHF_Camera.AHF_Camera_PiCam">
 <span id="ahf-camera-ahf-camera-picam-module"></span><h2>AHF_Camera.AHF_Camera_PiCam module<a class="headerlink" href="#module-AHF_Camera.AHF_Camera_PiCam" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera_PiCam.</code><code class="sig-name descname">AHF_Camera_PiCam</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera_PiCam.</code><code class="sig-name descname">AHF_Camera_PiCam</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="AHF_Camera.AHF_Camera.AHF_Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Camera.AHF_Camera.AHF_Camera</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.add_overlay">
-<code class="sig-name descname">add_overlay</code><span class="sig-paren">(</span><em class="sig-param">bytes</em>, <em class="sig-param">layer</em>, <em class="sig-param">alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.add_overlay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_overlay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bytes</span></em>, <em class="sig-param"><span class="n">layer</span></em>, <em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.add_overlay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.capture">
-<code class="sig-name descname">capture</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">type</em>, <em class="sig-param">video_port=False</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.capture" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">capture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">video_port</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.capture" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.remove_overlay">
-<code class="sig-name descname">remove_overlay</code><span class="sig-paren">(</span><em class="sig-param">overlay</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.remove_overlay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">remove_overlay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">overlay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.remove_overlay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.resolution">
 <code class="sig-name descname">resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.resolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the resolution of the camera. Used for certain stimulators.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.set_gain">
 <code class="sig-name descname">set_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.set_gain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the gain and white balance of the camera based on a 2 second preview - so set illumination as you like before calling</p>
@@ -269,13 +269,13 @@ and gains for red and green are set to 1.
 :raises PiCameraError: error raised by superclass PiCamera from preview</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes session end and closes log file</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -287,164 +287,50 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_preview">
 <code class="sig-name descname">start_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_preview" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a preview of the camera’s current vision.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_recording">
-<code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><em class="sig-param">video_name_path</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_recording" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">video_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_recording" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a video recording using the saved settings for format, quality, gain, etc.</p>
 <p>A preview of the recording is always shown</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>video_name_path</strong> – a full path to the file where the video will be stored. Always save to a file, not a PIL, for, example</p>
+<dd class="field-odd"><p><strong>video_name</strong> – Name of saved recording. Always save to a file, not a PIL, for, example</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_preview">
 <code class="sig-name descname">stop_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_preview" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ends a preview of the camera’s current vision.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_recording">
 <code class="sig-name descname">stop_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_recording" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops a video recording previously started with start_recording.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.timed_recording">
-<code class="sig-name descname">timed_recording</code><span class="sig-paren">(</span><em class="sig-param">video_name_path</em>, <em class="sig-param">recTime</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.timed_recording" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timed_recording</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.timed_recording" title="Permalink to this definition">¶</a></dt>
 <dd><p>Does a timed video recording using the PiCamera wait_recording function.</p>
 <p>A preview of the recording is always shown</p>
 <p>Control does not pass back to the calling function until the recording is finished
-:param  video_name_path: a full path to the file where the video will be stored.
 :param recTime: duration of the recorded video, in seconds</p>
 </dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-AHF_Camera.AHF_Camera_PiStream">
-<span id="ahf-camera-ahf-camera-pistream-module"></span><h2>AHF_Camera.AHF_Camera_PiStream module<a class="headerlink" href="#module-AHF_Camera.AHF_Camera_PiStream" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera_PiStream.</code><code class="sig-name descname">AHF_Camera_PiStream</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="AHF_Camera.AHF_Camera.AHF_Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Camera.AHF_Camera.AHF_Camera</span></code></a></p>
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.about">
-<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.about" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.add_overlay">
-<code class="sig-name descname">add_overlay</code><span class="sig-paren">(</span><em class="sig-param">bytes</em>, <em class="sig-param">layer</em>, <em class="sig-param">alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.add_overlay" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.capture">
-<code class="sig-name descname">capture</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">type</em>, <em class="sig-param">video_port=False</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.capture" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.config_user_get" title="Permalink to this definition">¶</a></dt>
-<dd><p>static method that querries user for settings, with default responses from starterDict,
-and returns starterDict with settings as edited by the user.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.hardwareTest">
-<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.hardwareTest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tests functionality, gives user a chance to change settings</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.remove_overlay">
-<code class="sig-name descname">remove_overlay</code><span class="sig-paren">(</span><em class="sig-param">overlay</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.remove_overlay" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.resolution">
-<code class="sig-name descname">resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.resolution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the resolution of the camera. Used for certain stimulators.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.set_gain">
-<code class="sig-name descname">set_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.set_gain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the gain and white balance of the camera based on a 2 second preview - so set illumination as you like before calling</p>
-<p>If ISO for the camera is set to non-zero value, gain is not settable. If pWhiteBalance was set to False, white balancing is not done,
-and gains for red and green are set to 1.
-:raises PiCameraError: error raised by superclass PiCamera from preview</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.setdown" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes session end and closes log file</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
-Run by __init__, or can be run  separately after editing the settingsDict</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.start_preview">
-<code class="sig-name descname">start_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.start_preview" title="Permalink to this definition">¶</a></dt>
-<dd><p>Starts a preview of the camera’s current vision.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.start_recording">
-<code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><em class="sig-param">video_name_path</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.start_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Starts a video recording using the saved settings for format, quality, gain, etc.</p>
-<p>A preview of the recording is always shown</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>video_name_path</strong> – a full path to the file where the video will be stored. Always save to a file, not a PIL, for, example</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.stop_preview">
-<code class="sig-name descname">stop_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.stop_preview" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ends a preview of the camera’s current vision.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.stop_recording">
-<code class="sig-name descname">stop_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.stop_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stops a video recording previously started with start_recording.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.timed_recording">
-<code class="sig-name descname">timed_recording</code><span class="sig-paren">(</span><em class="sig-param">video_name_path</em>, <em class="sig-param">recTime</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiStream.AHF_Camera_PiStream.timed_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Does a timed video recording using the PiCamera wait_recording function.</p>
-<p>A preview of the recording is always shown</p>
-<p>Control does not pass back to the calling function until the recording is finished
-:param  video_name_path: a full path to the file where the video will be stored.
-:param recTime: duration of the recorded video, in seconds</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="ahf-camera-ahf-camera-pistream-module">
+<h2>AHF_Camera.AHF_Camera_PiStream module<a class="headerlink" href="#ahf-camera-ahf-camera-pistream-module" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

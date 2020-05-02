@@ -175,27 +175,27 @@
 <h1>AHF_Notifier<a class="headerlink" href="#ahf-notifier" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_Notifier.AHF_Notifier">
 <span id="ahf-notifier-ahf-notifier-module"></span><h2>AHF_Notifier.AHF_Notifier module<a class="headerlink" href="#module-AHF_Notifier.AHF_Notifier" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier.</code><code class="sig-name descname">AHF_Notifier</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier.</code><code class="sig-name descname">AHF_Notifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
 <p>Some remote way of notifying somebody, with email or text or something.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.notify">
-<em class="property">abstract </em><code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msgStr</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notify" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msgStr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notify" title="Permalink to this definition">¶</a></dt>
 <dd><p>a more general method to send text information</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.notifyStuck">
-<em class="property">abstract </em><code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">cageID</em>, <em class="sig-param">duration</em>, <em class="sig-param">isStuck</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notifyStuck" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">cageID</span></em>, <em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">isStuck</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notifyStuck" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a text message with the given information.</p>
 <p>Two types of message can be sent, depending if isStuck is True or False
 No timing is done by the AHF_Notifier class, the durations are only for building the text mssg
@@ -211,9 +211,9 @@ No timing is done by the AHF_Notifier class, the durations are only for building
 </div>
 <div class="section" id="module-AHF_Notifier.AHF_Notifier_Requests">
 <span id="ahf-notifier-ahf-notifier-requests-module"></span><h2>AHF_Notifier.AHF_Notifier_Requests module<a class="headerlink" href="#module-AHF_Notifier.AHF_Notifier_Requests" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier_Requests.</code><code class="sig-name descname">AHF_Notifier_Requests</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier_Requests.</code><code class="sig-name descname">AHF_Notifier_Requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier" title="AHF_Notifier.AHF_Notifier.AHF_Notifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Notifier.AHF_Notifier.AHF_Notifier</span></code></a></p>
 <p>sends text messages to a tuple of phone numbers using a web service, textbelt.com
 You need to get an account and pay for some messages to get an account key
@@ -222,28 +222,28 @@ As it uses http requests to send the message to the web service, your Pi needs t
 The best way to install python modules is with pip. Assuming you are using Python 3:
 sudo apt-get install python3-pip
 sudo pip-3 install requests</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msgStr</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msgStr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notify" title="Permalink to this definition">¶</a></dt>
 <dd><p>a more general method to send text information</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck">
-<code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">cageID</em>, <em class="sig-param">duration</em>, <em class="sig-param">isStuck</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">cageID</span></em>, <em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">isStuck</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a text message with the given information.</p>
 <p>Two types of message can be sent, depending if isStuck is True or False
 No timing is done by the AHF_Notifier class, the durations are only for building the text mssg
@@ -253,14 +253,14 @@ No timing is done by the AHF_Notifier class, the durations are only for building
 :return: nothing</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -272,7 +272,7 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL">
 <code class="sig-name descname">textBeltURL</code><em class="property"> = 'http://textbelt.com/text'</em><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
