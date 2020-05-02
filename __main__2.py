@@ -159,6 +159,7 @@ def main():
                         if event == 'r' or event == "R":
                             if hasattr(task, "Camera"):
                                 task.Camera.setdown()
+                            if hasattr(task, 'BrainLight'):
                                 task.BrainLight.setdown()
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.setdown()
@@ -180,6 +181,7 @@ def main():
                         elif event == 'T' or event == 't':
                             if hasattr(task, "Camera"):
                                 task.Camera.setdown()
+                            if hasattr(task, 'BrainLight'):
                                 task.BrainLight.setdown()
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.setdown()

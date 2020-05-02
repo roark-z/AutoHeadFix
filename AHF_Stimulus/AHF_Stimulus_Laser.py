@@ -37,6 +37,18 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     Stimulates a specified region of the mouse's brain with a laser,
     controlled via a stepper motor stage. Requires a camera - if using,
     cannot record video of the trial with overhead camera (used for aligning)
+
+    The laser trial setup starts with a matching/alignment process. A reference image will be taken and the user will select a region of interest (ROI)
+    on that image. Then the camera preview will start, allowing the user to move the laser with arrow keys to the position of a crosshair on the UI,
+    hitting space will confirm the two position match. The user then moves the crosshair with home/pageup/pagedown/end keys and repeat this process two
+    more times. After this process, exit with esc key and a coefficient matrix will be generated to match laser and user position in the future.
+
+    Every time a mouse enters, the program will start an image registration process to compare the mouse's brain to that of its reference image. 
+    This will generate a transform matrix that maps ROI coordinates into live mouse brain location.
+
+    **Issues: The image registration process takes around 30 seconds per trial, which is far slower than ideal. The bulk of the computation is done
+    in an external package, and we don't know whether it's optimized.**
+
     """
     # def __init__(self, cageSettings, expSettings, rewarder, lickDetector, camera):
     #     super().__init__(cageSettings, expSettings, rewarder, lickDetector, camera)
@@ -49,6 +61,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def config_user_get(starterDict = {}):
         """
         Prompts the user for settings for the AHF_Stimulus_Laser class. The following can be changed:
+
         * **PWM_mode**: used for adding channels to PWM, use default setting 0
         * **PWM_channel**: current channel for PWM, use default setting 2
         * **duty_cycle**: duty cycle for the laser out of 100. Indicates the strength of laser, 0 means the laser is off.
@@ -57,6 +70,7 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         * **Shift Register Settings**: DS, Q7S, SHCP, STCP are pins for the shift registers controlling the stepper motors. Keep these as default or as indicated by the wiring diagrams.
         * **motor_delay**: how long (in seconds) the stepper motor waits between each step, smaller delay means faster maximum movement speed. 
         * **hdf_path**: directory to save hdf5 files
+
         """
 
         defaultMode = 0
@@ -140,7 +154,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def setup(self):
         """
         Initializes the camera, pwm for laser, and relevant stepper motor settings from the settings dictionary.
+        
         This function is usually ran after self.config_user_get(), which ensures the settings dict exists.
+        
         This function also sets up GPIO pins. The pi throws errors when uninitialized pins are used, so make sure setup is called whenever program is restarted.
         """
         self.camera = self.task.Camera
@@ -332,9 +348,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def get_arrow_dir(self,key):
         """
         If arrow keys are pressed, return information fed to stepper motors
+        
         If page_up/down/home/end keys are pressed, return information fed to control UI crosshair.
+        
         Tapping on left shift key will toggle between fast and slow move speed. 
+        
         Note: The fastest speed of motor movement depends on the motor_delay in config_user_get.   
+        
         Note (signs): The UI and stepper motors both follow the coordinate system with right and down as positive, left and up as negative.         
 
         :param key: current keyboard stroke 
@@ -374,9 +394,13 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
     def on_press(self,key):
         """
         Callback function, which responds to keyboard strokes. Processes the results from get_arrow_dir
+        
         If arrow keys are pressed, queue up motor command and update motor position.
+        
         If page_up/down/home/end keys are pressed, update the crosshair position.
+        
         Space key saves the current stepper motor and crosshair position into arrays laser_points and image_points to be processed by matching()
+        
         Esc key saves the arrays laser_points and image_points arrays and terminates the matching process
 
         Note: At least 3 points are required for matching
@@ -556,7 +580,17 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
             phase.put([phase_x,phase_y])
 
     def move_to(self,new_pos,topleft=True,join=False):
-        #High-level function, which invokes self.move to run on another processor
+        """
+        High-level function, which invokes self.move to run on another processor. Moves the stepper motors to the specified position.  
+
+        :param new_pos: x, y coordinates of the new position
+        :type new_pos: 2-entry array
+        :param topleft: parameter to the move() function, defaults to True
+        :type topleft: bool, optional
+        :param join: whether to kill process after 30 second timeout, defaults to False
+        :type join: bool, optional
+        """
+        #
         steps = np.around(new_pos).astype(int) - self.pos
         print('Current:\nx: '+str(self.pos[0])+'\ny: '+str(self.pos[1]))
         print('Target:\nx: '+str(new_pos[0])+'\ny: '+str(new_pos[1]))
@@ -584,6 +618,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         self.pos += steps
 
     def pulse(self,duration,duty_cycle=0):
+        """
+        Generates one laser pulse 
+
+        :param duration: duration of laser pulse
+        :type duration: float
+        :param duty_cycle: duty cycle of the pwm used to drive laser, defaults to 0
+        :type duty_cycle: float, optional
+        """
         if duration < 1000:
             # for i in range(len(self.array)):
             #     self.array[i] = 0
@@ -602,6 +644,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 #==== High-level Utility functions: Matching of coord systems, target selection and image registration ====
 
     def matcher(self):
+        """
+        Starts GUI to match coordinate systems. 
+        The laser trial setup starts with a matching/alignment process. A reference image will be taken and the user will select a region of interest (ROI)
+        on that image. Then the camera preview will start, allowing the user to move the laser with arrow keys to the position of a crosshair on the UI,
+        hitting space will confirm the two position match. The user then moves the crosshair with home/pageup/pagedown/end keys and repeat this process two
+        more times. After this process, exit with esc key and a coefficient matrix will be generated to match laser and user position in the future.
+
+        """
         #GUI to select three points using the matching aid tool.
         if keyboard is None:
             return
@@ -682,13 +732,18 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
         print("Center in laser coords:", np.dot(self.coeff, np.asarray([self.camera.resolution()[0], self.camera.resolution()[1], 1])))
 
     def get_ref_im(self):
-        #Save a reference image whithin the mouse object
+        """
+        Save a reference image whithin the mouse object (in hdf5 format)
+        """
         print('Taking ref image')
         self.mouse.update({'ref_im' : np.empty((self.camera.resolution()[1], self.camera.resolution()[0], 3),dtype=np.uint16)})
         self.mouse.update({'timestamp': time()})
         self.camera.capture(self.mouse.get('ref_im'),'rgb')
 
     def select_targets(self):
+        """
+        Menu function to select or update targets for one or more mice
+        """
         if path.exists(self.hdf_path):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
@@ -701,6 +756,14 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
         # GUI function for the selecting targets
         def manual_annot(img):
+            """
+            Draws the target point on the GUI where user clicks
+
+            :param img: reference image of the mouse, the background of target selection
+            :type img: 3D array of dimensions camera y resolution by camera x resolution by 3 (rgb)
+            :return: coordinates of the target
+            :rtype: integer pair
+            """
             warnings.filterwarnings("ignore",".*GUI is implemented.*")
             plt.figure(figsize=(self.camera.resolution()[0]/100, self.camera.resolution()[1]/100))
             plt.imshow(img)
@@ -742,8 +805,26 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def image_registration(self):
-        # Runs at the beginning of a new trial
+        """
+        Image registration runs at the beginning of a new trial. Uses discrete fourier transform to find the transformation matrix from reference image
+        to current brain image. Then transforms the target point on reference image to a position to a point on current brain image. Finally transforms that
+        position into action stepper motor x and y steps.
+        """
         def trans_mat(angle,x,y,scale):
+            """
+            Utility function to get the transformation matrix
+
+            :param angle: angle to rotate by
+            :type angle: float in degrees
+            :param x: translation in x direction
+            :type x: float  
+            :param y: translation in y direction
+            :type y: float
+            :param scale: scaling factor
+            :type scale: float
+            :return: transformation matrix
+            :rtype: n by n matrix, based on the dimensions of x and y
+            """
             # Utility function to get the transformation matrix
             angle = -1*np.radians(angle)
             scale = 1/scale
@@ -793,9 +874,19 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 #=================Main functions called from outside===========================
     def align(self, tag, resultsDict = {}, settingsDict = {}):
         """
-        Aligns laser with reference image and assigned targets.
-        Returns True if aligned successfully, False otherwise.
+        Process for trial prep. First checks if reference image, target, and match coefficient matrices are present and prompts use to fill those in.
+        Then aligns laser with reference image and assigned target
+
+        :param tag: mouse tag
+        :type tag: integer
+        :param resultsDict: dictionary to save trial results, defaults to {}
+        :type resultsDict: dict, optional
+        :param settingsDict: mouse settings dictionary, defaults to {}
+        :type settingsDict: dict, optional
+        :return: True if aligned successfully, False otherwise
+        :rtype: boolen
         """
+
         self.tag = tag
         self.mouse = self.task.Subjects.get(self.tag)
         self.loadH5()
@@ -882,8 +973,19 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def hardwareTest(self):
-        # Tester function called from the hardwareTester. Includes Stimulator
-        # specific hardware tester.
+        """
+        Tester function called from the hardwareTester. Includes Stimulator specific hardware tester. Functions available include:
+
+        * m: run matching between UI and stepper motors
+        * i: tests a trial with a dummy mouse
+        * r: edit reference image
+        * t: select target ROI
+        * a: test accuracy of laser movement
+        * p: pulses the laser for 1 second
+        * l: camera preview with brainlight
+        * c: test motor movement, user will enter coordinates to move towards
+        """
+       
         while(True):
             inputStr = input('i= dummy trial, r= reference image, m= matching, t= targets, a = accuracy, p= laser tester, c= motor check, l= preview/LED, q= quit: ')
             self.tag = 111111111
@@ -977,10 +1079,15 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                     ref.attrs.modify('IMAGE_MINMAXRANGE', [0,self.camera.resolution()[0]])
 
     def setdown(self):
-        #Remove portions saved in h5
+        """
+        Nothing specifc to setdown in laser module. Only sets down the AHF_Stimulus superclass
+        """
         super().setdown()
 
     def loadH5(self):
+        """
+        Loads an hdf file from a specific path self.hdf_path
+        """
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
                 for tag, mouse in hdf.items():
@@ -996,6 +1103,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
                 pass
 
     def editReference(self):
+        """
+        Utility function to view and replace the reference image from menu
+        """
         tag = ""
         if(path.exists(self.hdf_path)):
             with File(self.hdf_path, 'r+') as hdf:
@@ -1044,6 +1154,9 @@ class AHF_Stimulus_Laser(AHF_Stimulus):
 
 
     def h5updater(self):
+        """
+        Updates the mouse's hdf5 file with reference image, targets, trial images, and laser spot information collected from self.mouse 
+        """
         with File(self.hdf_path, 'r+') as hdf:
             mouse = hdf.require_group(str(self.tag))
             resolution_shape =( self.camera.resolution()[1], self.camera.resolution()[0], 3) #rgb layers
