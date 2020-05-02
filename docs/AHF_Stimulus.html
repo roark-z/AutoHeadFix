@@ -177,39 +177,39 @@
 <h1>AHF_Stimulus<a class="headerlink" href="#ahf-stimulus" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_Stimulus.AHF_Stimulus">
 <span id="ahf-stimulus-ahf-stimulus-module"></span><h2>AHF_Stimulus.AHF_Stimulus module<a class="headerlink" href="#module-AHF_Stimulus.AHF_Stimulus" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus.</code><code class="sig-name descname">AHF_Stimulus</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus.</code><code class="sig-name descname">AHF_Stimulus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
 <p>Generic “Stimulus” for use in Stimulators. Interacts with the mouse in
 some defined method based on the type of stimulus. Examples include a
 vibration motor, laser pulse in a specific brain region, or nothing.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.length">
 <em class="property">abstract </em><code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return length of stimulus (e.g. pulse duration)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.period">
 <em class="property">abstract </em><code class="sig-name descname">period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return period of stimulus (1/frequency for motor/laser)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.stimulate">
 <em class="property">abstract </em><code class="sig-name descname">stimulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.stimulate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.trialEnd">
 <em class="property">abstract </em><code class="sig-name descname">trialEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.trialEnd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Code to be run at end of trial. E.g. moving laser to zero position</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.trialPrep">
-<em class="property">abstract </em><code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.trialPrep" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus.trialPrep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares stimulus for trial: e.g. aligns laser, preps vib. motor, etc</p>
 </dd></dl>
 
@@ -222,20 +222,28 @@ vibration motor, laser pulse in a specific brain region, or nothing.</p>
 mouse and includes a user interface to select targets on reference images.
 The Stimulator directs and pulses a laser to selected targets for optogenetic
 stimulation/inhibition.</p>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_Laser.</code><code class="sig-name descname">AHF_Stimulus_Laser</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_Laser.</code><code class="sig-name descname">AHF_Stimulus_Laser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulus.AHF_Stimulus.AHF_Stimulus</span></code></a></p>
 <p>Stimulates a specified region of the mouse’s brain with a laser,
 controlled via a stepper motor stage. Requires a camera - if using,
 cannot record video of the trial with overhead camera (used for aligning)</p>
-<dl class="method">
+<p>The laser trial setup starts with a matching/alignment process. A reference image will be taken and the user will select a region of interest (ROI)
+on that image. Then the camera preview will start, allowing the user to move the laser with arrow keys to the position of a crosshair on the UI,
+hitting space will confirm the two position match. The user then moves the crosshair with home/pageup/pagedown/end keys and repeat this process two
+more times. After this process, exit with esc key and a coefficient matrix will be generated to match laser and user position in the future.</p>
+<p>Every time a mouse enters, the program will start an image registration process to compare the mouse’s brain to that of its reference image.
+This will generate a transform matrix that maps ROI coordinates into live mouse brain location.</p>
+<p><strong>Issues: The image registration process takes around 30 seconds per trial, which is far slower than ideal. The bulk of the computation is done
+in an external package, and we don’t know whether it’s optimized.</strong></p>
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.accuracyTest">
 <code class="sig-name descname">accuracyTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.accuracyTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>For the given coefficient matrix, moves the laser to the center, then takes an image.
@@ -243,220 +251,381 @@ Then, moves to 100 random points, and then back to center, taking another image.
 These images can then be compared to determine the long-term accuracy of the stepper motors.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.align">
-<code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.align" title="Permalink to this definition">¶</a></dt>
-<dd><p>Aligns laser with reference image and assigned targets.
-Returns True if aligned successfully, False otherwise.</p>
+<code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process for trial prep. First checks if reference image, target, and match coefficient matrices are present and prompts use to fill those in.
+Then aligns laser with reference image and assigned target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag</strong> (<em>integer</em>) – mouse tag</p></li>
+<li><p><strong>resultsDict</strong> (<em>dict</em><em>, </em><em>optional</em>) – dictionary to save trial results, defaults to {}</p></li>
+<li><p><strong>settingsDict</strong> (<em>dict</em><em>, </em><em>optional</em>) – mouse settings dictionary, defaults to {}</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if aligned successfully, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolen</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.config_user_get" title="Permalink to this definition">¶</a></dt>
-<dd><p>static method that querries user for settings, with default responses from starterDict,
-and returns starterDict with settings as edited by the user.</p>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompts the user for settings for the AHF_Stimulus_Laser class. The following can be changed:</p>
+<ul class="simple">
+<li><p><strong>PWM_mode</strong>: used for adding channels to PWM, use default setting 0</p></li>
+<li><p><strong>PWM_channel</strong>: current channel for PWM, use default setting 2</p></li>
+<li><p><strong>duty_cycle</strong>: duty cycle for the laser out of 100. Indicates the strength of laser, 0 means the laser is off.</p></li>
+<li><p><strong>laser_on_time</strong>: how many seconds the laser is on for per pulse/stimulation</p></li>
+<li><p><strong>coeff_matrix</strong>: matrix used for matching xy coordinates on user interface and xy coordinates of the stepper motor tracks.</p></li>
+<li><p><strong>Shift Register Settings</strong>: DS, Q7S, SHCP, STCP are pins for the shift registers controlling the stepper motors. Keep these as default or as indicated by the wiring diagrams.</p></li>
+<li><p><strong>motor_delay</strong>: how long (in seconds) the stepper motor waits between each step, smaller delay means faster maximum movement speed.</p></li>
+<li><p><strong>hdf_path</strong>: directory to save hdf5 files</p></li>
+</ul>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.editReference">
 <code class="sig-name descname">editReference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.editReference" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Utility function to view and replace the reference image from menu</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.feed_byte">
-<code class="sig-name descname">feed_byte</code><span class="sig-paren">(</span><em class="sig-param">byte</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.feed_byte" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">feed_byte</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">byte</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.feed_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle a byte into the shjft registers</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_arrow_dir">
-<code class="sig-name descname">get_arrow_dir</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_arrow_dir" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">get_arrow_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_arrow_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>If arrow keys are pressed, return information fed to stepper motors</p>
+<p>If page_up/down/home/end keys are pressed, return information fed to control UI crosshair.</p>
+<p>Tapping on left shift key will toggle between fast and slow move speed.</p>
+<p>Note: The fastest speed of motor movement depends on the motor_delay in config_user_get.</p>
+<p>Note (signs): The UI and stepper motors both follow the coordinate system with right and down as positive, left and up as negative.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>keyboard.Key object</em>) – current keyboard stroke</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>motor x-axis displacement, motor y-axis displacement, crosshair x-axis displacement, crosshair y-axis displacement</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of four integers</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_dir">
-<code class="sig-name descname">get_dir</code><span class="sig-paren">(</span><em class="sig-param">steps</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_dir" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">get_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to get the direction of movement from a signed integer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>steps</strong> (<em>signed integer</em>) – input displacement from user</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1 if input is positive, -1 if negative, 0 if no motion</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_ref_im">
 <code class="sig-name descname">get_ref_im</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_ref_im" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Save a reference image whithin the mouse object (in hdf5 format)</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_state">
 <code class="sig-name descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.get_state" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Read out serial output and store state. Feed state back into shift reg.
+Create empty array to store the state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>current serial output state</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of integers</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.h5updater">
 <code class="sig-name descname">h5updater</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.h5updater" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Updates the mouse’s hdf5 file with reference image, targets, trial images, and laser spot information collected from self.mouse</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.hardwareTest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tests functionality, gives user a chance to change settings.
-:Returns: bool – True if any settings have changed</p>
+<dd><p>Tester function called from the hardwareTester. Includes Stimulator specific hardware tester. Functions available include:</p>
+<ul class="simple">
+<li><p>m: run matching between UI and stepper motors</p></li>
+<li><p>i: tests a trial with a dummy mouse</p></li>
+<li><p>r: edit reference image</p></li>
+<li><p>t: select target ROI</p></li>
+<li><p>a: test accuracy of laser movement</p></li>
+<li><p>p: pulses the laser for 1 second</p></li>
+<li><p>l: camera preview with brainlight</p></li>
+<li><p>c: test motor movement, user will enter coordinates to move towards</p></li>
+</ul>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.image_registration">
 <code class="sig-name descname">image_registration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.image_registration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length">
-<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return length of stimulus (e.g. pulse duration)</p>
+<dd><p>Image registration runs at the beginning of a new trial. Uses discrete fourier transform to find the transformation matrix from reference image
+to current brain image. Then transforms the target point on reference image to a position to a point on current brain image. Finally transforms that
+position into action stepper motor x and y steps.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.length" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the laser on time per pulse</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.loadH5">
 <code class="sig-name descname">loadH5</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.loadH5" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Loads an hdf file from a specific path self.hdf_path</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.make_cross">
 <code class="sig-name descname">make_cross</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.make_cross" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Define a simple cross-hair and add it as an overlay to the preview</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.matcher">
 <code class="sig-name descname">matcher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.matcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Starts GUI to match coordinate systems.
+The laser trial setup starts with a matching/alignment process. A reference image will be taken and the user will select a region of interest (ROI)
+on that image. Then the camera preview will start, allowing the user to move the laser with arrow keys to the position of a crosshair on the UI,
+hitting space will confirm the two position match. The user then moves the crosshair with home/pageup/pagedown/end keys and repeat this process two
+more times. After this process, exit with esc key and a coefficient matrix will be generated to match laser and user position in the future.</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move">
-<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">phase</em>, <em class="sig-param">delay</em>, <em class="sig-param">topleft</em>, <em class="sig-param">mp</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">phase</span></em>, <em class="sig-param"><span class="n">delay</span></em>, <em class="sig-param"><span class="n">topleft</span></em>, <em class="sig-param"><span class="n">mp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function, which moves stepper motors by x and y.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>integer</em>) – x-axis displacement</p></li>
+<li><p><strong>y</strong> (<em>integer</em>) – y-axis displacement</p></li>
+<li><p><strong>phase</strong> (<em>2 entry array</em>) – current phase of the stepper motors</p></li>
+<li><p><strong>delay</strong> (<em>integer</em>) – delay between each step</p></li>
+<li><p><strong>topleft</strong> (<em>boolean</em>) – true if origin is set to top left corner instead of center</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move_to">
-<code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param">new_pos</em>, <em class="sig-param">topleft=True</em>, <em class="sig-param">join=False</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move_to" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_pos</span></em>, <em class="sig-param"><span class="n">topleft</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">join</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.move_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>High-level function, which invokes self.move to run on another processor. Moves the stepper motors to the specified position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_pos</strong> (<em>2-entry array</em>) – x, y coordinates of the new position</p></li>
+<li><p><strong>topleft</strong> (<em>bool</em><em>, </em><em>optional</em>) – parameter to the move() function, defaults to True</p></li>
+<li><p><strong>join</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to kill process after 30 second timeout, defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.on_press">
-<code class="sig-name descname">on_press</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.on_press" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">on_press</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.on_press" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback function, which responds to keyboard strokes. Processes the results from get_arrow_dir</p>
+<p>If arrow keys are pressed, queue up motor command and update motor position.</p>
+<p>If page_up/down/home/end keys are pressed, update the crosshair position.</p>
+<p>Space key saves the current stepper motor and crosshair position into arrays laser_points and image_points to be processed by matching()</p>
+<p>Esc key saves the arrays laser_points and image_points arrays and terminates the matching process</p>
+<p>Note: At least 3 points are required for matching</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>[</em><em>type</em><em>]</em>) – [description]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[type]</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.period">
 <code class="sig-name descname">period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return period of stimulus (1/frequency for motor/laser)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.pulse">
-<code class="sig-name descname">pulse</code><span class="sig-paren">(</span><em class="sig-param">duration</em>, <em class="sig-param">duty_cycle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.pulse" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets">
-<code class="sig-name descname">select_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown" title="Permalink to this definition">¶</a></dt>
-<dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
-pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
-Run by __init__, or can be run  separately after editing the settingsDict</p>
+<code class="sig-name descname">pulse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">duty_cycle</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.pulse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates one laser pulse</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>duration</strong> (<em>float</em>) – duration of laser pulse</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float</em><em>, </em><em>optional</em>) – duty cycle of the pwm used to drive laser, defaults to 0</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets">
+<code class="sig-name descname">select_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.select_targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Menu function to select or update targets for one or more mice</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown">
+<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nothing specifc to setdown in laser module. Only sets down the AHF_Stimulus superclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the camera, pwm for laser, and relevant stepper motor settings from the settings dictionary.</p>
+<p>This function is usually ran after self.config_user_get(), which ensures the settings dict exists.</p>
+<p>This function also sets up GPIO pins. The pi throws errors when uninitialized pins are used, so make sure setup is called whenever program is restarted.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.stimulate">
 <code class="sig-name descname">stimulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.stimulate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generates a single pulse with the laser. See pulse() function</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialEnd">
 <code class="sig-name descname">trialEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialEnd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Code to be run at end of trial. E.g. moving laser to zero position</p>
+<dd><p>Procedures to end a trial: stops camera preview and recenters the stepper motors</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialPrep">
-<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialPrep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepares stimulus for trial: e.g. aligns laser, preps vib. motor, etc</p>
+<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.trialPrep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs once at the start of stimulator. Calls the align() funtion.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.unlock">
 <code class="sig-name descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.unlock" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>De-energize the stepper motors by toggling 0 into all shift registers</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_cross">
-<code class="sig-name descname">update_cross</code><span class="sig-paren">(</span><em class="sig-param">q</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_cross" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">update_cross</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback function which processes changes in the cross-hair position and moves the crosshair on UI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>q</strong> (<em>2 entry array</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns false if q contains null entries</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_mot">
-<code class="sig-name descname">update_mot</code><span class="sig-paren">(</span><em class="sig-param">mot_q</em>, <em class="sig-param">phase_queue</em>, <em class="sig-param">delay</em>, <em class="sig-param">topleft</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_mot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">update_mot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mot_q</span></em>, <em class="sig-param"><span class="n">phase_queue</span></em>, <em class="sig-param"><span class="n">delay</span></em>, <em class="sig-param"><span class="n">topleft</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_Laser.AHF_Stimulus_Laser.update_mot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback funtion to process new motor steps. Infinite loop that runs on a different processor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mot_q</strong> (<em>2-entry array</em>) – displacement to move the stepper motors by, updated by on_press</p></li>
+<li><p><strong>phase_queue</strong> (<em>2-entry array</em>) – queue representing the current motor phase</p></li>
+<li><p><strong>delay</strong> (<em>integer</em>) – delay between each step</p></li>
+<li><p><strong>topleft</strong> (<em>boolean</em>) – true if origin is set to top left corner instead of center</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-AHF_Stimulus.AHF_Stimulus_None">
 <span id="ahf-stimulus-ahf-stimulus-none-module"></span><h2>AHF_Stimulus.AHF_Stimulus_None module<a class="headerlink" href="#module-AHF_Stimulus.AHF_Stimulus_None" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_None.</code><code class="sig-name descname">AHF_Stimulus_None</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_None.</code><code class="sig-name descname">AHF_Stimulus_None</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulus.AHF_Stimulus.AHF_Stimulus</span></code></a></p>
 <p>Does nothing.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.length">
 <code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return length of stimulus (e.g. pulse duration)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.period">
 <code class="sig-name descname">period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return period of stimulus (1/frequency for motor/laser)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -468,20 +637,20 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.stimulate">
 <code class="sig-name descname">stimulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.stimulate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.trialEnd">
 <code class="sig-name descname">trialEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.trialEnd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Code to be run at end of trial. E.g. moving laser to zero position</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.trialPrep">
-<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.trialPrep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_None.AHF_Stimulus_None.trialPrep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares stimulus for trial: e.g. aligns laser, preps vib. motor, etc</p>
 </dd></dl>
 
@@ -490,71 +659,71 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </div>
 <div class="section" id="module-AHF_Stimulus.AHF_Stimulus_VibMotor">
 <span id="ahf-stimulus-ahf-stimulus-vibmotor-module"></span><h2>AHF_Stimulus.AHF_Stimulus_VibMotor module<a class="headerlink" href="#module-AHF_Stimulus.AHF_Stimulus_VibMotor" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_VibMotor.</code><code class="sig-name descname">AHF_Stimulus_VibMotor</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Stimulus.AHF_Stimulus_VibMotor.</code><code class="sig-name descname">AHF_Stimulus_VibMotor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Stimulus.AHF_Stimulus.AHF_Stimulus" title="AHF_Stimulus.AHF_Stimulus.AHF_Stimulus"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Stimulus.AHF_Stimulus.AHF_Stimulus</span></code></a></p>
 <p>Vibrates a motor placed on the exterior of the chamber.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.length">
 <code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return length of stimulus (e.g. pulse duration)</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorDuty_def">
 <code class="sig-name descname">motorDuty_def</code><em class="property"> = 0.8</em><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorDuty_def" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorFreq_def">
 <code class="sig-name descname">motorFreq_def</code><em class="property"> = 300</em><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorFreq_def" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorPin_def">
 <code class="sig-name descname">motorPin_def</code><em class="property"> = 27</em><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.motorPin_def" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.period">
 <code class="sig-name descname">period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return period of stimulus (1/frequency for motor/laser)</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.pulseTime_def">
 <code class="sig-name descname">pulseTime_def</code><em class="property"> = 0.2</em><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.pulseTime_def" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -566,20 +735,20 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.stimulate">
 <code class="sig-name descname">stimulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.stimulate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.trialEnd">
 <code class="sig-name descname">trialEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.trialEnd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Code to be run at end of trial. E.g. moving laser to zero position</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.trialPrep">
-<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.trialPrep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">trialPrep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Stimulus.AHF_Stimulus_VibMotor.AHF_Stimulus_VibMotor.trialPrep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares stimulus for trial: e.g. aligns laser, preps vib. motor, etc</p>
 </dd></dl>
 

@@ -175,35 +175,35 @@
 <h1>AHF_BrainLight<a class="headerlink" href="#ahf-brainlight" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_BrainLight.AHF_BrainLight">
 <span id="ahf-brainlight-ahf-brainlight-module"></span><h2>AHF_BrainLight.AHF_BrainLight module<a class="headerlink" href="#module-AHF_BrainLight.AHF_BrainLight" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_BrainLight.AHF_BrainLight.</code><code class="sig-name descname">AHF_BrainLight</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_BrainLight.AHF_BrainLight.</code><code class="sig-name descname">AHF_BrainLight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.config_user_get">
-<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.defaultDelay">
 <code class="sig-name descname">defaultDelay</code><em class="property"> = 3.0</em><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.defaultDelay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>generic hardware tester for brain illumination, turns on, waits 2 seconds, turns off</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.offForStim">
 <em class="property">abstract </em><code class="sig-name descname">offForStim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.offForStim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs when headFixing ends, turning off whatever was turned on</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.onForStim">
 <em class="property">abstract </em><code class="sig-name descname">onForStim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight.onForStim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs when headFixing starts, illuminating the brain or whatever needs illuminating</p>
@@ -214,53 +214,53 @@ and returns starterDict with settings as edited by the user.</p>
 </div>
 <div class="section" id="module-AHF_BrainLight.AHF_BrainLight_1GPIO">
 <span id="ahf-brainlight-ahf-brainlight-1gpio-module"></span><h2>AHF_BrainLight.AHF_BrainLight_1GPIO module<a class="headerlink" href="#module-AHF_BrainLight.AHF_BrainLight_1GPIO" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_BrainLight.AHF_BrainLight_1GPIO.</code><code class="sig-name descname">AHF_BrainLight_1GPIO</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_BrainLight.AHF_BrainLight_1GPIO.</code><code class="sig-name descname">AHF_BrainLight_1GPIO</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_BrainLight.AHF_BrainLight.AHF_BrainLight" title="AHF_BrainLight.AHF_BrainLight.AHF_BrainLight"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_BrainLight.AHF_BrainLight.AHF_BrainLight</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.defaultPin">
 <code class="sig-name descname">defaultPin</code><em class="property"> = 23</em><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.defaultPin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.offForStim">
 <code class="sig-name descname">offForStim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.offForStim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs when headFixing ends, turning off whatever was turned on</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.onForStim">
 <code class="sig-name descname">onForStim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.onForStim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs when headFixing starts, illuminating the brain or whatever needs illuminating</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.onThread">
-<em class="property">static </em><code class="sig-name descname">onThread</code><span class="sig-paren">(</span><em class="sig-param">sleepTime</em>, <em class="sig-param">ledPin</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.onThread" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">onThread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em>, <em class="sig-param"><span class="n">ledPin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.onThread" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_BrainLight.AHF_BrainLight_1GPIO.AHF_BrainLight_1GPIO.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization of a brain lighter with(possibly updated) info in self.settingsDict</p>

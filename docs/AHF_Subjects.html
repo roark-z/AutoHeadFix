@@ -175,50 +175,50 @@
 <h1>AHF_Subjects<a class="headerlink" href="#ahf-subjects" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_Subjects.AHF_Subjects">
 <span id="ahf-subjects-ahf-subjects-module"></span><h2>AHF_Subjects.AHF_Subjects module<a class="headerlink" href="#module-AHF_Subjects.AHF_Subjects" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Subjects.AHF_Subjects.</code><code class="sig-name descname">AHF_Subjects</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Subjects.AHF_Subjects.</code><code class="sig-name descname">AHF_Subjects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
 <p>Base class for experimental subjects. Defines subject attributes. Subjects must be unique for ID attribute
 Subclasses may wish to define an inner class that describes an object for a single experimental subject.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.add">
-<em class="property">abstract </em><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em>, <em class="sig-param">dataDict</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.add" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em>, <em class="sig-param"><span class="n">dataDict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a new subject to the pool of subjects, initializing subject fields with data from a dictionary
 returns True if subject was added, false if subject with IDnum already exists in subject pool</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.check">
-<em class="property">abstract </em><code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.check" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.check" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns 1 if IDnum is already in subjects, 0 if IDnum is not in subjects but is elgible to be added, returns -1 if IDnum is not elgible to be added</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.generator">
 <em class="property">abstract </em><code class="sig-name descname">generator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generator function that generates dictionaries of settings for all of the subjects in turn</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.get">
-<em class="property">abstract </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns results/settings dictionary for individual in group of subjects based on a ID tag.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.get_all">
 <em class="property">abstract </em><code class="sig-name descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.get_all" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.remove">
-<em class="property">abstract </em><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.remove" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a subject from the pool of subjects, based on IDnumber. Returns true if subject with given OD was
 found and removed, returns false if no subject with IDnum was found in pool of subjects</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.setup">
 <em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>results tuple defines dictionaries for subjects that our favorite objects will write results to
@@ -229,15 +229,15 @@ TagReader writes number of chamber entrances to its dictionary
 Stimulator writes results of whatever it does during a head-fix session</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.show">
-<em class="property">abstract </em><code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param">IDNum=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.show" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDNum</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints out attributes for subject with given IDNum. If IDNum is 0, prints attributes for all subjects in pool.
 The attributes will be defined by subclass, results provided by stimulator, etc. Returns true if IDNum was found in
 pool, else False</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.subjectSettings">
 <em class="property">abstract </em><code class="sig-name descname">subjectSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.subjectSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>changes the subject specific parameters that are(usually) independent from basic hardware settings
@@ -245,7 +245,7 @@ e.g. headfix time, headfix tightness, reward size, add or remove a subject to a 
 task settings</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects.AHF_Subjects.userEdit">
 <em class="property">abstract </em><code class="sig-name descname">userEdit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects.userEdit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows user interaction to add and remove subjects, maybe print out and edit individual configuration</p>
@@ -256,142 +256,142 @@ task settings</p>
 </div>
 <div class="section" id="module-AHF_Subjects.AHF_Subjects_mice">
 <span id="ahf-subjects-ahf-subjects-mice-module"></span><h2>AHF_Subjects.AHF_Subjects_mice module<a class="headerlink" href="#module-AHF_Subjects.AHF_Subjects_mice" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Subjects.AHF_Subjects_mice.</code><code class="sig-name descname">AHF_Subjects_mice</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_Subjects.AHF_Subjects_mice.</code><code class="sig-name descname">AHF_Subjects_mice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_Subjects.AHF_Subjects.AHF_Subjects" title="AHF_Subjects.AHF_Subjects.AHF_Subjects"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Subjects.AHF_Subjects.AHF_Subjects</span></code></a></p>
 <p>class for the mice, as experimental subjects. Contains a dictionary where key id IDtag, and value is a dictionary
 of configuration information for corresponding mouse.
 {mouseid1:{HeadFixer:{}, Stimulator: {}, Rewarder: {}}, mouseid2:…}
 Dictionaries from Stimulator, HeadFixer, Rewarder are configured with
 the config_user_subject_get methods in their respective classes.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.add">
-<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em>, <em class="sig-param">dataDict={}</em>, <em class="sig-param">default=True</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.add" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em>, <em class="sig-param"><span class="n">dataDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a new subject to the pool of subjects, initializing subject fields with data from a dictionary
 returns True if subject was added, false if subjet with IDnum already exists in subject pool</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check">
-<code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns 1 if IDnum is already in subjects, 0 if IDnum is not in subjects but is elgible to be added, returns -1 if IDnum is not elgible to be added</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check_miceDict">
-<code class="sig-name descname">check_miceDict</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check_miceDict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">check_miceDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.check_miceDict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.configPath">
 <code class="sig-name descname">configPath</code><em class="property"> = 'AHF_config/'</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.configPath" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.create_fillable_json">
 <code class="sig-name descname">create_fillable_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.create_fillable_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.depth">
-<code class="sig-name descname">depth</code><span class="sig-paren">(</span><em class="sig-param">d</em>, <em class="sig-param">level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.depth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.freshMiceDefault">
 <code class="sig-name descname">freshMiceDefault</code><em class="property"> = False</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.freshMiceDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.generator">
 <code class="sig-name descname">generator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Generator function that generates a(tagID, dictionary) tuple for each of the mice in turn.
 Sample function call: for mouse in myMice.generator():</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.get">
-<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a reference to the dictionary for the mouse with given IDtag. if the mouse tag is not found, makes a new dictionary
 if fresh mice can be added, else returns an empty dicitonary if fresh mice are to be ignored</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.get_all">
 <code class="sig-name descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.get_all" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.headFixTimeDefault">
 <code class="sig-name descname">headFixTimeDefault</code><em class="property"> = 40</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.headFixTimeDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.inChamberTimeLimitDefault">
 <code class="sig-name descname">inChamberTimeLimitDefault</code><em class="property"> = 300</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.inChamberTimeLimitDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.individualSettings">
-<code class="sig-name descname">individualSettings</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.individualSettings" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">individualSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.individualSettings" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.jsonNameDefault">
 <code class="sig-name descname">jsonNameDefault</code><em class="property"> = 'subjects'</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.jsonNameDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.loadConfigsDefault">
 <code class="sig-name descname">loadConfigsDefault</code><em class="property"> = 'provide_json'</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.loadConfigsDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.newDay">
 <code class="sig-name descname">newDay</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.newDay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.propHeadFixDefault">
 <code class="sig-name descname">propHeadFixDefault</code><em class="property"> = 1</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.propHeadFixDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.remove">
-<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">IDnum</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.remove" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a subject from the pool of subjects, based on IDnumber. Returns true if subject with given OD was
 found and removed, returns false if no subject with IDnum was found in pool of subjects</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>results tuple defines dictionaries for subjects that our favorite objects will write results to
@@ -402,26 +402,26 @@ TagReader writes number of chamber entrances to its dictionary
 Stimulator writes results of whatever it does during a head-fix session</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.show">
-<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param">IDnum=0</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.show" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">IDnum</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints out attributes for subject with given IDNum. If IDNum is 0, prints attributes for all subjects in pool.
 The attributes will be defined by subclass, results provided by stimulator, etc. Returns true if IDNum was found in
 pool, else False</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.skeddadleTimeDefault">
 <code class="sig-name descname">skeddadleTimeDefault</code><em class="property"> = 2</em><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.skeddadleTimeDefault" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.subjectSettings">
 <code class="sig-name descname">subjectSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.subjectSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows user to add mice to file, maybe use TagReader, give initial values to paramaters</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.userEdit">
 <code class="sig-name descname">userEdit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Subjects.AHF_Subjects_mice.AHF_Subjects_mice.userEdit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows user interaction to add and remove subjects, print out and edit individual configuration</p>

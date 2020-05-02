@@ -176,53 +176,53 @@
 <h1>AHF_ContactCheck<a class="headerlink" href="#ahf-contactcheck" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_ContactCheck.AHF_ContactCheck">
 <span id="ahf-contactcheck-ahf-contactcheck-module"></span><h2>AHF_ContactCheck.AHF_ContactCheck module<a class="headerlink" href="#module-AHF_ContactCheck.AHF_ContactCheck" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck.</code><code class="sig-name descname">AHF_ContactCheck</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck.</code><code class="sig-name descname">AHF_ContactCheck</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.checkContact">
 <em class="property">abstract </em><code class="sig-name descname">checkContact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.checkContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.startLogging">
 <em class="property">abstract </em><code class="sig-name descname">startLogging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.startLogging" title="Permalink to this definition">¶</a></dt>
 <dd><p>starts contactChecker running background task updated gTask.contact
 do not use waitForContact or waitForNoContact when logging</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.stopLogging">
 <em class="property">abstract </em><code class="sig-name descname">stopLogging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.stopLogging" title="Permalink to this definition">¶</a></dt>
 <dd><p>stops contactChecker running background task</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.turnOff">
 <code class="sig-name descname">turnOff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.turnOff" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.turnOn">
 <code class="sig-name descname">turnOn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.turnOn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForContact">
-<em class="property">abstract </em><code class="sig-name descname">waitForContact</code><span class="sig-paren">(</span><em class="sig-param">timeoutSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForContact" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">waitForContact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeoutSecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForNoContact">
-<em class="property">abstract </em><code class="sig-name descname">waitForNoContact</code><span class="sig-paren">(</span><em class="sig-param">timeoutSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForNoContact" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">waitForNoContact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeoutSecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck.waitForNoContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -230,34 +230,34 @@ do not use waitForContact or waitForNoContact when logging</p>
 </div>
 <div class="section" id="module-AHF_ContactCheck.AHF_ContactCheck_BeamBreak">
 <span id="ahf-contactcheck-ahf-contactcheck-beambreak-module"></span><h2>AHF_ContactCheck.AHF_ContactCheck_BeamBreak module<a class="headerlink" href="#module-AHF_ContactCheck.AHF_ContactCheck_BeamBreak" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck_BeamBreak.</code><code class="sig-name descname">AHF_ContactCheck_BeamBreak</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck_BeamBreak.</code><code class="sig-name descname">AHF_ContactCheck_BeamBreak</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec" title="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.defaultLEDPin">
 <code class="sig-name descname">defaultLEDPin</code><em class="property"> = 24</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.defaultLEDPin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.defaultPin">
 <code class="sig-name descname">defaultPin</code><em class="property"> = 12</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.defaultPin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -269,12 +269,12 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.turnOff">
 <code class="sig-name descname">turnOff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.turnOff" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.turnOn">
 <code class="sig-name descname">turnOn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_BeamBreak.AHF_ContactCheck_BeamBreak.turnOn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -284,62 +284,62 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </div>
 <div class="section" id="module-AHF_ContactCheck.AHF_ContactCheck_Elec">
 <span id="ahf-contactcheck-ahf-contactcheck-elec-module"></span><h2>AHF_ContactCheck.AHF_ContactCheck_Elec module<a class="headerlink" href="#module-AHF_ContactCheck.AHF_ContactCheck_Elec" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck_Elec.</code><code class="sig-name descname">AHF_ContactCheck_Elec</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_ContactCheck.AHF_ContactCheck_Elec.</code><code class="sig-name descname">AHF_ContactCheck_Elec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck" title="AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_ContactCheck.AHF_ContactCheck.AHF_ContactCheck</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.checkContact">
 <code class="sig-name descname">checkContact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.checkContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.contactCheckCallback">
-<em class="property">static </em><code class="sig-name descname">contactCheckCallback</code><span class="sig-paren">(</span><em class="sig-param">channel</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.contactCheckCallback" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">contactCheckCallback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.contactCheckCallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contacts are immediate, but un-contacts are delayed</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.debounceTime">
 <code class="sig-name descname">debounceTime</code><em class="property"> = 0.1</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.debounceTime" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPUD">
 <code class="sig-name descname">defaultPUD</code><em class="property"> = 'PUD_UP'</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPUD" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPin">
 <code class="sig-name descname">defaultPin</code><em class="property"> = 12</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPolarity">
 <code class="sig-name descname">defaultPolarity</code><em class="property"> = 'FALLING'</em><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.defaultPolarity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
@@ -351,27 +351,27 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.startLogging">
 <code class="sig-name descname">startLogging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.startLogging" title="Permalink to this definition">¶</a></dt>
 <dd><p>starts contactChecker running background task updated gTask.contact
 do not use waitForContact or waitForNoContact when logging</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.stopLogging">
 <code class="sig-name descname">stopLogging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.stopLogging" title="Permalink to this definition">¶</a></dt>
 <dd><p>stops contactChecker running background task</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForContact">
-<code class="sig-name descname">waitForContact</code><span class="sig-paren">(</span><em class="sig-param">timeOutSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForContact" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">waitForContact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeOutSecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForNoContact">
-<code class="sig-name descname">waitForNoContact</code><span class="sig-paren">(</span><em class="sig-param">timeOutSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForNoContact" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">waitForNoContact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeOutSecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForNoContact" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

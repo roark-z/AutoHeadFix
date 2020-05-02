@@ -179,20 +179,20 @@
 <h1>AHF_HeadFixer<a class="headerlink" href="#ahf-headfixer" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-AHF_HeadFixer.AHF_HeadFixer">
 <span id="ahf-headfixer-ahf-headfixer-module"></span><h2>AHF_HeadFixer.AHF_HeadFixer module<a class="headerlink" href="#module-AHF_HeadFixer.AHF_HeadFixer" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer.</code><code class="sig-name descname">AHF_HeadFixer</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer.</code><code class="sig-name descname">AHF_HeadFixer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
 <p>Base class for all head fix classs. Other head fixers subclass from this, or from one of its subclasses
 boolean for settability of headFixing levels, default is False. Can be used for incremental learning</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.clearResultsDict">
-<code class="sig-name descname">clearResultsDict</code><span class="sig-paren">(</span><em class="sig-param">resultsDict</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.clearResultsDict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">clearResultsDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.clearResultsDict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_subject_get">
-<em class="property">abstract </em><code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
@@ -200,105 +200,105 @@ boolean for settability of headFixing levels, default is False. Can be used for 
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_get">
-<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_subject_get">
-<em class="property">abstract </em><code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompts the user for individualized parameters, with default responses
 from starterDict, and returns starterDict with settings
 as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultHeadFixTime">
 <code class="sig-name descname">defaultHeadFixTime</code><em class="property"> = 40</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultHeadFixTime" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultPropHeadFix">
 <code class="sig-name descname">defaultPropHeadFix</code><em class="property"> = 0.75</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultPropHeadFix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultSkeddadleTime">
 <code class="sig-name descname">defaultSkeddadleTime</code><em class="property"> = 5</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.defaultSkeddadleTime" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.fixMouse">
-<em class="property">abstract </em><code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.fixMouse" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.fixMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>performs head fixation by energizing a piston, moving a servomotor, etc
 returns True if successful, else false.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hardwareTest">
-<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hasLevels">
 <code class="sig-name descname">hasLevels</code><em class="property"> = False</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hasLevels" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hasMouseLog">
-<code class="sig-name descname">hasMouseLog</code><span class="sig-paren">(</span><em class="sig-param">hasContact</em>, <em class="sig-param">isFixed</em>, <em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hasMouseLog" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">hasMouseLog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hasContact</span></em>, <em class="sig-param"><span class="n">isFixed</span></em>, <em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.hasMouseLog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function for head fix subclasses
 Run after head fixing to update common results</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.isChecking">
 <code class="sig-name descname">isChecking</code><em class="property"> = False</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.isChecking" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.isFixedCheck">
 <em class="property">static </em><code class="sig-name descname">isFixedCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.isFixedCheck" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newResultsDict">
-<code class="sig-name descname">newResultsDict</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newResultsDict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">newResultsDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newResultsDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary counting number of head fixes, subclasses could track more levels of head fixing, e.g.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newSettingsDict">
-<code class="sig-name descname">newSettingsDict</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newSettingsDict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">newSettingsDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.newSettingsDict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.releaseMouse">
-<em class="property">abstract </em><code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.releaseMouse" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.releaseMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>releases mouse from head fixation by relaxing a piston, moving a servomotor, etc</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.waitForMouse">
-<code class="sig-name descname">waitForMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.waitForMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">waitForMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer.waitForMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utility function for head fix subclasses
 Waits for a mouse to either make contact or leave the chamber</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="AHF_HeadFixer.AHF_HeadFixer.random">
 <code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer.random" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -306,21 +306,21 @@ Waits for a mouse to either make contact or leave the chamber</p>
 </div>
 <div class="section" id="module-AHF_HeadFixer.AHF_HeadFixer_NoFix">
 <span id="ahf-headfixer-ahf-headfixer-nofix-module"></span><h2>AHF_HeadFixer.AHF_HeadFixer_NoFix module<a class="headerlink" href="#module-AHF_HeadFixer.AHF_HeadFixer_NoFix" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_NoFix.</code><code class="sig-name descname">AHF_HeadFixer_NoFix</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_NoFix.</code><code class="sig-name descname">AHF_HeadFixer_NoFix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer" title="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer</span></code></a></p>
 <p>Head Fixer that only checks for contact, does not implement a
 head-fixing mechanism</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_subject_get">
-<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
@@ -328,62 +328,62 @@ head-fixing mechanism</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Querries user returns dictionary</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_subject_get">
-<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompts the user for individualized parameters, with default responses
 from starterDict, and returns starterDict with settings
 as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.defaultSkeddadleTime">
 <code class="sig-name descname">defaultSkeddadleTime</code><em class="property"> = 0.5</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.defaultSkeddadleTime" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.fixMouse">
-<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.fixMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.fixMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Just does contact check with super(), does not fix</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.hasLevels">
 <code class="sig-name descname">hasLevels</code><em class="property"> = False</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.hasLevels" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.isChecking">
 <code class="sig-name descname">isChecking</code><em class="property"> = False</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.isChecking" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.releaseMouse">
-<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.releaseMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.releaseMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>releases mouse from head fixation by relaxing a piston, moving a servomotor, etc</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_NoFix.AHF_HeadFixer_NoFix.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
@@ -394,20 +394,20 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 </div>
 <div class="section" id="module-AHF_HeadFixer.AHF_HeadFixer_PWM">
 <span id="ahf-headfixer-ahf-headfixer-pwm-module"></span><h2>AHF_HeadFixer.AHF_HeadFixer_PWM module<a class="headerlink" href="#module-AHF_HeadFixer.AHF_HeadFixer_PWM" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM.</code><code class="sig-name descname">AHF_HeadFixer_PWM</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM.</code><code class="sig-name descname">AHF_HeadFixer_PWM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer" title="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer</span></code></a></p>
 <p>Abstract class for PWM-based head fixers for servo motors. As long as your subclass maps your PWM range onto
 the appropriate pulse width for the servo, you should be good to go.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.calculate_steps">
-<code class="sig-name descname">calculate_steps</code><span class="sig-paren">(</span><em class="sig-param">individualDict</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.calculate_steps" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">calculate_steps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">individualDict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.calculate_steps" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_subject_get">
-<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
@@ -415,86 +415,86 @@ the appropriate pulse width for the servo, you should be good to go.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_get">
-<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_subject_get">
-<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompts the user for individualized parameters, with default responses
 from starterDict, and returns starterDict with settings
 as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultFixedPosition">
 <code class="sig-name descname">defaultFixedPosition</code><em class="property"> = 685</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultFixedPosition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultReleasePosition">
 <code class="sig-name descname">defaultReleasePosition</code><em class="property"> = 933</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultReleasePosition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultTightnessHeadFix">
 <code class="sig-name descname">defaultTightnessHeadFix</code><em class="property"> = 1</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.defaultTightnessHeadFix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.fixMouse">
-<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">individualDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.fixMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">individualDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.fixMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>performs head fixation by energizing a piston, moving a servomotor, etc
 returns True if successful, else false.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.hardwareTest">
 <code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.hardwareTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.hasLevels">
 <code class="sig-name descname">hasLevels</code><em class="property"> = True</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.hasLevels" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.individualSettings">
-<code class="sig-name descname">individualSettings</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.individualSettings" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">individualSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.individualSettings" title="Permalink to this definition">¶</a></dt>
 <dd><p>copies servo fixed position to dictionary - there is no reason to have different released positions per subject
 TO DO: add multiple headfixing levels, maybe progression based on resdults</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.numLevels">
 <code class="sig-name descname">numLevels</code><em class="property"> = 8</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.numLevels" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.releaseMouse">
-<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.releaseMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.releaseMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>releases mouse from head fixation by relaxing a piston, moving a servomotor, etc</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setPWM">
-<em class="property">abstract </em><code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param">servoPosition</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setPWM" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">servoPosition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setPWM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setup">
 <em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
@@ -502,7 +502,7 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM.random">
 <code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.random" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -515,42 +515,42 @@ sudo apt-get install i2c-tools
 sudo apt-get install python3-smbus
 git clone <a class="reference external" href="https://github.com/adafruit/Adafruit_Python_GPIO.git">https://github.com/adafruit/Adafruit_Python_GPIO.git</a>
 git clone <a class="reference external" href="https://github.com/adafruit/Adafruit_Python_PCA9685.git">https://github.com/adafruit/Adafruit_Python_PCA9685.git</a></p>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.</code><code class="sig-name descname">AHF_HeadFixer_PWM_PCA9685</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.</code><code class="sig-name descname">AHF_HeadFixer_PWM_PCA9685</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM" title="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM</span></code></a></p>
 <p>inherits from AHF_HeadFixer.AHF_HeadFixer_PWM</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.defaultAddress">
 <code class="sig-name descname">defaultAddress</code><em class="property"> = 64</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.defaultAddress" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setPWM">
-<code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param">servoPosition</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setPWM" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">servoPosition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setPWM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685.AHF_HeadFixer_PWM_PCA9685.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
@@ -561,41 +561,41 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 </div>
 <div class="section" id="module-AHF_HeadFixer.AHF_HeadFixer_PWM_Pi">
 <span id="ahf-headfixer-ahf-headfixer-pwm-pi-module"></span><h2>AHF_HeadFixer.AHF_HeadFixer_PWM_Pi module<a class="headerlink" href="#module-AHF_HeadFixer.AHF_HeadFixer_PWM_Pi" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.</code><code class="sig-name descname">AHF_HeadFixer_PWM_Pi</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.</code><code class="sig-name descname">AHF_HeadFixer_PWM_Pi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM" title="AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_HeadFixer.AHF_HeadFixer_PWM.AHF_HeadFixer_PWM</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.defaultChannel">
 <code class="sig-name descname">defaultChannel</code><em class="property"> = 1</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.defaultChannel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setPWM">
-<code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param">servoPosition</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setPWM" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setPWM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">servoPosition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setPWM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_PWM_Pi.AHF_HeadFixer_PWM_Pi.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
@@ -606,21 +606,21 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 </div>
 <div class="section" id="module-AHF_HeadFixer.AHF_HeadFixer_Pistons">
 <span id="ahf-headfixer-ahf-headfixer-pistons-module"></span><h2>AHF_HeadFixer.AHF_HeadFixer_Pistons module<a class="headerlink" href="#module-AHF_HeadFixer.AHF_HeadFixer_Pistons" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_Pistons.</code><code class="sig-name descname">AHF_HeadFixer_Pistons</code><span class="sig-paren">(</span><em class="sig-param">taskP</em>, <em class="sig-param">settingsDictP</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_Pistons.</code><code class="sig-name descname">AHF_HeadFixer_Pistons</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer" title="AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_HeadFixer.AHF_HeadFixer.AHF_HeadFixer</span></code></a></p>
 <p>Head fixer using solenoid-driven pistons to push head bar against front plate
 a single GPIO output triggers a driver of some kind to energize solenoids</p>
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.about">
 <em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_subject_get">
-<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
@@ -628,45 +628,45 @@ a single GPIO output triggers a driver of some kind to energize solenoids</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_get" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Querries user for pin number for piston, returns dictionary</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_subject_get">
-<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param">starterDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompts the user for individualized parameters, with default responses
 from starterDict, and returns starterDict with settings
 as edited by the user.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.defaultPin">
 <code class="sig-name descname">defaultPin</code><em class="property"> = 12</em><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.defaultPin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.fixMouse">
-<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param">thisTag</em>, <em class="sig-param">resultsDict={}</em>, <em class="sig-param">settingsDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.fixMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fixMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thisTag</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.fixMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>sets GPIO pin high to trigger pistons</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.releaseMouse">
-<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param">resultsDict={}</em>, <em class="sig-param">individualDict={}</em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.releaseMouse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">releaseMouse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">individualDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.releaseMouse" title="Permalink to this definition">¶</a></dt>
 <dd><p>sets GPIO pin low to retract pistons</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.setdown">
 <code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.setdown" title="Permalink to this definition">¶</a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.setup">
 <code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.AHF_HeadFixer_Pistons.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets settings from dict, not &#64;abstract because this may be all you nees, as for HeadFixer_NoFix</p>
@@ -674,7 +674,7 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="AHF_HeadFixer.AHF_HeadFixer_Pistons.random">
 <code class="sig-prename descclassname">AHF_HeadFixer.AHF_HeadFixer_Pistons.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x in the interval [0, 1).<a class="headerlink" href="#AHF_HeadFixer.AHF_HeadFixer_Pistons.random" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
