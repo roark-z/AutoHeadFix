@@ -1,0 +1,62 @@
+AutoHeadFix.AHF\_HeadFixer package
+==================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer module
+------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer\_NoFix module
+-------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer_NoFix
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer\_PWM module
+-----------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer_PWM
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer\_PWM\_PCA9685 module
+--------------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer\_PWM\_Pi module
+---------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer_PWM_Pi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_HeadFixer.AHF\_HeadFixer\_Pistons module
+---------------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer.AHF_HeadFixer_Pistons
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_HeadFixer
+   :members:
+   :undoc-members:
+   :show-inheritance:

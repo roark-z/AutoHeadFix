@@ -1,0 +1,30 @@
+AutoHeadFix.AHF\_Subjects package
+=================================
+
+Submodules
+----------
+
+AutoHeadFix.AHF\_Subjects.AHF\_Subjects module
+----------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Subjects.AHF_Subjects
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+AutoHeadFix.AHF\_Subjects.AHF\_Subjects\_mice module
+----------------------------------------------------
+
+.. automodule:: AutoHeadFix.AHF_Subjects.AHF_Subjects_mice
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: AutoHeadFix.AHF_Subjects
+   :members:
+   :undoc-members:
+   :show-inheritance:
