@@ -48,10 +48,11 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
                 self.lastTime =  time()
                 print(hex(id(self)), 'start')
                 print(self.lastTime)
-                video_name_path = "M" + video_name
+                self.video_name=str(thisTag)+'_'+str(int(self.lastTime))+'.'+extension
+                video_name_path = "M" + self.video_name
                 #writeToLogFile(expSettings.logFP, thisMouse, "video:" + video_name)
                 # send socket message to start behavioural camera
-                self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': video_name}, time())
+                self.task.DataLogger.writeToLogFile(thisTag, 'VideoStart', {'name': self.video_name}, time())
                 if hasattr(self.task, 'Trigger'):
                     #MESSAGE = str(thisMouse.tag) + "_" + stimStr + "_" + '%d' % headFixTime
                     MESSAGE = str(thisTag) + "_" +  "_" + '%d' % self.task.lastFixedTime
@@ -89,7 +90,7 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
         if self.lastTime is None:
             print("no last")
             return 
-        video_name_path = "M" + video_name
+        video_name_path = "M" + self.video_name
         if hasattr(self.task, 'Trigger'):
             self.task.BrainLight.offForStim() # turn off the blue LED
             self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDOFF', None, time())
