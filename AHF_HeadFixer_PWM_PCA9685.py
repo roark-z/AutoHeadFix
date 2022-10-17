@@ -3,15 +3,20 @@
 
 """
 uses PCA9685 code from AdaFruit, install as follows
-sudo apt-get install i2c-tools
-sudo apt-get install python3-smbus
-git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
-git clone https://github.com/adafruit/Adafruit_Python_PCA9685.git
 
+sudo pip3 install --upgrade adafruit-python-shell
+wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
+sudo python3 raspi-blinka.py
+
+sudo pip3 install adafruit-circuitpython-busdevice
+
+sudo pip3 install adafruit-circuitpython-register
+
+sudo pip3 install adafruit-circuitpython-pca9685
 """
 
 # Import the PCA9685 module.
-import Adafruit_PCA9685
+import adafruit_pca9685
 from AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
 
 class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
@@ -41,7 +46,7 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
         self.servoAddress = self.settingsDict.get('servoAddress')
         hasFixer = True
         try:
-            self.PCA9685 = Adafruit_PCA9685.PCA9685(address=self.servoAddress)
+            self.PCA9685 = adafruit_pca9685.PCA9685(address=self.servoAddress)
             self.PCA9685.set_pwm_freq(90) # 40-1000Hz
             self.setPWM(self.servoReleasedPosition)
         except Exception as e:
