@@ -2,17 +2,19 @@
 #-*-coding: utf-8 -*-
 
 """
-uses PCA9685 code from AdaFruit, install as follows
+> Last modified:
+2022/10/17 by Roark Zhang - update to new adafruit library
+
+> uses PCA9685 code from AdaFruit, install as follows
 
 sudo pip3 install --upgrade adafruit-python-shell
 wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
 sudo python3 raspi-blinka.py
 
 sudo pip3 install adafruit-circuitpython-busdevice
-
 sudo pip3 install adafruit-circuitpython-register
-
 sudo pip3 install adafruit-circuitpython-pca9685
+
 """
 
 # Import the PCA9685 module.
