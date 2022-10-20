@@ -14,7 +14,7 @@ class AHF_Reader_ID(AHF_Reader):
     TIME_OUT_SECS = 0.05
     DO_CHECK_SUM = True
 
-    defaultPort = '/dev/ttyUSB0'
+    defaultPort = '/dev/tty0'
     defaultPin = 7
     defaultChamberTimeLimit = 600
     graceTime = 5
@@ -147,7 +147,7 @@ class AHF_Reader_ID(AHF_Reader):
     def setup(self):
         self.serialPort = self.settingsDict.get('serialPort')
         self.TIRpin = self.settingsDict.get('TIRpin')
-        self.tagReader =RFIDTagReader.TagReader(self.serialPort, doChecksum = AHF_Reader_ID.DO_CHECK_SUM, timeOutSecs = AHF_Reader_ID.TIME_OUT_SECS, kind='ID')
+        self.tagReader = RFIDTagReader.TagReader(self.serialPort, doChecksum = AHF_Reader_ID.DO_CHECK_SUM, timeOutSecs = AHF_Reader_ID.TIME_OUT_SECS, kind='ID')
         self.isLogging = False
         AHF_Reader_ID.gStillThere = False
         AHF_Reader_ID.gInChamberTimeLimit = self.settingsDict.get('inChamberTimeLimit')
