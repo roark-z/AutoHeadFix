@@ -38,13 +38,13 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         self.textLogger = AHF_DataLogger_text(self.task, self.settingsDict)
         self.textLogger.setup()
         self.textLogger.isChild = True
-        if self.useLocalSql:
-            self.sqlLogger = AHF_DataLogger_localsql(self.task, self.settingsDict)
-            print('local')
-        else:
-            self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
-        self.sqlLogger.setup()
-        self.sqlLogger.isChild = True
+        # if self.useLocalSql:
+        #     self.sqlLogger = AHF_DataLogger_localsql(self.task, self.settingsDict)
+        #     print('local')
+        # else:
+        #     self.sqlLogger = AHF_DataLogger_mysql(self.task, self.settingsDict)
+        # self.sqlLogger.setup()
+        # self.sqlLogger.isChild = True
         pass
 
 
@@ -54,7 +54,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         entering main loop of program. DataLogger may make a new file every day in NewDay function, if desired
         """
         self.textLogger.makeLogFile()
-        self.sqlLogger.makeLogFile()
+        # self.sqlLogger.makeLogFile()
         pass
 
 
@@ -64,7 +64,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         Returns the event and associated dictionary in a tuple.
         """
         self.textLogger.readFromLogFile(index)
-        self.sqlLogger.readFromLogFile(index)
+        # self.sqlLogger.readFromLogFile(index)
         pass
 
 
@@ -79,7 +79,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         """
         super().writeToLogFile(tag, eventKind, eventDict, timeStamp, toShellOrFile)
         self.textLogger.writeToLogFile(tag, eventKind, eventDict, timeStamp, toShellOrFile)
-        self.sqlLogger.writeToLogFile(tag, eventKind, eventDict, timeStamp, 2)
+        # self.sqlLogger.writeToLogFile(tag, eventKind, eventDict, timeStamp, 2)
 
     @staticmethod
     def about():
@@ -87,11 +87,11 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
 
     def setdown(self):
         self.textLogger.setdown()
-        self.sqlLogger.setdown()
+        # self.sqlLogger.setdown()
 
     def hardwareTest(self):
         self.textLogger.hardwareTest()
-        self.sqlLogger.hardwareTest()
+        # self.sqlLogger.hardwareTest()
 
     def newDay(self):
         """
@@ -102,7 +102,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         just call the Stimulator class functions for each mouse to get a dictionary of results
         """
         self.textLogger.newDay()
-        self.sqlLogger.newDay()
+        # self.sqlLogger.newDay()
         pass
 
 
@@ -111,7 +111,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         returns a list of mice that are in the dictionary/database
         """
         self.textLogger.getMice()
-        self.sqlLogger.getMice()
+        # self.sqlLogger.getMice()
         pass
 
 
@@ -122,7 +122,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         need to be reloaded.
         """
         self.textLogger.configGenerator()
-        self.sqlLogger.configGenerator()
+        # self.sqlLogger.configGenerator()
         pass
 
 
@@ -132,7 +132,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         Will be called when program is started, or restarted and settings need to be reloaded
         """
         self.textLogger.getConfigData(tag)
-        self.sqlLogger.getConfigData(tag)
+        # self.sqlLogger.getConfigData(tag)
         pass
 
 
@@ -141,7 +141,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         store a new mouse entry in a referenced file
         """
         self.textLogger.saveNewMouse(tag, note, dictionary)
-        self.sqlLogger.saveNewMouse(tag, note, dictionary)
+        # self.sqlLogger.saveNewMouse(tag, note, dictionary)
         pass
 
 
@@ -150,7 +150,7 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         store information about a mouse retirement in a referenced file
         """
         self.textLogger.retireMouse(tag, reason)
-        self.sqlLogger.retireMouse(tag, reason)
+        # self.sqlLogger.retireMouse(tag, reason)
         pass
 
 
@@ -160,5 +160,5 @@ class AHF_DataLogger_textMySql(AHF_DataLogger):
         as a JSON text file, or a database or hd5 file, so it can be later retrieved by IDtag
         """
         self.textLogger.storeConfig(tag, dictionary, source)
-        self.sqlLogger.storeConfig(tag, dictionary, source)
+        # self.sqlLogger.storeConfig(tag, dictionary, source)
         pass
