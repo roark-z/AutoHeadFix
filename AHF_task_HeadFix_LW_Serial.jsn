@@ -46,7 +46,7 @@
 "ReaderClass"="AHF_Reader_ID"
 "ReaderDict"={"TIRpin"=21
 "inChamberTimeLimit"=600
-"serialPort"="/dev/serial0"}
+"serialPort"="/dev/serial1"}
 "RewarderClass"="AHF_Rewarder_solenoid_rpi"
 "RewarderDict"={"entryRewardDelay"=1.0
 "maxEntryRewards"=1000

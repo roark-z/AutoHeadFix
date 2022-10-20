@@ -123,7 +123,7 @@ class AHF_Reader_ID(AHF_Reader):
     @staticmethod
     def config_user_get(starterDict = {}):
         serialPort = starterDict.get('serialPort', AHF_Reader_ID.defaultPort)
-        response = input('Enter port used by tag reader, dev/serial0 if conected to Pi serial port, or dev/tty0 if connected to a USB breakout, currently %s :' % serialPort)
+        response = input('Enter port used by tag reader, dev/serial1 if conected to Pi serial port, or dev/tty0 if connected to a USB breakout, currently %s :' % serialPort)
         if response != '':
             serialPort = response
         TIRpin = starterDict.get('TIRpin', AHF_Reader_ID.defaultPin)
