@@ -40,7 +40,7 @@ class AHF_HeadFixer_PWM_Pi(AHF_HeadFixer_PWM):
         del self.pwm_ptr
 
     def setPWM(self, servoPosition):
-        print("Pi set pwm")
+        print("Pi set pwm", servoPosition)
         ptPWM.threadlessSetValue(self.pwm_ptr, servoPosition, self.pwmChan)
 
 
