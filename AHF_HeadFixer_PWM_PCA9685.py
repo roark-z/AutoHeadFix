@@ -21,6 +21,7 @@ sudo pip3 install adafruit-circuitpython-pca9685
 from board import SCL, SDA
 import busio
 import adafruit_pca9685
+from adafruit_motor import servo
 from AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
 
 class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
@@ -54,6 +55,7 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
             self.PCA9685 = adafruit_pca9685.PCA9685(i2c_bus, address=self.servoAddress)
             # self.PCA9685.set_pwm_freq(90) # 40-1000Hz
             self.PCA9685.frequency = 90
+            self._servo = servo.Servo(self.PCA9685.channels[0])
             self.setPWM(self.servoReleasedPosition)
         except Exception as e:
             print(str(e))
@@ -64,8 +66,8 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
         self.PCA9685.deinit()
 
     def setPWM(self, servoPosition):
-        print("PCA setpwm", servoPosition)
-        self.PCA9685.channels[0].duty_cycle = (servoPosition << 2)
+        # servo range is 750-2250 corresponding to 135 degree range, so we convert range [750, 2250] to [0, 135]
+        self._servo.angle = (servoPosition-750)*135/1500
         # self.PCA9685.set_pwm(0, 0, servoPosition)
 
 
