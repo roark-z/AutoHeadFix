@@ -55,7 +55,7 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
             self.PCA9685 = adafruit_pca9685.PCA9685(i2c_bus, address=self.servoAddress)
             # self.PCA9685.set_pwm_freq(90) # 40-1000Hz
             self.PCA9685.frequency = 90
-            self._servo = servo.Servo(self.PCA9685.channels[0], min_pulse=750, max_pulse=2250)
+            self._servo = servo.Servo(self.PCA9685.channels[0], min_pulse=0, max_pulse=2250)
             self.setPWM(self.servoReleasedPosition)
         except Exception as e:
             print(str(e))
