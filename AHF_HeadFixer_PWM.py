@@ -125,9 +125,10 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
         if repeatedTest[0].lower() == 'y':
             while True:
                 try:
+                    print('servo moving to Fixed position' + str(self.servoFixedPosition))
                     self.setPWM(self.servoFixedPosition)
                     sleep(3)
-                    print('servo moving to Released position')
+                    print('servo moving to Released position' + str(self.servoReleasedPosition))
                     self.setPWM(self.servoReleasedPosition)
                     sleep(3)
                 except KeyboardInterrupt:
