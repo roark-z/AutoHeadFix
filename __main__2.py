@@ -196,7 +196,7 @@ def main():
     finally:
         task.Stimulator.quitting()
         task.HeadFixer.releaseMouse(task.tag)
-        task.HeadFixer.setPWM(0)
+        # task.HeadFixer.setPWM(0)
         for name, object in task.__dict__.items():
             if name[-5:] != "Class" and name[-4:] != "Dict" and hasattr(object, 'setdown'):
                 object.setdown()
