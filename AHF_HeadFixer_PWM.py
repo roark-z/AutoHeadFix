@@ -23,11 +23,11 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
     def config_user_get(starterDict = {}):
         starterDict.update(AHF_HeadFixer.config_user_get(starterDict))
         servoReleasedPosition = starterDict.get('servoReleasedPosition', AHF_HeadFixer_PWM.defaultReleasePosition)
-        response = input("Set Servo Released Position(0-4095: currently %d): " % servoReleasedPosition)
+        response = input("Set Servo Released Position(0-180: currently %d): " % servoReleasedPosition)
         if response != '':
             servoReleasedPosition = int(response)
         servoFixedPosition = starterDict.get('servoFixedPosition', AHF_HeadFixer_PWM.defaultFixedPosition)
-        response = input("Set Servo Fixed Position(0-4095: currently %d): " % servoFixedPosition)
+        response = input("Set Servo Fixed Position(0-180: currently %d): " % servoFixedPosition)
         if response != '':
             servoFixedPosition = int(response)
         starterDict.update({'servoReleasedPosition' : servoReleasedPosition, 'servoFixedPosition' : servoFixedPosition})
