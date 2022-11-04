@@ -66,7 +66,8 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
         self.PCA9685.deinit()
 
     def setPWM(self, servoPosition):
-        self._servo.angle = servoPosition
+        clipped = np.clip(servoPosition,0, 180)
+        self._servo.angle = clipped
         # self.PCA9685.set_pwm(0, 0, servoPosition)
 
 
