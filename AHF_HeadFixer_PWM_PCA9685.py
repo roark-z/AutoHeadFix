@@ -66,9 +66,7 @@ class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
         self.PCA9685.deinit()
 
     def setPWM(self, servoPosition):
-        # servo range is 750-2250 corresponding to 135 degree range, so we convert range [750, 2250] to [0, 135]
-        print("setpwm:", servoPosition, (servoPosition)*135/1500)
-        self._servo.angle = (servoPosition)*135/1500
+        self._servo.angle = servoPosition
         # self.PCA9685.set_pwm(0, 0, servoPosition)
 
 
