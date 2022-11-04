@@ -35,8 +35,8 @@
 "useLocalSql"=true}
 "HeadFixerClass"="AHF_HeadFixer_PWM_PCA9685"
 "HeadFixerDict"={"servoAddress"=64
-"servoFixedPosition"=695
-"servoReleasedPosition"=945
+"servoFixedPosition"=100
+"servoReleasedPosition"=170
 "skeddadleTime"=5.0}
 "LickDetectorClass"="AHF_LickDetector_MPR"
 "LickDetectorDict"={"IRQpin"=26
