@@ -143,7 +143,6 @@ def main():
                     # tag, eventKind, eventDict, timeStamp, toShellOrFile
                     task.Stimulator.quitting()
                     task.HeadFixer.releaseMouse(task.tag)
-                    task.HeadFixer.setPWM(0)
                     task.DataLogger.setdown()
                     task.ContactCheck.stopLogging()
                     if hasattr(task, 'LickDetector'):
