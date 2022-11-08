@@ -175,8 +175,8 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.stop_preview()
         print("Red Gain for white balance =" + str(float(self.piCam.awb_gains [0])))
         print("Blue Gain for white balance =" + str(float(self.piCam.awb_gains [1])))
-        print("Analog Gain = " + str(float(self.piCam.controls.Analogue_Gain)))
-        print("Digital Gain = " + str(float(self.piCam.controls.Digital_Gain)))
+        print("Analog Gain = " + str(float(self.piCam.camera_controls['AnalogueGain'])))
+        print("Digital Gain = " + str(float(self.piCam.camera_controls['DigitalGain'])))
         return
 
     def capture(self, path, type, video_port =False):
