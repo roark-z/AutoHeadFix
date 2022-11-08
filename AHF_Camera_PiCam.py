@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from AHF_Camera import AHF_Camera
-from picamera2 import PiCamera2
+from picamera2 import Picamera2
 import time
 from datetime import datetime
 from os import path, makedirs, chown, listdir
@@ -11,7 +11,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     @staticmethod
     def about():
-        return 'uses picamera2.PiCamera2 to run the standard Raspberry Pi camera'
+        return 'uses picamera2.Picamera2 to run the standard Raspberry Pi camera'
 
     @staticmethod
     def config_user_get(starterDict = {}):
@@ -84,7 +84,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     def setup(self):
         try:
-            self.piCam = PiCamera2()
+            self.piCam = Picamera2()
         except Exception as anError:
             print("Error initializing camera.." + str(anError))
             raise anError
@@ -143,7 +143,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
         If ISO for the camera is set to non-zero value, gain is not settable. If pWhiteBalance was set to False, white balancing is not done,
         and gains for red and green are set to 1.
-        :raises PiCameraError: error raised by superclass PiCamera2 from preview
+        :raises PiCameraError: error raised by superclass Picamera2 from preview
         """
         DescStr = 'Setting Gain for AHF_Camera '
         if(self.AHFgainMode & 2):
@@ -222,7 +222,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     def timed_recording(self, video_name_path, recTime):
         """
-        Does a timed video recording using the PiCamera2 wait_recording function.
+        Does a timed video recording using the Picamera2 wait_recording function.
 
         A preview of the recording is always shown
 
