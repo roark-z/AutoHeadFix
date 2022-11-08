@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from AHF_Camera import AHF_Camera
-from picamera import PiCamera
+from picamera2 import PiCamera2
 import time
 from datetime import datetime
 from os import path, makedirs, chown, listdir
@@ -11,7 +11,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     @staticmethod
     def about():
-        return 'uses picamera.PiCamera to run the standard Raspberry Pi camera'
+        return 'uses picamera2.PiCamera2 to run the standard Raspberry Pi camera'
 
     @staticmethod
     def config_user_get(starterDict = {}):
@@ -84,11 +84,11 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     def setup(self):
         try:
-            self.piCam = PiCamera()
+            self.piCam = PiCamera2()
         except Exception as anError:
             print("Error initializing camera.." + str(anError))
             raise anError
-        # set fields in Picamera
+        # set fields in Picamera2
         self.piCam.resolution = self.settingsDict.get('resolution',(640, 480))
         self.piCam.framerate = self.settingsDict.get('framerate', 30)
         self.piCam.iso = self.settingsDict.get('iso', 0)
@@ -143,7 +143,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
         If ISO for the camera is set to non-zero value, gain is not settable. If pWhiteBalance was set to False, white balancing is not done,
         and gains for red and green are set to 1.
-        :raises PiCameraError: error raised by superclass PiCamera from preview
+        :raises PiCameraError: error raised by superclass PiCamera2 from preview
         """
         DescStr = 'Setting Gain for AHF_Camera '
         if(self.AHFgainMode & 2):
@@ -222,7 +222,7 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     def timed_recording(self, video_name_path, recTime):
         """
-        Does a timed video recording using the PiCamera wait_recording function.
+        Does a timed video recording using the PiCamera2 wait_recording function.
 
         A preview of the recording is always shown
 
@@ -301,7 +301,7 @@ if __name__ == '__main__':
     print(time_start, time_end, time_end-time_start)
     print(total_time)
 
-    #class picamera.PiVideoFrame(index, frame_type, frame_size, video_size, split_size, timestamp)
+    #class picamera2.PiVideoFrame(index, frame_type, frame_size, video_size, split_size, timestamp)
 
     camera.stop_recording()
     #camera.adjust_config_from_user()
