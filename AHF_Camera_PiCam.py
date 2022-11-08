@@ -215,9 +215,8 @@ class AHF_Camera_PiCam(AHF_Camera):
         """
         Stops a video recording previously started with start_recording.
         """
-        if self.piCam.recording:
-            self.piCam.stop_recording()
-            self.piCam.stop_preview()
+        self.piCam.stop_recording()
+        self.piCam.stop_preview()
         return
 
     def timed_recording(self, video_name_path, recTime):
