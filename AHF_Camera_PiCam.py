@@ -2,7 +2,7 @@
 #-*-coding: utf-8 -*-
 
 from AHF_Camera import AHF_Camera
-from picamera2 import Picamera2
+from picamera2 import Picamera2, Preview
 import time
 from datetime import datetime
 from os import path, makedirs, chown, listdir
@@ -206,9 +206,10 @@ class AHF_Camera_PiCam(AHF_Camera):
 
 
     def start_preview(self):
+        self.piCam.start_preview(Preview.QTGL)
         preview_config = self.piCam.create_preview_configuration()
         self.piCam.configure(preview_config)
-        self.piCam.start_preview(preview=True)
+        self.piCam.start()
 
     def stop_preview(self):
         self.piCam.stop_preview()
