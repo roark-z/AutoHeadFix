@@ -206,10 +206,12 @@ class AHF_Camera_PiCam(AHF_Camera):
 
 
     def start_preview(self):
-        self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
+        self.piCam.start()
+        self.piCam.start_preview(preview=True)
 
     def stop_preview(self):
         self.piCam.stop_preview()
+        self.piCam.stop()
 
     def stop_recording(self):
         """
