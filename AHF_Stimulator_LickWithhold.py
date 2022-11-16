@@ -182,7 +182,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
             A stimulator may, e.g., open files and wish to close them before exiting, or use hardware that needs to be cleaned up
         """
-        self.task.Camera.stop_recording()
+        # self.task.Camera.stop_recording()
         pass
 
     def rewardTask(self):

@@ -441,8 +441,8 @@ class AHF_Stimulator_Lever(AHF_Stimulator):
 
             A stimulator may, e.g., open files and wish to close them before exiting, or use hardware that needs to be cleaned up
         """
-        if hasattr(self.task, 'Camera'):
-            self.task.Camera.stop_recording()
+        # if hasattr(self.task, 'Camera'):
+        #     self.task.Camera.stop_recording()
         pass
 
     def setdown(self):
