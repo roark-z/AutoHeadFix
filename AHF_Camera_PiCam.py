@@ -199,12 +199,10 @@ class AHF_Camera_PiCam(AHF_Camera):
         video_name = self.video_path+video_name_path
         if self.AHFvideoFormat == 'rgb':
             # self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
-            self.piCam.start(show_preview=True)
-            self.piCam.start_recording(self.encoder, video_name)
+            self.piCam.start_and_record_video(output = video_name, encoder = self.encoder, show_preview = True)
         else:
             # self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
-            self.piCam.start(show_preview=True)
-            self.piCam.start_recording(self.encoder, video_name)
+            self.piCam.start_and_record_video(output = video_name, encoder = self.encoder, show_preview = True)
         # self.start_preview(fullscreen = False, window= self.AHFpreview)
         # self.start_preview()
         return
