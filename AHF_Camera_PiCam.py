@@ -3,6 +3,7 @@
 
 from AHF_Camera import AHF_Camera
 from picamera2 import Picamera2, Preview
+from picamera2.encoders import H264Encoder
 import time
 from datetime import datetime
 from os import path, makedirs, chown, listdir
@@ -109,6 +110,11 @@ class AHF_Camera_PiCam(AHF_Camera):
         self.piCam.led = False
         # set gain based on 2 sec preview
         self.set_gain()
+        # configure picam
+        picam_config = self.piCam.create_video_configuration({"size": self.piCam.resolution})
+        self.piCam.configure(picam_config)
+        # set encoder
+        self.encoder = H264Encoder(bitrate=10000000)
         return
 
     def resolution(self):
@@ -192,9 +198,11 @@ class AHF_Camera_PiCam(AHF_Camera):
         """
         video_name = self.video_path+video_name_path
         if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
+            # self.piCam.start_recording(output=video_name, format=self.AHFvideoFormat)
+            self.piCam.start_recording(self.encoder, video_name)
         else:
-            self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            # self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
+            self.piCam.start_recording(self.encoder, video_name)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         return
 
@@ -207,8 +215,8 @@ class AHF_Camera_PiCam(AHF_Camera):
 
     def start_preview(self):
         self.piCam.start_preview(Preview.QTGL)
-        preview_config = self.piCam.create_preview_configuration()
-        self.piCam.configure(preview_config)
+        # preview_config = self.piCam.create_preview_configuration()
+        # self.piCam.configure(preview_config)
         self.piCam.start()
 
     def stop_preview(self):
@@ -234,10 +242,11 @@ class AHF_Camera_PiCam(AHF_Camera):
         :param  video_name_path: a full path to the file where the video will be stored.
         :param recTime: duration of the recorded video, in seconds
         """
-        if self.AHFvideoFormat == 'rgb':
-            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
-        else:
-            self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
+        # if self.AHFvideoFormat == 'rgb':
+        #     self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
+        # else:
+        #     self.piCam.start_recording(output=self.video_path, format=self.AHFvideoFormat)
+        self.piCam.start_recording(self.encoder, self.video_path)
         self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
         self.piCam.wait_recording(timeout=recTime)
         self.stop_recording()
