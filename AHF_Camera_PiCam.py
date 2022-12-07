@@ -203,7 +203,8 @@ class AHF_Camera_PiCam(AHF_Camera):
         else:
             # self.piCam.start_recording(output=video_name, format = self.AHFvideoFormat, quality = self.AHFvideoQuality)
             self.piCam.start_recording(self.encoder, video_name)
-        self.piCam.start_preview(fullscreen = False, window= self.AHFpreview)
+        # self.start_preview(fullscreen = False, window= self.AHFpreview)
+        self.start_preview()
         return
 
     def add_overlay(self, bytes, layer, alpha):
