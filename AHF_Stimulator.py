@@ -102,7 +102,6 @@ class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
             self.task.BrainLight.offForStim() # turn off the blue LED
             self.task.DataLogger.writeToLogFile(thisTag, 'BrainLEDOFF', None, time())
         print("turned off")
-        camera.stop_preview()
         self.task.DataLogger.writeToLogFile(thisTag, 'VideoEnd', None, time())
         uid = getpwnam('pi').pw_uid
         gid = getgrnam('pi').gr_gid
