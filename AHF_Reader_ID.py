@@ -170,7 +170,8 @@ class AHF_Reader_ID(AHF_Reader):
 #            self.tagReader.installCallback(self.TIRpin)
             GPIO.setup(self.TIRpin, GPIO.IN)
             AHF_Reader_ID.isChecking = True
-            self.checkThread.start()
+            if not self.checkThread.is_alive():
+                self.checkThread.start()
             print('[Debug] checkthread is', self.checkThread)
             self.isLogging = True
         else:
