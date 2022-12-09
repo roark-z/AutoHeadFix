@@ -317,7 +317,11 @@ class AHF_Subjects_mice(AHF_Subjects):
                 self.task.Reader.startLogging()
             else:
                 break
-        response = input('Save changes in settings to a json file, too?(recommended)')
+        response = ''
+
+        while(len(response) == 0):
+            response = input('Save changes in settings to a json file, too?(recommended)')
+        
         if response[0] == 'Y' or response[0] == 'y':
             CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
 
