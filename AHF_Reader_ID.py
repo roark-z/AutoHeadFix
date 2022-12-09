@@ -169,6 +169,7 @@ class AHF_Reader_ID(AHF_Reader):
             GPIO.setup(self.TIRpin, GPIO.IN)
             AHF_Reader_ID.isChecking = True
             self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True).start()
+            print('[Debug] checkthread is', self.checkThread)
             self.isLogging = True
         else:
             print('[Debug] tried to startLogging with self.isLogging == True')

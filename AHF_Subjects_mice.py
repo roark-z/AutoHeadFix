@@ -311,10 +311,10 @@ class AHF_Subjects_mice(AHF_Subjects):
                         os.chown(configFile, uid, gid)  # we may run as root for pi PWM, so we need to explicitly set ownership
                     # TODO check this
             elif event[0].lower() == 'a' or event[0].lower() == 't': # other two choices are for adding a mouse by RFID Tag, either reading from Tag Reader, or typing it
-                self.task.Reader.stopLogging()
+                # self.task.Reader.stopLogging()
                 self.add(event)
                 CAD.Dict_to_file(self.miceDict, "mice", self.jsonName, ".jsn")
-                self.task.Reader.startLogging()
+                # self.task.Reader.startLogging()
             else:
                 break
         response = ''
