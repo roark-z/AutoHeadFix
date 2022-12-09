@@ -183,6 +183,7 @@ class AHF_Subjects_mice(AHF_Subjects):
         returns True if subject was added, false if subjet with IDnum already exists in subject pool
         """
         if IDnum == 't' or IDnum == 'T':
+            self.task.Reader.stopLogging()
             print("Place the mouse under the reader now.")
             tag = '0'
             while tag == '0':

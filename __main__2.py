@@ -160,6 +160,7 @@ def main():
                         event = input(inputStr)
                         if event == 'r' or event == "R":
                             GPIO.setmode(GPIO.BCM)
+                            task.Reader.startLogging()
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.startLogging()
                             break
