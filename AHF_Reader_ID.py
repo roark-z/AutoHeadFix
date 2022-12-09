@@ -163,6 +163,7 @@ class AHF_Reader_ID(AHF_Reader):
         except ValueError:
             return 0
     def startLogging(self):
+        print('[Debug] startLogging')
         if not self.isLogging:
 #            self.tagReader.installCallback(self.TIRpin)
             GPIO.setup(self.TIRpin, GPIO.IN)
@@ -170,14 +171,17 @@ class AHF_Reader_ID(AHF_Reader):
             self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True).start()
             self.isLogging = True
         else:
-            print('[Debug] tried to startlogging with self.isLogging == true')
+            print('[Debug] tried to startLogging with self.isLogging == True')
 
     def stopLogging(self):
+        print('[Debug] stopLogging')
         if self.isLogging:
 #            self.tagReader.removeCallback()
  #           GPIO.remove_event_detect(self.TIRpin)
             AHF_Reader_ID.isChecking = False
             self.isLogging = False
+        else:
+            print('[Debug] tried to stopLogging with self.isLogging == False')
 
     def hardwareTest(self):
         wasLogging = self.isLogging
