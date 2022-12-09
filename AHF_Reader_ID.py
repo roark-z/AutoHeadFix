@@ -150,6 +150,7 @@ class AHF_Reader_ID(AHF_Reader):
         self.tagReader = RFIDTagReader.TagReader(self.serialPort, doChecksum = AHF_Reader_ID.DO_CHECK_SUM, timeOutSecs = AHF_Reader_ID.TIME_OUT_SECS, kind='ID')
         self.isLogging = False
         self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True)
+        self.checkThread.start()
         AHF_Reader_ID.gStillThere = False
         AHF_Reader_ID.gInChamberTimeLimit = self.settingsDict.get('inChamberTimeLimit')
 
@@ -167,11 +168,10 @@ class AHF_Reader_ID(AHF_Reader):
     def startLogging(self):
         print('[Debug] startLogging')
         if not self.isLogging:
-#            self.tagReader.installCallback(self.TIRpin)
             GPIO.setup(self.TIRpin, GPIO.IN)
             AHF_Reader_ID.isChecking = True
             if not self.checkThread.is_alive():
-                self.checkThread.start()
+                self.checkThread.run()
             print('[Debug] checkthread is', self.checkThread)
             self.isLogging = True
         else:
@@ -182,8 +182,6 @@ class AHF_Reader_ID(AHF_Reader):
         if self.isLogging:
             print('[Debug] thread alive:', self.checkThread.is_alive())
             # TODO: find where the thread dies?
-#            self.tagReader.removeCallback()
- #           GPIO.remove_event_detect(self.TIRpin)
             AHF_Reader_ID.isChecking = False
             self.isLogging = False
         else:
