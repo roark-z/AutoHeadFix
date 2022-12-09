@@ -170,6 +170,8 @@ class AHF_Reader_ID(AHF_Reader):
             AHF_Reader_ID.isChecking = True
             self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True).start()
             self.isLogging = True
+        else:
+            print('[Debug] tried to startlogging with self.isLogging == true')
 
     def stopLogging(self):
         if self.isLogging:

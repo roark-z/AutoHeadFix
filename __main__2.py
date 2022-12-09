@@ -145,6 +145,7 @@ def main():
                     task.HeadFixer.releaseMouse(task.tag)
                     task.DataLogger.setdown()
                     task.ContactCheck.stopLogging()
+                    task.Reader.stopLogging()
                     if hasattr(task, 'LickDetector'):
                         task.LickDetector.stopLogging()
                     inputStr = '\n************** Auto Head Fix Manager ********************\nEnter:\n'
