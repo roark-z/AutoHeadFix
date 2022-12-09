@@ -164,7 +164,6 @@ class AHF_Reader_ID(AHF_Reader):
             return 0
 
     def startLogging(self):
-        print('[Debug] startLogging')
         if not self.isLogging:
             GPIO.setup(self.TIRpin, GPIO.IN)
             AHF_Reader_ID.isChecking = True
@@ -173,13 +172,10 @@ class AHF_Reader_ID(AHF_Reader):
             self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True)
             self.checkThread.start()
 
-            print('[Debug] checkthread is', self.checkThread)
             self.isLogging = True
 
     def stopLogging(self):
-        print('[Debug] stopLogging')
         if self.isLogging:
-            print('[Debug] thread alive:', self.checkThread.is_alive())
             # TODO: find where the thread dies?
             AHF_Reader_ID.isChecking = False
             self.isLogging = False
