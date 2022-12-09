@@ -162,7 +162,6 @@ def main():
                             GPIO.setmode(GPIO.BCM)
                             if hasattr(task, 'LickDetector'):
                                 task.LickDetector.startLogging()
-                                task.Reader.startLogging()
                             break
                         elif event == 'q' or event == 'Q':
                             return
