@@ -59,7 +59,6 @@ class AHF_Reader_ID(AHF_Reader):
 
     def constantCheck(self, channel):
         while AHF_Reader_ID.isChecking:
-            print("constcheck")
             try:
                 sleep(0.1)
                 if GPIO.input(channel) == GPIO.HIGH:
@@ -178,7 +177,7 @@ class AHF_Reader_ID(AHF_Reader):
 #            self.tagReader.removeCallback()
  #           GPIO.remove_event_detect(self.TIRpin)
             AHF_Reader_ID.isChecking = False
-            self.isLogging = True
+            self.isLogging = False
 
     def hardwareTest(self):
         wasLogging = self.isLogging
