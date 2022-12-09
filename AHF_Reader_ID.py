@@ -149,8 +149,6 @@ class AHF_Reader_ID(AHF_Reader):
         self.TIRpin = self.settingsDict.get('TIRpin')
         self.tagReader = RFIDTagReader.TagReader(self.serialPort, doChecksum = AHF_Reader_ID.DO_CHECK_SUM, timeOutSecs = AHF_Reader_ID.TIME_OUT_SECS, kind='ID')
         self.isLogging = False
-        self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True)
-        self.checkThread.start()
         AHF_Reader_ID.gStillThere = False
         AHF_Reader_ID.gInChamberTimeLimit = self.settingsDict.get('inChamberTimeLimit')
 
@@ -170,12 +168,13 @@ class AHF_Reader_ID(AHF_Reader):
         if not self.isLogging:
             GPIO.setup(self.TIRpin, GPIO.IN)
             AHF_Reader_ID.isChecking = True
-            if not self.checkThread.is_alive():
-                self.checkThread.run()
+            
+            # Create a new thread
+            self.checkThread = threading.Thread(target=self.constantCheck, args=(self.TIRpin,), daemon = True)
+            self.checkThread.start()
+
             print('[Debug] checkthread is', self.checkThread)
             self.isLogging = True
-        else:
-            print('[Debug] tried to startLogging with self.isLogging == True')
 
     def stopLogging(self):
         print('[Debug] stopLogging')
@@ -184,8 +183,6 @@ class AHF_Reader_ID(AHF_Reader):
             # TODO: find where the thread dies?
             AHF_Reader_ID.isChecking = False
             self.isLogging = False
-        else:
-            print('[Debug] tried to stopLogging with self.isLogging == False')
 
     def hardwareTest(self):
         wasLogging = self.isLogging
