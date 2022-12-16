@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 #Laser-stimulator modules
 import numpy as np
 import sys
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from PTPWM import PTPWM
 from array import array
 from queue import Queue as queue

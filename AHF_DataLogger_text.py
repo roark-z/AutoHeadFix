@@ -1,5 +1,5 @@
 #! /usr/bin/python -*-coding: utf-8 -*-
-from os import path, makedirs, chown, listdir
+# from os import path, makedirs, chown, listdir
 from pwd import getpwnam
 from grp import getgrnam
 from time import time, localtime,timezone, sleep
