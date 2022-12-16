@@ -1,67 +1,34 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AHF_Camera &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AHF_ContactCheck" href="AHF_ContactCheck.html" />
     <link rel="prev" title="AHF_BrainLight" href="AHF_BrainLight.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> AutoHeadFix
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -69,18 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
@@ -88,9 +45,8 @@
 <li class="toctree-l2"><a class="reference internal" href="util_classes.html">Auto Head Fix Util and Base Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_BrainLight.html">AHF_BrainLight</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Camera</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera.AHF_Camera">AHF_Camera.AHF_Camera module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera.AHF_Camera_PiCam">AHF_Camera.AHF_Camera_PiCam module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ahf-camera-ahf-camera-pistream-module">AHF_Camera.AHF_Camera_PiStream module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Camera">AHF_Camera.AHF_Camera module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ahf-camera-ahf-camera-picam-module">AHF_Camera.AHF_Camera_PiCam module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html">AHF_ContactCheck</a></li>
@@ -108,279 +64,107 @@
 </li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">AutoHeadFix</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="modules.html">AutoHeadFix Code Documentation</a> &raquo;</li>
-        
-      <li>AHF_Camera</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AutoHeadFix Code Documentation</a></li>
+      <li class="breadcrumb-item active">AHF_Camera</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/AHF_Camera.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="ahf-camera">
-<h1>AHF_Camera<a class="headerlink" href="#ahf-camera" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-AHF_Camera.AHF_Camera">
-<span id="ahf-camera-ahf-camera-module"></span><h2>AHF_Camera.AHF_Camera module<a class="headerlink" href="#module-AHF_Camera.AHF_Camera" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="ahf-camera">
+<h1>AHF_Camera<a class="headerlink" href="#ahf-camera" title="Permalink to this headline"></a></h1>
+<section id="module-AHF_Camera">
+<span id="ahf-camera-ahf-camera-module"></span><h2>AHF_Camera.AHF_Camera module<a class="headerlink" href="#module-AHF_Camera" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera.</code><code class="sig-name descname">AHF_Camera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Camera.</span></span><span class="sig-name descname"><span class="pre">AHF_Camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util_classes.html#AHF_Base.AHF_Base" title="AHF_Base.AHF_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Base.AHF_Base</span></code></a></p>
 <p>AHF_Camera is the base class for the main brain imaging camera used in Auto Head Fix</p>
 <dl class="py method">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera.resolution">
-<em class="property">abstract </em><code class="sig-name descname">resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.resolution" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera.resolution">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resolution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.resolution" title="Permalink to this definition"></a></dt>
 <dd><p>Return the resolution of the camera. Used for certain stimulators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera.start_preview">
-<em class="property">abstract </em><code class="sig-name descname">start_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.start_preview" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera.start_preview">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_preview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.start_preview" title="Permalink to this definition"></a></dt>
 <dd><p>Starts a preview of the camera’s current vision.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera.start_recording">
-<em class="property">abstract </em><code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.start_recording" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera.start_recording">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_recording</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.start_recording" title="Permalink to this definition"></a></dt>
 <dd><p>Starts a recording of the camera’s current vision.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera.stop_preview">
-<em class="property">abstract </em><code class="sig-name descname">stop_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.stop_preview" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera.stop_preview">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_preview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.stop_preview" title="Permalink to this definition"></a></dt>
 <dd><p>Ends a preview of the camera’s current vision.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Camera.AHF_Camera.AHF_Camera.stop_recording">
-<em class="property">abstract </em><code class="sig-name descname">stop_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.AHF_Camera.stop_recording" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Camera.AHF_Camera.stop_recording">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_recording</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera.stop_recording" title="Permalink to this definition"></a></dt>
 <dd><p>Ends a recording of the camera’s current vision.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AHF_Camera.AHF_Camera_PiCam">
-<span id="ahf-camera-ahf-camera-picam-module"></span><h2>AHF_Camera.AHF_Camera_PiCam module<a class="headerlink" href="#module-AHF_Camera.AHF_Camera_PiCam" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Camera.AHF_Camera_PiCam.</code><code class="sig-name descname">AHF_Camera_PiCam</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Camera.AHF_Camera.AHF_Camera" title="AHF_Camera.AHF_Camera.AHF_Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Camera.AHF_Camera.AHF_Camera</span></code></a></p>
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.about">
-<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.about" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.add_overlay">
-<code class="sig-name descname">add_overlay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bytes</span></em>, <em class="sig-param"><span class="n">layer</span></em>, <em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.add_overlay" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.capture">
-<code class="sig-name descname">capture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">video_port</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.capture" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.config_user_get" title="Permalink to this definition">¶</a></dt>
-<dd><p>static method that querries user for settings, with default responses from starterDict,
-and returns starterDict with settings as edited by the user.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.hardwareTest">
-<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.hardwareTest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tests functionality, gives user a chance to change settings</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.remove_overlay">
-<code class="sig-name descname">remove_overlay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">overlay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.remove_overlay" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.resolution">
-<code class="sig-name descname">resolution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.resolution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the resolution of the camera. Used for certain stimulators.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.set_gain">
-<code class="sig-name descname">set_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.set_gain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the gain and white balance of the camera based on a 2 second preview - so set illumination as you like before calling</p>
-<p>If ISO for the camera is set to non-zero value, gain is not settable. If pWhiteBalance was set to False, white balancing is not done,
-and gains for red and green are set to 1.
-:raises PiCameraError: error raised by superclass PiCamera from preview</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setdown" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes session end and closes log file</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
-Run by __init__, or can be run  separately after editing the settingsDict</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_preview">
-<code class="sig-name descname">start_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_preview" title="Permalink to this definition">¶</a></dt>
-<dd><p>Starts a preview of the camera’s current vision.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_recording">
-<code class="sig-name descname">start_recording</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">video_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.start_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Starts a video recording using the saved settings for format, quality, gain, etc.</p>
-<p>A preview of the recording is always shown</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>video_name</strong> – Name of saved recording. Always save to a file, not a PIL, for, example</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_preview">
-<code class="sig-name descname">stop_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_preview" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ends a preview of the camera’s current vision.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_recording">
-<code class="sig-name descname">stop_recording</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.stop_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stops a video recording previously started with start_recording.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.timed_recording">
-<code class="sig-name descname">timed_recording</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Camera.AHF_Camera_PiCam.AHF_Camera_PiCam.timed_recording" title="Permalink to this definition">¶</a></dt>
-<dd><p>Does a timed video recording using the PiCamera wait_recording function.</p>
-<p>A preview of the recording is always shown</p>
-<p>Control does not pass back to the calling function until the recording is finished
-:param recTime: duration of the recorded video, in seconds</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="ahf-camera-ahf-camera-pistream-module">
-<h2>AHF_Camera.AHF_Camera_PiStream module<a class="headerlink" href="#ahf-camera-ahf-camera-pistream-module" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="ahf-camera-ahf-camera-picam-module">
+<h2>AHF_Camera.AHF_Camera_PiCam module<a class="headerlink" href="#ahf-camera-ahf-camera-picam-module" title="Permalink to this headline"></a></h2>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="AHF_ContactCheck.html" class="btn btn-neutral float-right" title="AHF_ContactCheck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="AHF_BrainLight.html" class="btn btn-neutral float-left" title="AHF_BrainLight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AHF_BrainLight.html" class="btn btn-neutral float-left" title="AHF_BrainLight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AHF_ContactCheck.html" class="btn btn-neutral float-right" title="AHF_ContactCheck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong
-
-    </p>
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

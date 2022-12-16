@@ -1,67 +1,34 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AHF_Rewarder &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AHF_Stimulator" href="AHF_Stimulator.html" />
     <link rel="prev" title="AHF_Reader" href="AHF_Reader.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> AutoHeadFix
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -69,18 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
@@ -95,10 +52,10 @@
 <li class="toctree-l2"><a class="reference internal" href="AHF_Notifier.html">AHF_Notifier</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html">AHF_Reader</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Rewarder</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder.AHF_Rewarder">AHF_Rewarder.AHF_Rewarder module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid">AHF_Rewarder.AHF_Rewarder_solenoid module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid_pt">AHF_Rewarder.AHF_Rewarder_solenoid_pt module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid_rpi">AHF_Rewarder.AHF_Rewarder_solenoid_rpi module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder">AHF_Rewarder.AHF_Rewarder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder_solenoid">AHF_Rewarder.AHF_Rewarder_solenoid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder_solenoid_pt">AHF_Rewarder.AHF_Rewarder_solenoid_pt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Rewarder_solenoid_rpi">AHF_Rewarder.AHF_Rewarder_solenoid_rpi module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html">AHF_Stimulator</a></li>
@@ -109,176 +66,137 @@
 </li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">AutoHeadFix</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="modules.html">AutoHeadFix Code Documentation</a> &raquo;</li>
-        
-      <li>AHF_Rewarder</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AutoHeadFix Code Documentation</a></li>
+      <li class="breadcrumb-item active">AHF_Rewarder</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/AHF_Rewarder.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="ahf-rewarder">
-<h1>AHF_Rewarder<a class="headerlink" href="#ahf-rewarder" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-AHF_Rewarder.AHF_Rewarder">
-<span id="ahf-rewarder-ahf-rewarder-module"></span><h2>AHF_Rewarder.AHF_Rewarder module<a class="headerlink" href="#module-AHF_Rewarder.AHF_Rewarder" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="ahf-rewarder">
+<h1>AHF_Rewarder<a class="headerlink" href="#ahf-rewarder" title="Permalink to this headline"></a></h1>
+<section id="module-AHF_Rewarder">
+<span id="ahf-rewarder-ahf-rewarder-module"></span><h2>AHF_Rewarder.AHF_Rewarder module<a class="headerlink" href="#module-AHF_Rewarder" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Rewarder.AHF_Rewarder.</code><code class="sig-name descname">AHF_Rewarder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Rewarder.</span></span><span class="sig-name descname"><span class="pre">AHF_Rewarder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util_classes.html#AHF_Base.AHF_Base" title="AHF_Base.AHF_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Base.AHF_Base</span></code></a></p>
 <p>Base class for all rewarder classs. Other rewarders subclass from this, or from one of its subclasses</p>
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.addRewardToDict">
-<code class="sig-name descname">addRewardToDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewardName</span></em>, <em class="sig-param"><span class="n">rewardSize</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.addRewardToDict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.addRewardToDict">
+<span class="sig-name descname"><span class="pre">addRewardToDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewardName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rewardSize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.addRewardToDict" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.countermandReward">
-<em class="property">abstract </em><code class="sig-name descname">countermandReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.countermandReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.countermandReward">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">countermandReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.countermandReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.entryRewardDelayDefault">
-<code class="sig-name descname">entryRewardDelayDefault</code><em class="property"> = 1.0</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.entryRewardDelayDefault" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.entryRewardDelayDefault">
+<span class="sig-name descname"><span class="pre">entryRewardDelayDefault</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.entryRewardDelayDefault" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.giveReward">
-<em class="property">abstract </em><code class="sig-name descname">giveReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewardName</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.giveReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.giveReward">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">giveReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewardName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.giveReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.giveRewardCM">
-<em class="property">abstract </em><code class="sig-name descname">giveRewardCM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewardName</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.giveRewardCM" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.giveRewardCM">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">giveRewardCM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewardName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.giveRewardCM" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.hardwareTest">
-<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.hardwareTest">
+<span class="sig-name descname"><span class="pre">hardwareTest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.hardwareTest" title="Permalink to this definition"></a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.maxBreakBeamRewardsDefault">
-<code class="sig-name descname">maxBreakBeamRewardsDefault</code><em class="property"> = 200</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.maxBreakBeamRewardsDefault" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.maxBreakBeamRewardsDefault">
+<span class="sig-name descname"><span class="pre">maxBreakBeamRewardsDefault</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">200</span></em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.maxBreakBeamRewardsDefault" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.maxEntryRewardsDefault">
-<code class="sig-name descname">maxEntryRewardsDefault</code><em class="property"> = 1000</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.maxEntryRewardsDefault" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.maxEntryRewardsDefault">
+<span class="sig-name descname"><span class="pre">maxEntryRewardsDefault</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.maxEntryRewardsDefault" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.rewardControl">
-<code class="sig-name descname">rewardControl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.rewardControl" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.rewardControl">
+<span class="sig-name descname"><span class="pre">rewardControl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.rewardControl" title="Permalink to this definition"></a></dt>
 <dd><p>Opens and closes valve, as for testing, or draining the lines</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.rewardUnits">
-<code class="sig-name descname">rewardUnits</code><em class="property"> = ''</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.rewardUnits" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.rewardUnits">
+<span class="sig-name descname"><span class="pre">rewardUnits</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.rewardUnits" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.setCountermandTime">
-<code class="sig-name descname">setCountermandTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">countermandTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.setCountermandTime" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.setCountermandTime">
+<span class="sig-name descname"><span class="pre">setCountermandTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countermandTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.setCountermandTime" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.testAmount">
-<code class="sig-name descname">testAmount</code><em class="property"> = 0</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.testAmount" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.testAmount">
+<span class="sig-name descname"><span class="pre">testAmount</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.testAmount" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.turnOFF">
-<em class="property">abstract </em><code class="sig-name descname">turnOFF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.turnOFF" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.turnOFF">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">turnOFF</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.turnOFF" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.turnON">
-<em class="property">abstract </em><code class="sig-name descname">turnON</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder.turnON" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder.AHF_Rewarder.turnON">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">turnON</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder.turnON" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AHF_Rewarder.AHF_Rewarder_solenoid">
-<span id="ahf-rewarder-ahf-rewarder-solenoid-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid module<a class="headerlink" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-AHF_Rewarder_solenoid">
+<span id="ahf-rewarder-ahf-rewarder-solenoid-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid module<a class="headerlink" href="#module-AHF_Rewarder_solenoid" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Rewarder.AHF_Rewarder_solenoid.</code><code class="sig-name descname">AHF_Rewarder_solenoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder.AHF_Rewarder.AHF_Rewarder" title="AHF_Rewarder.AHF_Rewarder.AHF_Rewarder"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder.AHF_Rewarder.AHF_Rewarder</span></code></a></p>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Rewarder_solenoid.</span></span><span class="sig-name descname"><span class="pre">AHF_Rewarder_solenoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder.AHF_Rewarder" title="AHF_Rewarder.AHF_Rewarder"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder.AHF_Rewarder</span></code></a></p>
 <p>An abstract base class to use a solenoid to deliver water rewards using 1 GPIO pin, subclasses use different timing methods</p>
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.breakBeamHandling">
-<code class="sig-name descname">breakBeamHandling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.breakBeamHandling" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.breakBeamHandling">
+<span class="sig-name descname"><span class="pre">breakBeamHandling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.breakBeamHandling" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.clearResultsDict">
-<code class="sig-name descname">clearResultsDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.clearResultsDict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.clearResultsDict">
+<span class="sig-name descname"><span class="pre">clearResultsDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.clearResultsDict" title="Permalink to this definition"></a></dt>
 <dd><p>Clears results for daily totals of reward types</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_subject_get">
-<code class="sig-name descname">config_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_subject_get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_subject_get">
+<span class="sig-name descname"><span class="pre">config_subject_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_subject_get" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>dict – the default dictionary for individualized parameters</p>
@@ -287,92 +205,92 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_get">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_user_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_get" title="Permalink to this definition"></a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_subject_get">
-<code class="sig-name descname">config_user_subject_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_subject_get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_subject_get">
+<span class="sig-name descname"><span class="pre">config_user_subject_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.config_user_subject_get" title="Permalink to this definition"></a></dt>
 <dd><p>Prompts the user for individualized parameters, with default responses
 from starterDict, and returns starterDict with settings
 as edited by the user.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.countermandReward">
-<code class="sig-name descname">countermandReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.countermandReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.countermandReward">
+<span class="sig-name descname"><span class="pre">countermandReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.countermandReward" title="Permalink to this definition"></a></dt>
 <dd><p>Countermands the previously given reward</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBBWait">
-<code class="sig-name descname">defaultBBWait</code><em class="property"> = 1</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBBWait" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBBWait">
+<span class="sig-name descname"><span class="pre">defaultBBWait</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBBWait" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBreakBeam">
-<code class="sig-name descname">defaultBreakBeam</code><em class="property"> = 0.1</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBreakBeam" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBreakBeam">
+<span class="sig-name descname"><span class="pre">defaultBreakBeam</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultBreakBeam" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultEntry">
-<code class="sig-name descname">defaultEntry</code><em class="property"> = 0.2</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultEntry" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultEntry">
+<span class="sig-name descname"><span class="pre">defaultEntry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.2</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultEntry" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultPin">
-<code class="sig-name descname">defaultPin</code><em class="property"> = 13</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultPin" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultPin">
+<span class="sig-name descname"><span class="pre">defaultPin</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultPin" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultTask">
-<code class="sig-name descname">defaultTask</code><em class="property"> = 0.4</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultTask" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultTask">
+<span class="sig-name descname"><span class="pre">defaultTask</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.4</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultTask" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultWait">
-<code class="sig-name descname">defaultWait</code><em class="property"> = 900</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultWait" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultWait">
+<span class="sig-name descname"><span class="pre">defaultWait</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">900</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.defaultWait" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.entryHandling">
-<code class="sig-name descname">entryHandling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.entryHandling" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.entryHandling">
+<span class="sig-name descname"><span class="pre">entryHandling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.entryHandling" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveReward">
-<code class="sig-name descname">giveReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewardName</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveReward">
+<span class="sig-name descname"><span class="pre">giveReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewardName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveReward" title="Permalink to this definition"></a></dt>
 <dd><p>Gives reward, if reward name is in dictionary. If an entry reward, must be less than number of max entry rewards per day</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveRewardCM">
-<code class="sig-name descname">giveRewardCM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewardName</span></em>, <em class="sig-param"><span class="n">resultsDict</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">settingsDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveRewardCM" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveRewardCM">
+<span class="sig-name descname"><span class="pre">giveRewardCM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewardName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.giveRewardCM" title="Permalink to this definition"></a></dt>
 <dd><p>Gives a reward that can be countermanded, i.e. cancelled if occurring before a timeour</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.newResultsDict">
-<code class="sig-name descname">newResultsDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.newResultsDict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.newResultsDict">
+<span class="sig-name descname"><span class="pre">newResultsDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.newResultsDict" title="Permalink to this definition"></a></dt>
 <dd><p>Return a dictionary of keys = rewardNames, values = number of rewards given, each mouse will get one of these for reward monitoring each day</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.results_subject_get">
-<code class="sig-name descname">results_subject_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.results_subject_get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.results_subject_get">
+<span class="sig-name descname"><span class="pre">results_subject_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.results_subject_get" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.rewardUnits">
-<code class="sig-name descname">rewardUnits</code><em class="property"> = 'Seconds'</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.rewardUnits" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.rewardUnits">
+<span class="sig-name descname"><span class="pre">rewardUnits</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Seconds'</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.rewardUnits" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.setup">
-<em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.setup">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.setup" title="Permalink to this definition"></a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
@@ -383,51 +301,51 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.testAmount">
-<code class="sig-name descname">testAmount</code><em class="property"> = 1.0</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.testAmount" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.testAmount">
+<span class="sig-name descname"><span class="pre">testAmount</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.testAmount" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCMReward">
-<em class="property">abstract </em><code class="sig-name descname">threadCMReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCMReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCMReward">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threadCMReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCMReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCountermand">
-<em class="property">abstract </em><code class="sig-name descname">threadCountermand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCountermand" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCountermand">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threadCountermand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadCountermand" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadReward">
-<em class="property">abstract </em><code class="sig-name descname">threadReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadReward">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threadReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid.threadReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AHF_Rewarder.AHF_Rewarder_solenoid_pt">
-<span id="ahf-rewarder-ahf-rewarder-solenoid-pt-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid_pt module<a class="headerlink" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid_pt" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-AHF_Rewarder_solenoid_pt">
+<span id="ahf-rewarder-ahf-rewarder-solenoid-pt-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid_pt module<a class="headerlink" href="#module-AHF_Rewarder_solenoid_pt" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Rewarder.AHF_Rewarder_solenoid_pt.</code><code class="sig-name descname">AHF_Rewarder_solenoid_pt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid</span></code></a></p>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Rewarder_solenoid_pt.</span></span><span class="sig-name descname"><span class="pre">AHF_Rewarder_solenoid_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder_solenoid.AHF_Rewarder_solenoid</span></code></a></p>
 <p>A class to use a solenoid to deliver water rewards using 1 GPIO pin, using pulsed thread/PTSimpleGPIO for timing</p>
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.about">
-<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.about" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.about">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.about" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setdown" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setdown">
+<span class="sig-name descname"><span class="pre">setdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setdown" title="Permalink to this definition"></a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.setup" title="Permalink to this definition"></a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
@@ -438,71 +356,71 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCMReward">
-<code class="sig-name descname">threadCMReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCMReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCMReward">
+<span class="sig-name descname"><span class="pre">threadCMReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCMReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCountermand">
-<code class="sig-name descname">threadCountermand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCountermand" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCountermand">
+<span class="sig-name descname"><span class="pre">threadCountermand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadCountermand" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadReward">
-<code class="sig-name descname">threadReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadReward">
+<span class="sig-name descname"><span class="pre">threadReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.threadReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnOFF">
-<code class="sig-name descname">turnOFF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnOFF" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnOFF">
+<span class="sig-name descname"><span class="pre">turnOFF</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnOFF" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnON">
-<code class="sig-name descname">turnON</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnON" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnON">
+<span class="sig-name descname"><span class="pre">turnON</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_pt.AHF_Rewarder_solenoid_pt.turnON" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AHF_Rewarder.AHF_Rewarder_solenoid_rpi">
-<span id="ahf-rewarder-ahf-rewarder-solenoid-rpi-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid_rpi module<a class="headerlink" href="#module-AHF_Rewarder.AHF_Rewarder_solenoid_rpi" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-AHF_Rewarder_solenoid_rpi">
+<span id="ahf-rewarder-ahf-rewarder-solenoid-rpi-module"></span><h2>AHF_Rewarder.AHF_Rewarder_solenoid_rpi module<a class="headerlink" href="#module-AHF_Rewarder_solenoid_rpi" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Rewarder.AHF_Rewarder_solenoid_rpi.</code><code class="sig-name descname">AHF_Rewarder_solenoid_rpi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder.AHF_Rewarder_solenoid.AHF_Rewarder_solenoid</span></code></a></p>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Rewarder_solenoid_rpi.</span></span><span class="sig-name descname"><span class="pre">AHF_Rewarder_solenoid_rpi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Rewarder_solenoid.AHF_Rewarder_solenoid" title="AHF_Rewarder_solenoid.AHF_Rewarder_solenoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Rewarder_solenoid.AHF_Rewarder_solenoid</span></code></a></p>
 <p>A class to use a solenoid to deliver water rewards using 1 GPIO pin controlled by RPi.GPIO , using sleep for timing</p>
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.about">
-<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.about" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.about">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.about" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.countermandVal">
-<code class="sig-name descname">countermandVal</code><em class="property"> = 0</em><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.countermandVal" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.countermandVal">
+<span class="sig-name descname"><span class="pre">countermandVal</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.countermandVal" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardCMThread">
-<em class="property">static </em><code class="sig-name descname">rewardCMThread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delayTime</span></em>, <em class="sig-param"><span class="n">sleepTime</span></em>, <em class="sig-param"><span class="n">rewardPin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardCMThread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardCMThread">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rewardCMThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delayTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rewardPin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardCMThread" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardThread">
-<em class="property">static </em><code class="sig-name descname">rewardThread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em>, <em class="sig-param"><span class="n">rewardPin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardThread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardThread">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rewardThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rewardPin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.rewardThread" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setdown" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setdown">
+<span class="sig-name descname"><span class="pre">setdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setdown" title="Permalink to this definition"></a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.setup" title="Permalink to this definition"></a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
@@ -513,82 +431,64 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCMReward">
-<code class="sig-name descname">threadCMReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCMReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCMReward">
+<span class="sig-name descname"><span class="pre">threadCMReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCMReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCountermand">
-<code class="sig-name descname">threadCountermand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCountermand" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCountermand">
+<span class="sig-name descname"><span class="pre">threadCountermand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadCountermand" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadReward">
-<code class="sig-name descname">threadReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sleepTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadReward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadReward">
+<span class="sig-name descname"><span class="pre">threadReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.threadReward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnOFF">
-<code class="sig-name descname">turnOFF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnOFF" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnOFF">
+<span class="sig-name descname"><span class="pre">turnOFF</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnOFF" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnON">
-<code class="sig-name descname">turnON</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder.AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnON" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnON">
+<span class="sig-name descname"><span class="pre">turnON</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Rewarder_solenoid_rpi.AHF_Rewarder_solenoid_rpi.turnON" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="AHF_Stimulator.html" class="btn btn-neutral float-right" title="AHF_Stimulator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="AHF_Reader.html" class="btn btn-neutral float-left" title="AHF_Reader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AHF_Reader.html" class="btn btn-neutral float-left" title="AHF_Reader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AHF_Stimulator.html" class="btn btn-neutral float-right" title="AHF_Stimulator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong
-
-    </p>
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

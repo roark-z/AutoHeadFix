@@ -6,7 +6,7 @@ AHF\_LickDetector
 AHF\_LickDetector.AHF\_LickDetector module
 ------------------------------------------
 
-.. automodule:: AHF_LickDetector.AHF_LickDetector
+.. automodule:: AHF_LickDetector
    :members:
    :undoc-members:
    :show-inheritance:
@@ -14,7 +14,7 @@ AHF\_LickDetector.AHF\_LickDetector module
 AHF\_LickDetector.AHF\_LickDetector\_MPR module
 -----------------------------------------------
 
-.. automodule:: AHF_LickDetector.AHF_LickDetector_MPR
+.. automodule:: AHF_LickDetector_MPR
    :members:
    :undoc-members:
    :show-inheritance:
