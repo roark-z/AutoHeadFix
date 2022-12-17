@@ -199,7 +199,7 @@ Assumption is made that lists/tuples contain only strings, ints, or float types,
 <dl class="py function">
 <dt class="sig sig-object py" id="AHF_ClassAndDictUtils.File_exists">
 <span class="sig-prename descclassname"><span class="pre">AHF_ClassAndDictUtils.</span></span><span class="sig-name descname"><span class="pre">File_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nameTypeStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nameStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeSuffix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ClassAndDictUtils.File_exists" title="Permalink to this definition"></a></dt>
-<dd><p>Returns true if a file with name ‘<a href="#id1"><span class="problematic" id="id2">AHF_</span></a>’ + nameTypeStr + ‘_’ + nameStr + typeSuffix exists in current directory</p>
+<dd><p>Returns true if a file with name ‘AHF_’ + nameTypeStr + ‘_’ + nameStr + typeSuffix exists in current directory</p>
 </dd></dl>
 
 <dl class="py function">
@@ -207,7 +207,7 @@ Assumption is made that lists/tuples contain only strings, ints, or float types,
 <span class="sig-prename descclassname"><span class="pre">AHF_ClassAndDictUtils.</span></span><span class="sig-name descname"><span class="pre">File_from_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nameTypeStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeSuffix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeNew</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ClassAndDictUtils.File_from_user" title="Permalink to this definition"></a></dt>
 <dd><p>Static method that trawls through current folder looking for python files matching nameTypeStr</p>
 <p>Allows user to choose from the list of files found. Files are recognized by names starting
-with ‘<a href="#id3"><span class="problematic" id="id4">AHF_</span></a>’ + nameTypeStr’ + ‘_’ and ending with ‘.typeSuffix’
+with ‘AHF_’ + nameTypeStr’ + ‘_’ and ending with ‘.typeSuffix’
 Raises: FileNotFoundError if no nameStr class files found</p>
 </dd></dl>
 
@@ -297,7 +297,7 @@ Call this function after modifying the contents of the task to save your changes
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong.</p>
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

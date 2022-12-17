@@ -7,7 +7,8 @@ from AHF_Base import AHF_Base
 
 class AHF_Camera(AHF_Base, metaclass = ABCMeta):
     """
-    AHF_Camera is the base class for the main brain imaging camera used in Auto Head Fix
+    AHF_Camera is the base class for the main brain imaging camera used in AutoHeadFix. This class is used to manage recordings and previews.
+    Currently implemented only by AHF_Camera_PiCam (See below).
     """
     @abstractmethod
     def resolution():

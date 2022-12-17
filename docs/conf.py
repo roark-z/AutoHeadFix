@@ -19,8 +19,8 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'AutoHeadFix'
-copyright = '2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong'
-author = 'Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong'
+copyright = '2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang'
+author = 'Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang'
 
 # The full version, including alpha/beta/rc tags
 release = '2.1.0'

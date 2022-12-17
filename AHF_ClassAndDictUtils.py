@@ -46,7 +46,7 @@ def Super_of_class(aClass):
 
 def File_exists(nameTypeStr, nameStr, typeSuffix):
     """
-    Returns true if a file with name 'AHF_' + nameTypeStr + '_' + nameStr + typeSuffix exists in current directory
+    Returns true if a file with name 'AHF\_' + nameTypeStr + '_' + nameStr + typeSuffix exists in current directory
     """
     findFile = 'AHF_' + nameTypeStr + '_' + nameStr + typeSuffix
     # try to find the file name in current directory and load it
@@ -98,7 +98,7 @@ def File_from_user(nameTypeStr, longName, typeSuffix, makeNew = False):
     Static method that trawls through current folder looking for python files matching nameTypeStr
 
     Allows user to choose from the list of files found. Files are recognized by names starting
-    with 'AHF_' + nameTypeStr' + '_' and ending with '.typeSuffix'
+    with 'AHF\_' + nameTypeStr' + '_' and ending with '.typeSuffix'
     Raises: FileNotFoundError if no nameStr class files found
     """
 

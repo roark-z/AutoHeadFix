@@ -1,3 +1,5 @@
+.. _stimulator:
+
 AHF\_Stimulator 
 =======================
 

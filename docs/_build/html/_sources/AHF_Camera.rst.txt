@@ -1,6 +1,8 @@
 AHF\_Camera 
 ===================
 
+AHF\_Camera refers to modules responsible for controlling recordings. Camera control is coordinated by :ref:`stimulator`.
+
 AHF\_Camera.AHF\_Camera module
 ------------------------------
 

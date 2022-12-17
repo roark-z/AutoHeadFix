@@ -10,6 +10,12 @@ from datetime import datetime
 
 class AHF_Camera_PiCam(AHF_Camera):
 
+    """
+    AHF_Camera_PiCam implements AHF_Camera for Raspberry Pi Cameras, using the `picamera2 <https://github.com/raspberrypi/picamera2>`_ library.
+    The library supports raw YUV, RGB, or Bayer frames, as well as H264- or MJPEG-encoded videos.
+    Refer to the `Picamera2 manual <https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf>`_ for further information.
+    """
+
     @staticmethod
     def about():
         return 'uses picamera2.Picamera2 to run the standard Raspberry Pi camera'
