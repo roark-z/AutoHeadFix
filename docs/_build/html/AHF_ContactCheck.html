@@ -92,16 +92,25 @@
              
   <section id="ahf-contactcheck">
 <h1>AHF_ContactCheck<a class="headerlink" href="#ahf-contactcheck" title="Permalink to this headline"></a></h1>
+<p>AHF_ContactCheck is responsible for detecting the mouse. Currently implemented using Adafruit IR Beam Break Sensors.
+<code class="code docutils literal notranslate"><span class="pre">startLogging</span></code> is used to begin registering detections, and updates contact status in AHF_Task.</p>
 <section id="module-AHF_ContactCheck">
 <span id="ahf-contactcheck-ahf-contactcheck-module"></span><h2>AHF_ContactCheck.AHF_ContactCheck module<a class="headerlink" href="#module-AHF_ContactCheck" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_ContactCheck.</span></span><span class="sig-name descname"><span class="pre">AHF_ContactCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="util_classes.html#AHF_Base.AHF_Base" title="AHF_Base.AHF_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Base.AHF_Base</span></code></a></p>
+<p>Base class for ContactCheck. This class handles the detection of mice entering/exiting the trial area.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.checkContact">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkContact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.checkContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Checks for contact.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">bool</span></code> whether contact is made.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.hardwareTest">
@@ -113,14 +122,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.startLogging">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">startLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.startLogging" title="Permalink to this definition"></a></dt>
-<dd><p>starts contactChecker running background task updated gTask.contact
-do not use waitForContact or waitForNoContact when logging</p>
+<dd><p>Starts running background task, checking for contact.
+Constantly updates gTask.contact variable in AHF_Task.
+Note: do not use waitForContact or waitForNoContact while logging</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.stopLogging">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stopLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.stopLogging" title="Permalink to this definition"></a></dt>
-<dd><p>stops contactChecker running background task</p>
+<dd><p>Stops contactChecker running background task.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -136,12 +146,16 @@ do not use waitForContact or waitForNoContact when logging</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.waitForContact">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">waitForContact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeoutSecs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.waitForContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Blocks execution until contact or timeout.</p>
+<p>Note: do not call while logging via startLogging, as it could lead to deadlocks.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck.AHF_ContactCheck.waitForNoContact">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">waitForNoContact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeoutSecs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck.AHF_ContactCheck.waitForNoContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Blocks execution until no contact or timeout.</p>
+<p>Note: do not call while logging via startLogging, as it could lead to deadlocks.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -182,7 +196,12 @@ and returns starterDict with settings as edited by the user.</p>
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+<dd class="field-odd"><p><dl class="field-list simple">
+<dt class="field-odd">code</dt>
+<dd class="field-odd"><p><cite>bool</cite> whether setup completed without errors</p>
+</dd>
+</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -215,7 +234,13 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.checkContact">
 <span class="sig-name descname"><span class="pre">checkContact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.checkContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Checks for contact.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">bool</span></code> whether contact is made.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.config_user_get">
@@ -264,7 +289,12 @@ pins can be reused, for example. This strategy should be used in hardwareTest me
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+<dd class="field-odd"><p><dl class="field-list simple">
+<dt class="field-odd">code</dt>
+<dd class="field-odd"><p><cite>bool</cite> whether setup completed without errors</p>
+</dd>
+</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -272,25 +302,30 @@ Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.startLogging">
 <span class="sig-name descname"><span class="pre">startLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.startLogging" title="Permalink to this definition"></a></dt>
-<dd><p>starts contactChecker running background task updated gTask.contact
-do not use waitForContact or waitForNoContact when logging</p>
+<dd><p>Starts running background task, checking for contact.
+Constantly updates gTask.contact variable in AHF_Task.
+Note: do not use waitForContact or waitForNoContact while logging</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.stopLogging">
 <span class="sig-name descname"><span class="pre">stopLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.stopLogging" title="Permalink to this definition"></a></dt>
-<dd><p>stops contactChecker running background task</p>
+<dd><p>Stops contactChecker running background task.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForContact">
 <span class="sig-name descname"><span class="pre">waitForContact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeOutSecs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Blocks execution until contact or timeout.</p>
+<p>Note: do not call while logging via startLogging, as it could lead to deadlocks.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForNoContact">
 <span class="sig-name descname"><span class="pre">waitForNoContact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeOutSecs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_ContactCheck_Elec.AHF_ContactCheck_Elec.waitForNoContact" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Blocks execution until no contact or timeout.</p>
+<p>Note: do not call while logging via startLogging, as it could lead to deadlocks.</p>
+</dd></dl>
 
 </dd></dl>
 

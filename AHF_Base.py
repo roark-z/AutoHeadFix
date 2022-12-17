@@ -73,7 +73,7 @@ class AHF_Base(metaclass = ABCMeta):
         does hardware initialization with(possibly updated) info in self.settingsDict
         Run by __init__, or can be run  separately after editing the settingsDict
 
-        :returns: bool -- the truth that setup completed without errors
+        :returns: :code: `bool` whether setup completed without errors
         """
         return True
 

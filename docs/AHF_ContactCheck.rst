@@ -1,5 +1,8 @@
 AHF\_ContactCheck 
 =========================
+ 
+AHF\_ContactCheck is responsible for detecting the mouse. Currently implemented using Adafruit IR Beam Break Sensors.
+:code:`startLogging` is used to begin registering detections, and updates contact status in AHF\_Task.
 
 AHF\_ContactCheck.AHF\_ContactCheck module
 ------------------------------------------

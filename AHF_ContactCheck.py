@@ -7,16 +7,35 @@ from AHF_Base import AHF_Base
 
 class AHF_ContactCheck(AHF_Base, metaclass = ABCMeta):
 
+    '''
+    Base class for ContactCheck. This class handles the detection of mice entering/exiting the trial area.
+    '''
+
     @abstractmethod
     def checkContact(self):
+        '''
+        Checks for contact.
+
+        :returns: :code:`bool` whether contact is made.
+        '''
         return False
 
     @abstractmethod
     def waitForContact(self, timeoutSecs):
+        '''
+        Blocks execution until contact or timeout.
+
+        Note: do not call while logging via startLogging, as it could lead to deadlocks.
+        '''
         return False
 
     @abstractmethod
     def waitForNoContact(self, timeoutSecs):
+        '''
+        Blocks execution until no contact or timeout.
+
+        Note: do not call while logging via startLogging, as it could lead to deadlocks.
+        '''
         return False
 
     def turnOn (self):
@@ -28,15 +47,18 @@ class AHF_ContactCheck(AHF_Base, metaclass = ABCMeta):
     @abstractmethod
     def startLogging(self):
         """
-        starts contactChecker running background task updated gTask.contact
-        do not use waitForContact or waitForNoContact when logging
+        Starts running background task, checking for contact.
+
+        Constantly updates gTask.contact variable in AHF_Task.
+        
+        Note: do not use waitForContact or waitForNoContact while logging
         """
         pass
 
     @abstractmethod
     def stopLogging(self):
         """
-        stops contactChecker running background task
+        Stops contactChecker running background task.
         """
 
     def hardwareTest(self):
