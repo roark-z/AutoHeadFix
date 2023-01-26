@@ -14,9 +14,13 @@ class AHF_HeadFixer_PWM(AHF_HeadFixer, metaclass = ABCMeta):
     """
     hasLevels = True
     numLevels =8
+    '''Number of increments on the servo (currently unused)'''
     defaultReleasePosition = 933
+    '''Default position of released headfixer in PWM range'''
     defaultFixedPosition = 685
+    '''Default position of fixed headfixer in PWM range'''
     defaultTightnessHeadFix = 1
+    '''Percentage( 0 to 1) of head-fix tightness (0 equals release, 1 equals full head-fix). Values below 0.5 might allow the mouse to leave the tunnel'''
 
     @staticmethod
     @abstractmethod

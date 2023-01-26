@@ -1,67 +1,34 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AHF_Notifier &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AHF_Reader" href="AHF_Reader.html" />
     <link rel="prev" title="AHF_LickDetector" href="AHF_LickDetector.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> AutoHeadFix
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -69,18 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
@@ -93,8 +50,8 @@
 <li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html">AHF_HeadFixer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_LickDetector.html">AHF_LickDetector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Notifier</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Notifier.AHF_Notifier">AHF_Notifier.AHF_Notifier module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Notifier.AHF_Notifier_Requests">AHF_Notifier.AHF_Notifier_Requests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Notifier">AHF_Notifier.AHF_Notifier module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Notifier_Requests">AHF_Notifier.AHF_Notifier_Requests module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html">AHF_Reader</a></li>
@@ -107,95 +64,56 @@
 </li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">AutoHeadFix</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="modules.html">AutoHeadFix Code Documentation</a> &raquo;</li>
-        
-      <li>AHF_Notifier</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AutoHeadFix Code Documentation</a></li>
+      <li class="breadcrumb-item active">AHF_Notifier</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/AHF_Notifier.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="ahf-notifier">
-<h1>AHF_Notifier<a class="headerlink" href="#ahf-notifier" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-AHF_Notifier.AHF_Notifier">
-<span id="ahf-notifier-ahf-notifier-module"></span><h2>AHF_Notifier.AHF_Notifier module<a class="headerlink" href="#module-AHF_Notifier.AHF_Notifier" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="ahf-notifier">
+<h1>AHF_Notifier<a class="headerlink" href="#ahf-notifier" title="Permalink to this headline"></a></h1>
+<section id="module-AHF_Notifier">
+<span id="ahf-notifier-ahf-notifier-module"></span><h2>AHF_Notifier.AHF_Notifier module<a class="headerlink" href="#module-AHF_Notifier" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier.</code><code class="sig-name descname">AHF_Notifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoHeadFix.AHF_Base.AHF_Base</span></code></p>
+<dt class="sig sig-object py" id="AHF_Notifier.AHF_Notifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Notifier.</span></span><span class="sig-name descname"><span class="pre">AHF_Notifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util_classes.html#AHF_Base.AHF_Base" title="AHF_Base.AHF_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Base.AHF_Base</span></code></a></p>
 <p>Some remote way of notifying somebody, with email or text or something.</p>
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.hardwareTest">
-<code class="sig-name descname">hardwareTest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.hardwareTest" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier.AHF_Notifier.hardwareTest">
+<span class="sig-name descname"><span class="pre">hardwareTest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.hardwareTest" title="Permalink to this definition"></a></dt>
 <dd><p>Tests functionality, gives user a chance to change settings.
 :Returns: bool – True if any settings have changed</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.notify">
-<em class="property">abstract </em><code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msgStr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notify" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier.AHF_Notifier.notify">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">notify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgStr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.notify" title="Permalink to this definition"></a></dt>
 <dd><p>a more general method to send text information</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier.AHF_Notifier.notifyStuck">
-<em class="property">abstract </em><code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">cageID</span></em>, <em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">isStuck</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier.notifyStuck" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier.AHF_Notifier.notifyStuck">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">notifyStuck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cageID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isStuck</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier.notifyStuck" title="Permalink to this definition"></a></dt>
 <dd><p>Sends a text message with the given information.</p>
 <p>Two types of message can be sent, depending if isStuck is True or False
 No timing is done by the AHF_Notifier class, the durations are only for building the text mssg
@@ -208,13 +126,13 @@ No timing is done by the AHF_Notifier class, the durations are only for building
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AHF_Notifier.AHF_Notifier_Requests">
-<span id="ahf-notifier-ahf-notifier-requests-module"></span><h2>AHF_Notifier.AHF_Notifier_Requests module<a class="headerlink" href="#module-AHF_Notifier.AHF_Notifier_Requests" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-AHF_Notifier_Requests">
+<span id="ahf-notifier-ahf-notifier-requests-module"></span><h2>AHF_Notifier.AHF_Notifier_Requests module<a class="headerlink" href="#module-AHF_Notifier_Requests" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests">
-<em class="property">class </em><code class="sig-prename descclassname">AHF_Notifier.AHF_Notifier_Requests.</code><code class="sig-name descname">AHF_Notifier_Requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taskP</span></em>, <em class="sig-param"><span class="n">settingsDictP</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#AHF_Notifier.AHF_Notifier.AHF_Notifier" title="AHF_Notifier.AHF_Notifier.AHF_Notifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Notifier.AHF_Notifier.AHF_Notifier</span></code></a></p>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Notifier_Requests.</span></span><span class="sig-name descname"><span class="pre">AHF_Notifier_Requests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Notifier.AHF_Notifier" title="AHF_Notifier.AHF_Notifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Notifier.AHF_Notifier</span></code></a></p>
 <p>sends text messages to a tuple of phone numbers using a web service, textbelt.com
 You need to get an account and pay for some messages to get an account key
 As it uses http requests to send the message to the web service, your Pi needs to be online</p>
@@ -223,27 +141,27 @@ The best way to install python modules is with pip. Assuming you are using Pytho
 sudo apt-get install python3-pip
 sudo pip-3 install requests</p>
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.about">
-<em class="property">static </em><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.about" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.about">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.about" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get">
-<em class="property">static </em><code class="sig-name descname">config_user_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">starterDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_user_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.config_user_get" title="Permalink to this definition"></a></dt>
 <dd><p>static method that querries user for settings, with default responses from starterDict,
 and returns starterDict with settings as edited by the user.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msgStr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notify" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.notify">
+<span class="sig-name descname"><span class="pre">notify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgStr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.notify" title="Permalink to this definition"></a></dt>
 <dd><p>a more general method to send text information</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck">
-<code class="sig-name descname">notifyStuck</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">cageID</span></em>, <em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">isStuck</span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck">
+<span class="sig-name descname"><span class="pre">notifyStuck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cageID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isStuck</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.notifyStuck" title="Permalink to this definition"></a></dt>
 <dd><p>Sends a text message with the given information.</p>
 <p>Two types of message can be sent, depending if isStuck is True or False
 No timing is done by the AHF_Notifier class, the durations are only for building the text mssg
@@ -254,81 +172,68 @@ No timing is done by the AHF_Notifier class, the durations are only for building
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setdown">
-<code class="sig-name descname">setdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setdown" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.setdown">
+<span class="sig-name descname"><span class="pre">setdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.setdown" title="Permalink to this definition"></a></dt>
 <dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
 pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setup">
-<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.setup" title="Permalink to this definition"></a></dt>
 <dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
 Run by __init__, or can be run  separately after editing the settingsDict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool – the truth that setup completed without errors</p>
+<dd class="field-odd"><p><dl class="field-list simple">
+<dt class="field-odd">code</dt>
+<dd class="field-odd"><p><cite>bool</cite> whether setup completed without errors</p>
+</dd>
+</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL">
-<code class="sig-name descname">textBeltURL</code><em class="property"> = 'http://textbelt.com/text'</em><a class="headerlink" href="#AHF_Notifier.AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL">
+<span class="sig-name descname"><span class="pre">textBeltURL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'http://textbelt.com/text'</span></em><a class="headerlink" href="#AHF_Notifier_Requests.AHF_Notifier_Requests.textBeltURL" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="AHF_Reader.html" class="btn btn-neutral float-right" title="AHF_Reader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="AHF_LickDetector.html" class="btn btn-neutral float-left" title="AHF_LickDetector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AHF_LickDetector.html" class="btn btn-neutral float-left" title="AHF_LickDetector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AHF_Reader.html" class="btn btn-neutral float-right" title="AHF_Reader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong
-
-    </p>
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

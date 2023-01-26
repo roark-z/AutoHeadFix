@@ -13,8 +13,11 @@ class AHF_HeadFixer(AHF_Base, metaclass= ABCMeta):
     hasLevels = False
     isChecking = False
     defaultPropHeadFix = 0.75
+    '''Proportion of entries to headfix'''
     defaultSkeddadleTime = 5
+    '''Length of time, in seconds, that a mouse has to leave for before being eligible for re-headfixation'''
     defaultHeadFixTime = 40
+    '''Default length, in seconds, of headfixation'''
 
     @staticmethod
     @abstractmethod
@@ -51,7 +54,7 @@ class AHF_HeadFixer(AHF_Base, metaclass= ABCMeta):
 
     def setup(self):
         """
-        gets settings from dict, not @abstract because this may be all you nees, as for HeadFixer_NoFix
+        gets settings from dict, not @abstract because this may be all you need, as for HeadFixer_NoFix
         """
         self.propHeadFix = self.settingsDict.get('propHeadFix')
         self.isChecking = False

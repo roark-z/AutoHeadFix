@@ -6,7 +6,7 @@
 Welcome to AutoHeadFix's documentation!
 =======================================
 
-AutoHeadFix contains Python code for automated control of behavioural apparatus and imaging for mice in home cage environment. The code can be found at `https://github.com/ubcbraincircuits/AutoHeadFix <https://github.com/ubcbraincircuits/AutoHeadFix>`_
+AutoHeadFix contains Python code for automated control of behavioural apparatus and imaging for mice in home cage environment. The code can be found at `https://github.com/ubcbraincircuits/AutoHeadFix <https://github.com/ubcbraincircuits/AutoHeadFix>`_.
 
 
 

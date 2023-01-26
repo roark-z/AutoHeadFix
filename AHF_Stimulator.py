@@ -11,9 +11,8 @@ from grp import getgrnam
 
 class AHF_Stimulator(AHF_Base, metaclass = ABCMeta):
     """
-    Stimulator does all stimulation and reward during a head fix task
-    All events and their timings in a head fix, including rewards, are controlled by a Stimulator.
-
+    Stimulator does all stimulation and reward during a head fix task.
+    All events and their timings in a head fix, including camera control and rewards, are controlled by a Stimulator.
     """
     @staticmethod
     def config_user_get(starterDict = {}):

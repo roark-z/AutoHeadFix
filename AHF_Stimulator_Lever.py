@@ -18,17 +18,27 @@ class AHF_Stimulator_Lever(AHF_Stimulator):
     """
     LEVER_FREQ = 250 # as set in leverThread.h when ptLeverThread c module is compiled. Frequency in Hz of updating lever position and lever force
     MAX_FORCE_ARRAY_SIZE = 125 # as set in leverThread.h when ptLeverThread c module is compiled. Maximum size of array for calculating perturb force ramp
+    ''''''
+
     """
     ######################################### Global settings for the task########################################################
     Things that do not vary on a per mouse basis, these inlcude hardware settings, some trial timing
     """
-    defaultRecordingTime = 4 #  maximum of seconds of lever position data that will be recorded per trial
-    defaultLeverIsReversed = False # False means lever position numbers start at 0 and get bigger when mouse pulls lever, True means numbers get smaller
-    defaultGoalCuePin = 23 # GPIO pin to use for a cue played when lever is in goal pos
-    defaultGoalCueFreq = 0 # frequency for goal cue - 0 means DC, i.e., turn ON and OFF
-    defaultConstForce = 0.3 # constant force on lever at start of trial that mouse must pull against, as opposed to perturbForce set during a trial a 12 bit value, 0 to 4095
-    defaultTrialIsCued = False # True means trials will be started with the start cue; False means mouse starts pulling lever whenever he likes
-    defaultMotorEnable = 20 # GPIO Pin to enable motor
+
+    defaultRecordingTime = 4 
+    'maximum of seconds of lever position data that will be recorded per trial'
+    defaultLeverIsReversed = False 
+    '''False means lever position numbers start at 0 and get bigger when mouse pulls lever, True means numbers get smaller'''
+    defaultGoalCuePin = 23
+    '''GPIO pin to use for a cue played when lever is in goal pos'''
+    defaultGoalCueFreq = 0 
+    '''frequency for goal cue - 0 means DC, i.e., turn ON and OFF'''
+    defaultConstForce = 0.3
+    '''constant force on lever at start of trial that mouse must pull against, as opposed to perturbForce set during a trial a 12 bit value, 0 to 4095'''
+    defaultTrialIsCued = False
+    '''True means trials will be started with the start cue; False means mouse starts pulling lever whenever he likes'''
+    defaultMotorEnable = 20
+    '''GPIO Pin to enable motor'''
     defaultMotorIsReversed = False
     defaultMotorDir = 0
     """
@@ -39,14 +49,19 @@ class AHF_Stimulator_Lever(AHF_Stimulator):
     """
     Settings for cued trials
     """
-    defaultStartCuePin = 27 # GPIO pin to use for a cue when mouse should start a trial, this can be a pulse(freq =0) or a train
-    defaultStartCueFreq = 0 # frequency for start cue - 0 means DC, i.e., turn ON and OFF
-    defaultStartCueDur = 0.1 # duration in seconds of start cue
-    defaultTrialTimeout = 0.5 # time in seconds between end of one trial(ended for any reason) and start of the next trial. Lever is rezeroed here
+    defaultStartCuePin = 27
+    '''GPIO pin to use for a cue when mouse should start a trial, this can be a pulse(freq =0) or a train'''
+    defaultStartCueFreq = 0
+    '''frequency for start cue - 0 means DC, i.e., turn ON and OFF'''
+    defaultStartCueDur = 0.1
+    '''duration in seconds of start cue'''
+    defaultTrialTimeout = 0.5 
+    '''time in seconds between end of one trial(ended for any reason) and start of the next trial. Lever is rezeroed here'''
     """
     Settings for uncued trials
     """
-    defaultPrePullTime = 0.25 # this many seconds of time before the lever reaches goal position is saved in a circular buffer
+    defaultPrePullTime = 0.25 
+    '''this many seconds of time before the lever reaches goal position is saved in a circular buffer'''
     """
     ############################################# Mouse Specific Settings follow #####################################################
     default pull difficulty settings for starting a mouse

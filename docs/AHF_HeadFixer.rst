@@ -1,7 +1,9 @@
 AHF\_HeadFixer 
 ======================
 
-  
+The HeadFixer class controls the headfixing mechanism. HeadFixer is implemented for two types of hardware: pistons, in :code:`AHF_HeadFixer_Pistons`, and servos, in :code:`AHF_HeadFixer_PWM_PCA9685`. Note that servos require extra parameters for fixation position. Currently, :code:`AHF_HeadFixer_PWM_PCA9685` is used for all tasks requiring headfixation.
+
+:code:`AHF_HeadFixer_NoFix` is functionally equivalent to :code:`AHF_HeadFixer` with :code:`defaultPropHeadFix` set to 0; however, :code:`AHF_HeadFixer_NoFix` reduces setup and setdown overhead and does not require calibrating parameters.
 
 AHF\_HeadFixer.AHF\_HeadFixer module
 ------------------------------------
@@ -10,6 +12,7 @@ AHF\_HeadFixer.AHF\_HeadFixer module
    :members:
    :undoc-members:
    :show-inheritance:
+
 
 AHF\_HeadFixer.AHF\_HeadFixer\_NoFix module
 -------------------------------------------
