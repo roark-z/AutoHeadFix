@@ -60,7 +60,6 @@ class AHF_BrainLight_1GPIO(AHF_BrainLight):
         super().offForStim()
         if self.ledDelay > 0:
             sleep(self.ledDelay)
-            GPIO.output(self.ledPin, GPIO.LOW)
-
+        GPIO.output(self.ledPin, GPIO.LOW)
 
 

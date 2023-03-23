@@ -251,6 +251,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 self.speakerIsOn = False
+
+        print("withhold period (delayTime) ended, mouse should GO now")
         # If mouse licked during waiting period, the action does not count
         if anyLicks > 0:
             return
