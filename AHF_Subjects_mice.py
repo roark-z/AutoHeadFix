@@ -264,7 +264,7 @@ class AHF_Subjects_mice(AHF_Subjects):
             inputStr += 'E to exit :'
             event = input(inputStr)
             tag = 0
-            if len(event == 0): 
+            if len(event) == 0: 
                 continue
             if event[0].lower() == 'm':
                 mouse = input("Enter a tag, or leave blank for all mice: ")
