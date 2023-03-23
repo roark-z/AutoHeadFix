@@ -356,6 +356,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def discrimTask(self):
         rand = random()
         print(str(rand))
+        print("go likelihood:", self.mouse.get("Stimulator").get("goLikelihood"))
+
         if rand < self.mouse.get("Stimulator").get("goLikelihood"):
             #GO
             print('G/N: Mouse should perform GO task')
