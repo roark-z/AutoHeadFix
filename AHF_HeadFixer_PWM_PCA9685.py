@@ -18,10 +18,10 @@ sudo pip3 install adafruit-circuitpython-pca9685
 """
 
 # Import the PCA9685 module.
-# from board import SCL, SDA
-# import busio
-# import adafruit_pca9685
-# from adafruit_motor import servo
+from board import SCL, SDA
+import busio
+import adafruit_pca9685
+from adafruit_motor import servo
 from AHF_HeadFixer_PWM import AHF_HeadFixer_PWM
 
 class AHF_HeadFixer_PWM_PCA9685(AHF_HeadFixer_PWM):
