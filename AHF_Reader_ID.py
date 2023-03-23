@@ -73,7 +73,7 @@ class AHF_Reader_ID(AHF_Reader):
                             start_new_thread(AHF_Reader_ID.timeInChamberThread,(time() + AHF_Reader_ID.gInChamberTimeLimit,))
                         else:
                             if tag != 0:
-                                raise Exception('There are no fresh mice allowed, and this is a fresh mouse')
+                                raise Exception('[constcheck] There are no fresh mice allowed, and this is a fresh mouse')
                     except Exception as e:
                         print(str(e))
                     finally:
