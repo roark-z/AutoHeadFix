@@ -16,7 +16,7 @@ except ImportError:
 import numpy as np
 from os import path
 # import matplotlib.pyplot as plt
-# from PTPWM import PTPWM
+from PTPWM import PTPWM
 from array import array
 from queue import Queue as queue
 from threading import Thread
@@ -26,7 +26,7 @@ from random import randrange
 from itertools import combinations
 import imreg_dft as ird
 import warnings
-# from h5py import File
+from h5py import File
 
 # RPi module
 import RPi.GPIO as GPIO
