@@ -46,7 +46,7 @@ class AHF_Reader_ID(AHF_Reader):
                     pass
                 else:
                     if tag != 0:
-                        raise Exception('There are no fresh mice allowed, and this is a fresh mouse')
+                        raise Exception('[cc] There are no fresh mice allowed, and this is a fresh mouse')
             except Exception as e:
                 print(str(e))
             finally:
