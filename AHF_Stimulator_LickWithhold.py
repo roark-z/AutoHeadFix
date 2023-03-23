@@ -241,6 +241,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 anyLicks += x[1]
             if anyLicks > 0:
                 print("Speaker on (licked during withhold period)")
+                self.speaker=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.speakerPin, self.speakerFreq, self.speakerDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
@@ -303,6 +304,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 anyLicks += x[1]
             if anyLicks > 0:
                 print("Speaker on (licked during withhold period)")
+                self.speaker=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.speakerPin, self.speakerFreq+300, self.speakerDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3, 'withholdTime': self.lickWithholdRandom}, time())
