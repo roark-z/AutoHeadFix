@@ -2,11 +2,11 @@
 #-*-coding: utf-8 -*-
 
 from AHF_Camera import AHF_Camera
-# from picamera2 import Picamera2, Preview
-# from picamera2.encoders import H264Encoder
+from picamera2 import Picamera2, Preview
+from picamera2.encoders import H264Encoder
 import time
 from datetime import datetime
-# from os import path, makedirs, chown, listdir
+from os import path, makedirs, chown, listdir
 
 class AHF_Camera_PiCam(AHF_Camera):
 
