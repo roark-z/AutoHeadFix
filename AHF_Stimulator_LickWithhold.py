@@ -199,7 +199,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
 
     def withholdWait(self, endTime):
-        self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+        # self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+        self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime")
         lickWithholdEnd = time() + self.lickWithholdRandom
         self.task.LickDetector.startLickCount()
         anyLicks = 0
@@ -217,7 +218,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                     print("Speaker on (licked during withhold time)")
                     self.speaker.start_train()
                     self.speakerIsOn = True
-                self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+                # self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
+                self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime")
                 lickWithholdEnd = time() + self.lickWithholdRandom
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
@@ -228,6 +230,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         A GO trial. Mouse must lick before getting a reward.
         """
         print("Starting GO task")
+        self.task.Stimulus.stimulate()
+        sleep(0.001)
         self.task.Stimulus.stimulate()
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "GO"}, time())
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
