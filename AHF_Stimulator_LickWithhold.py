@@ -205,6 +205,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         self.task.LickDetector.startLickCount()
         anyLicks = 0
 
+        print("starting withhold time:", self.lickWithholdRandom, "seconds")
+
         while time() < lickWithholdEnd and time() < endTime:
             sleep(0.2)
             for x in self.task.LickDetector.getLickCount():
@@ -223,6 +225,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 lickWithholdEnd = time() + self.lickWithholdRandom
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
+                
+        print("withhold time finished")
         return anyLicks
 
     def goTask(self):
@@ -237,6 +241,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+
+        print("starting delay time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
         
         #Mouse is not supposed to lick during withhold period
         while time() < delayEnd:
@@ -259,10 +265,10 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
 
         # If mouse licked during waiting period, the action does not count
         if anyLicks > 0:
-            print("Mouse licked during withhold period (delayTime), returning")
+            print("Mouse licked during delayTime period, returning")
             return
         
-        print("withhold period (delayTime) ended, mouse should GO now")
+        print("delayTime period ended, mouse should GO now")
 
         # Detect mouse licking after withhold period is over
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
