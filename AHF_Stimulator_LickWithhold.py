@@ -223,6 +223,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 # self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime") +(0.5 - random())
                 self.lickWithholdRandom = self.mouse.get("Stimulator").get("lickWithholdTime")
                 lickWithholdEnd = time() + self.lickWithholdRandom
+                print("incrementing withhold time:", self.lickWithholdRandom, "seconds")
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
                 
