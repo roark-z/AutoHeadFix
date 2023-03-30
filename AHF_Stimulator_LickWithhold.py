@@ -259,9 +259,9 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
                 # The mouse is kept in withhold loop if it licked
-                print("incrementing delay time time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
-                delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
-                self.task.LickDetector.startLickCount()
+                # print("incrementing delay time time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
+                # delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
+                # self.task.LickDetector.startLickCount()
                 anyLicks = 0
             elif self.speakerIsOn:
                 self.speaker.stop_train()
@@ -326,14 +326,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -3, 'withholdTime': self.lickWithholdRandom}, time())
-                # The mouse is kept in withhold loop if it licked
-                delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
-                self.task.LickDetector.startLickCount()
-                anyLicks = 0
+                # # The mouse is kept in withhold loop if it licked
+                # delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
+                # self.task.LickDetector.startLickCount()
+                # anyLicks = 0
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 # self.speakerIsOn = False
-                
+
         if badLickFlag > 0:
             return
 
