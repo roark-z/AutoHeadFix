@@ -305,9 +305,9 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def noGoTask(self):
         print("Starting NO GO task")
         # Double buzz indicates no-go task
-        self.task.Stimulus.stimulate(100) # lower freq
+        self.task.Stimulus.stimulate(20) # lower freq
         sleep(0.1)
-        self.task.Stimulus.stimulate(100)
+        self.task.Stimulus.stimulate(20)
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
