@@ -262,7 +262,8 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 # print("incrementing delay time time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
                 # delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
                 # self.task.LickDetector.startLickCount()
-                anyLicks = 0
+                # anyLicks = 0
+                return
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 self.speakerIsOn = False
@@ -330,6 +331,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 # delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
                 # self.task.LickDetector.startLickCount()
                 # anyLicks = 0
+                return
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 # self.speakerIsOn = False
