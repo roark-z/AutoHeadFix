@@ -242,6 +242,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        badLickFlag = 0
 
         print("starting delay time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
         
@@ -251,6 +252,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks > 0:
+                badLickFlag = 1
                 print("Speaker on (licked during withhold period)")
                 self.speaker=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.speakerPin, self.speakerFreq, self.speakerDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
                 self.speaker.start_train()
@@ -264,6 +266,11 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 self.speakerIsOn = False
+
+        # If mouse licked during waiting period, the action does not count
+        if badLickFlag > 0:
+            print("Mouse licked during delayTime period, returning")
+            return
         
         print("delayTime period ended, mouse should GO now")
 
@@ -305,6 +312,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        badLickFlag = 0
 
         # Mouse is not supposed to lick within withhold period
         while time() < delayEnd:
@@ -312,6 +320,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks > 0:
+                badLickFlag = 1
                 print("Speaker on (licked during withhold period)")
                 self.speaker=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.speakerPin, self.speakerFreq+300, self.speakerDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
                 self.speaker.start_train()
@@ -324,6 +333,9 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             elif self.speakerIsOn:
                 self.speaker.stop_train()
                 # self.speakerIsOn = False
+                
+        if badLickFlag > 0:
+            return
 
         # Mouse is not supposed to lick within response time either (no-go trial)
         responseEnd = self.mouse.get("Stimulator").get("responseTime") + time()
