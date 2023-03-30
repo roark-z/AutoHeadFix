@@ -242,6 +242,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
         anyLicks = 0
+        badLickFlag = 0
 
         print("starting delay time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
         
@@ -251,12 +252,14 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
             for x in self.task.LickDetector.getLickCount():
                 anyLicks += x[1]
             if anyLicks > 0:
+                badLickFlag = 1
                 print("Speaker on (licked during withhold period)")
                 self.speaker=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.speakerPin, self.speakerFreq, self.speakerDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
                 self.speaker.start_train()
                 self.speakerIsOn = True
                 self.task.DataLogger.writeToLogFile(self.tag, 'Outcome', {'code': -4, 'withholdTime': self.lickWithholdRandom}, time())
                 # The mouse is kept in withhold loop if it licked
+                print("incrementing delay time time:", self.mouse.get("Stimulator").get("delayTime"), "seconds")
                 delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
                 self.task.LickDetector.startLickCount()
                 anyLicks = 0
@@ -265,7 +268,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
                 self.speakerIsOn = False
 
         # If mouse licked during waiting period, the action does not count
-        if anyLicks > 0:
+        if badLickFlag > 0:
             print("Mouse licked during delayTime period, returning")
             return
         
