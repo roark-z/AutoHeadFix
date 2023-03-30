@@ -234,7 +234,7 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
         A GO trial. Mouse must lick before getting a reward.
         """
         print("Starting GO task")
-        self.task.Stimulus.stimulate()
+        self.task.Stimulus.stimulate() # default freq 300
         sleep(0.001)
         self.task.Stimulus.stimulate()
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "GO"}, time())
@@ -305,9 +305,9 @@ class AHF_Stimulator_LickWithhold(AHF_Stimulator):
     def noGoTask(self):
         print("Starting NO GO task")
         # Double buzz indicates no-go task
-        self.task.Stimulus.stimulate()
+        self.task.Stimulus.stimulate(150) # lower freq
         sleep(0.1)
-        self.task.Stimulus.stimulate()
+        self.task.Stimulus.stimulate(150)
         self.task.DataLogger.writeToLogFile(self.tag, 'Stimulus', {'trial': "NO-GO"}, time())
         delayEnd = time() + self.mouse.get("Stimulator").get("delayTime")
         self.task.LickDetector.startLickCount()
