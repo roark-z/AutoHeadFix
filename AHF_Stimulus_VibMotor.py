@@ -37,8 +37,9 @@ class AHF_Stimulus_VibMotor(AHF_Stimulus):
         """
         return True
 
-    def stimulate(self):
+    def stimulate(self, freq=300):
         print('Vibrating a motor\n')
+        self.motor=Infinite_train(PTSimpleGPIO.MODE_FREQ, self.motorPin, freq, self.motorDuty,  PTSimpleGPIO.ACC_MODE_SLEEPS_AND_SPINS)
         self.motor.start_train()
         sleep(self.pulseTime)
         self.motor.stop_train()
