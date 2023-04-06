@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AutoHeadFix Code Documentation" href="modules.html" />
+    <link rel="prev" title="Overview &amp; Usage" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> AutoHeadFix
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview &amp; Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-configuration">Task Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-configuration-file-description">Task Configuration File Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">AutoHeadFix Code Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AutoHeadFix</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/task_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Configuration<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<section id="task-configuration">
+<h2>Task Configuration<a class="headerlink" href="#task-configuration" title="Permalink to this headline"></a></h2>
+<p>go through an example of how to set task config</p>
+<p>The task configuration files are named <code class="code docutils literal notranslate"><span class="pre">AHF_task_[name].jsn</span></code>.</p>
+<p>Below is a description of each setting in the task configuration (table scrolls horizontally).</p>
+<section id="task-configuration-file-description">
+<h3>Task Configuration File Description<a class="headerlink" href="#task-configuration-file-description" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="5"></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>BrainLightClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The BrainLight class used by the task. Must be an extant implementation; currently, only AHF_BrainLight_1GPIO is implemented.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_BrainLight_1GPIO</p></td>
+</tr>
+<tr class="row-even"><td rowspan="9"><ul class="simple">
+<li><p>BrainLightDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>BrainLightDict contains parameters used by the brain light.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>ledDelay</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The delay time (in seconds) when starting up and turning off the brain light.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>3.0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>ledPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The pin used by the brainlight LED.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>23</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>CameraClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The CameraClass class used by the task. Must be an extant implementation; currently, only AHF_Camera_PiCam is implemented.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Camera_PiCam</p></td>
+</tr>
+<tr class="row-even"><td rowspan="38"><ul class="simple">
+<li><p>CameraDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>CameraDict contains parameters used for the camera.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>format</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The format of the video recorded.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>h264</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>framerate</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The framerate of the video.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>30</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>iso</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The iso of the camera.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="7"><ul class="simple">
+<li><p><strong>previewWin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The size of the preview window</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>items</p></td>
+<td colspan="2"><p><em>A Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>examples</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>640</p></td>
+</tr>
+<tr class="row-even"><td><p>480</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>quality</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The quality of the video</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>20</p></td>
+</tr>
+<tr class="row-even"><td rowspan="7"><ul class="simple">
+<li><p><strong>resolution</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The camera resolution</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>examples</p></td>
+<td colspan="2"><p>256</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>256</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>items</p></td>
+<td colspan="2"><p><em>A Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td><p>256</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>shutter_speed</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The shutter speed</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>30000</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>video_path</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The path to save the video to</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>/mnt/AHF_Videos/</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>whiteBalance</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>whether white balance should be enabled</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>ContactCheckClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The ContactCheckClass. Can be one of AHF_ContactCheck_BeamBreak and AHF_ContactCheck_Elec</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_ContactCheck_BeamBreak</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>ContactCheckDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Parameters for ContactCheck.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>contactPUD</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>Whether the contact checker is pull-up or pull-down. One of PUD_OFF, PUD_DOWN, PUD_UP.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>PUD_UP</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>contactPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>GPIO pin of the contact detector.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>12</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>contactPolarity</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The polarity of contact checker. Either RISING or FALLING</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>FALLING</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>ledPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The GPIO pin of the contact check LED.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>24</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>DataLoggerClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The DataLogger class used by the task. One of AHF_DataLogger_localsql, AHF_DataLogger_mysql, AHF_DataLogger_text, AHF_DataLogger_textMySql</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_DataLogger_textMySql</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="39"><ul class="simple">
+<li><p>DataLoggerDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The DataLoggerDict Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>DB</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The database name.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>AHF_home_cage</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>DBhost</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The database host address.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>142.103.107.236</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>DBpwd</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The database password.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>*******************</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>DBuser</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The database username.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>slavePi</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>cageID</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The cageID.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>cage1</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>dataPath</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The dataPath to save logs to.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>/mnt/AHF_Videos/</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>localDatabase</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The local database name.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>raw_data</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>localPassword</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The password of the local user.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>AutoHead2015</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>localUser</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The username of the local user.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>pi</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>mouseConfigPath</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The path to mouse configurations.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>/home/pi/Documents/MiceConfig/</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>oldVersion</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>Whether to use the old version.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>useLocalSql</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>Whether to use localsql.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>HeadFixerClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The HeadFixer class. Available are AHF_HeadFixer_PWM_Pi, AHF_HeadFixer_PWM_PCA9685, AHF_HeadFixer_Pistons, AHF_HeadFixer_NoFix</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_HeadFixer_PWM_PCA9685</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>HeadFixerDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The HeadFixerDict Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>servoAddress</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The address of the servo</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>64</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>servoFixedPosition</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The servo position when fully fixed.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>100</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>servoReleasedPosition</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The servo position when fully released.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>170</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>skeddadleTime</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>Time (in seconds) mouse has to leave before being headfixed again.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>5.0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>LickDetectorClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The LickDetector class used in the task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_LickDetector_MPR</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="23"><ul class="simple">
+<li><p>LickDetectorDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters used by the LickDetector class.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>IRQpin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The IRQ GPIO pin</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>26</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>mprAddress</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The mprAddress</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>90</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p><strong>touchChans</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The MPR channels to detect touches from.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>items</p></td>
+<td colspan="2"><p><em>A Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>examples</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>touchThresh</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The minimum touch value to count as a touch.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>unTouchThresh</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The maximum touch value before touch is no longer detected.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>4</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>NotifierClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The Notifier class used in the task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>null</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>NotifierDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters used by the Notifier class.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>null</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>ReaderClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The RFID Reader class used in the task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Reader_ID</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="13"><ul class="simple">
+<li><p>ReaderDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters used by the Reader class.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>TIRpin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The TIR GPIO pin.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>19</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>inChamberTimeLimit</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The time limit for mice staying in the chamber.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>600</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p><strong>serialPort</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The serial port of the RFID reader.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>/dev/ttyUSB0</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td colspan="2"></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>RewarderClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The Rewarder class used in the task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Rewarder_solenoid_rpi</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td colspan="3"></td>
+</tr>
+<tr class="row-even"><td rowspan="24"><ul class="simple">
+<li><p>RewarderDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters used by the Rewarder class.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>entryRewardDelay</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The delay before the mouse is rewarded after entry.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>maxEntryRewards</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The maximum times a mouse can receive an entry reward.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>10000</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>rewardPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The GPIO pin of the rewarder.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>13</p></td>
+</tr>
+<tr class="row-even"><td rowspan="12"><ul class="simple">
+<li><p><strong>rewards</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The rewards Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>entry</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The amount to reward on entry.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>task</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The amount to reward on task success.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>test</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The test reward amount.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>StimulatorClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The Stimulator class used in the task. This class contains most of the task logic.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Stimulator_LickWithhold</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="23"><ul class="simple">
+<li><p>StimulatorDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters of the Stimulator used in the task.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>defaultLevel</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The task level. The function of the task level will differ per task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>lickWrongTimeout</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The delay to wait (in seconds) after incorrect lick.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>5</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p><strong>speakerDuty</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The duty cycle of the speaker.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>0.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td colspan="2"><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>speakerFreq</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The frequency of the speaker.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>300</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>speakerOffForReward</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The speakerOffForReward.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>1.5</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p><strong>speakerPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The GPIO pin of the speaker.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td colspan="2"><p>0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>StimulusClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The Stimulus class used in the task. One of AHF_Stimulus_VibMotor,  AHF_Stimulus_None.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Stimulus_VibMotor</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>StimulusDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters for the Stimulus class.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>motorDuty</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The duty cycle (power) of the motor.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>motorFreq</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The frequency of the motor.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>300</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>motorPin</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The GPIO pin of the motor.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>27</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>pulseTime</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The motor pulse time.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>0.2</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>SubjectsClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The Subjects class used by the task.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>AHF_Subjects_mice</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>SubjectsDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The parameters used by the Subjects class.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>examples</p></td>
+<td><p>inChamberTimeLimit</p></td>
+<td colspan="2"><p>300</p></td>
+</tr>
+<tr class="row-even"><td><p>jsonName</p></td>
+<td colspan="2"><p>_subjects</p></td>
+</tr>
+<tr class="row-odd"><td><p>loadMiceConfigs</p></td>
+<td colspan="2"><p>provide_json</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>inChamberTimeLimit</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The inChamberTimeLimit Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>300</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>jsonName</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The jsonName Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="2"><p>_subjects</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>loadMiceConfigs</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The loadMiceConfigs Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="2"><p>provide_json</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>TriggerClass</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The TriggerClass Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>null</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>TriggerDict</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The TriggerDict Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>null</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>contact</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The contact Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>contactTime</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The contactTime Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>1670638800.847497</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>edited</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The edited Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>entryTime</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The entryTime Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>1670638796.8039246</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>fileName</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The fileName Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>HeadFix_LickWithhold</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>fixAgainTime</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The fixAgainTime Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>1670644591.3538709</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>fixed</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The fixed Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>inChamberLimitExceeded</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The inChamberLimitExceeded Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>isFixTrial</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The isFixTrial Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>lastFixedTag</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The lastFixedTag Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>lastFixedTime</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The lastFixedTime Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>1670638801.3685148</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>logToFile</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The logToFile Schema</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p>tag</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>The tag Schema</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>examples</p></td>
+<td colspan="3"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview &amp; Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="AutoHeadFix Code Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

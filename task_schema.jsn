@@ -1,0 +1,797 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "",
+    "title": "Task Configuration File Description",
+    "required": [
+    ],
+    "properties": {
+        "BrainLightClass": {
+            "type": "string",
+            "title": "The BrainLight class used by the task. Must be an extant implementation; currently, only AHF_BrainLight_1GPIO is implemented.",
+            "examples": [
+                "AHF_BrainLight_1GPIO"
+            ]
+        },
+        "BrainLightDict": {
+            "type": "object",
+            "title": "BrainLightDict contains parameters used by the brain light.",
+            "required": [
+                "ledDelay",
+                "ledPin"
+            ],
+            "properties": {
+                "ledDelay": {
+                    "type": "number",
+                    "title": "The delay time (in seconds) when starting up and turning off the brain light.",
+                    "examples": [
+                        3.0
+                    ]
+                },
+                "ledPin": {
+                    "type": "integer",
+                    "title": "The pin used by the brainlight LED.",
+                    "examples": [
+                        23
+                    ]
+                }
+            }
+        },
+        "CameraClass": {
+            "type": "string",
+            "title": "The CameraClass class used by the task. Must be an extant implementation; currently, only AHF_Camera_PiCam is implemented.",
+            "examples": [
+                "AHF_Camera_PiCam"
+            ]
+        },
+        "CameraDict": {
+            "type": "object",
+            "title": "CameraDict contains parameters used for the camera.",
+            "required": [
+                "format",
+                "framerate",
+                "iso",
+                "previewWin",
+                "quality",
+                "resolution",
+                "shutter_speed",
+                "video_path",
+                "whiteBalance"
+            ],
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "title": "The format of the video recorded.",
+                    "examples": [
+                        "h264"
+                    ]
+                },
+                "framerate": {
+                    "type": "integer",
+                    "title": "The framerate of the video.",
+                    "examples": [
+                        30
+                    ]
+                },
+                "iso": {
+                    "type": "integer",
+                    "title": "The iso of the camera.",
+                    "examples": [
+                        0
+                    ]
+                },
+                "previewWin": {
+                    "type": "array",
+                    "title": "The size of the preview window",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            0,
+                            640,
+                            480
+                        ]
+                    }
+                },
+                "quality": {
+                    "type": "integer",
+                    "title": "The quality of the video",
+                    "examples": [
+                        20
+                    ]
+                },
+                "resolution": {
+                    "type": "array",
+                    "title": "The camera resolution",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            256
+                        ]
+                    },
+                    "examples": [
+                        [256,
+                            256
+                        ]
+                    ]
+                },
+                "shutter_speed": {
+                    "type": "integer",
+                    "title": "The shutter speed",
+                    "examples": [
+                        30000
+                    ]
+                },
+                "video_path": {
+                    "type": "string",
+                    "title": "The path to save the video to",
+                    "examples": [
+                        "/mnt/AHF_Videos/"
+                    ]
+                },
+                "whiteBalance": {
+                    "type": "boolean",
+                    "title": "whether white balance should be enabled",
+                    "examples": [
+                        false
+                    ]
+                }
+            }
+        },
+        "ContactCheckClass": {
+            "type": "string",
+            "title": "The ContactCheckClass. Can be one of AHF_ContactCheck_BeamBreak and AHF_ContactCheck_Elec",
+            "examples": [
+                "AHF_ContactCheck_BeamBreak"
+            ]
+        },
+        "ContactCheckDict": {
+            "type": "object",
+            "title": "Parameters for ContactCheck.",
+            "required": [
+                "contactPUD",
+                "contactPin",
+                "contactPolarity",
+                "ledPin"
+            ],
+            "properties": {
+                "contactPUD": {
+                    "type": "string",
+                    "title": "Whether the contact checker is pull-up or pull-down. One of PUD_OFF, PUD_DOWN, PUD_UP.",
+                    "examples": [
+                        "PUD_UP"
+                    ]
+                },
+                "contactPin": {
+                    "type": "integer",
+                    "title": "GPIO pin of the contact detector.",
+                    "examples": [
+                        12
+                    ]
+                },
+                "contactPolarity": {
+                    "type": "string",
+                    "title": "The polarity of contact checker. Either RISING or FALLING",
+                    "examples": [
+                        "FALLING"
+                    ]
+                },
+                "ledPin": {
+                    "type": "integer",
+                    "title": "The GPIO pin of the contact check LED.",
+                    "examples": [
+                        24
+                    ]
+                }
+            }
+        },
+        "DataLoggerClass": {
+            "type": "string",
+            "title": "The DataLogger class used by the task. One of AHF_DataLogger_localsql, AHF_DataLogger_mysql, AHF_DataLogger_text, AHF_DataLogger_textMySql",
+            "examples": [
+                "AHF_DataLogger_textMySql"
+            ]
+        },
+        "DataLoggerDict": {
+            "type": "object",
+            "title": "The DataLoggerDict Schema",
+            "required": [
+                "DB",
+                "DBhost",
+                "DBpwd",
+                "DBuser",
+                "cageID",
+                "dataPath",
+                "localDatabase",
+                "localPassword",
+                "localUser",
+                "mouseConfigPath",
+                "oldVersion",
+                "useLocalSql"
+            ],
+            "properties": {
+                "DB": {
+                    "type": "string",
+                    "title": "The database name.",
+                    "examples": [
+                        "AHF_home_cage"
+                    ]
+                },
+                "DBhost": {
+                    "type": "string",
+                    "title": "The database host address.",
+                    "examples": [
+                        "142.103.107.236"
+                    ]
+                },
+                "DBpwd": {
+                    "type": "string",
+                    "title": "The database password.",
+                    "examples": [
+                        "*******************"
+                    ]
+                },
+                "DBuser": {
+                    "type": "string",
+                    "title": "The database username.",
+                    "examples": [
+                        "slavePi"
+                    ]
+                },
+                "cageID": {
+                    "type": "string",
+                    "title": "The cageID.",
+                    "examples": [
+                        "cage1"
+                    ]
+                },
+                "dataPath": {
+                    "type": "string",
+                    "title": "The dataPath to save logs to.",
+                    "examples": [
+                        "/mnt/AHF_Videos/"
+                    ]
+                },
+                "localDatabase": {
+                    "type": "string",
+                    "title": "The local database name.",
+                    "examples": [
+                        "raw_data"
+                    ]
+                },
+                "localPassword": {
+                    "type": "string",
+                    "title": "The password of the local user.",
+                    "examples": [
+                        "AutoHead2015"
+                    ]
+                },
+                "localUser": {
+                    "type": "string",
+                    "title": "The username of the local user.",
+                    "examples": [
+                        "pi"
+                    ]
+                },
+                "mouseConfigPath": {
+                    "type": "string",
+                    "title": "The path to mouse configurations.",
+                    "examples": [
+                        "/home/pi/Documents/MiceConfig/"
+                    ]
+                },
+                "oldVersion": {
+                    "type": "boolean",
+                    "title": "Whether to use the old version.",
+                    "examples": [
+                        true
+                    ]
+                },
+                "useLocalSql": {
+                    "type": "boolean",
+                    "title": "Whether to use localsql.",
+                    "examples": [
+                        true
+                    ]
+                }
+            }
+        },
+        "HeadFixerClass": {
+            "type": "string",
+            "title": "The HeadFixer class. Available are AHF_HeadFixer_PWM_Pi, AHF_HeadFixer_PWM_PCA9685, AHF_HeadFixer_Pistons, AHF_HeadFixer_NoFix",
+            "examples": [
+                "AHF_HeadFixer_PWM_PCA9685"
+            ]
+        },
+        "HeadFixerDict": {
+            "type": "object",
+            "title": "The HeadFixerDict Schema",
+            "required": [
+                "servoAddress",
+                "servoFixedPosition",
+                "servoReleasedPosition",
+                "skeddadleTime"
+            ],
+            "properties": {
+                "servoAddress": {
+                    "type": "integer",
+                    "title": "The address of the servo",
+                    "examples": [
+                        64
+                    ]
+                },
+                "servoFixedPosition": {
+                    "type": "integer",
+                    "title": "The servo position when fully fixed.",
+                    "examples": [
+                        100
+                    ]
+                },
+                "servoReleasedPosition": {
+                    "type": "integer",
+                    "title": "The servo position when fully released.",
+                    "examples": [
+                        170
+                    ]
+                },
+                "skeddadleTime": {
+                    "type": "number",
+                    "title": "Time (in seconds) mouse has to leave before being headfixed again.",
+                    "examples": [
+                        5.0
+                    ]
+                }
+            }
+        },
+        "LickDetectorClass": {
+            "type": "string",
+            "title": "The LickDetector class used in the task.",
+            "examples": [
+                "AHF_LickDetector_MPR"
+            ]
+        },
+        "LickDetectorDict": {
+            "type": "object",
+            "title": "The parameters used by the LickDetector class.",
+            "required": [
+                "IRQpin",
+                "mprAddress",
+                "touchChans",
+                "touchThresh",
+                "unTouchThresh"
+            ],
+            "properties": {
+                "IRQpin": {
+                    "type": "integer",
+                    "title": "The IRQ GPIO pin",
+                    "examples": [
+                        26
+                    ]
+                },
+                "mprAddress": {
+                    "type": "integer",
+                    "title": "The mprAddress",
+                    "examples": [
+                        90
+                    ]
+                },
+                "touchChans": {
+                    "type": "array",
+                    "title": "The MPR channels to detect touches from.",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    }
+                },
+                "touchThresh": {
+                    "type": "integer",
+                    "title": "The minimum touch value to count as a touch.",
+                    "examples": [
+                        8
+                    ]
+                },
+                "unTouchThresh": {
+                    "type": "integer",
+                    "title": "The maximum touch value before touch is no longer detected.",
+                    "examples": [
+                        4
+                    ]
+                }
+            }
+        },
+        "NotifierClass": {
+            "type": "null",
+            "title": "The Notifier class used in the task.",
+            "examples": [
+                null
+            ]
+        },
+        "NotifierDict": {
+            "type": "null",
+            "title": "The parameters used by the Notifier class.",
+            "examples": [
+                null
+            ]
+        },
+        "ReaderClass": {
+            "type": "string",
+            "title": "The RFID Reader class used in the task.",
+            "examples": [
+                "AHF_Reader_ID"
+            ]
+        },
+        "ReaderDict": {
+            "type": "object",
+            "title": "The parameters used by the Reader class.",
+            "required": [
+                "TIRpin",
+                "inChamberTimeLimit",
+                "serialPort"
+            ],
+            "properties": {
+                "TIRpin": {
+                    "type": "integer",
+                    "title": "The TIR GPIO pin.",
+                    "examples": [
+                        19
+                    ]
+                },
+                "inChamberTimeLimit": {
+                    "type": "integer",
+                    "title": "The time limit for mice staying in the chamber.",
+                    "examples": [
+                        600
+                    ]
+                },
+                "serialPort": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The serial port of the RFID reader.",
+                    "examples": [
+                        "/dev/ttyUSB0"
+                    ]
+                }
+            }
+        },
+        "RewarderClass": {
+            "type": "string",
+            "default": "",
+            "title": "The Rewarder class used in the task.",
+            "examples": [
+                "AHF_Rewarder_solenoid_rpi"
+            ]
+        },
+        "RewarderDict": {
+            "type": "object",
+            "title": "The parameters used by the Rewarder class.",
+            "required": [
+                "entryRewardDelay",
+                "maxEntryRewards",
+                "rewardPin",
+                "rewards"
+            ],
+            "properties": {
+                "entryRewardDelay": {
+                    "type": "number",
+                    "title": "The delay before the mouse is rewarded after entry.",
+                    "examples": [
+                        1.0
+                    ]
+                },
+                "maxEntryRewards": {
+                    "type": "integer",
+                    "title": "The maximum times a mouse can receive an entry reward.",
+                    "examples": [
+                        10000
+                    ]
+                },
+                "rewardPin": {
+                    "type": "integer",
+                    "title": "The GPIO pin of the rewarder.",
+                    "examples": [
+                        13
+                    ]
+                },
+                "rewards": {
+                    "type": "object",
+                    "title": "The rewards Schema",
+                    "required": [
+                        "entry",
+                        "task",
+                        "test"
+                    ],
+                    "properties": {
+                        "entry": {
+                            "type": "number",
+                            "title": "The amount to reward on entry.",
+                            "examples": [
+                                0.4
+                            ]
+                        },
+                        "task": {
+                            "type": "number",
+                            "title": "The amount to reward on task success.",
+                            "examples": [
+                                0.4
+                            ]
+                        },
+                        "test": {
+                            "type": "number",
+                            "title": "The test reward amount.",
+                            "examples": [
+                                1.0
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "StimulatorClass": {
+            "type": "string",
+            "title": "The Stimulator class used in the task. This class contains most of the task logic.",
+            "examples": [
+                "AHF_Stimulator_LickWithhold"
+            ]
+        },
+        "StimulatorDict": {
+            "type": "object",
+            "title": "The parameters of the Stimulator used in the task.",
+            "required": [
+                "defaultLevel",
+                "lickWrongTimeout",
+                "speakerDuty",
+                "speakerFreq",
+                "speakerOffForReward",
+                "speakerPin"
+            ],
+            "properties": {
+                "defaultLevel": {
+                    "type": "integer",
+                    "title": "The task level. The function of the task level will differ per task.",
+                    "examples": [
+                        0
+                    ]
+                },
+                "lickWrongTimeout": {
+                    "type": "integer",
+                    "title": "The delay to wait (in seconds) after incorrect lick.",
+                    "examples": [
+                        5
+                    ]
+                },
+                "speakerDuty": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The duty cycle of the speaker.",
+                    "examples": [
+                        0.8
+                    ]
+                },
+                "speakerFreq": {
+                    "type": "integer",
+                    "title": "The frequency of the speaker.",
+                    "examples": [
+                        300
+                    ]
+                },
+                "speakerOffForReward": {
+                    "type": "number",
+                    "title": "The speakerOffForReward.",
+                    "examples": [
+                        1.5
+                    ]
+                },
+                "speakerPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The GPIO pin of the speaker.",
+                    "examples": [
+                        25
+                    ]
+                }
+            }
+        },
+        "StimulusClass": {
+            "type": "string",
+            "title": "The Stimulus class used in the task. One of AHF_Stimulus_VibMotor,  AHF_Stimulus_None.",
+            "examples": [
+                "AHF_Stimulus_VibMotor"
+            ]
+        },
+        "StimulusDict": {
+            "type": "object",
+            "title": "The parameters for the Stimulus class.",
+            "required": [
+                "motorDuty",
+                "motorFreq",
+                "motorPin",
+                "pulseTime"
+            ],
+            "properties": {
+                "motorDuty": {
+                    "type": "number",
+                    "title": "The duty cycle (power) of the motor.",
+                    "examples": [
+                        1.0
+                    ]
+                },
+                "motorFreq": {
+                    "type": "integer",
+                    "title": "The frequency of the motor.",
+                    "examples": [
+                        300
+                    ]
+                },
+                "motorPin": {
+                    "type": "integer",
+                    "title": "The GPIO pin of the motor.",
+                    "examples": [
+                        27
+                    ]
+                },
+                "pulseTime": {
+                    "type": "number",
+                    "title": "The motor pulse time.",
+                    "examples": [
+                        0.2
+                    ]
+                }
+            }
+        },
+        "SubjectsClass": {
+            "type": "string",
+            "title": "The Subjects class used by the task.",
+            "examples": [
+                "AHF_Subjects_mice"
+            ]
+        },
+        "SubjectsDict": {
+            "type": "object",
+            "title": "The parameters used by the Subjects class.",
+            "required": [
+                "inChamberTimeLimit",
+                "jsonName",
+                "loadMiceConfigs"
+            ],
+            "properties": {
+                "inChamberTimeLimit": {
+                    "type": "integer",
+                    "title": "The inChamberTimeLimit Schema",
+                    "examples": [
+                        300
+                    ]
+                },
+                "jsonName": {
+                    "type": "string",
+                    "title": "The jsonName Schema",
+                    "examples": [
+                        "_subjects"
+                    ]
+                },
+                "loadMiceConfigs": {
+                    "type": "string",
+                    "title": "The loadMiceConfigs Schema",
+                    "examples": [
+                        "provide_json"
+                    ]
+                }
+            },
+            "examples": [{
+                "inChamberTimeLimit": 300,
+                "jsonName": "_subjects",
+                "loadMiceConfigs": "provide_json"
+            }]
+        },
+        "TriggerClass": {
+            "type": "null",
+            "title": "The TriggerClass Schema",
+            "examples": [
+                null
+            ]
+        },
+        "TriggerDict": {
+            "type": "null",
+            "title": "The TriggerDict Schema",
+            "examples": [
+                null
+            ]
+        },
+        "contact": {
+            "type": "boolean",
+            "title": "The contact Schema",
+            "examples": [
+                false
+            ]
+        },
+        "contactTime": {
+            "type": "number",
+            "title": "The contactTime Schema",
+            "examples": [
+                1670638800.847497
+            ]
+        },
+        "edited": {
+            "type": "boolean",
+            "title": "The edited Schema",
+            "examples": [
+                true
+            ]
+        },
+        "entryTime": {
+            "type": "number",
+            "title": "The entryTime Schema",
+            "examples": [
+                1670638796.8039246
+            ]
+        },
+        "fileName": {
+            "type": "string",
+            "title": "The fileName Schema",
+            "examples": [
+                "HeadFix_LickWithhold"
+            ]
+        },
+        "fixAgainTime": {
+            "type": "number",
+            "title": "The fixAgainTime Schema",
+            "examples": [
+                1670644591.3538709
+            ]
+        },
+        "fixed": {
+            "type": "boolean",
+            "title": "The fixed Schema",
+            "examples": [
+                false
+            ]
+        },
+        "inChamberLimitExceeded": {
+            "type": "boolean",
+            "title": "The inChamberLimitExceeded Schema",
+            "examples": [
+                false
+            ]
+        },
+        "isFixTrial": {
+            "type": "boolean",
+            "title": "The isFixTrial Schema",
+            "examples": [
+                true
+            ]
+        },
+        "lastFixedTag": {
+            "type": "integer",
+            "title": "The lastFixedTag Schema",
+            "examples": [
+                0
+            ]
+        },
+        "lastFixedTime": {
+            "type": "number",
+            "title": "The lastFixedTime Schema",
+            "examples": [
+                1670638801.3685148
+            ]
+        },
+        "logToFile": {
+            "type": "boolean",
+            "title": "The logToFile Schema",
+            "examples": [
+                true
+            ]
+        },
+        "tag": {
+            "type": "integer",
+            "title": "The tag Schema",
+            "examples": [
+                0
+            ]
+        }
+    }
+}

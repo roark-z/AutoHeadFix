@@ -1,0 +1,1164 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "BrainLightClass",
+        "BrainLightDict",
+        "CameraClass",
+        "CameraDict",
+        "ContactCheckClass",
+        "ContactCheckDict",
+        "DataLoggerClass",
+        "DataLoggerDict",
+        "HeadFixerClass",
+        "HeadFixerDict",
+        "LickDetectorClass",
+        "LickDetectorDict",
+        "NotifierClass",
+        "NotifierDict",
+        "ReaderClass",
+        "ReaderDict",
+        "RewarderClass",
+        "RewarderDict",
+        "StimulatorClass",
+        "StimulatorDict",
+        "StimulusClass",
+        "StimulusDict",
+        "SubjectsClass",
+        "SubjectsDict",
+        "TriggerClass",
+        "TriggerDict",
+        "contact",
+        "contactTime",
+        "edited",
+        "entryTime",
+        "fileName",
+        "fixAgainTime",
+        "fixed",
+        "inChamberLimitExceeded",
+        "isFixTrial",
+        "lastFixedTag",
+        "lastFixedTime",
+        "logToFile",
+        "tag"
+    ],
+    "properties": {
+        "BrainLightClass": {
+            "type": "string",
+            "default": "",
+            "title": "The BrainLightClass is a ",
+            "examples": [
+                "AHF_BrainLight_1GPIO"
+            ]
+        },
+        "BrainLightDict": {
+            "type": "object",
+            "default": {},
+            "title": "The BrainLightDict Schema",
+            "required": [
+                "ledDelay",
+                "ledPin"
+            ],
+            "properties": {
+                "ledDelay": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The ledDelay Schema",
+                    "examples": [
+                        3.0
+                    ]
+                },
+                "ledPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The ledPin Schema",
+                    "examples": [
+                        23
+                    ]
+                }
+            },
+            "examples": [{
+                "ledDelay": 3.0,
+                "ledPin": 23
+            }]
+        },
+        "CameraClass": {
+            "type": "string",
+            "default": "",
+            "title": "The CameraClass Schema",
+            "examples": [
+                "AHF_Camera_PiCam"
+            ]
+        },
+        "CameraDict": {
+            "type": "object",
+            "default": {},
+            "title": "The CameraDict Schema",
+            "required": [
+                "format",
+                "framerate",
+                "iso",
+                "previewWin",
+                "quality",
+                "resolution",
+                "shutter_speed",
+                "video_path",
+                "whiteBalance"
+            ],
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The format Schema",
+                    "examples": [
+                        "h264"
+                    ]
+                },
+                "framerate": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The framerate Schema",
+                    "examples": [
+                        30
+                    ]
+                },
+                "iso": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The iso Schema",
+                    "examples": [
+                        0
+                    ]
+                },
+                "previewWin": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The previewWin Schema",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            0,
+                            640,
+                            480
+                        ]
+                    },
+                    "examples": [
+                        [0, 0,
+                            640,
+                            480
+                        ]
+                    ]
+                },
+                "quality": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The quality Schema",
+                    "examples": [
+                        20
+                    ]
+                },
+                "resolution": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The resolution Schema",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            256
+                        ]
+                    },
+                    "examples": [
+                        [256,
+                            256
+                        ]
+                    ]
+                },
+                "shutter_speed": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The shutter_speed Schema",
+                    "examples": [
+                        30000
+                    ]
+                },
+                "video_path": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The video_path Schema",
+                    "examples": [
+                        "/mnt/AHF_Videos/"
+                    ]
+                },
+                "whiteBalance": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The whiteBalance Schema",
+                    "examples": [
+                        false
+                    ]
+                }
+            },
+            "examples": [{
+                "format": "h264",
+                "framerate": 30,
+                "iso": 0,
+                "previewWin": [
+                    0,
+                    0,
+                    640,
+                    480
+                ],
+                "quality": 20,
+                "resolution": [
+                    256,
+                    256
+                ],
+                "shutter_speed": 30000,
+                "video_path": "/mnt/AHF_Videos/",
+                "whiteBalance": false
+            }]
+        },
+        "ContactCheckClass": {
+            "type": "string",
+            "default": "",
+            "title": "The ContactCheckClass Schema",
+            "examples": [
+                "AHF_ContactCheck_BeamBreak"
+            ]
+        },
+        "ContactCheckDict": {
+            "type": "object",
+            "default": {},
+            "title": "The ContactCheckDict Schema",
+            "required": [
+                "contactPUD",
+                "contactPin",
+                "contactPolarity",
+                "ledPin"
+            ],
+            "properties": {
+                "contactPUD": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The contactPUD Schema",
+                    "examples": [
+                        "PUD_UP"
+                    ]
+                },
+                "contactPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The contactPin Schema",
+                    "examples": [
+                        12
+                    ]
+                },
+                "contactPolarity": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The contactPolarity Schema",
+                    "examples": [
+                        "FALLING"
+                    ]
+                },
+                "ledPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The ledPin Schema",
+                    "examples": [
+                        24
+                    ]
+                }
+            },
+            "examples": [{
+                "contactPUD": "PUD_UP",
+                "contactPin": 12,
+                "contactPolarity": "FALLING",
+                "ledPin": 24
+            }]
+        },
+        "DataLoggerClass": {
+            "type": "string",
+            "default": "",
+            "title": "The DataLoggerClass Schema",
+            "examples": [
+                "AHF_DataLogger_textMySql"
+            ]
+        },
+        "DataLoggerDict": {
+            "type": "object",
+            "default": {},
+            "title": "The DataLoggerDict Schema",
+            "required": [
+                "DB",
+                "DBhost",
+                "DBpwd",
+                "DBuser",
+                "cageID",
+                "dataPath",
+                "localDatabase",
+                "localPassword",
+                "localUser",
+                "mouseConfigPath",
+                "oldVersion",
+                "useLocalSql"
+            ],
+            "properties": {
+                "DB": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The DB Schema",
+                    "examples": [
+                        "AHF_home_cage"
+                    ]
+                },
+                "DBhost": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The DBhost Schema",
+                    "examples": [
+                        "142.103.107.236"
+                    ]
+                },
+                "DBpwd": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The DBpwd Schema",
+                    "examples": [
+                        "*******************"
+                    ]
+                },
+                "DBuser": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The DBuser Schema",
+                    "examples": [
+                        "slavePi"
+                    ]
+                },
+                "cageID": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The cageID Schema",
+                    "examples": [
+                        "cage1"
+                    ]
+                },
+                "dataPath": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The dataPath Schema",
+                    "examples": [
+                        "/mnt/AHF_Videos/"
+                    ]
+                },
+                "localDatabase": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The localDatabase Schema",
+                    "examples": [
+                        "raw_data"
+                    ]
+                },
+                "localPassword": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The localPassword Schema",
+                    "examples": [
+                        "AutoHead2015"
+                    ]
+                },
+                "localUser": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The localUser Schema",
+                    "examples": [
+                        "pi"
+                    ]
+                },
+                "mouseConfigPath": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The mouseConfigPath Schema",
+                    "examples": [
+                        "/home/pi/Documents/MiceConfig/"
+                    ]
+                },
+                "oldVersion": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The oldVersion Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "useLocalSql": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The useLocalSql Schema",
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "DB": "AHF_home_cage",
+                "DBhost": "142.103.107.236",
+                "DBpwd": "*******************",
+                "DBuser": "slavePi",
+                "cageID": "cage1",
+                "dataPath": "/mnt/AHF_Videos/",
+                "localDatabase": "raw_data",
+                "localPassword": "AutoHead2015",
+                "localUser": "pi",
+                "mouseConfigPath": "/home/pi/Documents/MiceConfig/",
+                "oldVersion": true,
+                "useLocalSql": true
+            }]
+        },
+        "HeadFixerClass": {
+            "type": "string",
+            "default": "",
+            "title": "The HeadFixerClass Schema",
+            "examples": [
+                "AHF_HeadFixer_PWM_PCA9685"
+            ]
+        },
+        "HeadFixerDict": {
+            "type": "object",
+            "default": {},
+            "title": "The HeadFixerDict Schema",
+            "required": [
+                "servoAddress",
+                "servoFixedPosition",
+                "servoReleasedPosition",
+                "skeddadleTime"
+            ],
+            "properties": {
+                "servoAddress": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The servoAddress Schema",
+                    "examples": [
+                        64
+                    ]
+                },
+                "servoFixedPosition": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The servoFixedPosition Schema",
+                    "examples": [
+                        100
+                    ]
+                },
+                "servoReleasedPosition": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The servoReleasedPosition Schema",
+                    "examples": [
+                        170
+                    ]
+                },
+                "skeddadleTime": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The skeddadleTime Schema",
+                    "examples": [
+                        5.0
+                    ]
+                }
+            },
+            "examples": [{
+                "servoAddress": 64,
+                "servoFixedPosition": 100,
+                "servoReleasedPosition": 170,
+                "skeddadleTime": 5.0
+            }]
+        },
+        "LickDetectorClass": {
+            "type": "string",
+            "default": "",
+            "title": "The LickDetectorClass Schema",
+            "examples": [
+                "AHF_LickDetector_MPR"
+            ]
+        },
+        "LickDetectorDict": {
+            "type": "object",
+            "default": {},
+            "title": "The LickDetectorDict Schema",
+            "required": [
+                "IRQpin",
+                "mprAddress",
+                "touchChans",
+                "touchThresh",
+                "unTouchThresh"
+            ],
+            "properties": {
+                "IRQpin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The IRQpin Schema",
+                    "examples": [
+                        26
+                    ]
+                },
+                "mprAddress": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The mprAddress Schema",
+                    "examples": [
+                        90
+                    ]
+                },
+                "touchChans": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The touchChans Schema",
+                    "items": {
+                        "type": "integer",
+                        "title": "A Schema",
+                        "examples": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "examples": [
+                        [0, 1,
+                            2,
+                            3
+                        ]
+                    ]
+                },
+                "touchThresh": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The touchThresh Schema",
+                    "examples": [
+                        8
+                    ]
+                },
+                "unTouchThresh": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The unTouchThresh Schema",
+                    "examples": [
+                        4
+                    ]
+                }
+            },
+            "examples": [{
+                "IRQpin": 26,
+                "mprAddress": 90,
+                "touchChans": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "touchThresh": 8,
+                "unTouchThresh": 4
+            }]
+        },
+        "NotifierClass": {
+            "type": "null",
+            "default": null,
+            "title": "The NotifierClass Schema",
+            "examples": [
+                null
+            ]
+        },
+        "NotifierDict": {
+            "type": "null",
+            "default": null,
+            "title": "The NotifierDict Schema",
+            "examples": [
+                null
+            ]
+        },
+        "ReaderClass": {
+            "type": "string",
+            "default": "",
+            "title": "The ReaderClass Schema",
+            "examples": [
+                "AHF_Reader_ID"
+            ]
+        },
+        "ReaderDict": {
+            "type": "object",
+            "default": {},
+            "title": "The ReaderDict Schema",
+            "required": [
+                "TIRpin",
+                "inChamberTimeLimit",
+                "serialPort"
+            ],
+            "properties": {
+                "TIRpin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The TIRpin Schema",
+                    "examples": [
+                        19
+                    ]
+                },
+                "inChamberTimeLimit": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The inChamberTimeLimit Schema",
+                    "examples": [
+                        600
+                    ]
+                },
+                "serialPort": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The serialPort Schema",
+                    "examples": [
+                        "/dev/ttyUSB0"
+                    ]
+                }
+            },
+            "examples": [{
+                "TIRpin": 19,
+                "inChamberTimeLimit": 600,
+                "serialPort": "/dev/ttyUSB0"
+            }]
+        },
+        "RewarderClass": {
+            "type": "string",
+            "default": "",
+            "title": "The RewarderClass Schema",
+            "examples": [
+                "AHF_Rewarder_solenoid_rpi"
+            ]
+        },
+        "RewarderDict": {
+            "type": "object",
+            "default": {},
+            "title": "The RewarderDict Schema",
+            "required": [
+                "entryRewardDelay",
+                "maxEntryRewards",
+                "rewardPin",
+                "rewards"
+            ],
+            "properties": {
+                "entryRewardDelay": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The entryRewardDelay Schema",
+                    "examples": [
+                        1.0
+                    ]
+                },
+                "maxEntryRewards": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The maxEntryRewards Schema",
+                    "examples": [
+                        10000
+                    ]
+                },
+                "rewardPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The rewardPin Schema",
+                    "examples": [
+                        13
+                    ]
+                },
+                "rewards": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The rewards Schema",
+                    "required": [
+                        "entry",
+                        "task",
+                        "test"
+                    ],
+                    "properties": {
+                        "entry": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The entry Schema",
+                            "examples": [
+                                0.4
+                            ]
+                        },
+                        "task": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The task Schema",
+                            "examples": [
+                                0.4
+                            ]
+                        },
+                        "test": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The test Schema",
+                            "examples": [
+                                1.0
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "entry": 0.4,
+                        "task": 0.4,
+                        "test": 1.0
+                    }]
+                }
+            },
+            "examples": [{
+                "entryRewardDelay": 1.0,
+                "maxEntryRewards": 10000,
+                "rewardPin": 13,
+                "rewards": {
+                    "entry": 0.4,
+                    "task": 0.4,
+                    "test": 1.0
+                }
+            }]
+        },
+        "StimulatorClass": {
+            "type": "string",
+            "default": "",
+            "title": "The StimulatorClass Schema",
+            "examples": [
+                "AHF_Stimulator_LickWithhold"
+            ]
+        },
+        "StimulatorDict": {
+            "type": "object",
+            "default": {},
+            "title": "The StimulatorDict Schema",
+            "required": [
+                "defaultLevel",
+                "lickWrongTimeout",
+                "speakerDuty",
+                "speakerFreq",
+                "speakerOffForReward",
+                "speakerPin"
+            ],
+            "properties": {
+                "defaultLevel": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The defaultLevel Schema",
+                    "examples": [
+                        0
+                    ]
+                },
+                "lickWrongTimeout": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The lickWrongTimeout Schema",
+                    "examples": [
+                        5
+                    ]
+                },
+                "speakerDuty": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The speakerDuty Schema",
+                    "examples": [
+                        0.8
+                    ]
+                },
+                "speakerFreq": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The speakerFreq Schema",
+                    "examples": [
+                        300
+                    ]
+                },
+                "speakerOffForReward": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The speakerOffForReward Schema",
+                    "examples": [
+                        1.5
+                    ]
+                },
+                "speakerPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The speakerPin Schema",
+                    "examples": [
+                        25
+                    ]
+                }
+            },
+            "examples": [{
+                "defaultLevel": 0,
+                "lickWrongTimeout": 5,
+                "speakerDuty": 0.8,
+                "speakerFreq": 300,
+                "speakerOffForReward": 1.5,
+                "speakerPin": 25
+            }]
+        },
+        "StimulusClass": {
+            "type": "string",
+            "default": "",
+            "title": "The StimulusClass Schema",
+            "examples": [
+                "AHF_Stimulus_VibMotor"
+            ]
+        },
+        "StimulusDict": {
+            "type": "object",
+            "default": {},
+            "title": "The StimulusDict Schema",
+            "required": [
+                "motorDuty",
+                "motorFreq",
+                "motorPin",
+                "pulseTime"
+            ],
+            "properties": {
+                "motorDuty": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The motorDuty Schema",
+                    "examples": [
+                        1.0
+                    ]
+                },
+                "motorFreq": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The motorFreq Schema",
+                    "examples": [
+                        300
+                    ]
+                },
+                "motorPin": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The motorPin Schema",
+                    "examples": [
+                        27
+                    ]
+                },
+                "pulseTime": {
+                    "type": "number",
+                    "default": 0.0,
+                    "title": "The pulseTime Schema",
+                    "examples": [
+                        0.2
+                    ]
+                }
+            },
+            "examples": [{
+                "motorDuty": 1.0,
+                "motorFreq": 300,
+                "motorPin": 27,
+                "pulseTime": 0.2
+            }]
+        },
+        "SubjectsClass": {
+            "type": "string",
+            "default": "",
+            "title": "The SubjectsClass Schema",
+            "examples": [
+                "AHF_Subjects_mice"
+            ]
+        },
+        "SubjectsDict": {
+            "type": "object",
+            "default": {},
+            "title": "The SubjectsDict Schema",
+            "required": [
+                "inChamberTimeLimit",
+                "jsonName",
+                "loadMiceConfigs"
+            ],
+            "properties": {
+                "inChamberTimeLimit": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The inChamberTimeLimit Schema",
+                    "examples": [
+                        300
+                    ]
+                },
+                "jsonName": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The jsonName Schema",
+                    "examples": [
+                        "_subjects"
+                    ]
+                },
+                "loadMiceConfigs": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The loadMiceConfigs Schema",
+                    "examples": [
+                        "provide_json"
+                    ]
+                }
+            },
+            "examples": [{
+                "inChamberTimeLimit": 300,
+                "jsonName": "_subjects",
+                "loadMiceConfigs": "provide_json"
+            }]
+        },
+        "TriggerClass": {
+            "type": "null",
+            "default": null,
+            "title": "The TriggerClass Schema",
+            "examples": [
+                null
+            ]
+        },
+        "TriggerDict": {
+            "type": "null",
+            "default": null,
+            "title": "The TriggerDict Schema",
+            "examples": [
+                null
+            ]
+        },
+        "contact": {
+            "type": "boolean",
+            "default": false,
+            "title": "The contact Schema",
+            "examples": [
+                false
+            ]
+        },
+        "contactTime": {
+            "type": "number",
+            "default": 0.0,
+            "title": "The contactTime Schema",
+            "examples": [
+                1670638800.847497
+            ]
+        },
+        "edited": {
+            "type": "boolean",
+            "default": false,
+            "title": "The edited Schema",
+            "examples": [
+                true
+            ]
+        },
+        "entryTime": {
+            "type": "number",
+            "default": 0.0,
+            "title": "The entryTime Schema",
+            "examples": [
+                1670638796.8039246
+            ]
+        },
+        "fileName": {
+            "type": "string",
+            "default": "",
+            "title": "The fileName Schema",
+            "examples": [
+                "HeadFix_LickWithhold"
+            ]
+        },
+        "fixAgainTime": {
+            "type": "number",
+            "default": 0.0,
+            "title": "The fixAgainTime Schema",
+            "examples": [
+                1670644591.3538709
+            ]
+        },
+        "fixed": {
+            "type": "boolean",
+            "default": false,
+            "title": "The fixed Schema",
+            "examples": [
+                false
+            ]
+        },
+        "inChamberLimitExceeded": {
+            "type": "boolean",
+            "default": false,
+            "title": "The inChamberLimitExceeded Schema",
+            "examples": [
+                false
+            ]
+        },
+        "isFixTrial": {
+            "type": "boolean",
+            "default": false,
+            "title": "The isFixTrial Schema",
+            "examples": [
+                true
+            ]
+        },
+        "lastFixedTag": {
+            "type": "integer",
+            "default": 0,
+            "title": "The lastFixedTag Schema",
+            "examples": [
+                0
+            ]
+        },
+        "lastFixedTime": {
+            "type": "number",
+            "default": 0.0,
+            "title": "The lastFixedTime Schema",
+            "examples": [
+                1670638801.3685148
+            ]
+        },
+        "logToFile": {
+            "type": "boolean",
+            "default": false,
+            "title": "The logToFile Schema",
+            "examples": [
+                true
+            ]
+        },
+        "tag": {
+            "type": "integer",
+            "default": 0,
+            "title": "The tag Schema",
+            "examples": [
+                0
+            ]
+        }
+    },
+    "examples": [{
+        "BrainLightClass": "AHF_BrainLight_1GPIO",
+        "BrainLightDict": {
+            "ledDelay": 3.0,
+            "ledPin": 23
+        },
+        "CameraClass": "AHF_Camera_PiCam",
+        "CameraDict": {
+            "format": "h264",
+            "framerate": 30,
+            "iso": 0,
+            "previewWin": [
+                0,
+                0,
+                640,
+                480
+            ],
+            "quality": 20,
+            "resolution": [
+                256,
+                256
+            ],
+            "shutter_speed": 30000,
+            "video_path": "/mnt/AHF_Videos/",
+            "whiteBalance": false
+        },
+        "ContactCheckClass": "AHF_ContactCheck_BeamBreak",
+        "ContactCheckDict": {
+            "contactPUD": "PUD_UP",
+            "contactPin": 12,
+            "contactPolarity": "FALLING",
+            "ledPin": 24
+        },
+        "DataLoggerClass": "AHF_DataLogger_textMySql",
+        "DataLoggerDict": {
+            "DB": "AHF_home_cage",
+            "DBhost": "142.103.107.236",
+            "DBpwd": "*******************",
+            "DBuser": "slavePi",
+            "cageID": "cage1",
+            "dataPath": "/mnt/AHF_Videos/",
+            "localDatabase": "raw_data",
+            "localPassword": "AutoHead2015",
+            "localUser": "pi",
+            "mouseConfigPath": "/home/pi/Documents/MiceConfig/",
+            "oldVersion": true,
+            "useLocalSql": true
+        },
+        "HeadFixerClass": "AHF_HeadFixer_PWM_PCA9685",
+        "HeadFixerDict": {
+            "servoAddress": 64,
+            "servoFixedPosition": 100,
+            "servoReleasedPosition": 170,
+            "skeddadleTime": 5.0
+        },
+        "LickDetectorClass": "AHF_LickDetector_MPR",
+        "LickDetectorDict": {
+            "IRQpin": 26,
+            "mprAddress": 90,
+            "touchChans": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "touchThresh": 8,
+            "unTouchThresh": 4
+        },
+        "NotifierClass": null,
+        "NotifierDict": null,
+        "ReaderClass": "AHF_Reader_ID",
+        "ReaderDict": {
+            "TIRpin": 19,
+            "inChamberTimeLimit": 600,
+            "serialPort": "/dev/ttyUSB0"
+        },
+        "RewarderClass": "AHF_Rewarder_solenoid_rpi",
+        "RewarderDict": {
+            "entryRewardDelay": 1.0,
+            "maxEntryRewards": 10000,
+            "rewardPin": 13,
+            "rewards": {
+                "entry": 0.4,
+                "task": 0.4,
+                "test": 1.0
+            }
+        },
+        "StimulatorClass": "AHF_Stimulator_LickWithhold",
+        "StimulatorDict": {
+            "defaultLevel": 0,
+            "lickWrongTimeout": 5,
+            "speakerDuty": 0.8,
+            "speakerFreq": 300,
+            "speakerOffForReward": 1.5,
+            "speakerPin": 25
+        },
+        "StimulusClass": "AHF_Stimulus_VibMotor",
+        "StimulusDict": {
+            "motorDuty": 1.0,
+            "motorFreq": 300,
+            "motorPin": 27,
+            "pulseTime": 0.2
+        },
+        "SubjectsClass": "AHF_Subjects_mice",
+        "SubjectsDict": {
+            "inChamberTimeLimit": 300,
+            "jsonName": "_subjects",
+            "loadMiceConfigs": "provide_json"
+        },
+        "TriggerClass": null,
+        "TriggerDict": null,
+        "contact": false,
+        "contactTime": 1670638800.847497,
+        "edited": true,
+        "entryTime": 1670638796.8039246,
+        "fileName": "HeadFix_LickWithhold",
+        "fixAgainTime": 1670644591.3538709,
+        "fixed": false,
+        "inChamberLimitExceeded": false,
+        "isFixTrial": true,
+        "lastFixedTag": 0,
+        "lastFixedTime": 1670638801.3685148,
+        "logToFile": true,
+        "tag": 0
+    }]
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoHeadFix Code Documentation &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Auto Head Fix Util and Base Classes" href="util_classes.html" />
+    <link rel="prev" title="Configuration" href="task_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> AutoHeadFix
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AutoHeadFix Code Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html">Auto Head Fix Util and Base Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_BrainLight.html">AHF_BrainLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Camera.html">AHF_Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html">AHF_ContactCheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html">AHF_Datalogger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html">AHF_HeadFixer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_LickDetector.html">AHF_LickDetector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Notifier.html">AHF_Notifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html">AHF_Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html">AHF_Rewarder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html">AHF_Stimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html">AHF_Stimulus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Subjects.html">AHF_Subjects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Trigger.html">AHF_Trigger</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AutoHeadFix</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">AutoHeadFix Code Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="autoheadfix-code-documentation">
+<span id="modules"></span><h1>AutoHeadFix Code Documentation<a class="headerlink" href="#autoheadfix-code-documentation" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="util_classes.html">Auto Head Fix Util and Base Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html#module-AHF_Base">AHF_Base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="util_classes.html#ahf-base-py">AHF_Base.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html#module-AHF_ClassAndDictUtils">AHF_ClassAndDictUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html#module-AHF_HardwareTester">AHF_HardwareTester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html#module-AHF_Task">AHF_Task</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_BrainLight.html">AHF_BrainLight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_BrainLight.html#module-AHF_BrainLight">AHF_BrainLight.AHF_BrainLight module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_BrainLight.html#module-AHF_BrainLight_1GPIO">AHF_BrainLight.AHF_BrainLight_1GPIO module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Camera.html">AHF_Camera</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Camera.html#module-AHF_Camera">AHF_Camera.AHF_Camera module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Camera.html#module-AHF_Camera_PiCam">AHF_Camera.AHF_Camera_PiCam module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_ContactCheck.html">AHF_ContactCheck</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html#module-AHF_ContactCheck">AHF_ContactCheck.AHF_ContactCheck module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html#module-AHF_ContactCheck_BeamBreak">AHF_ContactCheck.AHF_ContactCheck_BeamBreak module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html#module-AHF_ContactCheck_Elec">AHF_ContactCheck.AHF_ContactCheck_Elec module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_DataLogger.html">AHF_Datalogger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html#module-AHF_DataLogger">AHF_Datalogger.AHF_DataLogger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html#module-AHF_DataLogger_localsql">AHF_Datalogger.AHF_DataLogger_localsql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html#module-AHF_DataLogger_mysql">AHF_Datalogger.AHF_DataLogger_mysql module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html#module-AHF_DataLogger_text">AHF_Datalogger.AHF_DataLogger_text module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html#module-AHF_DataLogger_textMySql">AHF_Datalogger.AHF_DataLogger_textMySql module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_HeadFixer.html">AHF_HeadFixer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer">AHF_HeadFixer.AHF_HeadFixer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer_NoFix">AHF_HeadFixer.AHF_HeadFixer_NoFix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer_PWM">AHF_HeadFixer.AHF_HeadFixer_PWM module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer_PWM_PCA9685">AHF_HeadFixer.AHF_HeadFixer_PWM_PCA9685 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer_PWM_Pi">AHF_HeadFixer.AHF_HeadFixer_PWM_Pi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html#module-AHF_HeadFixer_Pistons">AHF_HeadFixer.AHF_HeadFixer_Pistons module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_LickDetector.html">AHF_LickDetector</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_LickDetector.html#module-AHF_LickDetector">AHF_LickDetector.AHF_LickDetector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_LickDetector.html#module-AHF_LickDetector_MPR">AHF_LickDetector.AHF_LickDetector_MPR module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Notifier.html">AHF_Notifier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Notifier.html#module-AHF_Notifier">AHF_Notifier.AHF_Notifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Notifier.html#module-AHF_Notifier_Requests">AHF_Notifier.AHF_Notifier_Requests module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Reader.html">AHF_Reader</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html#module-AHF_Reader">AHF_Reader.AHF_Reader module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Reader.html#module-AHF_Reader_ID">AHF_Reader.AHF_Reader_ID module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Rewarder.html">AHF_Rewarder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html#module-AHF_Rewarder">AHF_Rewarder.AHF_Rewarder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html#module-AHF_Rewarder_solenoid">AHF_Rewarder.AHF_Rewarder_solenoid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html#module-AHF_Rewarder_solenoid_pt">AHF_Rewarder.AHF_Rewarder_solenoid_pt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html#module-AHF_Rewarder_solenoid_rpi">AHF_Rewarder.AHF_Rewarder_solenoid_rpi module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Stimulator.html">AHF_Stimulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html#module-AHF_Stimulator">AHF_Stimulator.AHF_Stimulator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html#module-AHF_Stimulator_LEDs">AHF_Stimulator.AHF_Stimulator_LEDs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html#module-AHF_Stimulator_Lever">AHF_Stimulator.AHF_Stimulator_Lever module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html#module-AHF_Stimulator_LickWithhold">AHF_Stimulator.AHF_Stimulator_LickWithhold module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html#module-AHF_Stimulator_Rewards">AHF_Stimulator.AHF_Stimulator_Rewards module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Stimulus.html">AHF_Stimulus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html#module-AHF_Stimulus">AHF_Stimulus.AHF_Stimulus module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html#module-AHF_Stimulus_Laser">AHF_Stimulus.AHF_Stimulus_Laser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html#module-AHF_Stimulus_None">AHF_Stimulus.AHF_Stimulus_None module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html#module-AHF_Stimulus_VibMotor">AHF_Stimulus.AHF_Stimulus_VibMotor module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Subjects.html">AHF_Subjects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Subjects.html#module-AHF_Subjects">AHF_Subjects.AHF_Subjects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Subjects.html#module-AHF_Subjects_mice">AHF_Subjects.AHF_Subjects_mice module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AHF_Trigger.html">AHF_Trigger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Trigger.html#module-AHF_Trigger">AHF_Trigger.AHF_Trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Trigger.html#module-AHF_Trigger_UDP">AHF_Trigger.AHF_Trigger_UDP module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="task_config.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="util_classes.html" class="btn btn-neutral float-right" title="Auto Head Fix Util and Base Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

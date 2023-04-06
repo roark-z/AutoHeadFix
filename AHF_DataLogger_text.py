@@ -1,5 +1,5 @@
 #! /usr/bin/python -*-coding: utf-8 -*-
-from os import path, makedirs, chown, listdir
+# from os import path, makedirs, chown, listdir
 from pwd import getpwnam
 from grp import getgrnam
 from time import time, localtime,timezone, sleep
@@ -17,6 +17,7 @@ class AHF_DataLogger_text(AHF_DataLogger):
     The file name for each mouse contains RFID tag 0-padded to 13 spaces: AHF_mouse_1234567890123.jsn
 
     """
+
     PSEUDO_MUTEX =0
     """
     The class field PSEUDO_MUTEX helps prevent print statements from different places in the code(main vs
@@ -27,6 +28,7 @@ class AHF_DataLogger_text(AHF_DataLogger):
     interval between reading and writing to PSEUDO_MUTEX,another thread may have read PSEUDO_MUTEX as 0 and
     both threads think they have the mutex
     """
+    
     defaultCage = 'cage1'
     defaultDataPath='/home/pi/Documents/'
     defaultConfigPath = '/home/pi/Documents/MiceConfig/'

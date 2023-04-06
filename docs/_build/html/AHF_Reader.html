@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AHF_Reader &mdash; AutoHeadFix 2.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AHF_Rewarder" href="AHF_Rewarder.html" />
+    <link rel="prev" title="AHF_Notifier" href="AHF_Notifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> AutoHeadFix
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rpi_setup.html">General Raspberry Pi Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">AutoHeadFix Code Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="util_classes.html">Auto Head Fix Util and Base Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_BrainLight.html">AHF_BrainLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Camera.html">AHF_Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_ContactCheck.html">AHF_ContactCheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_DataLogger.html">AHF_Datalogger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_HeadFixer.html">AHF_HeadFixer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_LickDetector.html">AHF_LickDetector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Notifier.html">AHF_Notifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AHF_Reader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Reader">AHF_Reader.AHF_Reader module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-AHF_Reader_ID">AHF_Reader.AHF_Reader_ID module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Rewarder.html">AHF_Rewarder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulator.html">AHF_Stimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Stimulus.html">AHF_Stimulus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Subjects.html">AHF_Subjects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AHF_Trigger.html">AHF_Trigger</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AutoHeadFix</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AutoHeadFix Code Documentation</a></li>
+      <li class="breadcrumb-item active">AHF_Reader</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/AHF_Reader.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ahf-reader">
+<h1>AHF_Reader<a class="headerlink" href="#ahf-reader" title="Permalink to this headline"></a></h1>
+<section id="module-AHF_Reader">
+<span id="ahf-reader-ahf-reader-module"></span><h2>AHF_Reader.AHF_Reader module<a class="headerlink" href="#module-AHF_Reader" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="AHF_Reader.AHF_Reader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Reader.</span></span><span class="sig-name descname"><span class="pre">AHF_Reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader.AHF_Reader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util_classes.html#AHF_Base.AHF_Base" title="AHF_Base.AHF_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Base.AHF_Base</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader.AHF_Reader.readTag">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">readTag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader.AHF_Reader.readTag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader.AHF_Reader.startLogging">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">startLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader.AHF_Reader.startLogging" title="Permalink to this definition"></a></dt>
+<dd><p>starts using data logger to start logging entries/exits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader.AHF_Reader.stopLogging">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stopLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader.AHF_Reader.stopLogging" title="Permalink to this definition"></a></dt>
+<dd><p>stops  data logger from logging entries/exits</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-AHF_Reader_ID">
+<span id="ahf-reader-ahf-reader-id-module"></span><h2>AHF_Reader.AHF_Reader_ID module<a class="headerlink" href="#module-AHF_Reader_ID" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AHF_Reader_ID.</span></span><span class="sig-name descname"><span class="pre">AHF_Reader_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taskP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settingsDictP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#AHF_Reader.AHF_Reader" title="AHF_Reader.AHF_Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AHF_Reader.AHF_Reader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.DO_CHECK_SUM">
+<span class="sig-name descname"><span class="pre">DO_CHECK_SUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.DO_CHECK_SUM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.TIME_OUT_SECS">
+<span class="sig-name descname"><span class="pre">TIME_OUT_SECS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.05</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.TIME_OUT_SECS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.about">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.about" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a brief message describing your sub-class, used when asking user to pick a sub-class of this class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.clearResultsDict">
+<span class="sig-name descname"><span class="pre">clearResultsDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resultsDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.clearResultsDict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.config_user_get">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_user_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.config_user_get" title="Permalink to this definition"></a></dt>
+<dd><p>static method that querries user for settings, with default responses from starterDict,
+and returns starterDict with settings as edited by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.constantCheck">
+<span class="sig-name descname"><span class="pre">constantCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.constantCheck" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.customCallback">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">customCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.customCallback" title="Permalink to this definition"></a></dt>
+<dd><p>callback sets tag value in global reference to task object.
+DO NOT START CALLBACK BEFORE TASK IS INITED
+also logs entries in TagReader results dict for the mouse the tag corresponds to</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.defaultChamberTimeLimit">
+<span class="sig-name descname"><span class="pre">defaultChamberTimeLimit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">600</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.defaultChamberTimeLimit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.defaultPin">
+<span class="sig-name descname"><span class="pre">defaultPin</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.defaultPin" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.defaultPort">
+<span class="sig-name descname"><span class="pre">defaultPort</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/dev/tty0'</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.defaultPort" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.gInChamberTimeLimit">
+<span class="sig-name descname"><span class="pre">gInChamberTimeLimit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.gInChamberTimeLimit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.gStillThere">
+<span class="sig-name descname"><span class="pre">gStillThere</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.gStillThere" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.graceTime">
+<span class="sig-name descname"><span class="pre">graceTime</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.graceTime" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.hardwareTest">
+<span class="sig-name descname"><span class="pre">hardwareTest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.hardwareTest" title="Permalink to this definition"></a></dt>
+<dd><p>Tests functionality, gives user a chance to change settings.
+:Returns: bool – True if any settings have changed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.isChecking">
+<span class="sig-name descname"><span class="pre">isChecking</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.isChecking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.newResultsDict">
+<span class="sig-name descname"><span class="pre">newResultsDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starterDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.newResultsDict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.readTag">
+<span class="sig-name descname"><span class="pre">readTag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.readTag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.setdown">
+<span class="sig-name descname"><span class="pre">setdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.setdown" title="Permalink to this definition"></a></dt>
+<dd><p>oppposite of setup. Releases any hardware resouces. can be run before editing settings so GPIO
+pins can be reused, for example. This strategy should be used in hardwareTest method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.setup" title="Permalink to this definition"></a></dt>
+<dd><p>does hardware initialization with(possibly updated) info in self.settingsDict
+Run by __init__, or can be run  separately after editing the settingsDict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="field-list simple">
+<dt class="field-odd">code</dt>
+<dd class="field-odd"><p><cite>bool</cite> whether setup completed without errors</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.startLogging">
+<span class="sig-name descname"><span class="pre">startLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.startLogging" title="Permalink to this definition"></a></dt>
+<dd><p>starts using data logger to start logging entries/exits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.stopLogging">
+<span class="sig-name descname"><span class="pre">stopLogging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.stopLogging" title="Permalink to this definition"></a></dt>
+<dd><p>stops  data logger from logging entries/exits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AHF_Reader_ID.AHF_Reader_ID.timeInChamberThread">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">timeInChamberThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepEndTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AHF_Reader_ID.AHF_Reader_ID.timeInChamberThread" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AHF_Notifier.html" class="btn btn-neutral float-left" title="AHF_Notifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AHF_Rewarder.html" class="btn btn-neutral float-right" title="AHF_Rewarder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Jamie Boyd, Braeden Jury, David Bierbrauer, Zenen Hornstein, Alice Xiong, Roark Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
