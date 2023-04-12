@@ -1,0 +1,126 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "",
+    "type": "object",
+    "title": "Mouse Configuration",
+    "required": [
+        "34443625108",
+        "0034443625108"
+    ],
+    "properties": {
+        "HeadFixer": {
+            "type": "object",
+            "default": {},
+            "title": "HeadFixer: the headfix settings of the mouse",
+            "required": [
+                "headFixTime",
+                "propHeadFix",
+                "tightnessHeadFix"
+            ],
+            "properties": {
+                "headFixTime": {
+                    "type": "number",
+                    "title": "Maximum allowed time in chamber for trials."
+                },
+                "propHeadFix": {
+                    "type": "number",
+                    "title": "Proportion of entries to headfix."
+                },
+                "tightnessHeadFix": {
+                    "type": "integer",
+                    "title": "Tightness of headfixation."
+                }
+            }
+        },
+        "Rewarder": {
+            "type": "object",
+            "default": {},
+            "title": "Rewarder: rewarder settings for the current subject.",
+            "properties": {
+                "breakBeamDelay": {
+                    "type": "integer",
+                    "title": "The minimum delay, in seconds, between beambreaks before rewarding again."
+                },
+                "breakBeamSize": {
+                    "type": "number",
+                    "title": "The valve opening duration, in seconds, for break beam rewards."
+                },
+                "entryDelay": {
+                    "type": "number",
+                    "title": "The delay between successive entry rewards, in seconds."
+                },
+                "entrySize": {
+                    "type": "number",
+                    "title": "The valve opening duration, in seconds, for entry rewards."
+                },
+                "lastBreakBeamTime": {
+                    "type": "integer",
+                    "title": "The last beam break time."
+                },
+                "lastEntryTime": {
+                    "type": "integer",
+                    "title": "The last entry time."
+                },
+                "maxBreakBeamRewards": {
+                    "type": "integer",
+                    "title": "The maximum number of break beam reards given per day."
+                },
+                "maxEntryRewards": {
+                    "type": "integer",
+                    "title": "The maximum number of entry rewards given per day."
+                },
+                "taskSize": {
+                    "type": "number",
+                    "title": "The valve opening duration, in seconds, for task rewards."
+                },
+                "totalBreakBeamRewardsToday": {
+                    "type": "integer",
+                    "title": "Count of the total break beam rewards today."
+                },
+                "totalEntryRewardsToday": {
+                    "type": "integer",
+                    "title": "Count of the total entry rewards today."
+                }
+            }
+        },
+        "Stimulator": {
+            "type": "object",
+            "default": {},
+            "title": "The Stimulator settings for the mouse.",
+            "properties": {
+                "delayTime": {
+                    "type": "number",
+                    "title": "The delay time before the mouse should lick after a stimulus, for lick withhold trials."
+                },
+                "goLikelihood": {
+                    "type": "number",
+                    "title": "The likelihood of a go trial."
+                },
+                "lickWithholdTime": {
+                    "type": "number",
+                    "title": "The delay time before the mouse should lick after a task begins."
+                },
+                "mouseLevel": {
+                    "type": "integer",
+                    "title": "The default task level to perform on this subject."
+                },
+                "nRewards": {
+                    "type": "integer",
+                    "title": "Maximum rewards to give in a series of trials."
+                },
+                "responseTime": {
+                    "type": "number",
+                    "title": "Time window of time for the mouse to respond to a stimulus."
+                },
+                "rewardInterval": {
+                    "type": "integer",
+                    "title": "The interval between rewards for the reward task. "
+                },
+                "rewardNoGo": {
+                    "type": "boolean",
+                    "title": "Whether to reward nogo trials."
+                }
+            }
+        }
+    }
+}

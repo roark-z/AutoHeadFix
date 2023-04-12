@@ -47,6 +47,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-configuration-file-description">Task Configuration File Description</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#mouse-configuration">Mouse Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Mouse Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">AutoHeadFix Code Documentation</a></li>
@@ -82,7 +86,7 @@
 <h2>Task Configuration<a class="headerlink" href="#task-configuration" title="Permalink to this headline"></a></h2>
 <p>go through an example of how to set task config</p>
 <p>The task configuration files are named <code class="code docutils literal notranslate"><span class="pre">AHF_task_[name].jsn</span></code>.</p>
-<p>Below is a description of each setting in the task configuration (table scrolls horizontally).</p>
+<p>Below is a description of each field in the task configuration (table scrolls horizontally).</p>
 <section id="task-configuration-file-description">
 <h3>Task Configuration File Description<a class="headerlink" href="#task-configuration-file-description" title="Permalink to this headline"></a></h3>
 <table class="docutils align-default">
@@ -1316,6 +1320,272 @@
 </tr>
 <tr class="row-even"><td><p>examples</p></td>
 <td colspan="3"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="mouse-configuration">
+<h2>Mouse Configuration<a class="headerlink" href="#mouse-configuration" title="Permalink to this headline"></a></h2>
+<p>Individual mouse settings can be modified from the subjects menu in autoheadfix, or directly editing jsn files.</p>
+<p>The subject configuration files are named <code class="code docutils literal notranslate"><span class="pre">AHF_mice_[tag].jsn</span></code>.</p>
+<p>Below is a description of each field in the subject configuration file.</p>
+<section id="id2">
+<h3>Mouse Configuration<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="4"></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>HeadFixer</p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>HeadFixer: the headfix settings of the mouse</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td colspan="2"></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>headFixTime</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Maximum allowed time in chamber for trials.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>propHeadFix</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Proportion of entries to headfix.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>tightnessHeadFix</strong></p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Tightness of headfixation.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="26"><ul class="simple">
+<li><p>Rewarder</p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>Rewarder: rewarder settings for the current subject.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td colspan="2"></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>breakBeamDelay</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The minimum delay, in seconds, between beambreaks before rewarding again.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>breakBeamSize</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The valve opening duration, in seconds, for break beam rewards.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>entryDelay</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The delay between successive entry rewards, in seconds.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>entrySize</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The valve opening duration, in seconds, for entry rewards.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>lastBreakBeamTime</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The last beam break time.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>lastEntryTime</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The last entry time.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>maxBreakBeamRewards</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The maximum number of break beam reards given per day.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>maxEntryRewards</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The maximum number of entry rewards given per day.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>taskSize</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The valve opening duration, in seconds, for task rewards.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>totalBreakBeamRewardsToday</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Count of the total break beam rewards today.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>totalEntryRewardsToday</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Count of the total entry rewards today.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="20"><ul class="simple">
+<li><p>Stimulator</p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>The Stimulator settings for the mouse.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td colspan="2"></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>delayTime</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The delay time before the mouse should lick after a stimulus, for lick withhold trials.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>goLikelihood</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The likelihood of a go trial.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>lickWithholdTime</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The delay time before the mouse should lick after a task begins.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>mouseLevel</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>The default task level to perform on this subject.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>nRewards</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Maximum rewards to give in a series of trials.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>responseTime</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Time window of time for the mouse to respond to a stimulus.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>rewardInterval</p></li>
+</ul>
+</td>
+<td colspan="2"><p><a href="#id3"><span class="problematic" id="id4">*</span></a>The interval between rewards for the reward task. *</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>rewardNoGo</p></li>
+</ul>
+</td>
+<td colspan="2"><p><em>Whether to reward nogo trials.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><em>boolean</em></p></td>
 </tr>
 </tbody>
 </table>
