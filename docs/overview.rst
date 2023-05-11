@@ -1,9 +1,17 @@
 Overview & Usage
 =======================================
 
+
 Example Task
 --------------------------------
-go through an example of a task
+The LickWithhold task is an example of a head fixing task that AutoHeadFix can control, and is described as follows.
+
+Upon initializing, AutoHeadFix will wait for a mouse to enter the headfixing area, with a prompt :code:`Waiting for a mouse...` For testing, we can use a spare RFID tag to simulate mouse entry.
+
+After the ID is detected, AutoHeadFix will wait on the ContactCheck, which in this case is a BeamBreak  (:code:`AHF_ContactCheck_BeamBreak`). For testing, simply break the beam manually.
+
+Upon beam break, the camera and brainlight will turn on and the trial will commence. The trial will be selected based on the mouse level, as described in :ref:`stimulator`. The stimulus is provided by :code:`AHF_Stimulus_VibMotor`, and the program determines trial requirements through the :code:`AHF_LickDetector_MPR`. 
+
 
 Code Structure
 --------------------------------
@@ -40,17 +48,3 @@ initialized from :code:`AHF_Task`. The main loop is then started, where the `Tag
 a mouse, fixes the mouse with the `HeadFixer`, then initiates the `Stimulator`` to handle task-spefic logic.
 
 On keyboard interrupt, the program enters the AutoHeadFix Manager menu.
-
-
-
-
-
-
-Subject Configuration
---------------------------------
-go through an example of how to set mouse settings for the task 
-
-
-Settings & Debugging
---------------------------------
-go through an example hardware tester

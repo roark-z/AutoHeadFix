@@ -80,7 +80,10 @@
 <h1>Overview &amp; Usage<a class="headerlink" href="#overview-usage" title="Permalink to this headline"></a></h1>
 <section id="example-task">
 <h2>Example Task<a class="headerlink" href="#example-task" title="Permalink to this headline"></a></h2>
-<p>go through an example of a task</p>
+<p>The LickWithhold task is an example of a head fixing task.</p>
+<p>Upon initializing, AutoHeadFix will wait for a mouse to enter the headfixing area, with a prompt <code class="code docutils literal notranslate"><span class="pre">Waiting</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">mouse...</span></code> For testing, we can use a spare RFID tag to simulate mouse entry.</p>
+<p>After the ID is detected, AutoHeadFix will wait on the ContactCheck, which in this case is a BeamBreak  (<code class="code docutils literal notranslate"><span class="pre">AHF_ContactCheck_BeamBreak</span></code>). For testing, simply break the beam manually.</p>
+<p>Upon beam break, the camera and brainlight will turn on and the trial will commence. The trial will be selected based on the mouse level, as described in <a class="reference internal" href="AHF_Stimulator.html#stimulator"><span class="std std-ref">AHF_Stimulator</span></a>.</p>
 </section>
 <section id="code-structure">
 <h2>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline"></a></h2>
