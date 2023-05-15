@@ -7,7 +7,7 @@ from AHF_Stimulator import AHF_Stimulator
 from AHF_Rewarder import AHF_Rewarder
 import time
 from random import random
-# from PTLeverThread import PTLeverThread
+from PTLeverThread import PTLeverThread
 import json
 
 
